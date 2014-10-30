@@ -1,0 +1,139 @@
+AOVTest                 Analysis of Variance
+AggregateData           Aggregate Data
+AppendData              Append Data
+BIBDTest                Balanced Incomplete Block Design
+BivariateCorrelationTest
+                        Test of Association between two variables
+ClassInformation        Class Information
+ClusterAgglo            Agglomerative Hierarchical Cluster Analysis
+ClusterDivisive         Divisive Hierarchical Cluster Analysis
+ClusterKmeans           K-means Cluster Analysis
+CombineFactorLevels     Combine Factor Levels
+CompareMeans            t-Test
+CompareMedian           title1
+CompareProportion       Compare Proportion
+ConstructAOVTable       Construct the ANOVA Table
+ContingencyCoef         title1
+ContrastCompute         Constrast Compute
+Corr                    Corr
+CramersV                title1
+CropStatRCBDOverSite    RCBD Over Site
+Crosstab                title1
+DataAttribute           Dataset Attribute
+DataTransformation      title1
+DescriptiveStatistics   Descriptive Statistics
+FactorList              title1
+Fertilizer              Fertilizer
+FoldedFTest             FoldedFTest
+FriedmanTest            Friedman Test
+GenerateBalanceData     title1
+GenerateFactor          title1
+Gerua                   Gerua
+GomezSplit2RCBD         GomezSplit2RCBD
+GomezSplitRCBD          GomezSplitRCBD
+GomezStrip              GomezStrip
+GomezStripSplit         GomezStripSplit
+GoodnessOfFitTest       Chi-Square Goodness of Fit Test
+GraphBar                GraphBar
+GraphBoxplot            Graph Boxplot
+GraphHist               Histogram
+GraphLine               GraphLine
+GraphPie                GraphPie
+GraphScatter            GraphScatter
+HSD.test                Multiple comparisons: Tukey
+Heatmap                 Heatmap
+HeteroskedasticityTest
+                        title1
+IASRITomar              IASRITomar
+IASRITomar2             IASRITomar2
+Inoculation             Inoculation
+Insecticides            Insecticides
+KruskalWallisTest       title1
+LSD.test                Multiple comparisons, "Least significant
+                        difference" and Adjust P-values
+LikelihoodRatioTest     title1
+LinearRegressionAnalysis
+                        title1
+Maize                   Maize
+MergeData               Merge Dataset
+NormalityTest           Test for Normality
+PCA                     Principal Component Analysis
+PCAgraph                Graphs for PCA
+PhiCoef                 title1
+PredictedValues         title1
+SNK.test                Student-Newman-Keuls (SNK)
+STAR-package            Statistical Tools for Agricultural Research
+SeedingRate             Seeding Rate
+SignificantEffect       title1
+SortCases               SortCases
+ToLong                  title1
+ToWide                  title1
+ad.test                 Anderson-Darling test for normality
+bcPower                 Box-Cox and Yeo-Johnson Power Transformations
+bptest                  Breusch-Pagan Test
+coef                    title1
+combAOVTest             Combined Analysis of Variance
+css                     Corrected Sum of Squares
+cv                      Coefficient of Variation
+cvm.test                Cramer-von Mises test for normality
+data.Normalization      Data Normalization
+design.alpha            Alpha design type (0,1)
+designAlphaLattice      Alpha Lattice
+designAugmented         Randomization for Augmented Design
+designBIBD              Randomization of Balanced Incomplete Block
+                        Design
+designCRD               Randomization of Completely Randomized Design
+designLSD               title1
+designLattice           Randomization for Lattice Design
+designRCBD              Randomization for Randomized Complete Block
+                        Design
+designSplit             Randomization of Family of Split Plot Design
+designStrip             title1
+duncan.test             Duncan's new multiple range test
+durbinWatsonTest        Durbin-Watson Test for Autocorrelated Errors
+estMissData             SAMPLE TITLE
+estimateTransform       Finding Univariate or Multivariate Power
+                        Transformations
+getVarInfo              title1
+ginv                    Generalized Inverse of a Matrix
+gqtest                  Goldfeld-Quandt Test
+is.valid.name           valid names
+is.wholenumber          Wholenumber
+kurtosis                Coefficient of Kurtosis
+lastC                   Setting the last character of a chain
+leveneTest              Levene's Test
+lillie.test             Lilliefors (Kolmogorov-Smirnov) test for
+                        normality
+make.contrasts          make contrast
+modalValue              Modal Value
+order.group             Ordering the treatments according to the
+                        multiple comparison
+pairwiseAmong           t
+pairwiseComparison      pwtitle
+pairwiseWithin          a
+plot.powerTransform     plot Method for powerTransform Objects
+powerTransform          Finding Univariate or Multivariate Power
+                        Transformations
+print.powerTransform    print
+printAOVTable           title1
+printCorrMatrix         Print Correlation Matrix
+printDataFrame          Print Data Frames
+printTable              print Table
+randomizeLattice        title1
+scheffe.test            Multiple comparisons, scheffe
+sf.test                 Shapiro-Francia test for normality
+skewness                Coefficient of Skewness
+ssa.pairwise            ssa.pairwise
+ssaTest                 Single Environment Analysis
+stdkurtosis             Standard Error of Kurtosis
+stdmean                 Standard Error of the Mean
+stdskewness             Standard Error of Skewness
+summary.powerTransform
+                        title1
+tapply.stat             Statistics of data grouped by factors
+testTransform           Likelihood-Ratio Tests for Univariate or
+                        Multivariate Power Transformations to Normality
+trim.strings            title1
+ucss                    Uncorrected Sum of Squares
+vcov.powerTransform     title1
+vif                     Variance Inflation Factors

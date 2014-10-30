@@ -1,0 +1,454 @@
+dataRead <- read.csv("E:/NSALES/juno workspace/workspace_1/RJavaManager/sample_datasets/NCI_ME.csv", header = TRUE, na.strings = c("NA","."), blank.lines.skip=TRUE, sep = ",")
+library(PBTools)
+install.packages("lme4")
+library(PBTools)
+install.packages("doBy")
+library(PBTools)
+dataRead <- read.csv("E:/NSALES/juno workspace/workspace_1/RJavaManager/sample_datasets/NCI_ME.csv", header = TRUE, na.strings = c("NA","."), blank.lines.skip=TRUE, sep = ",")
+rstudio::viewData(dataRead)
+dataRead <- read.csv("E:\Program Files\PBTool\Projects\nellwyn\Output\Randomization\AlphaLatticeIBD_1357718825849\NC1Alpha.csv", header = TRUE, na.strings = c("NA","."), blank.lines.skip=TRUE, sep = ",")
+dataRead <- read.csv("E:/Program Files/PBTool/Projects/nellwyn/Output/Randomization/AlphaLatticeIBD_1357718825849/NC1Alpha.csv", header = TRUE, na.strings = c("NA","."), blank.lines.skip=TRUE, sep = ",")
+rstudio::viewData(dataRead)
+rstudio::viewData(dataRead)
+myformula1<-"respvar ~ 1 + (1|rep/block) + male:female"
+myformula1<-"yield ~ 1 + (1|rep/block) + male:female"
+model <- lmer(formula(myformula1), data = temp.data)
+library(lme4)
+model <- lmer(formula(myformula1), data = temp.data)
+model <- lmer(formula(myformula1), data = dataRead)
+dataRead$replication<-factor(dataRead$replication)
+dataRead$replication<-factor(dataRead$replication)
+dataRead$block<-factor(dataRead$block)
+dataRead$male<-factor(dataRead$male)
+dataRead$female<-factor(dataRead$female)
+myformula1<-"yield ~ 1 + (1|replication/block) + male:female"
+library(lme4)
+model <- lmer(formula(myformula1), data = dataRead)
+myformula1<-"yield ~ 1 + (1|replication/block) + treatment"
+library(lme4)
+model <- lmer(formula(myformula1), data = dataRead)
+rstudio::viewData(dataRead)
+dataRead$Treatment<-factor(dataRead$Treatment)
+myformula1<-"yield ~ 1 + (1|replication/block) + Treatment"
+library(lme4)
+model <- lmer(formula(myformula1), data = dataRead)
+model
+rstudio::viewData(dataRead)
+myformula1<-"yield ~ 1 + (1|replication/block) + female:male"
+library(lme4)
+model <- lmer(formula(myformula1), data = dataRead)
+myformula1<-"yield ~ 1 + (1|replication/block) + Treatment"
+library(lme4)
+model <- lmer(formula(myformula1), data = dataRead)
+model
+anova(model)
+summarty(model)
+summary(model)
+myformula1<-"yield ~ 1 + (1|replication) + (1|block:replication)+ male/female"
+library(lme4)
+model <- lmer(formula(myformula1), data = dataRead)
+model
+myformula1<-"yield ~ 1 + (1|replication) + (1|block:replication) + (1|male/female)"
+library(lme4)
+model <- lmer(formula(myformula1), data = dataRead)
+model
+myformula1<-"yield ~ 1 + (1|replication) + (1|block:replication) + (1|Treatment)"
+library(lme4)
+model <- lmer(formula(myformula1), data = dataRead)
+model
+coef(model$Treatment)
+parse(coef(model$Treatment))
+coef(model)
+coef(model)$Treatment
+fitted(model)
+newData<-cbind(dataRead, fitted(model))
+rstudio::viewData(newData)
+tapply(newData$fitted(model), mean)
+tapply(newData$fitted(model), newData$Treatment,mean)
+newData<-cbind(dataRead, yhat=fitted(model))
+rstudio::viewData(newData)
+rstudio::viewData(newData)
+str(newData)
+tapply(newData, Treatment,mean)
+tapply(newData, newData$Treatment,mean)
+tapply(newData$yhat, newData$Treatment,mean)
+coef(model)$Treatment
+cross<-"Treatment"
+sumStat.table <- eval(parse(text = paste("coef(model)$", cross, sep = "")))
+rstudio::viewData(sumStat.table)
+myformula1<-"yield ~ 1 + (1|replication) + (1|block:replication) + Treatment"
+library(lme4)
+model <- lmer(formula(myformula1), data = dataRead)
+model
+coef(model)
+dataRead <- read.csv("E:/Program Files/PBTool/Projects/nellwyn/Output/Randomization/AlphaLatticeIBD_1357718825849/NC1Alpha.csv", header = TRUE, na.strings = c("NA","."), blank.lines.skip=TRUE, sep = ",")
+cross<-"Treatment"
+dataRead$replication<-factor(dataRead$replication)
+dataRead$block<-factor(dataRead$block)
+dataRead$male<-factor(dataRead$male)
+dataRead$female<-factor(dataRead$female)
+dataRead$Treatment<-factor(dataRead$Treatment)
+#if design=="Alpha"
+myformula1<-"yield ~ 1 + (1|replication) + (1|block:replication) + Treatment"
+library(lme4)
+model <- lmer(formula(myformula1), data = dataRead)
+fitted(model)
+coef(model)
+fitted(model)
+newData<-cbind(dataRead, yhat=fitted(model))
+tapply(newData$yhat, newData$Treatment, mean)
+meansFitted<-data.frame(tapply(newData$yhat, newData$Treatment, mean))
+rstudio::viewData(meansFitted)
+meansFitted<-data.frame(Treatment=row.names(meansFitted), Mean=meansFitted[,1])
+rstudio::viewData(meansFitted)
+meansFitted<-tapply(newData$yhat, newData$Treatment, mean)
+meansFitted2<-data.frame(Treatment=row.names(meansFitted), Mean=meansFitted[,1])
+fix(meansFitted)
+meansFitted<-tapply(newData$yhat, newData$Treatment, mean)
+meansFitted
+meansFitted[1,]
+meansFitted<-data.frame(tapply(newData$yhat, newData$Treatment, mean))
+rstudio::viewData(meansFitted)
+col.names(meansFitted)<-c("Treatment", "Means")
+colnames(meansFitted)<-c("Treatment", "Means")
+meansFitted
+colnames(meansFitted)
+meansFitted<-table(tapply(newData$yhat, newData$Treatment, mean))
+fix(meansFitted)
+meansFitted<-data.frame(tapply(newData$yhat, newData$Treatment, mean))
+rstudio::viewData(meansFitted)
+colnames(meansFitted)
+meansFitted<-data.frame(tapply(newData$yhat, newData$Treatment, mean),row.names=F)
+meansFitted<-data.frame(tapply(newData$yhat, newData$Treatment, mean),row.names=NULL)
+rstudio::viewData(meansFitted)
+meansFitted<-data.frame(Mean=tapply(newData$yhat, newData$Treatment, mean),row.names=NULL)
+rstudio::viewData(meansFitted)
+newData<-cbind(dataRead, yhat=fitted(model))
+meansFitted<-data.frame(Mean=tapply(newData$yhat, newData$Treatment, mean))
+rstudio::viewData(meansFitted)
+meansFitted2<-data.frame(Treatment=row.names(meansFitted), meanFitted)
+meansFitted2<-data.frame(Treatment=row.names(meansFitted), meansFitted)
+rstudio::viewData(meansFitted2)
+dataRead <- read.csv("E:/Program Files/PBTool/Projects/nellwyn/Output/Randomization/AlphaLatticeIBD_1357718825849/NC1Alpha.csv", header = TRUE, na.strings = c("NA","."), blank.lines.skip=TRUE, sep = ",")
+cross<-"Treatment"
+dataRead$replication<-factor(dataRead$replication)
+dataRead$block<-factor(dataRead$block)
+dataRead$male<-factor(dataRead$male)
+dataRead$female<-factor(dataRead$female)
+dataRead$Treatment<-factor(dataRead$Treatment)
+#if design=="Alpha"
+myformula1<-"yield ~ 1 + (1|replication) + (1|block:replication) + Treatment"
+library(lme4)
+model <- lmer(formula(myformula1), data = dataRead)
+fitted(model)
+newData<-cbind(dataRead, yhat=fitted(model))
+meansFitted<-data.frame(Mean=tapply(newData$yhat, newData$Treatment, mean))
+meansFitted2<-data.frame(Treatment=row.names(meansFitted), meansFitted)
+rstudio::viewData(meansFitted2)
+meansFitted2<-data.frame(Treatment=row.names(meansFitted), meansFitted, row.names=NULL)
+rstudio::viewData(meansFitted2)
+newData<-cbind(dataRead, yhat=fitted(model))
+meansFitted<-data.frame(Mean=tapply(newData$yhat, newData$Treatment, mean))
+meansFitted<-data.frame(Treatment=row.names(meansFitted), meansFitted, row.names=NULL)
+rstudio::viewData(meansFitted)
+rstudio::viewData(meansFitted2)
+model
+names(model)
+slotNames(model)
+varcomp <- summary(model)@REmat
+Ve <- as.numeric(varcomp[varcomp[,1] == "Residual", "Variance"])
+varcomp
+model2 <- aov(formula(myformula1), data = dataRead)
+str(dataRead)
+myformula2<-"yield ~ 1 + replication + block:replication + Treatment"
+model2 <- aov(formula(myformula2), data = dataRead)
+model2
+anova(model2)
+myformula2<-"yield ~ 1 + replication/block + Treatment"
+model2 <- aov(formula(myformula2), data = dataRead)
+anova(model2)
+GY <- read.csv("E:/NSALES/sampleDatasets/GY.csv")
+viewData(GY)
+rstudio::viewData(GY)
+data<-GY
+geno<-"Genotype"
+env<-"Env"
+row<-"Rep"
+exptl.design<-"RCB"
+data[,match(geno, names(data))] <- factor(trim.strings(data[,match(geno, names(data))]))
+data[,match(env, names(data))] <- factor(trim.strings(data[,match(env, names(data))]))
+data[,match(row, names(data))] <- factor(trim.strings(data[,match(row, names(data))]))
+if (exptl.design == "AugLS") {
+#			data[,match(row, names(data))] <- factor(trim.strings(data[,match(row, names(data))]))
+data[,match(column, names(data))] <- factor(trim.strings(data[,match(column, names(data))]))
+}
+if (exptl.design == "Alpha") {
+#			data[,match(row, names(data))] <- factor(trim.strings(data[,match(row, names(data))]))
+data[,match(rep, names(data))] <- factor(trim.strings(data[,match(rep, names(data))]))
+}
+library(PBTools)
+#define all factors #added by RIZAM 08/01/11
+data[,match(geno, names(data))] <- factor(trim.strings(data[,match(geno, names(data))]))
+data[,match(env, names(data))] <- factor(trim.strings(data[,match(env, names(data))]))
+data[,match(row, names(data))] <- factor(trim.strings(data[,match(row, names(data))]))
+if (exptl.design == "AugLS") {
+#			data[,match(row, names(data))] <- factor(trim.strings(data[,match(row, names(data))]))
+data[,match(column, names(data))] <- factor(trim.strings(data[,match(column, names(data))]))
+}
+if (exptl.design == "Alpha") {
+#			data[,match(row, names(data))] <- factor(trim.strings(data[,match(row, names(data))]))
+data[,match(rep, names(data))] <- factor(trim.strings(data[,match(rep, names(data))]))
+}
+if (exptl.design == "RowCol") {
+#			data[,match(row, names(data))] <- factor(trim.strings(data[,match(row, names(data))]))
+data[,match(column, names(data))] <- factor(trim.strings(data[,match(column, names(data))]))
+data[,match(rep, names(data))] <- factor(trim.strings(data[,match(rep, names(data))]))
+}
+result <- list()
+respvar<-C("Yield")
+respvar<-c("Yield")
+i=1
+nlevels(data[,match(env, names(data))])
+levels(data$Env)
+j=2
+result[[i]] <- list()
+temp.data <- data[sort(match(c(respvar[i], geno, row, column, rep, env), names(data)))]
+column=NULL
+temp.data <- data[sort(match(c(respvar[i], geno, row, column, rep, env), names(data)))]
+result[[i]]$site[[j]] <- list()
+result[[i]]$site[[j]]$env <- levels(temp.data[,match(env, names(temp.data))])[j]
+temp.data <- subset(temp.data, temp.data[,match(env, names(temp.data))] == levels(temp.data[,match(env, names(temp.data))])[j])
+result[[i]]$site[[j]]$obsread <- nrow(temp.data)
+temp.data <- subset(temp.data, subset = (is.na(temp.data[,match(respvar[i], names(temp.data))]) == F))
+result[[i]]$site[[j]]$obsused <- nrow(temp.data)
+no.reps <- data.frame(n = tapply(eval(parse(text = paste("temp.data$", respvar[i], sep = ""))), eval(parse(text = paste("temp.data$", geno, sep = ""))), FUN = length))
+rstudio::viewData(no.reps)
+no.reps <- no.reps[(is.na(no.reps[,match(respvar[i], names(no.reps))]) == FALSE),]
+respvar[i]
+names(no.reps)
+no.reps <- no.reps[(is.na(no.reps[,1]) == FALSE),]
+fix(no.reps)
+no.reps[,1]
+no.reps$n
+no.reps <- data.frame(n = tapply(eval(parse(text = paste("temp.data$", respvar[i], sep = ""))), eval(parse(text = paste("temp.data$", geno, sep = ""))), FUN = length))
+no.reps$n
+rstudio::viewData(no.reps)
+no.reps <- no.reps[(is.na(no.reps$n)) == FALSE),]
+no.reps <- no.reps[(is.na(no.reps$n) == FALSE),]
+fix(no.reps)
+no.reps <- data.frame(n = tapply(eval(parse(text = paste("temp.data$", respvar[i], sep = ""))), eval(parse(text = paste("temp.data$", geno, sep = ""))), FUN = length))
+no.reps <- data.frame(no.reps[(is.na(no.reps$n) == FALSE),])
+rstudio::viewData(no.reps)
+no.reps <- data.frame(n = tapply(eval(parse(text = paste("temp.data$", respvar[i], sep = ""))), eval(parse(text = paste("temp.data$", geno, sep = ""))), FUN = length))
+no.reps <- data.frame(n = tapply(eval(parse(text = paste("temp.data$", respvar[i], sep = ""))), eval(parse(text = paste("temp.data$", geno, sep = ""))), FUN = length))
+rstudio::viewData(no.reps)
+no.reps[1,]
+no.reps[,1]
+is.na(no.reps[,1]) == FALSE
+no.reps[(is.na(no.reps[,1]) == FALSE),]
+no.reps <- no.reps[(is.na(no.reps[,1]) == FALSE),]
+no.reps <- data.frame(n = tapply(eval(parse(text = paste("temp.data$", respvar[i], sep = ""))), eval(parse(text = paste("temp.data$", geno, sep = ""))), FUN = length))
+no.reps <- data.frame(n=no.reps[(is.na(no.reps[,1]) == FALSE),])
+rstudio::viewData(no.reps)
+no.reps <- as.numeric(1/sapply(1/no.reps, mean))
+rstudio::viewData(temp.data)
+temp.data <- data[sort(match(c(respvar[i], geno, row, column, rep, env), names(data)))]
+rstudio::viewData(temp.data)
+temp.data <- subset(temp.data, temp.data[,match(env, names(temp.data))] == levels(temp.data[,match(env, names(temp.data))])[j])
+rstudio::viewData(temp.data)
+temp.data <- subset(temp.data, subset = (is.na(temp.data[,match(respvar[i], names(temp.data))]) == F))
+rstudio::viewData(temp.data)
+no.reps <- data.frame(n = tapply(eval(parse(text = paste("temp.data$", respvar[i], sep = ""))), eval(parse(text = paste("temp.data$", geno, sep = ""))), FUN = length))
+rstudio::viewData(no.reps)
+rstudio::viewData(temp.data)
+temp.data$Genotype
+tapply(temp.data$Yield, temp.data$Genotype, length)
+str(temp.data)
+levels(temp.data$Genotype)
+temp.data[,match(geno, names(temp.data))] <- factor(trim.strings(temp.data[,match(geno, names(temp.data))]))
+levels(temp.data$Genotype)
+frame <- read.csv("E:/NSALES/personal/Nora Sarmiento/allStudents.csv", header = TRUE, na.strings = c("NA","."), blank.lines.skip=TRUE, sep = ",")
+rstudio::viewData(frame)
+frame$Institute<-factor(frame$Institute)
+rstudio::viewData(frame)
+bigNi<-tapply(frame$Last.Name, frame$Institute, length)
+fix(bigNi)
+bigNi
+nrow(frame)
+bigNi<-as.data.frame.table(tapply(frame$Last.Name, frame$Institute, length))
+rstudio::viewData(bigNi)
+bigNi$n<-(bigNi/nrow(frame))*2401
+bigNi$n<-(bigNi$Freq/nrow(frame))*2401
+rstudio::viewData(bigNi)
+bigNi$n<-ceiling((bigNi$Freq/nrow(frame))*2401)
+rstudio::viewData(bigNi)
+sum(bigNi$n)
+frame.cbeam<-frame[frame$Institute == "CBEAM",]
+rstudio::viewData(frame.cbeam)
+nrow(frame.cbeam)
+rstudio::viewData(bigNi)
+rstudio::viewData(bigNi)
+sample.cbeam<-sample(frame.cbeam, 824, replace=FALSE)
+sample.cbeam<-sample(frame.cbeam$Last.Name, 824, replace=FALSE)
+sample.cbeam<-as.data.frame(sample(frame.cbeam$Last.Name, 824, replace=FALSE))
+rstudio::viewData(sample.cbeam)
+rstudio::viewData(frame)
+frame <- read.csv("E:/NSALES/personal/Nora Sarmiento/allStudents.csv", header = TRUE, na.strings = c("NA","."), blank.lines.skip=TRUE, sep = ",")
+frame$Institute<-factor(frame$Institute)
+frame$FullName<-paste(frame$Last.Name,", ", frame$First.Name, " ", Frame$Middle.Name)
+frame$FullName<-paste(frame$Last.Name,", ", frame$First.Name, " ", frame$Middle.Name)
+rstudio::viewData(frame)
+frame.cbeam<-frame[frame$Institute == "CBEAM",]
+sample.cbeam<-as.data.frame(sample(frame.cbeam$FullName, 824, replace=FALSE))
+rstudio::viewData(sample.cbeam)
+sample.cbeam<-as.data.frame(sample(frame.cbeam$FullName, 824, replace=FALSE), Institute="CBEAM")
+rstudio::viewData(sample.cbeam)
+rstudio::viewData(sample.cbeam)
+frame.cbeam<-frame[frame$Institute == "CBEAM",]
+sample.cbeam<-sample(frame.cbeam$FullName, 824, replace=FALSE)
+list.cbeam<-data.frame(Student Name=sample.cbeam, Institute="CBEAM")
+list.cbeam<-data.frame(StudentName=sample.cbeam, Institute="CBEAM")
+rstudio::viewData(list.cbeam)
+rstudio::viewData(bigNi)
+rstudio::viewData(bigNi)
+rstudio::viewData(bigNi)
+#sampling from CBEAM
+frame.cbeam<-frame[frame$Institute == "CBEAM",]
+sample.cbeam<-sample(frame.cbeam$FullName, 824, replace=FALSE)
+list.cbeam<-data.frame(StudentName=sample.cbeam, Institute="CBEAM")
+#sampling from CEAS
+frame.ceas<-frame[frame$Institute == "CEAS",]
+sample.ceas<-sample(frame.ceas$FullName, 457, replace=FALSE)
+list.ceas<-data.frame(StudentName=sample.ceas, Institute="CEAS")
+#sampling from CIHTM
+frame.cihtm<-frame[frame$Institute == "CIHTM",]
+sample.cihtm<-sample(frame.cihtm$FullName, 345, replace=FALSE)
+list.cihtm<-data.frame(StudentName=sample.cihtm, Institute="CIHTM")
+#sampling from CIHTM-LICA
+frame.cihtmlica<-frame[frame$Institute == "CIHTM-LICA",]
+sample.cihtmlica<-sample(frame.cihtmlica$FullName, 13, replace=FALSE)
+list.cihtmlica<-data.frame(StudentName=sample.cihtmlica, Institute="CIHTM-LICA")
+#sampling from CITE
+frame.cite<-frame[frame$Institute == "CITE",]
+sample.cite<-sample(frame.cite$FullName, 685, replace=FALSE)
+list.cite<-data.frame(StudentName=sample.cite, Institute="CITE")
+#sampling from  CNURSING
+frame.cnursing<-frame[frame$Institute == " CNURSING",]
+sample.cnursing<-sample(frame.cnursing$FullName, 64, replace=FALSE)
+list.cnursing<-data.frame(StudentName=sample.cnursing, Institute=" CNURSING")
+#sampling from COL
+frame.col<-frame[frame$Institute == "COL",]
+sample.col<-sample(frame.col$FullName, 17, replace=FALSE)
+list.col<-data.frame(StudentName=sample.col, Institute="COL")
+list.sample<-rbind(list.cbeam, list.ceas, list.cihtm, list.cihtmlica, list.cite, list.cnursing, list.col )
+rstudio::viewData(frame.cnursing)
+rstudio::viewData(frame)
+frame.cnursing<-frame[frame$Institute == " CNURSING",]
+rstudio::viewData(frame.cnursing)
+#sampling from CBEAM
+frame.cbeam<-frame[frame$Institute == "CBEAM",]
+sample.cbeam<-sample(frame.cbeam$FullName, 824, replace=FALSE)
+list.cbeam<-data.frame(StudentName=sample.cbeam, Institute="CBEAM")
+#sampling from CEAS
+frame.ceas<-frame[frame$Institute == "CEAS",]
+sample.ceas<-sample(frame.ceas$FullName, 457, replace=FALSE)
+list.ceas<-data.frame(StudentName=sample.ceas, Institute="CEAS")
+#sampling from CIHTM
+frame.cihtm<-frame[frame$Institute == "CIHTM",]
+sample.cihtm<-sample(frame.cihtm$FullName, 345, replace=FALSE)
+list.cihtm<-data.frame(StudentName=sample.cihtm, Institute="CIHTM")
+#sampling from CIHTM-LICA
+frame.cihtmlica<-frame[frame$Institute == "CIHTM-LICA",]
+sample.cihtmlica<-sample(frame.cihtmlica$FullName, 13, replace=FALSE)
+list.cihtmlica<-data.frame(StudentName=sample.cihtmlica, Institute="CIHTM-LICA")
+#sampling from CITE
+frame.cite<-frame[frame$Institute == "CITE",]
+sample.cite<-sample(frame.cite$FullName, 685, replace=FALSE)
+list.cite<-data.frame(StudentName=sample.cite, Institute="CITE")
+#sampling from  CNURSING
+frame.cnursing<-frame[frame$Institute == "CNURSING",]
+sample.cnursing<-sample(frame.cnursing$FullName, 64, replace=FALSE)
+list.cnursing<-data.frame(StudentName=sample.cnursing, Institute=" CNURSING")
+#sampling from COL
+frame.col<-frame[frame$Institute == "COL",]
+sample.col<-sample(frame.col$FullName, 17, replace=FALSE)
+list.col<-data.frame(StudentName=sample.col, Institute="COL")
+list.sample<-rbind(list.cbeam, list.ceas, list.cihtm, list.cihtmlica, list.cite, list.cnursing, list.col )
+rstudio::viewData(list.sample)
+list.sample2 <- merge(list.sample, frame, by=FullName)
+list.sample2 <- merge(list.sample, frame, by="FullName")
+list.sample2 <- merge(list.sample, frame, by.x=list.sample$FullName, by.y=frame$FullName)
+rstudio::viewData(list.sample)
+list.sample2 <- merge(list.sample, frame, by.x="StudentName", by.y="FullName", all.x=TRUE)
+rstudio::viewData(list.sample2)
+frame <- read.csv("E:/NSALES/personal/Nora Sarmiento/allStudents.csv", header = TRUE, na.strings = c("NA","."), blank.lines.skip=TRUE, sep = ",")
+frame$Institute<-factor(frame$Institute)
+frame$FullName<-paste(frame$Last.Name,", ", frame$First.Name, " ", frame$Middle.Name)
+rstudio::viewData(list.sample2)
+list.sample2 <- merge(list.sample, frame, by.x=c("StudentName","Institute"), by.y=c("FullName","Institute"), all.x=TRUE)
+rstudio::viewData(list.sample2)
+list.sample3 <- list.sample2[, c("Institute","Last.Name", "First.Name", "Middle.Name", "Program", "Year")]
+rstudio::viewData(list.sample3)
+write.csv(list.sample3, "E:/NSALES/personal/Nora Sarmiento/listSample.csv")
+frame <- read.csv("E:/NSALES/personal/Nora Sarmiento/allStudents.csv", header = TRUE, na.strings = c("NA","."), blank.lines.skip=TRUE, sep = ",")
+frame$Institute<-factor(frame$Institute)
+frame$FullName<-paste(frame$Last.Name,", ", frame$First.Name, " ", frame$Middle.Name)
+#computing ni's
+bigNi<-as.data.frame.table(tapply(frame$Last.Name, frame$Institute, length))
+bigNi$n<-ceiling((bigNi$Freq/nrow(frame))*2401)
+#sampling from CBEAM
+frame.cbeam<-frame[frame$Institute == "CBEAM",]
+sample.cbeam<-sample(frame.cbeam$FullName, 824, replace=FALSE)
+list.cbeam<-data.frame(StudentName=sample.cbeam, Institute="CBEAM")
+#sampling from CEAS
+frame.ceas<-frame[frame$Institute == "CEAS",]
+sample.ceas<-sample(frame.ceas$FullName, 457, replace=FALSE)
+list.ceas<-data.frame(StudentName=sample.ceas, Institute="CEAS")
+#sampling from CIHTM
+frame.cihtm<-frame[frame$Institute == "CIHTM",]
+sample.cihtm<-sample(frame.cihtm$FullName, 345, replace=FALSE)
+list.cihtm<-data.frame(StudentName=sample.cihtm, Institute="CIHTM")
+#sampling from CIHTM-LICA
+frame.cihtmlica<-frame[frame$Institute == "CIHTM-LICA",]
+sample.cihtmlica<-sample(frame.cihtmlica$FullName, 13, replace=FALSE)
+list.cihtmlica<-data.frame(StudentName=sample.cihtmlica, Institute="CIHTM-LICA")
+#sampling from CITE
+frame.cite<-frame[frame$Institute == "CITE",]
+sample.cite<-sample(frame.cite$FullName, 685, replace=FALSE)
+list.cite<-data.frame(StudentName=sample.cite, Institute="CITE")
+#sampling from  CNURSING
+frame.cnursing<-frame[frame$Institute == "CNURSING",]
+sample.cnursing<-sample(frame.cnursing$FullName, 64, replace=FALSE)
+list.cnursing<-data.frame(StudentName=sample.cnursing, Institute="CNURSING")
+#sampling from COL
+frame.col<-frame[frame$Institute == "COL",]
+sample.col<-sample(frame.col$FullName, 17, replace=FALSE)
+list.col<-data.frame(StudentName=sample.col, Institute="COL")
+list.sample<-rbind(list.cbeam, list.ceas, list.cihtm, list.cihtmlica, list.cite, list.cnursing, list.col )
+list.sample2 <- merge(list.sample, frame, by.x=c("StudentName","Institute"), by.y=c("FullName","Institute"), all.x=TRUE)
+list.sample3 <- list.sample2[, c("Institute","Last.Name", "First.Name", "Middle.Name", "Program", "Year")]
+write.csv(list.sample3, "E:/NSALES/personal/Nora Sarmiento/listSample.csv")
+rstudio::viewData(list.sample3)
+list.sample4 <- list.sample3[sort(1)]
+rstudio::viewData(list.sample4)
+list.sample4 <- list.sample3[sort(1,2,3)]
+list.sample2 <- merge(list.sample, frame, by.x=c("StudentName","Institute"), by.y=c("FullName","Institute"), all.x=TRUE sort=TRUE)
+list.sample2 <- merge(list.sample, frame, by.x=c("StudentName","Institute"), by.y=c("FullName","Institute"), all.x=TRUE, sort=TRUE)
+rstudio::viewData(list.sample2)
+list.sample2 <- merge(list.sample, frame, by.x=c("Institute","StudentName"), by.y=c("Institute","FullName"), all.x=TRUE, sort=TRUE)
+rstudio::viewData(list.sample2)
+list.sample3 <- list.sample2[, c("Institute","Last.Name", "First.Name", "Middle.Name", "Program", "Year")]
+write.csv(list.sample3, "E:/NSALES/personal/Nora Sarmiento/listSample.csv")
+check <- tapply(list.sample3$Last.Name, list.sample3$Institute, length)
+check
+library(PBTools)
+dataMeaOneStage <- read.csv("E:/NSALES/juno workspace/workspace_1/RJavaManager/sample_datasets/summaryStats.csv", header = TRUE, na.strings = c("NA","."), blank.lines.skip=TRUE, sep = ",")
+setwd("E:/NSALES/juno workspace/workspace_1/RJavaManager/sample_datasets/")
+ammi.analysis(dataMeaOneStage$Set, dataMeaOneStage$EntryNo, REP=1, dataMeaOneStage$Plot.Yield_Mean, MSE = 0, number = TRUE, graph = "biplot", yVar = "Plot.Yield_Mean")
+ammi.analysis(dataMeaOneStage$Set, dataMeaOneStage$EntryNo, REP=1, dataMeaOneStage$Plot.Yield_Mean, MSE = 0, number = FALSE, graph = "biplot", yVar = "Plot.Yield_Mean")
+ammi.analysis(dataMeaOneStage$Set, dataMeaOneStage$EntryNo, REP=3, dataMeaOneStage$Plot.Yield_Mean, MSE = 12.75, number = FALSE, graph = "biplot", yVar = "Plot.Yield_Mean")
+rstudio::viewData(dataMeaOneStage)
+dataMeaTwoStage <- read.csv("E:/NSALES/juno workspace/workspace_1/RJavaManager/sample_datasets/summaryStats.csv", header = TRUE, na.strings = c("NA","."), blank.lines.skip=TRUE, sep = ",")
+setwd("E:/NSALES/juno workspace/workspace_1/RJavaManager/sample_datasets/")
+funcStability1 <- tryCatch(stability.analysis(dataMeaTwoStage, "Plot.Yield_Mean", "EntryNo", "Set", method = "regression"), error=function(err) "notRun")
+funcStability2 <- tryCatch(stability.analysis(dataMeaTwoStage, "Plot.Yield_Mean", "EntryNo", "Set", method = "shukla"), error=function(err) "notRun")

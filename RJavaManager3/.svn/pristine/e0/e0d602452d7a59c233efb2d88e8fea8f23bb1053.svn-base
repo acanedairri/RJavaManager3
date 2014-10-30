@@ -1,0 +1,512 @@
+mylogit <- glm(Segregate ~ Address_Nuesa + NumberOfChildren + Q33_G + Q36_G + Q48_G + Q9 + Experience_1 + Experience_2 + Experience_3, data = dt, family = "binomial")
+summary(mylogit)
+mylogit <- glm(Segregate ~ Address_Nuesa + NumberOfChildren + Q36_G + Q48_G + Q9 + Experience_1 + Experience_2 + Experience_3, data = dt, family = "binomial")
+summary(mylogit)
+mylogit <- glm(Segregate ~ NumberOfChildren + Q36_G + Q48_G + Q9 + Experience_1 + Experience_2 + Experience_3, data = dt, family = "binomial")
+summary(mylogit)
+mylogit <- glm(Segregate ~ Address_Nuesa + NumberOfChildren + Q48_G + Q9 + Experience_1 + Experience_2 + Experience_3, data = dt, family = "binomial")
+summary(mylogit)
+mylogit <- glm(Segregate ~ NumberOfChildren + Q48_G + Q9 + Experience_1 + Experience_2 + Experience_3, data = dt, family = "binomial")
+summary(mylogit)
+mylogit <- glm(Segregate ~ Q48_G + Q9 + Experience_1 + Experience_2 + Experience_3, data = dt, family = "binomial")
+summary(mylogit)
+mylogit <- glm(Segregate ~ Q48_G + Q9 + Experience_1 + Experience_2 + Experience_3, data = dt, family = "binomial")
+summary(mylogit)
+exp(coef(mylogit))
+cbind(exp(coef(mylogit)))
+libraru(PopGenReport)
+library(PopGenReport)
+warnings()
+data(bilby)
+#here we use only the first 50 individuals to speep up the example
+popgenreport(bilby[1:50,1:12], mk.allele.dist=TRUE, mk.pdf=FALSE)
+popgenreport(bilby[1:50,1:12], mk.allele.dist=TRUE, mk.pdf=TRUE)
+pdflatex --include-directory="E:\Program Files\R-2.15.2\share\texmf\tex\latex" PopGenReport.tex
+pdflatex --include-directory="E:\\Program Files\\R-2.15.2\\share\\texmf\\tex\\latex" PopGenReport.tex
+data(bilby)
+#here we use only the first 50 individuals to speep up the example
+popgenreport(bilby[1:50], mk.gd.kosman = TRUE, mk.pdf=FALSE)
+data(bilby)
+#here we use only the first 50 individuals to speep up the example
+popgenreport(bilby[1:50], mk.gd.smouse = TRUE, mk.pdf=FALSE)
+data(bilby)
+popgenreport(bilby[1:100], mk.counts=TRUE, mk.map=TRUE, mk.pdf=FALSE)
+#example file with one column per loci, seperated by forwardslash
+read.csv(paste(.libPaths()[1],"/PopGenReport/extdata/platypus1c.csv", sep="" ))
+platy1c <- read.genetable( paste(.libPaths()[1],"/PopGenReport/extdata/platypus1c.csv"
+, sep="" ), ind=1, pop=2, lat=3, long=4, other.min=5, other.max=8, oneColPerAll=TRUE, sep="/")
+popgenreport(bilby[1:50], mk.gd.kosman = TRUE, mk.pdf=TRUE)
+data(bilby)
+#here we use only the first 50 individuals to speep up the example
+popgenreport(bilby[1:50,1:12], mk.allele.dist=TRUE, mk.pdf=TRUE)
+data(bilby)
+#here we use only the first 50 individuals to speep up the example
+popgenreport(bilby[1:50,1:12], mk.allele.dist=TRUE, mk.pdf=TRUE)
+data(bilby)
+#here we use only the first 50 individuals to speep up the example
+popgenreport(bilby[1:50,1:12], mk.allele.dist=TRUE, mk.pdf=TRUE)
+popgenreport(bilby[1:100], mk.counts=TRUE, mk.map=TRUE, mk.pdf=FALSE)
+library(PopGenReport)
+data()
+data(bilby)
+popgenreport(bilby[1:100], mk.counts=TRUE, mk.map=TRUE, mk.pdf=FALSE)
+popgenreport(bilby, mk.complete=TRUE)
+library(adegenet)
+library(adegenet)
+obj <- read.genetix(system.file("files/nancycats.gtx", package = "adegenet"))
+obj
+obj@tab
+catpop <- genind2genpop(nancycats)
+data(nancycats)
+catpop <- genind2genpop(nancycats)
+library(hierstaf)
+library(hierstat)
+library(hierfstat)
+toto <- read.fstat.data(paste(.path.package("hierfstat"), "/data/diploid.dat", sep = "", collapse = ""), nloc = 5)
+.path.package("hierfstat")
+toto <- read.fstat.data(paste(.path.package("hierfstat"), "/extdata/diploid.dat", sep = "", collapse = ""), nloc = 5)
+toto <- read.fstat.data(paste(.path.package("hierfstat"), "/extdata/diploid.dat", sep = "", collapse = ""))
+rstudio::viewData(toto)
+head(toto)
+obj <- df2genind(X = toto[, -1], pop = toto[, 1])
+obj
+obj@tab
+obj@loc.names
+library(ape)
+ref <- c("U15717", "U15718", "U15719", "U15720", "U15721", "U15722",
+"U15723", "U15724")
+myDNA <- read.GenBank(ref)
+myDNA
+myDNA[1]
+myDNA[2]
+obj <- DNAbin2genind(myDNA, polyThres = 0.01)
+obj
+obj@tab
+toto
+toto@pop.names
+toto$pop.names
+library(ade4)
+data(microsatt)
+toto<-genpop(microsatt$tab)
+toto$pop.names
+toto[1]
+toto[1]$pop.names
+toto[1]$tab
+newtoto <- toto[, toto$loc.fac == "L3"]
+newtoto$tab
+toto$loc.fac
+newtoto
+newtoto$loc.names
+toto
+t1<-toto[1:3,]
+ti
+t1
+t1@loc.names
+t1@loc.fac
+t2<-t1[,t1@loc.fac=="L3"]
+t2
+t2@loc.fac
+t2<-t1[,t1@loc.fac=="L1"]
+t2@loc.fac
+t1@loc.fac
+t1@loc.names
+t2<-t1[,t1@loc.names=="INRA35"]
+t2@loc.names
+t2<-t1[,"L3"]
+t2<-t1[,3]
+t2@loc.fac
+t2<-t1[,1:3]
+t2@loc.fac
+sepCats <- seploc(nancycats)
+sepCats
+names(sepCats)
+sepCats$fca43
+sepCats$fca43$tab
+nancycats$loc.names
+sepCats$fca43$loc.names
+t2
+t2$loc.names
+t1$loc.names
+t2<-t2[,t1$loc.names=="INRA35"]
+t2<-t1[,t1$loc.names=="INRA35"]
+t2$loc.names
+t3<-t1[,t1$loc.names=="INRA35"]
+t3$loc.names
+t3$loc.fac
+t3
+data(microbov)
+obj <- seppop(microbov)
+obj2<-seploc(obj)
+obj2<-lapply(obj,seploc)
+obj2
+obj2$Salers$SPS115
+obj2$Salers$SPS115$loc.names
+obj2$Salers$SPS115$pop.names
+summary(nancycats)
+dt<-read.csv("E:/NSALES/personal/Kinlord Serafica/dataKin.csv", header=TRUE)
+mylogit <- glm(Segregate ~ Q28_G + Q29_G + Q32_G + Q33_G + Q35_G + Q36_G + Q37_G + Q39_G + Q43_G, data = dt, family = "binomial")
+summary(mylogit)
+cbind(exp(coef(mylogit)))
+mylogit <- glm(Segregate ~ Q45_G + Q46_G + Q48_G + Q49_G + Q53_G, data = dt, family = "binomial")
+summary(mylogit)
+cbind(exp(coef(mylogit)))
+mylogit <- glm(Segregate ~ Address_Nuesa + Address_Luna + NumberOfChildren, data = dt, family = "binomial")
+summary(mylogit)
+dt$Gender<-factor(dt$Gender)
+mylogit <- glm(Segregate ~ Address_Nuesa + Address_Luna + NumberOfChildren, data = dt, family = "binomial")
+summary(mylogit)
+cbind(exp(coef(mylogit)))
+mylogit <- glm(Segregate ~ Address_Nuesa + NumberOfChildren + Q29_G + Q32_G + Q33_G + Q36_G + Q48_G, data = dt, family = "binomial")
+summary(mylogit)
+cbind(exp(coef(mylogit)))
+library(adegenet)
+data(nancycats)
+fstat(nancycats)
+library(hierfstat)
+fstat(nancycats)
+data <- read.csv("E:/NSALES/personal/Celina Noreen Reyes/THESIS DATA_newTemplate.csv", header = TRUE, na.strings = c("NA","."), blank.lines.skip=TRUE, sep = ",")
+table(data$P3Q1, data$SCHOOL)
+table(data$P3Q2, data$SCHOOL)
+table(data$P3Q3, data$SCHOOL)
+table(data$P3Q4, data$SCHOOL)
+table(data$P3Q5, data$SCHOOL)
+table(data$P3Q6, data$SCHOOL)
+table(data$P3Q7, data$SCHOOL)
+table(data$P3Q8, data$SCHOOL)
+table(data$P3Q9, data$SCHOOL)
+table(data$P3Q10, data$SCHOOL)
+table(data$P3Q1)
+table(data$P3Q5)
+table(data$SCHOOL,data$BEHAVIOR,data$TM2_GRp)
+table(data$SCHOOL,data$BEHAVIOR,data$TM2_GRP)
+data <- read.csv("E:/NSALES/personal/Celina Noreen Reyes/THESIS DATA_newTemplate.csv", header = TRUE, na.strings = c("NA","."), blank.lines.skip=TRUE, sep = ",")
+table(data$P2_GREEN)
+table(data$P2_GREEN, TM2_GRP)
+table(data$P2_GREEN, data$TM2_GRP)
+table(data$P2_GREEN, data$BEHAVIOR)
+library(adegenet)
+library(hierfstat)
+fstat(nancycats)
+data(nancycats)
+fstat(nancycats)
+toto <- gstat.randtest(nancycats, nsim = 99)
+toto
+detach(heirfstat)
+detach(package:heirfstat)
+detach(package:"heirfstat")
+detach(package="heirfstat")
+detach(package(heirfstat)
+)
+detach("package:heirfstat")
+library(heirfstat)
+library(hierfstat)
+detach("package:hierfstat")
+library(hierfstat)
+detach("package:hierfstat")
+data(nancycats)
+fstat(nancycats)
+toto <- gstat.randtest(nancycats, nsim = 99)
+toto
+toto <- HWE.test.genind(nancycats, res = "matrix")
+toto
+toto <- HWE.test.genind(nancycats, res = "full")
+toto
+pca1 <- dudi.pca(obj$tab, cent = TRUE, scale = FALSE, scannf = FALSE, nf = 3)
+data(microbov)
+obj <- na.replace(microbov, method = "mean")
+pca1 <- dudi.pca(obj$tab, cent = TRUE, scale = FALSE, scannf = FALSE, nf = 3)
+pca1
+fix(pca1)
+pca1@tab
+pca1$tab
+pca1$li
+dudi.pca
+library(adegenet)
+data(microbov)
+obj <- genind2genpop(microbov, missing = "chi2")
+ca1 <- dudi.coa(as.data.frame(obj$tab), scannf = FALSE, nf = 3)
+ca1
+barplot(ca1$eig, main = "Eigenvalues")
+s.label(ca1$li, lab = obj$pop.names, sub = "CA 1-2", csub = 2)
+add.scatter.eig(ca1$eig, nf = 3, xax = 1, yax = 2, posi = "top")
+s.label(ca1$li, xax = 1, yax = 3, lab = obj$pop.names, sub = "CA 1-3",csub = 2)
+# -------------------------------------------------------
+s.label(ca1$li, lab = obj$pop.names, sub = "CA 1-2", csub = 2)
+s.label(ca1$li, xax = 1, yax = 3, lab = obj$pop.names, sub = "CA 1-3",csub = 2)
+data(nancycats)
+toto <- seploc(nancycats, truenames = TRUE, res.type = "matrix")
+toto
+X <- toto$fca90
+rstudio::viewData(X)
+pcaX <- dudi.pca(X, cent = T, scale = F, scannf = FALSE)
+pcaX
+pcabetX <- between(pcaX, nancycats$pop, scannf = FALSE)
+pcabetX <- bca(pcaX, nancycats$pop, scannf = FALSE)
+s.arrow(pcabetX$c1, xlim = c(-0.9, 0.9))
+s.class(pcabetX$ls, nancycats$pop, cell = 0, cstar = 0, add.p = T)
+sunflowerplot(X %*% as.matrix(pcabetX$c1), add = T)
+sunflowerplot
+fca90.ind <- genind(X, pop = nancycats$pop)
+gstat.randtest(fca90.ind, nsim = 999)
+F <- varcomp(genind2hierfstat(fca90.ind))$F
+rownames(F) <- c("tot", "pop")
+colnames(F) <- c("pop", "ind")
+F
+F <- varcomp(genind2hierfstat(fca90.ind))$F
+F
+toto <- genind2genpop(nancycats, miss = "0")
+Dgen <- dist.genpop(toto, method = 2)
+Dgen
+Dgeo <- dist(nancycats$other$xy)
+Dgeo
+nancycats$other$xy
+nancycats
+nancycats@other
+ibd <- mantel.randtest(Dgen, Dgeo)
+ibd
+library(adegenet)
+detach("package:adegenet")
+dt<-read.csv("E:\Program Files\PBTools\Projects\shanshan\Data\IRRI 2012 DS.csv", header=T)
+dt<-read.csv("E:/Program Files/PBTools/Projects/shanshan/Data/IRRI 2012 DS.csv", header=T)
+str(dt)
+dt<-read.csv("E:/Program Files/PBTools/Projects/shanshan/Data/IRRI 2012 DS.csv", header=T, na.string=c("NA"))
+rstudio::viewData(dt)
+exptl.design="RowCol"
+data<-dt
+respvar<-c("APH")
+geno<-"Entry"
+row<-"ROW"
+column = "COL"
+rep = "Rep"
+env<-"N"
+is.genoRandom = FALSE
+data[,match(geno, names(data))] <- factor(trim.strings(data[,match(geno, names(data))]))
+data[,match(env, names(data))] <- factor(trim.strings(data[,match(env, names(data))]))
+data[,match(row, names(data))] <- factor(trim.strings(data[,match(row, names(data))]))
+if (exptl.design == "AugLS") {
+data[,match(column, names(data))] <- factor(trim.strings(data[,match(column, names(data))]))
+}
+if (exptl.design == "Alpha") {
+data[,match(rep, names(data))] <- factor(trim.strings(data[,match(rep, names(data))]))
+}
+if (exptl.design == "RowCol") {
+data[,match(column, names(data))] <- factor(trim.strings(data[,match(column, names(data))]))
+data[,match(rep, names(data))] <- factor(trim.strings(data[,match(rep, names(data))]))
+}
+library(PBTools)
+exptl.design="RowCol"
+data<-dt
+respvar<-c("APH")
+geno<-"Entry"
+row<-"ROW"
+column = "COL"
+rep = "Rep"
+env<-"N"
+is.genoRandom = FALSE
+data[,match(geno, names(data))] <- factor(trim.strings(data[,match(geno, names(data))]))
+data[,match(env, names(data))] <- factor(trim.strings(data[,match(env, names(data))]))
+data[,match(row, names(data))] <- factor(trim.strings(data[,match(row, names(data))]))
+if (exptl.design == "AugLS") {
+data[,match(column, names(data))] <- factor(trim.strings(data[,match(column, names(data))]))
+}
+if (exptl.design == "Alpha") {
+data[,match(rep, names(data))] <- factor(trim.strings(data[,match(rep, names(data))]))
+}
+if (exptl.design == "RowCol") {
+data[,match(column, names(data))] <- factor(trim.strings(data[,match(column, names(data))]))
+data[,match(rep, names(data))] <- factor(trim.strings(data[,match(rep, names(data))]))
+}
+result <- list()
+i=1
+result[[i]] <- list()
+result[[i]]$respvar <- respvar[i]
+j=1
+temp.data <- data[sort(match(c(respvar[i], geno, row, column, rep, env), names(data)))]
+result[[i]]$site[[j]] <- list()
+result[[i]]$site[[j]]$env <- levels(temp.data[,match(env, names(temp.data))])[j]
+temp.data <- subset(temp.data, temp.data[,match(env, names(temp.data))] == levels(temp.data[,match(env, names(temp.data))])[j])
+result[[i]]$site[[j]]$obsread <- nrow(temp.data)
+temp.data <- subset(temp.data, subset = (is.na(temp.data[,match(respvar[i], names(temp.data))]) == F))
+temp.data[,match(geno, names(temp.data))] <- factor(trim.strings(temp.data[,match(geno, names(temp.data))]))
+result[[i]]$site[[j]]$obsused <- nrow(temp.data)
+no.reps <- data.frame(n = tapply(eval(parse(text = paste("temp.data$", respvar[i], sep = ""))), eval(parse(text = paste("temp.data$", geno, sep = ""))), FUN = length))
+no.reps <- as.numeric(1/sapply(1/no.reps, mean))
+result[[i]]$site[[j]]$numreps <- no.reps
+if (!is.random) {
+if (exptl.design == "RCB" | exptl.design == "AugRCB") { myformula1 <- paste(respvar[i], " ~ 1 + ", geno," + (1|", row, ")", sep = "") }
+if (exptl.design == "AugLS") { myformula1 <- paste(respvar[i], " ~ 1 + ", geno," + (1|", row, ") + (1|", column, ")", sep = "") }
+if (exptl.design == "Alpha") { myformula1 <- paste(respvar[i], " ~ 1 + ", geno," + (1|", rep,"/", row,")", sep = "") }
+if (exptl.design == "RowCol") { myformula1 <- paste(respvar[i], " ~ 1 + ", geno," + (1|", rep,") + (1|", rep,":", row,") + (1|", rep, ":", column,")", sep = "") }
+} ## -- end stmt -- if (!is.random)
+is.random = FALSE
+if (!is.random) {
+if (exptl.design == "RCB" | exptl.design == "AugRCB") { myformula1 <- paste(respvar[i], " ~ 1 + ", geno," + (1|", row, ")", sep = "") }
+if (exptl.design == "AugLS") { myformula1 <- paste(respvar[i], " ~ 1 + ", geno," + (1|", row, ") + (1|", column, ")", sep = "") }
+if (exptl.design == "Alpha") { myformula1 <- paste(respvar[i], " ~ 1 + ", geno," + (1|", rep,"/", row,")", sep = "") }
+if (exptl.design == "RowCol") { myformula1 <- paste(respvar[i], " ~ 1 + ", geno," + (1|", rep,") + (1|", rep,":", row,") + (1|", rep, ":", column,")", sep = "") }
+} ## -- end stmt -- if (!is.random)
+library(lme4) #added by RIZAM 07/29/11
+model <- lmer(formula(myformula1), data = temp.data)
+model
+result[[i]]$site[[j]]$formula <- myformula1
+result[[i]]$site[[j]]$model <- model
+result[[i]]$site[[j]]$model
+varcomp <- NULL
+for (k in (1:length(VarCorr(model)))) { varcomp <- rbind(varcomp, data.frame(Groups = names(VarCorr(model))[k], Variance = VarCorr(model)[[k]][1], Std.Dev. = attr(VarCorr(model)[[k]], "stddev")[[1]])) }
+varcomp <- rbind(varcomp, data.frame(Groups = "Residual", Variance = attr(VarCorr(model), "sc")**2, Std.Dev. = attr(VarCorr(model), "sc")))
+attr(varcomp, "heading") <- "Variance Components for Random Effects\n"
+result[[i]]$site[[j]]$varcomp.table <- varcomp
+#for saving variance and num of reps by RIZAM 083111
+result[[i]]$site[[j]]$varcompnRep <- as.data.frame(attr(VarCorr(model), "sc")**2)
+result[[i]]$site[[j]]$varcompnRep$numRep <- result[[i]]$site[[j]]$numreps
+result[[i]]$site[[j]]$varcompnRep$env <- result[[i]]$site[[j]]$env[[1]]
+colnames(result[[i]]$site[[j]]$varcompnRep) <- c(paste(respvar[i],"sigma2",sep="_"),paste(respvar[i],"No.rep",sep="_"),env)
+if (j == 1) {result[[i]]$out.sigma2 <- result[[i]]$site[[j]]$varcompnRep
+} else {result[[i]]$out.sigma2 <- rbind(result[[i]]$out.sigma2, result[[i]]$site[[j]]$varcompnRep)}
+result[[i]]$out.sigma2
+j=3
+result <- list()
+result[[i]] <- list()
+result[[i]]$respvar <- respvar[i]
+temp.data <- data[sort(match(c(respvar[i], geno, row, column, rep, env), names(data)))]
+result[[i]]$site[[j]] <- list()
+result[[i]]$site[[j]]$env <- levels(temp.data[,match(env, names(temp.data))])[j]
+temp.data <- subset(temp.data, temp.data[,match(env, names(temp.data))] == levels(temp.data[,match(env, names(temp.data))])[j])
+result[[i]]$site[[j]]$obsread <- nrow(temp.data)
+temp.data <- subset(temp.data, subset = (is.na(temp.data[,match(respvar[i], names(temp.data))]) == F))
+temp.data[,match(geno, names(temp.data))] <- factor(trim.strings(temp.data[,match(geno, names(temp.data))]))
+result[[i]]$site[[j]]$obsused <- nrow(temp.data)
+no.reps <- data.frame(n = tapply(eval(parse(text = paste("temp.data$", respvar[i], sep = ""))), eval(parse(text = paste("temp.data$", geno, sep = ""))), FUN = length))
+no.reps <- as.numeric(1/sapply(1/no.reps, mean))
+result[[i]]$site[[j]]$numreps <- no.reps
+if (!is.random) {
+if (exptl.design == "RCB" | exptl.design == "AugRCB") { myformula1 <- paste(respvar[i], " ~ 1 + ", geno," + (1|", row, ")", sep = "") }
+if (exptl.design == "AugLS") { myformula1 <- paste(respvar[i], " ~ 1 + ", geno," + (1|", row, ") + (1|", column, ")", sep = "") }
+if (exptl.design == "Alpha") { myformula1 <- paste(respvar[i], " ~ 1 + ", geno," + (1|", rep,"/", row,")", sep = "") }
+if (exptl.design == "RowCol") { myformula1 <- paste(respvar[i], " ~ 1 + ", geno," + (1|", rep,") + (1|", rep,":", row,") + (1|", rep, ":", column,")", sep = "") }
+} ## -- end stmt -- if (!is.random)
+library(lme4) #added by RIZAM 07/29/11
+model <- lmer(formula(myformula1), data = temp.data)
+model
+result[[i]]$site[[j]]$env
+rstudio::viewData(temp.data)
+varcomp <- NULL
+for (k in (1:length(VarCorr(model)))) { varcomp <- rbind(varcomp, data.frame(Groups = names(VarCorr(model))[k], Variance = VarCorr(model)[[k]][1], Std.Dev. = attr(VarCorr(model)[[k]], "stddev")[[1]])) }
+varcomp <- rbind(varcomp, data.frame(Groups = "Residual", Variance = attr(VarCorr(model), "sc")**2, Std.Dev. = attr(VarCorr(model), "sc")))
+attr(varcomp, "heading") <- "Variance Components for Random Effects\n"
+result[[i]]$site[[j]]$varcomp.table <- varcomp
+result[[i]]$site[[j]]$varcompnRep <- as.data.frame(attr(VarCorr(model), "sc")**2)
+result[[i]]$site[[j]]$varcompnRep$numRep <- result[[i]]$site[[j]]$numreps
+result[[i]]$site[[j]]$varcompnRep$env <- result[[i]]$site[[j]]$env[[1]]
+colnames(result[[i]]$site[[j]]$varcompnRep) <- c(paste(respvar[i],"sigma2",sep="_"),paste(respvar[i],"No.rep",sep="_"),env)
+if (j == 1) {result[[i]]$out.sigma2 <- result[[i]]$site[[j]]$varcompnRep
+} else {result[[i]]$out.sigma2 <- rbind(result[[i]]$out.sigma2, result[[i]]$site[[j]]$varcompnRep)}
+result[[i]]$out.sigma2
+anova.table <- anova(model)
+attr(anova.table, "heading")[1] <- paste("Analysis of Variance for ", env, " = ", levels(temp.data[,match(env, names(temp.data))])[j], sep = "")
+attr(anova.table, "heading")[2] <- paste("Response Variable: ", respvar[i], "\n", sep = "")
+myformula2 <- gsub(paste(" + ", geno, sep = ""), "", myformula1, fixed = TRUE)
+model1 <- lmer(formula(myformula1), data = temp.data, REML = F)
+model2 <- lmer(formula(myformula2), data = temp.data, REML = F)
+anova.table1 <- anova(model2, model1)
+attr(anova.table1, "heading")[3] <- paste("model2: ", myformula2, sep = "")
+attr(anova.table1, "heading")[4] <- paste("model1: ", myformula1, "\n", sep = "")
+#attr(anova.table1, "heading")[1] <- paste("Linear Mixed Model fit by Maximum likelihood ratio test", sep = "")
+attr(anova.table1, "heading")[1] <- paste("Testing for the Significance of Genotypic Effect:\n", sep = "")
+result[[i]]$site[[j]]$model.comparison <- anova.table1
+anova.table2 <- cbind(anova.table, formatC(as.numeric(format(anova.table1[2,ncol(anova.table1)], scientific=FALSE)), format="f"))
+colnames(anova.table2)<-c("Df", "Sum Sq", "Mean Sq", "F value", "p-value")
+#attr(anova.table2, "class") <- c("anova", "data.frame")
+#attr(anova.table2, "heading")[1] <- attr(anova.table1, "heading")[1]
+#attr(anova.table2, "heading")[2] <- paste("Environment Variable: ", env, " = ", levels(temp.data[,match(env, names(temp.data))])[j], sep = "")
+#attr(anova.table2, "heading")[3] <- attr(anova.table, "heading")[2]
+result[[i]]$site[[j]]$anova.table <- anova.table2
+# --- COMPUTE TREATMENT MEANS --- #
+myformula3 <- gsub("~ 1", "~ 0", myformula1)
+model3 <- lmer(formula(myformula3), data = temp.data)
+sumStat.table <- data.frame(summary(model3)@coefs)[,1:2]
+rownames(sumStat.table) <- gsub(geno,"",rownames(sumStat.table))
+sumStat.table <- cbind(rownames(sumStat.table), sumStat.table)
+rownames(sumStat.table) <- NULL
+colnames(sumStat.table) <- c(geno, "Mean", "StdErrMean")
+result[[i]]$site[[j]]$summary.statistic <- sumStat.table
+result[[i]]$site[[j]]$summary.statistic <- sumStat.table
+library(PBTools)
+dataMeaTwoStage <- read.csv("E:/NSALES/juno workspace/workspace_1/RJavaManager/sample_datasets/summaryStats.csv", header = TRUE, na.strings = c("NA","."), blank.lines.skip=TRUE, sep = ",")
+setwd("E:/NSALES/juno workspace/workspace_1/RJavaManager/sample_datasets/")
+meaTwo1 <- tryCatch(GETwoStage.test(dataMeaTwoStage, c("Yield_Mean"),c("Yield_StdErrMean"),c("Yield_sigma2"),c("Yield_No.rep"),"Genotype","Env", weight = "stderr", is.genoRandom = FALSE), error=function(err) "notRun")
+meaTwo1
+meaTwo1[[1]]$heritability
+dataMeaTwoStage <- read.csv("E:/NSALES/juno workspace/workspace_1/RJavaManager/sample_datasets/summaryStats.csv", header = TRUE, na.strings = c("NA","."), blank.lines.skip=TRUE, sep = ",")
+setwd("E:/NSALES/juno workspace/workspace_1/RJavaManager/sample_datasets/")
+meaTwo1 <- tryCatch(GETwoStage.test(dataMeaTwoStage, c("Yield_Mean"),c("Yield_StdErrMean"),c("Yield_sigma2"),c("Yield_No.rep"),"Genotype","Env", weight = "stderr", is.genoRandom = TRUE), error=function(err) "notRun")
+meaTwo1
+data<-dataMeaTwoStage
+respvar<-c("Yield_Mean")
+stderr<-c("Yield_StdErrMean")
+sigma2<-c("Yield_sigma2")
+numrep<-c("Yield_No.rep")
+geno<-"Genotype"
+env<-"Env"
+weight = "stderr"
+is.genoRandom = TRUE
+library(lme4)
+options(show.signif.stars=FALSE)
+data[,match(geno, names(data))] <- factor(data[,match(geno, names(data))])
+data[,match(env, names(data))] <- factor(data[,match(env, names(data))])
+result <- list()
+i=1
+temp.data <- subset(data, subset = (is.na(data[,match(respvar[i], names(data))]) == F))
+if (weight == "stderr")  temp.data$weight <- 1/(temp.data[, match(stderr[i], names(temp.data))]^2) else temp.data$weight <- NULL
+if (weight == "stdmean") temp.data$Y <- temp.data[,match(respvar[i], names(temp.data))]/temp.data[,match(stderr[i], names(temp.data))] else temp.data$Y <- temp.data[,match(respvar[i], names(temp.data))]
+result[[i]] <- list()
+result[[i]]$respvar <- respvar[i]
+result[[i]]$obsread <- nrow(data)
+result[[i]]$obsused <- nrow(temp.data)
+# --- CONSTRUCT THE MODEL --- #
+if (is.genoRandom) trt.stmt <- paste("(1|", geno,")", sep = "") else trt.stmt <- paste(geno, sep = "")
+myformula1 <- paste("Y ~ 1 + ", trt.stmt, " + (1|", env,")", sep = "")
+model <- lmer(formula(myformula1), weights = temp.data$weight, data = temp.data)
+result[[i]]$formula <- myformula1
+result[[i]]$model <- model
+# --- SUMMARY STATISTICS PER SITE --- #
+sumStat.Env <- data.frame(tapply(temp.data[, match(respvar[i], names(temp.data))], temp.data[, match(env, names(temp.data))], mean))
+sumStat.Env <- data.frame(rownames(sumStat.Env), sumStat.Env)
+colnames(sumStat.Env) <- c(env, "means")
+rownames(sumStat.Env) <- NULL
+numRep <- 1/mean(1/tapply(temp.data[, match(numrep[i], names(temp.data))] , temp.data[, match(env, names(temp.data))], mean))
+numEnv <- nlevels(temp.data[, match(env, names(temp.data))])
+error.variance <- sum(tapply(temp.data[, match(sigma2[i], names(temp.data))] , temp.data[, match(env, names(temp.data))], mean) * tapply(temp.data[, match(numrep[i], names(temp.data))] , temp.data[, match(env, names(temp.data))], mean))/sum(tapply(temp.data[, match(numrep[i], names(temp.data))] , temp.data[, match(env, names(temp.data))], mean))
+VarCorr(model)
+if (weight == "none")    sigma2.ge <- attr(VarCorr(model), "sc")**2 - error.variance
+if (weight == "stderr")  sigma2.ge <- 1
+if (weight == "stdmean") sigma2.ge <- attr(VarCorr(model), "sc")**2 * error.variance
+length(VarCorr(model))
+for (j in (1:length(VarCorr(model)))) { varcomp <- rbind(varcomp, data.frame(Groups = names(VarCorr(model))[j], Variance = VarCorr(model)[[j]][1], Std.Dev. = attr(VarCorr(model)[[j]], "stddev")[[1]])) }
+varcomp <- rbind(varcomp, data.frame(Groups = paste(geno, ":", env, sep = ""), Variance = sigma2.ge, Std.Dev. = sqrt(sigma2.ge)))
+varcomp <- rbind(varcomp, data.frame(Groups = "Residual", Variance = attr(VarCorr(model), "sc")**2, Std.Dev. = attr(VarCorr(model), "sc")))
+result[[i]]$varcomp.table <- varcomp
+varcomp <- NULL
+for (j in (1:length(VarCorr(model)))) { varcomp <- rbind(varcomp, data.frame(Groups = names(VarCorr(model))[j], Variance = VarCorr(model)[[j]][1], Std.Dev. = attr(VarCorr(model)[[j]], "stddev")[[1]])) }
+varcomp <- rbind(varcomp, data.frame(Groups = paste(geno, ":", env, sep = ""), Variance = sigma2.ge, Std.Dev. = sqrt(sigma2.ge)))
+varcomp <- rbind(varcomp, data.frame(Groups = "Residual", Variance = attr(VarCorr(model), "sc")**2, Std.Dev. = attr(VarCorr(model), "sc")))
+result[[i]]$varcomp.table <- varcomp
+varcomp
+myformula3 <- gsub(paste(" + (1|", env, ")", sep = ""), "", myformula1, fixed = TRUE)
+model3 <- lmer(formula(myformula3), weights = temp.data$weight, data = temp.data, REML = F)
+temp.anova <- anova(model3, model1)
+attr(temp.anova, "heading")[3] <- paste("model3: ", myformula3, sep = "")
+attr(temp.anova, "heading")[4] <- paste("model1: ", myformula1, "\n", sep = "")
+#attr(temp.anova, "heading")[1] <- paste("Linear Mixed Model fit by Log Likelihood Ratio Test", sep = "")
+anova.table3 <- temp.anova[2, c(5, ncol(temp.anova))]
+rownames(anova.table3) <- env
+#attr(anova.table3, "heading")[1] <- paste("Linear Mixed Model fit by Log Likelihood Ratio Test", sep = "")
+attr(anova.table3, "heading")[2] <- paste("Response Variable: ", respvar[i], "\n", sep = "")
+result[[i]]$testsig.Env <- anova.table3
+# --- ESTIMATE HERITABILITY --- #
+genetic.var <- varcomp[varcomp[,1] == geno, "Variance"]
+genetic.var
+heritability <- genetic.var/(genetic.var + (sigma2.ge/numEnv) + (error.variance/(numRep*numEnv)))
+meaTwo1 <- tryCatch(GETwoStage.test(dataMeaTwoStage, c("Yield_Mean"),c("Yield_StdErrMean"),c("Yield_sigma2"),c("Yield_No.rep"),"Genotype","Env", weight = "none", is.genoRandom = FALSE), error=function(err) "notRun")
+meaTwo1 <- tryCatch(GETwoStage.test(dataMeaTwoStage, c("Yield_Mean"),c("Yield_StdErrMean"),c("Yield_sigma2"),c("Yield_No.rep"),"Genotype","Env", weight = "none", is.genoRandom = TRUE), error=function(err) "notRun")
+meaTwo1

@@ -1,0 +1,99 @@
+package org.irri.breedingtool.rjava.manager;
+
+import org.irri.breedingtool.rjava.manager.api.IRJavaGraphManager;
+import org.irri.breedingtool.rjava.utilities.InputTransform;
+import org.rosuda.JRI.Rengine;
+
+public class RJavaGraphManager implements IRJavaGraphManager{
+	
+	private Rengine rEngine;
+	private InputTransform inputTransform;
+
+	public RJavaGraphManager(Rengine rEngine) {
+		this.rEngine = rEngine;
+		this.inputTransform= new InputTransform();
+
+	}
+
+	private void rEngineEnd(){
+		String rm = "rm(list=ls(all=TRUE))";
+		rEngine.eval(rm);
+		rEngine.end();
+	}
+
+	@Override
+	public void createGraphHistogram(String plotPath,String dataFileName, String respvar) {
+
+		String graphHist = "g <- tryCatch(CreateGraphHistogram(\"" + plotPath + "\", dataName = \"" + dataFileName + "\", respvar = \"" + respvar + "\"), error = function(err) \"notRun\")";
+		rEngine.eval(graphHist);
+
+		System.out.println(plotPath);
+		System.out.println("graphHist: " + graphHist);
+
+		//for checking if the R function CreateGraphHistogram encountered an error (use of "tryCatch" in the statement above)
+		//will display "notRun" if an error is encountered, "null" otherwise  
+		String runSuccessG = rEngine.eval("g").asString();
+		System.out.println("runSuccessG: " + runSuccessG);
+	}
+
+	@Override
+	public void createGraphBarplot(String outputPath, String dataFileName, String[] nVar, String cVar, String mTitle, String yAxisLab, 
+			String xAxisLab, String minValue, String maxValue, String typeData, String descStat, String barsHoriz, String barsClust, String barsPatterned,
+			String byVar, String errBars, String typeErrBar, int errMult, double confLev, String[] barColor, String showLeg,
+			String legPos, String legTitle, String boxed, String multGraphs, int numRowsGraphs, int numColsGraphs, String orientGraphs,
+			String showVarNames, int[] barLineAngle){
+
+		String nVarVector= inputTransform.createRVector(nVar);
+		String barLineAngleVector= inputTransform.createRNumVector(barLineAngle);
+
+		if (mTitle == null) mTitle = "NULL"; else mTitle = "\"" + mTitle + "\"";
+		if (yAxisLab == null) yAxisLab = "NULL"; else yAxisLab = "\"" + yAxisLab + "\"";
+		if (xAxisLab == null) xAxisLab = "NULL"; else xAxisLab = "\"" + xAxisLab + "\"";
+		if (descStat == null) descStat = "NULL"; else descStat = "\"" + descStat + "\"";
+		if (byVar == null) byVar = "NULL"; else byVar = "\"" + byVar + "\"";
+		if (typeErrBar == null) typeErrBar = "NULL"; else typeErrBar = "\"" + typeErrBar + "\"";
+		if (legTitle == null) legTitle = "NULL"; else legTitle = "\"" + legTitle + "\"";
+		if (minValue == null) minValue = "NULL";
+		if (maxValue == null) maxValue = "NULL"; 
+		
+		//barColor is an array of "R vectors" representing RGB values - will have default color
+		//for example: barColor = {rgb(0,0,255,max = 255),rgb(0,255,150,max=255)}
+		String barColorVector = null;
+		if (!barColor[0].equals("NULL")) barColorVector = inputTransform.createRColorRGBVector(barColor);
+		else barColorVector = barColor[0];
+		
+//		create R data set given csv file named dataFileName
+		String readData = "data <- read.csv(\"" + dataFileName + "\", header = TRUE, na.strings = c(\"NA\",\".\"), blank.lines.skip = TRUE, sep = \",\")";
+	  	rEngine.eval(readData);
+
+	  	String sourceRun = "source(\"D:/Eclipse juno/workspace/RJavaManager/rscript/Graph_bar.R\")";
+		String graphBar = "g <- try(GraphBar(data, \"" + outputPath + "\", " + nVarVector + ", \"" + cVar + "\", " + mTitle + ", " + yAxisLab + ", " + xAxisLab + ", " + 
+				minValue + ", " + maxValue + ", \"" + typeData + "\", " + descStat + ", " + 
+				barsHoriz + ", " + barsClust + ", " + barsPatterned + ", " + byVar + ", " + 
+				errBars + ", " + typeErrBar + ", " + errMult + ", " + confLev + ", " + barColorVector + ", " +
+				showLeg + ", \"" + legPos + "\", " + legTitle + ", " + boxed + ", " + multGraphs + 
+				", " + numRowsGraphs + ", " + numColsGraphs + ", \"" + orientGraphs + "\" , " + 
+				showVarNames + ", " + barLineAngleVector + "), silent = TRUE)";
+		
+		String checkError = "if (class(g) == \"try-error\") {\n";
+		checkError = checkError + "    msg <- trim.strings(strsplit(g, \":\")[[1]])\n";
+		checkError = checkError + "    msg <- trim.strings(paste(strsplit(msg, \"\\n\")[[length(msg)]], collapse = \" \"))\n";
+		checkError = checkError + "    msg <- gsub(\"\\\"\", \"\", msg)\n";
+		checkError = checkError + "    cat(\"\n*** \nERROR in GraphBar function:\\n  \",msg, \"\n***\", sep = \"\")\n";
+		checkError = checkError + "}";
+		
+		System.out.println(readData);
+		System.out.println(sourceRun);
+		System.out.println(graphBar);
+		System.out.println(checkError);
+			
+		//R statements passed on to the R engine
+		rEngine.eval(readData);
+		rEngine.eval(sourceRun);
+		rEngine.eval(graphBar);
+		rEngine.eval(checkError);
+		rEngineEnd();
+	}
+
+
+}

@@ -1,0 +1,219 @@
+
+DATA FILE: E:/NSALES/juno workspace/workspace_1/RJavaManager/sample_datasets/Diallel3Alpha_missing.csv
+
+DIALLEL ANALYSIS: GRIFFING METHOD III IN RCB (CROSS)
+
+------------------------------
+RESPONSE VARIABLE: Y
+------------------------------
+------------------------------
+ANALYSIS FOR: Trial  =  1 
+------------------------------
+
+DATA SUMMARY:
+
+ Factors     No of Levels   Levels            
+ Trial       1              1                 
+ replication 2              1  2              
+ p1          5              P1  P2  P3  P4  P5
+ p2          5              P1  P2  P3  P4  P5
+
+Number of observations read:  40 
+Number of observations used:  38 
+
+
+ANOVA TABLE FOR THE EXPERIMENT:
+
+            Df      Sum Sq   Mean Sq F value Pr(>F)
+replication  1   3348.1710 3348.1710    0.73 0.4037
+p1:p2       19 133061.9000 7003.2590    1.53 0.1827
+Residuals   17  87225.0400 4590.7910               
+-------
+REMARK: Raw data and estimates of the missing values are used. 
+
+
+TESTING FOR THE SIGNIFICANCE OF CROSS EFFECT: (Crosses = p1:p2)
+
+Model: Y ~ Crosses + (1|replication) 
+
+Analysis of Variance Table with Satterthwaite Denominator Df
+        Df   Sum Sq  Mean Sq F value Denom Pr(>F)
+Crosses 19 111713.9 5879.676  1.1729    18 0.3694
+
+
+MATRIX OF MEANS:
+
+      p2=P1    p2=P2    p2=P3    p2=P4    p2=P5   
+p1=P1           75.4076 140.0396  37.2317 105.0303
+p1=P2 138.5418          145.4020  95.7794 113.7561
+p1=P3  72.8384 205.4487          120.0418 178.5146
+p1=P4 194.2216  56.6480 107.9390           62.5977
+p1=P5 268.5902 102.2749 120.9394  25.1486         
+-------
+REMARK: Raw dataset is unbalanced. 
+
+
+ANALYSIS OF VARIANCE:
+
+           Df     Sum Sq   Mean Sq F value Pr(>F)
+GCA         4 15045.5300 3761.3820    1.03 0.4740
+SCA         5 18264.7500 3652.9500    1.46 0.2498
+Reciprocal 10 35016.0300 3501.6030    1.40 0.2543
+Error      19 47623.5000 2506.5000               
+
+
+GENERAL COMBINING ABILITY EFFECTS (diagonal), SPECIFIC COMBINING
+ABILITY EFFECTS (above diagonal) AND RECIPROCAL EFFECTS (below diagonal):
+
+      p2=P1    p2=P2    p2=P3    p2=P4    p2=P5   
+p1=P1  14.2241 -23.3526 -50.2059  24.3411  49.2174
+p1=P2 -31.5671  -2.2163  35.2210   1.2686 -13.1369
+p1=P3  33.6006 -30.0233  24.1012  12.7278   2.2571
+p1=P4 -78.4949  19.5657   6.0514 -41.1581 -38.3375
+p1=P5 -81.7799   5.7406  28.7876  18.7246   5.0492
+
+
+ESTIMATES OF VARIANCE COMPONENTS:
+
+             Estimate Std. Error
+ GCA          18.0720   587.1688
+ SCA         573.2251  1224.6365
+ Reciprocal  497.5516   882.2649
+ Error      2506.5000   813.2160
+
+
+ESTIMATES OF GENETIC VARIANCE COMPONENTS:
+                            
+                    Estimate
+ VA                72.288149
+ VD              2292.900528
+ h2-narrow sense    0.014838
+ H2-broad sense     0.485497
+ Dominance Ratio    7.964785
+
+
+TABLE OF STANDARD ERRORS AND LSDs:
+
+         Std. Error     LSD
+ Gi         18.2811        
+ Sii        25.0325        
+ Rij        35.4013        
+ Gi-Gj      28.9050 60.4989
+ Sij-Sik    40.8779 85.5584
+ Sij-Skl    28.9050 60.4989
+
+
+------------------------------
+ANALYSIS FOR: Trial  =  2 
+------------------------------
+
+DATA SUMMARY:
+
+ Factors     No of Levels   Levels            
+ Trial       1              2                 
+ replication 2              1  2              
+ p1          5              P1  P2  P3  P4  P5
+ p2          5              P1  P2  P3  P4  P5
+
+Number of observations read:  40 
+Number of observations used:  40 
+
+
+ANOVA TABLE FOR THE EXPERIMENT:
+
+            Df      Sum Sq    Mean Sq F value Pr(>F)
+replication  1  38227.5300 38227.5300    7.16 0.0150
+p1:p2       19 106435.8000  5601.8830    1.05 0.4589
+Residuals   19 101452.2000  5339.5910               
+-------
+REMARK: Raw dataset is balanced. 
+
+
+TESTING FOR THE SIGNIFICANCE OF CROSS EFFECT: (Crosses = p1:p2)
+
+Model: Y ~ Crosses + (1|replication) 
+
+Analysis of Variance Table with Satterthwaite Denominator Df
+        Df   Sum Sq  Mean Sq F value Denom Pr(>F)
+Crosses 19 106435.8 5601.883  1.0491    19 0.4589
+
+
+MATRIX OF MEANS:
+
+      p2=P1    p2=P2    p2=P3    p2=P4    p2=P5   
+p1=P1           75.4076 190.0396 137.2317 155.0303
+p1=P2 138.5418          195.4020 195.7794 113.7561
+p1=P3 148.3720 205.4487          120.0418 178.5146
+p1=P4 194.2216 156.6480 107.9390           62.5977
+p1=P5 189.3426 102.2749 220.9394  25.1486         
+
+
+ANALYSIS OF VARIANCE:
+
+           Df     Sum Sq   Mean Sq F value Pr(>F)
+GCA         4 14357.3400 3589.3360    0.57 0.6943
+SCA         5 31230.5000 6246.1000    2.34 0.0815
+Reciprocal 10  7630.0430  763.0043    0.29 0.9765
+Error      19 50726.2000 2669.8000               
+
+
+GENERAL COMBINING ABILITY EFFECTS (diagonal), SPECIFIC COMBINING
+ABILITY EFFECTS (above diagonal) AND RECIPROCAL EFFECTS (below diagonal):
+
+      p2=P1    p2=P2    p2=P3    p2=P4    p2=P5   
+p1=P1  10.5194 -52.2098 -20.5518  37.1506  35.6110
+p1=P2 -31.5671   3.0312  18.1559  55.1258 -21.0718
+p1=P3  20.8338  -5.0233  33.6044 -37.6706  40.0666
+p1=P4 -28.4949  19.5657   6.0514 -27.5772 -54.6057
+p1=P5 -17.1561   5.7406 -21.2124  18.7246 -19.5778
+
+
+ESTIMATES OF VARIANCE COMPONENTS:
+
+             Estimate Std. Error
+ GCA           0.0000   782.5736
+ SCA        1788.1501  2022.1156
+ Reciprocal    0.0000   465.4925
+ Error      2669.8000   866.1975
+
+
+ESTIMATES OF GENETIC VARIANCE COMPONENTS:
+                            
+                    Estimate
+ VA                 0.000000
+ VD              7152.600428
+ h2-narrow sense    0.000000
+ H2-broad sense     0.728193
+ Dominance Ratio         Inf
+
+
+TABLE OF STANDARD ERRORS AND LSDs:
+
+         Std. Error     LSD
+ Gi         18.8673        
+ Sii        25.8351        
+ Rij        36.5363        
+ Gi-Gj      29.8318 62.4386
+ Sij-Sik    42.1885 88.3015
+ Sij-Skl    29.8318 62.4386
+
+
+------------------------------
+RESPONSE VARIABLE: Y2
+------------------------------
+------------------------------
+ANALYSIS FOR: Trial  =  1 
+------------------------------
+
+Too many missing observations. Cannot proceed with the analysis.
+
+
+------------------------------
+ANALYSIS FOR: Trial  =  2 
+------------------------------
+
+Too many missing observations. Cannot proceed with the analysis.
+
+
+
+==============================

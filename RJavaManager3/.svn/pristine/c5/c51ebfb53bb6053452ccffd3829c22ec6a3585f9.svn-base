@@ -1,0 +1,512 @@
+if (phenoCorrValue>1) phenoCorrValue<-1
+GenoCorr[[i]][j,k] <- formatC(genoCorrValue, format="f")
+PhenoCorr[[i]][j,k] <- formatC(phenoCorrValue, format="f")
+NumObs[[i]][j,k] <- length(mydata$Ysum)
+# --- assign values to the lower triangular part of the matrix
+GenoCorr[[i]][k,j] <- GenoCorr[[i]][[j,k]]
+PhenoCorr[[i]][k,j] <- PhenoCorr[[i]][j,k]
+NumObs[[i]][k,j] <- NumObs[[i]][j,k]
+}
+}  ## end stmt -- if (k > j)
+} ## end stmt -- for (k in (1:length(respvar)))
+} ## end stmt -- for (j in (1:(length(respvar) - 1)))
+colnames(GenoCorr[[i]]) <- rownames(GenoCorr[[i]]) <- respvar
+GenoCorr[[i]] <- format(GenoCorr[[i]], justify="right")
+GenoCorr[[i]] <- noquote(gsub("NA", "", GenoCorr[[i]]))
+colnames(PhenoCorr[[i]]) <- rownames(PhenoCorr[[i]]) <- respvar
+PhenoCorr[[i]] <- format(PhenoCorr[[i]], justify="right")
+PhenoCorr[[i]] <- noquote(gsub("NA", "", PhenoCorr[[i]]))
+NumObs[[i]] <- as.table(NumObs[[i]])
+colnames(NumObs[[i]]) <- rownames(NumObs[[i]]) <- respvar
+GenoCorr
+i=2
+nlevels(data[,match(env, names(data))])
+EnvLevels[[i]] <- levels(data[,match(env, names(data))])[i]
+GenoCorr[[i]] <- matrix(NA, nrow = length(respvar), ncol = length(respvar))
+PhenoCorr[[i]] <- matrix(NA, nrow = length(respvar), ncol = length(respvar))
+NumObs[[i]] <- matrix(NA, nrow = length(respvar), ncol = length(respvar))
+temp.data <- subset(data, data[,match(env, names(data))] == levels(data[,match(env, names(data))])[i])
+#if design is Latinized Row-Column, check if the data follow case1 or case3 labeling --- #
+if (exptl.design == "LatinRowCol") {
+lengthPerCross<-tapply(temp.data[,respvar[1]], temp.data[,c(row,column)], length)
+if (all(lengthPerCross<=1, na.rm=TRUE)) {
+if (nlevels(data[, row])>nlevels(data[, column])) {
+longerRow<-TRUE
+} else {
+longerRow<-FALSE
+}
+} else {
+stop("The levels of the row/column variable should be continuous across replicates.")
+}
+}
+if (!excludeLevels) {
+if (exptl.design == "RCB" | exptl.design == "AugRCB") { myformula3 <- paste("Ysum ~ 1 + (1|", row, ") + (1|", geno,")", sep = "") }
+if (exptl.design == "AugLS") { myformula3 <- paste("Ysum ~ 1 + (1|", row, ") + (1|", column, ") + (1|", geno,")", sep = "") }
+if (exptl.design == "Alpha") { myformula3 <- paste("Ysum ~ 1 + (1|", rep,"/", row,") + (1|", geno,")", sep = "") }
+if (exptl.design == "RowCol") { myformula3 <- paste("Ysum ~ 1 + (1|", rep,") + (1|", rep,":", row,") + (1|", rep, ":", column,") + (1|", geno,")", sep = "") }
+if (exptl.design == "LatinAlpha") { myformula3 <- paste("Ysum ~ 1 + (1|", rep,") + (1|", row,") + (1|", rep, ":", row, ") + (1|", geno,")", sep = "") }
+if (exptl.design == "LatinRowCol") {
+if (longerRow) {
+myformula3 <- paste("Ysum ~ 1 + (1|", rep,") + (1|", column, ") + (1|", rep,":", column,") + (1|", row, ") + (1|", geno,")", sep = "")
+} else {
+myformula3 <- paste("Ysum ~ 1 + (1|", rep,") + (1|", row, ") + (1|", rep,":", row,") + (1|", column, ") + (1|", geno,")", sep = "")
+}
+}
+}else {
+if (exptl.design == "RCB" | exptl.design == "AugRCB") { myformula3 <- paste("Ysum ~ 1 + Check + (1|", row, ") + (1|Test:Check)", sep = "") }
+if (exptl.design == "AugLS") { myformula3 <- paste("Ysum ~ 1 + Check + (1|", row, ") + (1|", column, ") + (1|Test:Check)", sep = "") }
+if (exptl.design == "Alpha") { myformula3 <- paste("Ysum ~ 1 + Check + (1|", rep,"/", row,") + (1|Test:Check)", sep = "") }
+if (exptl.design == "RowCol") { myformula3 <- paste("Ysum ~ 1 + Check + (1|", rep,") + (1|", rep,":", row,") + (1|", rep, ":", column,") + (1|Test:Check)", sep = "") }
+if (exptl.design == "LatinAlpha") { myformula3 <- paste("Ysum ~ 1 + Check + (1|", rep,") + (1|", row,") + (1|", rep, ":", row, ") + (1|Test:Check)", sep = "") }
+if (exptl.design == "LatinRowCol") {
+if (longerRow) {
+myformula3 <- paste("Ysum ~ 1 + Check + (1|", rep,") + (1|", column, ") + (1|", rep,":", column,") + (1|", row, ") + (1|Test:Check)", sep = "")
+} else {
+myformula3 <- paste("Ysum ~ 1 + Check + (1|", rep,") + (1|", row, ") + (1|", rep,":", row,") + (1|", column, ") + (1|Test:Check)", sep = "")
+}
+}
+}
+j=1
+k=2
+#check if respvar[[j]] and respvar[[k]] are all NAs
+checkData1 <- subset(temp.data, subset = (is.na(temp.data[,match(respvar[[j]], names(temp.data))]) == F))
+checkData2 <- subset(temp.data, subset = (is.na(temp.data[,match(respvar[[k]], names(temp.data))]) == F))
+(nrow(checkData1)==0 | nrow(checkData2)==0)
+temp.data$Ysum <- temp.data[,respvar[[j]]] + temp.data[,respvar[[k]]]
+mydata <- subset(temp.data, subset = (is.na(Ysum) == F))
+# --- if design if AugRCB or AugLS, automatically define the vector newCheckList
+if (exptl.design == "AugRCB" | exptl.design == "AugLS") {
+library(doBy)
+nobs <- summaryBy(formula(paste(respvar[j], " ~ ", geno, sep = "")), data=mydata, FUN=length)
+excludeList <- as.vector(nobs[nobs[,match(paste(respvar[j],".length", sep=""), names(nobs))]>1, geno])
+detach("package:doBy")
+}
+(excludeLevels)
+{ trmt.label <- geno }
+myformula1 <- gsub("Ysum ~", paste(respvar[j]," ~", sep=""), myformula3, fixed = TRUE)
+myformula2 <- gsub("Ysum ~", paste(respvar[k]," ~", sep=""), myformula3, fixed = TRUE)
+# --- DEFINE MODEL --- #
+model1 <- lmer(formula(myformula1), data = mydata)
+model2 <- lmer(formula(myformula2), data = mydata)
+model3 <- lmer(formula(myformula3), data = mydata)
+# --- COMPUTE HARMONIC MEANS --- #
+no.reps <- data.frame(n = tapply(eval(parse(text = paste("mydata$Ysum"))), eval(parse(text = paste("mydata$", geno, sep = ""))), FUN = length))
+no.reps <- as.numeric(1/mean(1/no.reps$n, na.rm=TRUE))
+# --- COMPUTE GENOTYPIC AND PHENOTYPIC VARIANCES --- #
+varcomp1 <- NULL
+for (l in (1:length(VarCorr(model1)))) { varcomp1 <- rbind(varcomp1, data.frame(Groups = names(VarCorr(model1))[l], Variance = VarCorr(model1)[[l]][1], Std.Dev. = attr(VarCorr(model1)[[l]], "stddev")[[1]])) }
+varcomp1 <- rbind(varcomp1, data.frame(Groups = "Residual", Variance = attr(VarCorr(model1), "sc")**2, Std.Dev. = attr(VarCorr(model1), "sc")))
+genetic.var1 <- varcomp1[varcomp1[,1] == trmt.label, "Variance"]
+pheno.var1 <- varcomp1[varcomp1[,1] == trmt.label, "Variance"] + (varcomp1[varcomp1[,1] == "Residual", "Variance"]/no.reps)
+varcomp2 <- NULL
+for (l in (1:length(VarCorr(model2)))) { varcomp2 <- rbind(varcomp2, data.frame(Groups = names(VarCorr(model2))[l], Variance = VarCorr(model2)[[l]][1], Std.Dev. = attr(VarCorr(model2)[[l]], "stddev")[[1]])) }
+varcomp2 <- rbind(varcomp2, data.frame(Groups = "Residual", Variance = attr(VarCorr(model2), "sc")**2, Std.Dev. = attr(VarCorr(model2), "sc")))
+genetic.var2 <- varcomp2[varcomp2[,1] == trmt.label, "Variance"]
+pheno.var2 <- varcomp2[varcomp2[,1] == trmt.label, "Variance"] + (varcomp2[varcomp2[,1] == "Residual", "Variance"]/no.reps)
+varcomp3 <- NULL
+for (l in (1:length(VarCorr(model3)))) { varcomp3 <- rbind(varcomp3, data.frame(Groups = names(VarCorr(model3))[l], Variance = VarCorr(model3)[[l]][1], Std.Dev. = attr(VarCorr(model3)[[l]], "stddev")[[1]])) }
+varcomp3 <- rbind(varcomp3, data.frame(Groups = "Residual", Variance = attr(VarCorr(model3), "sc")**2, Std.Dev. = attr(VarCorr(model3), "sc")))
+genetic.var <- (varcomp3[varcomp3[,1] == trmt.label, "Variance"] - genetic.var1 - genetic.var2)/2
+pheno.var <- genetic.var + (((varcomp3[varcomp3[,1] == "Residual", "Variance"] - varcomp1[varcomp1[,1] == "Residual", "Variance"] - varcomp2[varcomp2[,1] == "Residual", "Variance"])/2)/no.reps)
+genoCorrValue<-genetic.var/sqrt(genetic.var1*genetic.var2)
+phenoCorrValue<-pheno.var/sqrt(pheno.var1*pheno.var2)
+lowerLimit<--1
+# --- check if geno and pheno correlation values are within -1 to 1, if not, set it to -1 or 1
+if (genoCorrValue<lowerLimit) genoCorrValue<--1
+(genoCorrValue<lowerLimit)
+genoCorrValue
+genetic.var
+genetic.var1
+genetic.var2
+varcomp1
+varcomp2
+varcomp3
+(!is.nan(genoCorrValue))
+phenoCorrValue
+GenoCorr[[i]][j,k] <- formatC(genoCorrValue, format="f")
+PhenoCorr[[i]][j,k] <- formatC(phenoCorrValue, format="f")
+NumObs[[i]][j,k] <- length(mydata$Ysum)
+GenoCorr
+GenoCorr[[i]][k,j] <- GenoCorr[[i]][[j,k]]
+PhenoCorr[[i]][k,j] <- PhenoCorr[[i]][j,k]
+NumObs[[i]][k,j] <- NumObs[[i]][j,k]
+GenoCorr
+source('E:/NSALES/creatingRPackage/PBTools Package/In package format/PBTools/R/ssa_geno_pheno_corr.r')
+gpcorr <- try(genoNpheno.corr("LatinRowCol",data,c("Y","Y2"),"trmt","row","col","rep","Trial"), silent=TRUE)
+gpcorr
+library(PBTools)
+library(PBTools)
+library(genetics)
+MET2_Mod1_BLUPS_subset_sorted <- read.csv("E:/NSALES/sampleDatasets/MET2_Mod1_BLUPS_subset_sorted.csv")
+View(MET2_Mod1_BLUPS_subset_sorted)
+data <- read.csv("E:/NSALES/sampleDatasets/MET2_Mod1_BLUPS_subset_sorted.csv")
+outFileName="E:/NSALES/testingFolder/output.txt"
+names(data)
+View(data)
+respvar=c("Yield")
+environment="Loc"
+genotype="GENO"
+numberOfReps = c(1)
+residualVariances = c(0)
+numberOfReps = c(1)
+residualVariances = c(0)
+responsePlot = FALSE
+doAMMI = FALSE
+biplotPC12 = FALSE
+biplotPC13 = FALSE
+biplotPC23 = FALSE
+ammi1 = FALSE
+adaptMap = FALSE
+doGGE = TRUE
+graphSym = TRUE
+graphEnv = TRUE
+graphGeno = TRUE
+outFileName<-trimStrings(outFileName)
+respvar<-trimStrings(respvar)
+environment<-trimStrings(environment)
+genotype<-trimStrings(genotype)
+if (!is.numeric(numberOfReps)) {
+numberOfReps<-trimStrings(numberOfReps)
+}
+if (!is.numeric(residualVariances)) {
+residualVariances<-trimStrings(residualVariances)
+}
+capture.output(cat("\nMULTIPLICATIVE MODELS\n\n\n"),file=outFileName,append = FALSE)
+#initialize booleans for created graphs
+createdResponsePlot1=FALSE
+createdResponsePlot2=FALSE
+createdBiplotPC12 = FALSE
+createdBiplotPC13 = FALSE
+createdBiplotPC23 = FALSE
+createdAmmi1 = FALSE
+createdAdaptMap = FALSE
+createdGraphSym=FALSE
+createdGraphEnv=FALSE
+createdGraphGeno=FALSE
+result<-list()
+data[,environment]<-factor(data[,environment])
+data[,genotype]<-factor(data[,genotype])
+levelsGeno<-levels(data[,genotype])
+levelsEnv<-levels(data[,environment])
+commonLevels<-intersect(levelsGeno,levelsEnv)
+if (length(commonLevels)>0) {
+withCommonLevels<-TRUE
+} else {
+withCommonLevels<-FALSE
+}
+commonLevels
+(max(nchar(levelsGeno))>4 || max(nchar(levelsEnv))>4 || withCommonLevels)
+# --- recode genotype and environment levels --- #
+newCodingGeno<-data.frame(Genotype=levelsGeno, Code=paste("G",seq(1:length(levelsGeno)), sep=""))
+newCodingEnv<-data.frame(Environment=levelsEnv, Code=paste("E",seq(1:length(levelsEnv)), sep=""))
+suppressWarnings(result$newCodingGeno <- newCodingGeno)
+suppressWarnings(result$newCodingEnv <- newCodingEnv)
+recodedLevels <- TRUE
+temp.data <- data
+# --- attach the new labels to temp.data --- #
+temp.data$CodedGeno <- newCodingGeno$Code[match(temp.data[,genotype], newCodingGeno$Genotype)]
+temp.data$CodedEnv <- newCodingEnv$Code[match(temp.data[,environment], newCodingEnv$Environment)]
+#set CodedEnv and CodedGeno to factors
+temp.data$CodedGeno <- factor(temp.data$CodedGeno)
+temp.data$CodedEnv <- factor(temp.data$CodedEnv)
+temp.dataAll<-temp.data
+i=1
+result$respvar[[i]]<-list()
+capture.output(cat("------------------------------\n"),file=outFileName,append = TRUE)
+capture.output(cat("RESPONSE VARIABLE: ", respvar[i], "\n"),file=outFileName,append = TRUE)
+capture.output(cat("------------------------------\n\n\n"),file=outFileName,append = TRUE)
+result$respvar[[i]]<-respvar[i]
+temp.data<-temp.dataAll
+(nlevels(temp.data[,"CodedEnv"])>2)
+rep<-tapply(temp.data[, respvar[i]] , temp.data[,c("CodedEnv", "CodedGeno")], function(x) length(which(!is.na(x))))
+rep
+(is.numeric(numberOfReps) && any(rep>1, na.rm=TRUE))
+#compute response rate
+responseRate<-1-((sum(rep==0, na.rm=TRUE)+sum(is.na(rep)))/(nlevels(temp.data[,"CodedEnv"])*nlevels(temp.data[,"CodedGeno"])))
+(responseRate < 0.80)
+capture.output(cat("GGE ANALYSIS:\n\n"),file=outFileName,append = TRUE)
+(!is.numeric(numberOfReps))
+result.temp2<-try(gge.analysis(temp.data[,"CodedEnv"], temp.data[,"CodedGeno"], numberOfReps[i], temp.data[,respvar[i]],
+residualVariances[i], number = FALSE, graphSym=FALSE, graphEnv=FALSE, graphGeno=FALSE, yVar = respvar[i], f=0.5), silent=TRUE)
+result.temp2
+(!is.numeric(numberOfReps))
+ENV<-temp.data[,"CodedEnv"]
+GEN<-temp.data[,"CodedGeno"]
+REP<-numberOfReps[i]
+Y<-respvar[i]]
+SIGMA2<-residualVariances[i]
+respVar = respvar[i]
+number = FALSE
+ENV<-temp.data[,"CodedEnv"]
+GEN<-temp.data[,"CodedGeno"]
+REP<-numberOfReps[i]
+Y<-respvar[i]
+MSE<-residualVariances[i]
+yVar = respvar[i]
+f=0.5
+number = FALSE
+#name.y <- paste(deparse(substitute(Y)))
+#cat("\nANALYSIS AMMI: ", name.y, "\nClass level information\n")
+ENV <- as.factor(ENV)
+GEN <- as.factor(GEN)
+nenv <- length(unique(ENV))
+ngen <- length(unique(GEN))
+#cat("\nENV: ", unique(as.character(ENV)))
+#cat("\nGEN: ", unique(as.character(GEN)))
+minimo <- min(ngen, nenv)
+(length(REP) > 1)
+DFE <- nenv * (ngen - 1) * (REP - 1)
+DFEa <- nenv * (REP - 1)
+nrep <- REP
+modelo <- aov(Y ~ ENV + GEN + ENV:GEN)
+xx <- as.matrix(anova(modelo))
+xx <- rbind(xx[1, ], xx[1, ], xx[2:4, ])
+xx[2, 1] <- DFEa
+xx[2, 2:5] <- NA
+xx[, 2] <- xx[, 2] * nrep
+xx[, 3] <- xx[, 3] * nrep
+xx[5, 1] <- DFE
+xx[5, 3] <- MSE
+xx[5, 2] <- MSE * DFE
+xx[1, 4] <- NA
+xx[3, 4] <- xx[3, 3]/MSE
+xx[4, 4] <- xx[4, 3]/MSE
+xx[1, 5] <- NA
+xx[3, 5] <- 1 - pf(xx[3, 4], xx[3, 1], DFE)
+xx[4, 5] <- 1 - pf(xx[4, 4], xx[4, 1], DFE)
+row.names(xx)[1] <- "ENV     "
+row.names(xx)[2] <- "REP(ENV)"
+#cat("\nREP: ", REP)
+#cat("\n\nNumber of means: ", length(na.omit(Y)), "\n")
+#cat("\nDependent Variable:", name.y, "\n\nAnalysis of variance\n")
+#print(xx, na.print = "")
+medy <- mean(Y,na.rm=TRUE)
+#cat("\nCoeff var", "\tMean", name.y, "\n")
+ENV
+GEN
+View(data)
+modelo <- aov(Y ~ ENV + GEN + ENV:GEN)
+library(PBTools)
+R.version()
+R.Version()
+ucss.default <- function(x, na.rm = TRUE) {
+if (!is.numeric(x) && !is.complex(x) && !is.logical(x) && !is.vector(x)) stop ("The argument should be a numeric vector.")
+if (na.rm) {
+x <- x[!is.na(x)]
+} else if (any(is.na(x))) {
+return(x[FALSE][NA])
+}
+ucss <- sum(x**2)
+return(ucss)
+}
+ucss <- function(x, na.rm = TRUE) UseMethod("ucss")
+ucss.default <- function(x, na.rm = TRUE) {
+if (!is.numeric(x) && !is.complex(x) && !is.logical(x) && !is.vector(x)) stop ("The argument should be a numeric vector.")
+if (na.rm) {
+x <- x[!is.na(x)]
+} else if (any(is.na(x))) {
+return(x[FALSE][NA])
+}
+ucss <- sum(x**2)
+return(ucss)
+}
+ucss <- function(x, na.rm = TRUE) UseMethod("ucss")
+ucss.default <- function(x, na.rm = TRUE) {
+if (!is.numeric(x) && !is.complex(x) && !is.logical(x) && !is.vector(x)) stop ("The argument should be a numeric vector.")
+if (na.rm) x <- x[!is.na(x)] else if(any(is.na(x))) return(x[FALSE][NA])
+ucss <- sum(x**2)
+return(ucss)
+}
+ucss.data.frame <- function(x, na.rm = TRUE) sapply(x, ucss)
+#--------------------------------------------------------------------------------
+# This function performs partial least squares regression and saves a biplot in the working directory
+#
+# ARGUMENTS:
+# data - data frame of GxE means
+# outFileName - path and filename of the text file to be created
+# respvar - vector of the names of response variable
+# genotype - string; name of genotype factor
+# environment - string; name of environment factor
+# covariateData - data frame of covariate data
+# covariateEnvironment - string; name of environment factor in the covariate data; NULL if genotype characteristics are used as covariate
+# covariateGenotype - string; name of genotype factor in the covariate data; NULL if environment characteristics are used as covariate
+#
+# Created by: Nellwyn L. Sales
+#--------------------------------------------------------------------------------
+plsRegression<-function(data, outFileName, respvar, genotype, environment, covariateData, covariateEnvironment, covariateGenotype) {
+#trim the strings
+outFileName<-trimStrings(outFileName)
+respvar<-trimStrings(respvar)
+genotype<-trimStrings(genotype)
+environment<-trimStrings(environment)
+if (!is.null(covariateEnvironment)) covariateEnvironment<-trimStrings(covariateEnvironment)
+if (!is.null(covariateGenotype)) covariateGenotype<-trimStrings(covariateGenotype)
+#add title
+capture.output(cat("\nPARTIAL LEAST SQUARES REGRESSION\n\n\n"),file=outFileName,append = FALSE)
+#call needed libraries
+library(pls)
+library (lme4)
+result<-list()
+#set genotype and environment to factors
+data[,environment]<-factor(data[,environment])
+data[,genotype]<-factor(data[,genotype])
+levelsGeno<-levels(data[,genotype])
+levelsEnv<-levels(data[,environment])
+e <- length(levelsEnv)
+g <- length(levelsGeno)
+commonLevels<-intersect(levelsGeno,levelsEnv)
+if (length(commonLevels)>0) {
+withCommonLevels<-TRUE
+} else {
+withCommonLevels<-FALSE
+}
+# --- if max length of the characters of levelsGeno or levelsEnv greater than 4 or Geno and Env have common levels, recode the levels
+if (max(nchar(levelsGeno))>4 || max(nchar(levelsEnv))>4 || withCommonLevels) {
+# --- recode genotype and environment levels --- #
+newCodingGeno<-data.frame(Genotype=levelsGeno, Code=paste("G",seq(1:length(levelsGeno)), sep=""))
+newCodingEnv<-data.frame(Environment=levelsEnv, Code=paste("E",seq(1:length(levelsEnv)), sep=""))
+suppressWarnings(result$newCodingGeno <- newCodingGeno)
+suppressWarnings(result$newCodingEnv <- newCodingEnv)
+recodedLevels <- TRUE
+temp.data <- data
+# --- attach the new labels to temp.data --- #
+temp.data$CodedGeno <- newCodingGeno$Code[match(temp.data[,genotype], newCodingGeno$Genotype)]
+temp.data$CodedEnv <- newCodingEnv$Code[match(temp.data[,environment], newCodingEnv$Environment)]
+# --- attach the new labels to covariateData
+if (!is.null(covariateEnvironment)) covariateData$CodedEnv <- newCodingEnv$Code[match(covariateData[,covariateEnvironment], newCodingEnv$Environment)]
+} else {
+temp.data <- data
+temp.data$CodedGeno <- temp.data[,match(genotype, names(temp.data))]
+temp.data$CodedEnv <- temp.data[,match(environment, names(temp.data))]
+covariateData$CodedEnv <- covariateData[,match(covariateEnvironment, names(covariateData))]
+recodedLevels <- FALSE
+}
+#set CodedEnv and CodedGeno to factors
+temp.data$CodedGeno <- factor(temp.data$CodedGeno)
+temp.data$CodedEnv <- factor(temp.data$CodedEnv)
+temp.dataAll<-temp.data
+for (i in 1:length(respvar)) {
+result$respvar[[i]]<-list()
+capture.output(cat("------------------------------\n"),file=outFileName,append = TRUE)
+capture.output(cat("RESPONSE VARIABLE: ", respvar[i], "\n"),file=outFileName,append = TRUE)
+capture.output(cat("------------------------------\n\n\n"),file=outFileName,append = TRUE)
+result$respvar[[i]]<-respvar[i]
+temp.data<-temp.dataAll
+if (nlevels(temp.data[,"CodedEnv"])>2) {
+#check if data contains one value for each env-geno combination
+rep<-tapply(temp.data[, respvar[i]] , temp.data[,c("CodedEnv", "CodedGeno")], function(x) length(which(!is.na(x))))
+#if data contains more than 1 observation per env-geno combination, compute for the means
+if (any(rep>1, na.rm=TRUE)) {
+meansWide<-as.data.frame(tapply(temp.data[, respvar[i]] , temp.data[,c("CodedEnv", "CodedGeno")], function(x) mean(x,na.rm=TRUE)))
+meansWide<-cbind(envTemp=rownames(meansWide), meansWide)
+colnames(meansWide)[1]<-"CodedEnv"
+temp.data<-data.frame(reshape(meansWide, direction="long", varying=colnames(meansWide)[2:ncol(meansWide)], v.names=respvar[i], timevar="CodedGeno", idvar="CodedEnv", times=colnames(meansWide)[2:ncol(meansWide)]), row.names = NULL)
+rep<-tapply(temp.data[, respvar[i]] , temp.data[,c("CodedEnv", "CodedGeno")], function(x) length(which(!is.na(x))))
+#set CodedEnv and CodedGeno to factors
+temp.data$CodedGeno <- factor(temp.data$CodedGeno)
+temp.data$CodedEnv <- factor(temp.data$CodedEnv)
+}
+#compute response rate
+responseRate<-1-((sum(rep==0, na.rm=TRUE)+sum(is.na(rep)))/(nlevels(temp.data[,"CodedEnv"])*nlevels(temp.data[,"CodedGeno"])))
+if (responseRate < 0.80) {
+capture.output(cat("*** \nERROR: Too many missing observations. Cannot proceed with the analysis.\n***\n\n\n"),file=outFileName,append = TRUE)
+suppressWarnings(result$respvar[[i]]$Error<-"ERROR: Too many missing observations. Cannot proceed with the analysis.")
+} else {
+#get only needed columns
+temp.data<-temp.data[, c("CodedEnv", "CodedGeno", respvar[i])]
+#run lm
+#myformula1<-paste(respvar, " ~ ", environment, " + ", genotype, sep="")
+myformula1<-paste(respvar, " ~ CodedEnv + CodedGeno")
+model2 <- lm(formula(myformula1), data=temp.data)
+RESID <- resid(model2)
+#column bind temp.data with RESID
+RESID <- cbind(temp.data, RESID)
+#reshape RESID
+#RESIDUAL <- reshape(data = RESID, v.names = "RESID", idvar = environment, timevar = genotype, direction = "wide", drop=respvar[i])
+RESIDUAL <- reshape(data = RESID, v.names = "RESID", idvar = "CodedEnv", timevar = "CodedGeno", direction = "wide", drop=respvar[i])
+colnames(RESIDUAL) <-  gsub("RESID.", "G", colnames(RESIDUAL))
+Covariate <- covariateData[order(covariateData[,covariateEnvironment]),]
+Covariate <- covariateData[-1]
+residual2 <- cbind(RESIDUAL[1],scale(RESIDUAL[-1]))
+#Covariate2 <-cbind(Covariate[1],scale(Covariate[-1]))
+Covariate2 <-cbind(Covariate[ncol(Covariate)],scale(Covariate[-match("CodedEnv", names(Covariate))]))
+#if (!is.null(covariateEnvironment)) Varname <- names(Covariate[-match(covariateEnvironment, names(Covariate))])
+if (!is.null(covariateEnvironment)) Varname <- names(Covariate[-match("CodedEnv", names(Covariate))])
+#plsdata <- merge(residual2, Covariate2, by.x=environment, by.y=covariateEnvironment)
+plsdata <- merge(residual2, Covariate2, by.x="CodedEnv", by.y="CodedEnv")
+Ydata <-  as.matrix(plsdata[,2:(g+1)])
+Xdata <- as.matrix(plsdata[,(g+2):ncol(plsdata)])
+model1 <- plsr(Ydata~Xdata, scale=FALSE)
+scores <- scores(model1)[,1:2]
+xloadin2 <- loadings(model1)[,1:3]
+yloadin2 <- Yloadings(model1)[,1:3]
+mscores <- as.matrix(scores)
+factor1 <- max(abs(mscores))
+mscores2 <- (1/factor1)*mscores
+scores3 <- as.data.frame(mscores2)
+colnames(scores3) <- c("dim1","dim2")
+xload <- as.matrix(xloadin2)
+xload <- xload[,1:2]
+factor2 <- max(abs(xload))
+xload2 <- (1/factor2)*xload
+xload3 <- as.data.frame(xload2)
+colnames(xload3) <- c("dim1","dim2")
+yload <- as.matrix(yloadin2)
+yload <- yload[,1:2]
+factor3 <- max(abs(yload))
+yload2 <- (1/factor3)*yload
+yload3 <- as.data.frame(yload2)
+colnames(yload3) <- c("dim1","dim2")
+scores4 <- cbind(levelsEnv, scores3)
+names(scores4) <- c("name", "dim1", "dim2")
+scores4$type <- "ENV"
+rownames(scores4) <- NULL
+xload4 <- cbind(Varname, xload3)
+names(xload4) <- c("name", "dim1", "dim2")
+xload4$type <- "VAR"
+rownames(xload4) <- NULL
+yload4 <- cbind(levelsGeno, yload3)
+names(yload4) <- c("name", "dim1", "dim2")
+yload4$type <- "GENO"
+rownames(yload4) <- NULL
+#### BIPLOT
+BIPLOT <- rbind(scores4, xload4, yload4)
+ymin <- min(BIPLOT$dim2) - abs(.07*(max(BIPLOT$dim2)-min(BIPLOT$dim2)))
+ymax <- max(BIPLOT$dim2) + abs(.07*(max(BIPLOT$dim2)-min(BIPLOT$dim2)))
+xmin <- min(BIPLOT$dim1) - abs(.07*(max(BIPLOT$dim1)-min(BIPLOT$dim1)))
+xmax <- max(BIPLOT$dim1) + abs(.07*(max(BIPLOT$dim1)-min(BIPLOT$dim1)))
+#start plotting
+png(filename = paste(getwd(),"/pls_biplot_",respvar,".png",sep = ""))
+par(cex=0.8)
+plot(xload4$dim1,xload4$dim2,cex=0.8, pch=" ", ylim=c(ymin, ymax), xlim=c(xmin,xmax), main="Biplot PLS", frame=TRUE,xlab="Factor 1", ylab="Factor 2")
+points(yload4$dim1,yload4$dim2,cex=0.8, pch=" ")
+points(scores4$dim1,scores4$dim2,cex=0.8, pch=" ")
+text(xload4$dim1, xload4$dim2, labels=xload4$name,col="black", cex=0.8)
+text(yload4$dim1, yload4$dim2, labels=yload4$name,col="red",cex=0.8)
+text(scores4$dim1, scores4$dim2, labels=scores4$name, col="blue", cex=0.8)
+abline(h=0,v=0,lty=2,col="black")
+s <- seq(e)
+arrows(0, 0, 0.98*(scores4$dim1[s]), 0.99*scores4$dim2[s], col="blue",lwd=1,length=0.05)
+dev.off()
+}
+}
+return (scores=BIPLOT)
+}
+library(PBTools)
+data <- read.csv("E:/NSALES/juno workspace/workspace_1/RJavaManager/sample_datasets/NC2RowCol.csv", header = TRUE, na.strings = c("NA","."," ",""), blank.lines.skip=TRUE, sep = ",")
+data
+library(PBTools)
+data <- read.csv("E:/NSALES/juno workspace/workspace_1/RJavaManager/sample_datasets/LS for all trials.csv", header = TRUE, na.strings = c("NA","."," ",""), blank.lines.skip=TRUE, sep = ",")
+data
+View(data)
+library(agridat)
+install.packages("agridat")
+library(agridat)
+dat <- john.alpha
+View(dat)
+library(PBTools)
+setwd("E:/NSALES/juno workspace/workspace_1/RJavaManager/sample_datasets/")
+data <- read.csv("E:/NSALES/juno workspace/workspace_1/RJavaManager/sample_datasets/means_for_PLS2.csv", header = TRUE, na.strings = c("NA","."," ",""), blank.lines.skip=TRUE, sep = ",")
+result <- try(plsRegression(data, outFileName="E:/NSALES/juno workspace/workspace_1/RJavaManager/sample_datasets/PlsRegression_output.txt", respvar=c("YLD"), genotype="GENOTYPE", environment="ENV", covariateData ="E:/NSALES/juno workspace/workspace_1/RJavaManager/sample_datasets/ENVIRONMENTAL DATA FOR PLS2.csv", covariateEnvironment = "ENVIRONMENT", covariateGenotype = NULL), silent=TRUE)
+result
+covariateData ="E:/NSALES/juno workspace/workspace_1/RJavaManager/sample_datasets/ENVIRONMENTAL DATA FOR PLS2.csv"

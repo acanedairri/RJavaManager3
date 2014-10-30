@@ -1,0 +1,94 @@
+
+MULTIPLE ENVIRONMENT ANALYSIS
+
+DIALLEL ANALYSIS: GRIFFING METHOD II IN CRD (CROSS)
+
+
+RESPONSE VARIABLE: Y
+
+DATA SUMMARY: 
+ Factors     No of Levels   Levels            
+ p1          5              P1  P2  P3  P4  P5
+ p2          5              P1  P2  P3  P4  P5
+ Trial       2              1  2              
+ replication 2              1  2              
+
+ Number of observations read: 57
+ Number of missing observations: 3
+
+
+ANOVA TABLE
+               Df        SS       MS F_value p_value
+Trial           1  33514.72 33514.72    4.23  0.0485
+Hybrid         14 236669.14 16904.94    3.57  0.0117
+Hybrid x Trial 14  66279.22  4734.23    0.60  0.8436
+Error          30 237656.60  7921.89                
+-------
+REMARK: Raw data and estimates of the missing values are used.
+
+
+ANOVA TABLE
+      DF        SS       MS F_value p_value
+GCA    4  23382.52  5845.63    1.62  0.3258
+SCA   10 213286.62 21328.66    4.12  0.0177
+GCAxE  4  14457.05  3614.26    0.46  0.7644
+SCAxE 10  51822.17  5182.22    0.65  0.7597
+Error 30 237656.60  7921.89                
+-------
+REMARK: Raw data and estimates of the missing values are used.
+
+
+MATRIX OF MEANS
+   P1       P2       P3       P4       P5      
+P1 119.9950 244.0818 160.2325  92.4385 268.8353
+P2          201.2349 109.0267 153.1182  69.5024
+P3                   200.7318 168.5605 224.8037
+P4                            196.1548  68.9975
+P5                                      93.3192
+-------
+REMARK: Raw data and estimates of the missing values are used.
+
+
+GENERAL COMBINING ABILITY EFFECTS, SPECIFIC COMBINING ABILITY EFFECTS (above diagonal)
+                                                
+          P1       P2       P3       P4       P5
+P1            73.5914 -22.5277 -63.3697 121.1194
+P2                    -69.8221   1.2212 -74.3021
+P3                               4.3938  68.7294
+P4                                      -60.1250
+P5                                              
+GCA   8.1664   4.2551  16.5248 -10.4270 -18.5194
+
+
+TABLE OF STANDARD ERRORS AND LSDs:
+         Std. Error      LSD
+ Gi         15.0446         
+ Sii        38.8450         
+ Sij        30.7096         
+ Gi-Gj      23.7876  48.5807
+ Sii-Sjj    41.2013  84.1443
+ Sij-Sik    58.2674 118.9980
+ Sij-Skl    53.1906 108.6298
+
+
+ESTIMATES OF VARIANCE COMPONENTS:
+         Estimate
+ GCA    -248.4835
+ SCA    4036.6113
+ GCAxE  -111.9967
+ SCAxE -1369.8348
+ Error  7921.8866
+
+
+ESTIMATES OF GENETIC VARIANCE COMPONENTS:
+                   Estimate
+ VA                  0.0000
+ VD              16146.4452
+ VAE                 0.0000
+ VDE                 0.0000
+ h2-narrow sense     0.0000
+ H2-broad sense      0.6709
+ Dominance Ratio        Inf
+
+
+==============================================================

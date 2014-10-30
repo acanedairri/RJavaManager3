@@ -1,0 +1,147 @@
+# --------------------------------------------------------       
+# FitDistrib: fits selected distribution to data
+# ARGUMENTS:
+# data - name of R dataframe
+# outputPath - folder where output(s) will be saved
+# yVar - numeric variable of interest
+# byVar
+# distrib - distribution to fit
+# fitMethod - method used for fitting
+# --------------------------------------------------------
+
+
+FitDistrib <- function(data, outputPath, yVar, byVar = NULL, 
+                       distrib = c("beta", "exp", "gamma", "geom", "lnorm", "logis", "nbinom", "norm", "pois"), 
+                       fitMethod = c("mle", "mme", "mge")) {
+
+  library(fitdistrplus)
+  #source("E:/StarPbtools/DistribnFitting/fitdistrplus/runSource.R")
+  
+  #reads data
+  if (is.character(data)) { data <- eval(parse(text = data)) }
+  
+  #converts to factor the grouping variable(s)
+  if (!is.null(byVar)) { data[,byVar] <- factor(data[,byVar]) }  
+  
+  results = list()
+
+  cat("====================\n")
+  
+  switch(fitMethod,
+         mle={fit.Method = "maximum likelihood estimation"},
+         mme={fit.Method = "moment matching estimation"},
+         mge={fit.Method = "maximum goodness-of-fit estimation"},
+         stop("Invalid fitting method.")
+  )
+  
+  cat("DISTRIBUTION FITTING\nMETHOD: ", fit.Method, "\n", sep="")
+  
+  if (is.null(byVar)) numRun = 1  else numRun = nlevels(data[,byVar])
+  
+  for (j in 1:numRun) {
+    results[[j]] <- list()
+    if (!is.null(byVar)) results[[j]]$subgroup = levels(data[,byVar])[j]     else results[[j]]$subgroup = "over-all data"
+    results$method = fit.Method
+    
+    #creates data by subgroup, if a grouping variable is defined
+    if (!is.null(byVar)) {
+      tempData = data[which(data[,byVar] == levels(data[,byVar])[j]),]
+      subTitle = paste(byVar,"=",levels(tempData[,byVar])[j], sep=" ")
+    } else {
+      tempData = data
+      subTitle = NULL
+    }
+  
+    tempData = tempData[,yVar]
+    distribn = NULL 
+    #fits the specified distribution(s)  
+    allDiscrete = TRUE
+    for(i in 1:length(distrib)) {
+      #results[[j]]$distrib[[i]] = distrib[i]
+      
+      switch(distrib[i],
+             beta = {distribn[i] = "Beta"},
+             exp = {distribn[i] = "Exponential"},
+             gamma = {distribn[i] = "Gamma"}, 
+             geom  = {distribn[i] = "Geometric"}, 
+             lnorm = {distribn[i] = "Log-normal"},
+             logis = {distribn[i] = "Logistic"},
+             nbinom = {distribn[i] = "Negative binomial"},
+             norm = {distribn[i] = "Normal"},
+             pois = {distribn[i] = "Poisson"},
+             stop("Invalid distribution selected.")
+      )
+      
+      results$distrib[[i]] = distribn[i]
+      
+      #check if all distributions are discrete
+      if (is.element(distrib[i], c("beta", "exp", "gamma", "lnorm", "logis", "norm"))) allDiscrete <- FALSE
+      
+      cat("\n--------------------\n")
+      cat("DISTRIBUTION: ", distribn[i], "\n\n", sep="")
+      
+      results[[j]]$estimates[[i]] = fitdist(data = tempData, distr = distrib[i], 
+                                    #order, start = startPars, fix.arg = fixArgs
+                                    method = fitMethod)
+      print(results[[j]]$estimates[[i]])
+  
+      #goodness of fit test
+      capture.output(results[[j]]$fitComp[[i]] <- gofstat(results[[j]]$estimates[[i]], print = FALSE))
+                                            
+      if (is.element(distrib[i], c("beta","exp", "gamma", "lnorm", "logis", "norm")))  {
+        cat("\nGoodness-of-fit\n")
+        gofComp = format(rbind(results[[j]]$fitComp[[i]]$cvm, results[[j]]$fitComp[[i]]$ad, results[[j]]$fitComp[[i]]$ks), digits=4)
+        gofDecisions = rbind(
+          ifelse(!is.null(results[[j]]$fitComp[[i]]$cvmtest), results[[j]]$fitComp[[i]]$cvmtest, "NULL"), 
+          ifelse(!is.null(results[[j]]$fitComp[[i]]$adtest), results[[j]]$fitComp[[i]]$adtest, "NULL"), 
+          ifelse(!is.null(results[[j]]$fitComp[[i]]$kstest), results[[j]]$fitComp[[i]]$kstest, "NULL"))
+        gofStats = cbind(gofComp, gofDecisions) 
+        
+        colnames(gofStats) <- c("Statistic", "Decision")
+        rownames(gofStats) <- c("Cramer-von Mises", "Anderson-Darling", "Kolmogorov-Smirnov")
+        results[[j]]$gofTable[[i]] <- as.table(gofStats)
+      } else {
+        #chisquare
+        cat("\nChi-squared Goodness-of-fit\n")
+        gofChisq = cbind(
+          ifelse(!is.null(results[[j]]$fitComp[[i]]$chisq), format(results[[j]]$fitComp[[i]]$chisq, digits = 4), "NULL"), 
+          ifelse(!is.null(results[[j]]$fitComp[[i]]$chisqpvalue), format(results[[j]]$fitComp[[i]]$chisqpvalue, digits = 4), "NULL"), 
+          ifelse(!is.null(results[[j]]$fitComp[[i]]$chisqdf), results[[j]]$fitComp[[i]]$chisqdf, "NULL")
+        )
+        colnames(gofChisq) <- c("Statistic", "p-value", "df")
+        rownames(gofChisq) <- ""
+        results[[j]]$gofTable[[i]] <- as.table(gofChisq)
+      }
+      
+      print(results[[j]]$gofTable[[i]])
+                                            
+    }
+  }
+
+  #plots
+  if (numRun > 1) { plotfile = paste(outputPath,"plots_", level(tempData[,byVar]), ".png",sep="")     
+  } else { plotfile = paste(outputPath,"plots.png",sep="")}
+  png(filename = plotfile)
+
+  if (allDiscrete) {
+    par(mfrow=c(1, 2))
+    param = c(as.list(results[[j]]$estimates[[i]]$estimate))
+    plotDiscDist(tempData, distrib[i], param) 
+  
+  } else {
+    
+    par(mfrow=c(2, 2))
+    histData =  hist(tempData, plot = F)  
+    minDensity = min(histData$density, na.rm = TRUE) 
+    maxDensity = max(histData$density, na.rm = TRUE)
+  
+    cdfcomp(results[[j]]$estimates, xlim = c(min(tempData), max(tempData)), ylim = c(0,1), legendtext=c(distrib))
+    denscomp(results[[j]]$estimates, ylim = c(minDensity, maxDensity), xlim = c(min(tempData), max(tempData) * 1.25), legendtext=c(distrib)) #ylim = c(0,0.0004),
+    qqcomp(results[[j]]$estimates, xlim = c(min(tempData)-0.25*min(tempData), max(tempData) * 1.25), legendtext=c(distrib))
+    ppcomp(results[[j]]$estimates, xlim = c(0,1), ylim = c(0,1), legendtext=c(distrib))
+  } 
+    
+  dev.off()
+  
+  return(results)
+}

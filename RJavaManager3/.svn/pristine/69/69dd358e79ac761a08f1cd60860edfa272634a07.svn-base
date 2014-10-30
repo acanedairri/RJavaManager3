@@ -1,0 +1,71 @@
+
+DATA FILE: E:/NSALES/juno workspace/workspace_1/RJavaManager/sample_datasets/NC2RowCol.csv
+
+MULTIPLE ENVIRONMENT ANALYSIS
+
+DESIGN: NORTH CAROLINA EXPERIMENT I IN ROW-COLUMN (INBRED)
+
+-----------------------------
+RESPONSE VARIABLE: Y
+-----------------------------
+
+DATA SUMMARY: 
+
+ Factors   No of Levels   Levels             
+ Trial     2              1  2               
+ row       21             1  10  11 ... 9    
+ col       3              1  2  3            
+ trmt      21             T1  T10  T11 ... T9
+ rep       3              1  2  3            
+ male      7              1  2  3  4  5  6  7
+ fem       3              F1  F2  F3         
+
+ Number of observations read: 126
+ Number of missing observations: 0
+
+
+LINEAR MIXED MODEL FIT BY RESTRICTED MAXIMUM LIKELIHOOD:
+
+ Formula:  Y ~ 1 + (1|Trial) + (1|Trial:rep) + (1|Trial:rep:row) + (1|Trial:rep:col) + (1|male/fem) + (1|Trial:male) + (1|Trial:fem:male) 
+
+      AIC     BIC    logLik deviance  REMLdev
+ 1500.378 1528.74 -740.1888 1489.684 1480.378
+
+ Fixed Effects:
+            Estimate Std. Error t value
+(Intercept)  173.285     41.934  4.1323
+
+ Random Effects:                                        
+ Groups          Variance Std. Deviation
+ Trial:fem:male   17.9420         4.2358
+ Trial:rep:row   503.7700        22.4448
+ fem:male        429.6950        20.7291
+ Trial:rep:col   292.1640        17.0928
+ Trial:male        0.0000         0.0000
+ male            387.9920        19.6975
+ Trial:rep         0.0000         0.0000
+ Trial          3206.8550        56.6291
+ Residual       6357.9790        79.7369
+
+
+ESTIMATES OF GENETIC VARIANCE COMPONENTS:
+                           
+                   Estimate
+ VA              775.984000
+ VAxE              0.000000
+ VD               41.703000
+ VDxE             17.942000
+ h2-narrow sense   0.107871
+ H2-broad sense    0.113669
+ Dominance Ratio   0.327848
+
+
+ESTIMATES OF HERITABILITY:
+
+          Family Selection Narrow Sense Broad sense
+ male                 0.44         0.05        0.11
+ fem                  0.29         0.12        0.13
+ Full-sib             0.43         0.11        0.12
+
+
+==============================================================

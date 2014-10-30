@@ -1,0 +1,485 @@
+package org.irri.breedingtool.rjava.manager;
+
+import org.irri.breedingtool.rjava.manager.api.IRJavaSTARDesignManager;
+import org.irri.breedingtool.rjava.utilities.InputTransform;
+import org.rosuda.JRI.Rengine;
+
+public class STARDesignManager implements IRJavaSTARDesignManager {
+
+	private Rengine rEngine;
+	private InputTransform inputTransform;
+	private StringBuilder rscriptCommand;
+	
+	public STARDesignManager(Rengine rEngine) {
+		this.rEngine = rEngine;
+		this.inputTransform= new InputTransform();
+	}
+	
+	private void rEngineEnd(){
+		String rm = "rm(list=ls(all=TRUE))";
+		rEngine.eval(rm);
+		rEngine.end();
+	}
+	
+	@Override
+	public void doDesignCRD(String dataFileName, String outFileName, String[] factorName, Integer[] factorLevel,
+			Integer rep, Integer trial){
+
+		String inputList = inputTransform.createRList(factorName, factorLevel);
+
+		//defining the R statements for randomization of completely randomized design
+		rscriptCommand = new StringBuilder();
+		String sinkIn = "sink(\"" + outFileName + "\")";
+		String pkgIntro = "cat(\"Statistical Tool for Agricultural Research (STAR)\\nResult of Randomization\\n\",date(),\"\\n\\n\\n\", sep = \"\")";
+		String funcRandomize = "result <- try(";
+		String command = "designCRD("+inputList+", r = "+ rep +", trial = "+ trial +", file = \""+ dataFileName+"\")";
+		funcRandomize = funcRandomize + command + ", silent = TRUE)";
+		
+		System.out.println(sinkIn);
+		System.out.println(pkgIntro);
+		System.out.println(funcRandomize);
+		
+		rEngine.eval(sinkIn);
+		rEngine.eval(pkgIntro);
+		rEngine.eval(funcRandomize);
+		
+		String runSuccessCommand = rEngine.eval("class(result)").asString();
+		if (runSuccessCommand.equals("try-error")) {
+			String errorMsg1 = "msg <- trim.strings(strsplit(result, \":\")[[1]])";
+			String errorMsg2 = "msg <- trim.strings(paste(strsplit(msg, \"\\n\")[[length(msg)]], collapse = \" \"))";
+			String errorMsg3 = "msg <- gsub(\"\\\"\", \"\", msg)";
+			String errorMsg4 = "cat(\"Error in designCRD:\\n\",msg, sep = \"\")";
+
+			System.out.println(errorMsg1);
+			System.out.println(errorMsg2);
+			System.out.println(errorMsg3);
+			System.out.println(errorMsg4);
+			
+			rEngine.eval(errorMsg1);
+			rEngine.eval(errorMsg2);
+			rEngine.eval(errorMsg3);
+			rEngine.eval(errorMsg4);
+		} 
+
+		String sinkOut = "sink()";
+		System.out.println(sinkOut);
+		rEngine.eval(sinkOut);
+		
+		rscriptCommand.append(command+"\n");
+		rEngineEnd();
+	}
+	
+	@Override
+	public void doDesignRCBD(String dataFileName, String outFileName, String[] factorName, Integer[] factorLevel,
+			Integer rep, Integer trial){
+
+		String inputList = inputTransform.createRList(factorName, factorLevel);
+
+		//defining the R statements for randomization of randomized complete block design
+		rscriptCommand = new StringBuilder();
+		String sinkIn = "sink(\"" + outFileName + "\")";
+		String pkgIntro = "cat(\"Statistical Tool for Agricultural Research (STAR)\\nResult of Randomization\\n\",date(),\"\\n\\n\\n\", sep = \"\")";
+		String funcRandomize = "result <- try(";
+		String command = "designRCBD("+inputList+", r = "+ rep +", trial = "+ trial +", file = \""+ dataFileName+"\")";
+		funcRandomize = funcRandomize + command + ", silent = TRUE)";
+		
+		System.out.println(sinkIn);
+		System.out.println(pkgIntro);
+		System.out.println(funcRandomize);
+		
+		rEngine.eval(sinkIn);
+		rEngine.eval(pkgIntro);
+		rEngine.eval(funcRandomize);
+		
+		String runSuccessCommand = rEngine.eval("class(result)").asString();
+		if (runSuccessCommand.equals("try-error")) {
+			String errorMsg1 = "msg <- trim.strings(strsplit(result, \":\")[[1]])";
+			String errorMsg2 = "msg <- trim.strings(paste(strsplit(msg, \"\\n\")[[length(msg)]], collapse = \" \"))";
+			String errorMsg3 = "msg <- gsub(\"\\\"\", \"\", msg)";
+			String errorMsg4 = "cat(\"Error in designRCBD:\\n\",msg, sep = \"\")";
+
+			System.out.println(errorMsg1);
+			System.out.println(errorMsg2);
+			System.out.println(errorMsg3);
+			System.out.println(errorMsg4);
+			
+			rEngine.eval(errorMsg1);
+			rEngine.eval(errorMsg2);
+			rEngine.eval(errorMsg3);
+			rEngine.eval(errorMsg4);
+		} 
+
+		String sinkOut = "sink()";
+		System.out.println(sinkOut);
+		rEngine.eval(sinkOut);
+
+		rscriptCommand.append(command+"\n");
+		rEngineEnd();
+	}
+	
+	@Override
+	public void doDesignLSD(String dataFileName, String outFileName, String[] factorName, Integer[] factorLevel,
+			Integer trial){
+
+		String inputList = inputTransform.createRList(factorName, factorLevel);
+
+		//defining the R statements for randomization of latin square design
+		rscriptCommand = new StringBuilder();
+		String sinkIn = "sink(\"" + outFileName + "\")";
+		String pkgIntro = "cat(\"Statistical Tool for Agricultural Research (STAR)\\nResult of Randomization\\n\",date(),\"\\n\\n\\n\", sep = \"\")";
+		String funcRandomize = "result <- try(";
+		String command = "designLSD("+inputList+", trial = "+ trial +", file = \""+ dataFileName+"\")";
+		funcRandomize = funcRandomize + command + ", silent = TRUE)";
+		
+		System.out.println(sinkIn);
+		System.out.println(pkgIntro);
+		System.out.println(funcRandomize);
+
+		rEngine.eval(sinkIn);
+		rEngine.eval(pkgIntro);
+		rEngine.eval(funcRandomize);
+
+		String runSuccessCommand = rEngine.eval("class(result)").asString();
+		if (runSuccessCommand.equals("try-error")) {
+			String errorMsg1 = "msg <- trim.strings(strsplit(result, \":\")[[1]])";
+			String errorMsg2 = "msg <- trim.strings(paste(strsplit(msg, \"\\n\")[[length(msg)]], collapse = \" \"))";
+			String errorMsg3 = "msg <- gsub(\"\\\"\", \"\", msg)";
+			String errorMsg4 = "cat(\"Error in designLSD:\\n\",msg, sep = \"\")";
+
+			System.out.println(errorMsg1);
+			System.out.println(errorMsg2);
+			System.out.println(errorMsg3);
+			System.out.println(errorMsg4);
+			
+			rEngine.eval(errorMsg1);
+			rEngine.eval(errorMsg2);
+			rEngine.eval(errorMsg3);
+			rEngine.eval(errorMsg4);
+		} 
+
+		String sinkOut = "sink()";
+		System.out.println(sinkOut);
+		rEngine.eval(sinkOut);
+
+		rscriptCommand.append(command+"\n");
+		rEngineEnd();
+	}
+	
+	@Override
+	public void doDesignSplit(String dataFileName, String outFileName, 
+			String main, String sub, String ssub, String sssub,
+			Integer[] factorLevel, Integer rep, Integer trial, String design){
+
+		String mainFactor = "list("+ main +" = "+ factorLevel[0]+")";
+		String subFactor  = "list("+ sub  +" = "+ factorLevel[1]+")";
+		
+		//defining the R statements for randomization of Family of Split plot design
+		rscriptCommand = new StringBuilder();
+		String sinkIn = "sink(\"" + outFileName + "\")";
+		String pkgIntro = "cat(\"Statistical Tool for Agricultural Research (STAR)\\nResult of Randomization\\n\",date(),\"\\n\\n\\n\", sep = \"\")";
+		String funcRandomize = "result <- try(";
+		String command = "designSplit(main = "+ mainFactor +", sub = "+ subFactor;
+		if (ssub != null) {
+			command = command + ", ssub = list(" + ssub + " = " + factorLevel[2]+")";
+		}
+		if (sssub != null) {
+			command = command + ", sssub = list(" + sssub + " = " + factorLevel[3]+")";
+		}
+		if (design != "lsd") {
+			command = command + ", r = "+ rep ;
+		}
+		command = command + ", trial = "+ trial + ", design = \""+ design +"\", file = \"" + dataFileName +"\")";
+		funcRandomize = funcRandomize + command + ", silent = TRUE)";
+				
+		System.out.println(sinkIn);
+		System.out.println(pkgIntro);
+		System.out.println(funcRandomize);
+
+		rEngine.eval(sinkIn);
+		rEngine.eval(pkgIntro);
+		rEngine.eval(funcRandomize);
+		
+		String runSuccessCommand = rEngine.eval("class(result)").asString();
+		if (runSuccessCommand.equals("try-error")) {
+			String errorMsg1 = "msg <- trim.strings(strsplit(result, \":\")[[1]])";
+			String errorMsg2 = "msg <- trim.strings(paste(strsplit(msg, \"\\n\")[[length(msg)]], collapse = \" \"))";
+			String errorMsg3 = "msg <- gsub(\"\\\"\", \"\", msg)";
+			String errorMsg4 = "cat(\"Error in designSplit:\\n\",msg, sep = \"\")";
+
+			System.out.println(errorMsg1);
+			System.out.println(errorMsg2);
+			System.out.println(errorMsg3);
+			System.out.println(errorMsg4);
+			
+			rEngine.eval(errorMsg1);
+			rEngine.eval(errorMsg2);
+			rEngine.eval(errorMsg3);
+			rEngine.eval(errorMsg4);
+		} 
+
+		String sinkOut = "sink()";
+		System.out.println(sinkOut);
+		rEngine.eval(sinkOut);
+	
+		rscriptCommand.append(command+"\n");
+		rEngineEnd();
+	}
+	
+	@Override
+	public void doDesignStrip(String dataFileName, String outFileName, 
+			String vertical, String horizontal, String sub, String ssub, 
+			Integer[] factorLevel, Integer rep, Integer trial){
+
+		//defining the R statements for randomization for Family of Strip Design
+		rscriptCommand = new StringBuilder();
+		String sinkIn = "sink(\"" + outFileName + "\")";
+		String pkgIntro = "cat(\"Statistical Tool for Agricultural Research (STAR)\\nResult of Randomization\\n\",date(),\"\\n\\n\\n\", sep = \"\")";		
+		String funcRandomize = "result <- try(";
+		String command = "designStrip(vertical = list("+ vertical +" = "+ factorLevel[0] +") , horizontal = list("+ horizontal +" = "+ factorLevel[1] +")";
+		if (sub != null) {
+			command = command + ", sub = list(" + sub + " = " + factorLevel[2]+")";
+		}
+		if (ssub != null) {
+			command = command + ", ssub = list(" + ssub + " = " + factorLevel[3]+")";
+		}
+		command = command + ", trial = "+ trial + ", file = \"" + dataFileName +"\")";
+		funcRandomize = funcRandomize + command + ", silent = TRUE)";
+				
+		System.out.println(sinkIn);
+		System.out.println(pkgIntro);
+		System.out.println(funcRandomize);
+		
+		//R statements passed on to the R engine
+		rEngine.eval(sinkIn);
+		rEngine.eval(pkgIntro);
+		rEngine.eval(funcRandomize);
+
+		String runSuccessCommand = rEngine.eval("class(result)").asString();
+		if (runSuccessCommand.equals("try-error")) {
+			String errorMsg1 = "msg <- trim.strings(strsplit(result, \":\")[[1]])";
+			String errorMsg2 = "msg <- trim.strings(paste(strsplit(msg, \"\\n\")[[length(msg)]], collapse = \" \"))";
+			String errorMsg3 = "msg <- gsub(\"\\\"\", \"\", msg)";
+			String errorMsg4 = "cat(\"Error in designStrip:\\n\",msg, sep = \"\")";
+
+			System.out.println(errorMsg1);
+			System.out.println(errorMsg2);
+			System.out.println(errorMsg3);
+			System.out.println(errorMsg4);
+			
+			rEngine.eval(errorMsg1);
+			rEngine.eval(errorMsg2);
+			rEngine.eval(errorMsg3);
+			rEngine.eval(errorMsg4);
+		} 
+
+		String sinkOut = "sink()";
+		System.out.println(sinkOut);
+		rEngine.eval(sinkOut);
+
+		rscriptCommand.append(command+"\n");
+		rEngineEnd();
+	}
+	
+	@Override
+	public void doDesignBIBD(String dataFileName, String outFileName, 
+			Integer numTrmt, Integer blkSize, 
+			Integer trial){
+
+		//defining the R statements for randomization for balanced incomplete block design
+		rscriptCommand = new StringBuilder();
+		String sinkIn = "sink(\"" + outFileName + "\")";
+		String pkgIntro = "cat(\"Statistical Tool for Agricultural Research (STAR)\\nResult of Randomization\\n\",date(),\"\\n\\n\\n\", sep = \"\")";
+		String funcRandomize = "result <- try(";
+		String command = "designBIBD(list(Treatment = paste(\"T\", paste(1:"+ numTrmt +"), sep = \"\"))";
+		command = command + ", blkSize = "+ blkSize +", trial = "+ trial + ", file = \"" + dataFileName +"\")";
+		funcRandomize = funcRandomize + command + ", silent = TRUE)";
+		
+		System.out.println(sinkIn);
+		System.out.println(pkgIntro);
+		System.out.println(funcRandomize);
+
+		rEngine.eval(sinkIn);
+		rEngine.eval(pkgIntro);
+		rEngine.eval(funcRandomize);
+
+		String runSuccessCommand = rEngine.eval("class(result)").asString();
+		if (runSuccessCommand.equals("try-error")) {
+			String errorMsg1 = "msg <- trim.strings(strsplit(result, \":\")[[1]])";
+			String errorMsg2 = "msg <- trim.strings(paste(strsplit(msg, \"\\n\")[[length(msg)]], collapse = \" \"))";
+			String errorMsg3 = "msg <- gsub(\"\\\"\", \"\", msg)";
+			String errorMsg4 = "cat(\"Error in designBIBD:\\n\",msg, sep = \"\")";
+
+			System.out.println(errorMsg1);
+			System.out.println(errorMsg2);
+			System.out.println(errorMsg3);
+			System.out.println(errorMsg4);
+			
+			rEngine.eval(errorMsg1);
+			rEngine.eval(errorMsg2);
+			rEngine.eval(errorMsg3);
+			rEngine.eval(errorMsg4);
+		} 
+
+		String sinkOut = "sink()";
+		System.out.println(sinkOut);
+		rEngine.eval(sinkOut);
+		
+		rscriptCommand.append(command+"\n");
+		rEngineEnd();
+	}
+	
+	@Override
+	public void doDesignAug(String dataFileName, String outFileName, 
+			Integer repTrmt, Integer unrepTrmt, Integer rep, Integer trial,
+			String design){
+
+		//defining the R statements for randomization for augmented design
+		rscriptCommand = new StringBuilder();
+		String sinkIn = "sink(\"" + outFileName + "\")";
+		String pkgIntro = "cat(\"Statistical Tool for Agricultural Research (STAR)\\nResult of Randomization\\n\",date(),\"\\n\\n\\n\", sep = \"\")";
+		String funcRandomize = "result <- try(";
+		String command = "designAugmented(check = "+ repTrmt +", newTrmt = "+ unrepTrmt;
+		if (design == "rcbd") {
+			command = command + ", r = "+ rep +", trial = "+ trial + ", design = \""+ design + "\", file = \""+ dataFileName +"\")";
+		} else {
+			command = command + ", trial = "+ trial + ", design = \""+ design + "\", file = \""+ dataFileName +"\")";
+		}
+		funcRandomize = funcRandomize + command + ", silent = TRUE)";
+		
+		System.out.println(sinkIn);
+		System.out.println(pkgIntro);
+		System.out.println(funcRandomize);
+
+		rEngine.eval(sinkIn);
+		rEngine.eval(pkgIntro);
+		rEngine.eval(funcRandomize);
+
+		String runSuccessCommand = rEngine.eval("class(result)").asString();
+		if (runSuccessCommand.equals("try-error")) {
+			String errorMsg1 = "msg <- trim.strings(strsplit(result, \":\")[[1]])";
+			String errorMsg2 = "msg <- trim.strings(paste(strsplit(msg, \"\\n\")[[length(msg)]], collapse = \" \"))";
+			String errorMsg3 = "msg <- gsub(\"\\\"\", \"\", msg)";
+			String errorMsg4 = "cat(\"Error in designAugmented:\\n\",msg, sep = \"\")";
+
+			System.out.println(errorMsg1);
+			System.out.println(errorMsg2);
+			System.out.println(errorMsg3);
+			System.out.println(errorMsg4);
+			
+			rEngine.eval(errorMsg1);
+			rEngine.eval(errorMsg2);
+			rEngine.eval(errorMsg3);
+			rEngine.eval(errorMsg4);
+		} 
+
+		String sinkOut = "sink()";
+		System.out.println(sinkOut);
+		rEngine.eval(sinkOut);
+		
+		rscriptCommand.append(command+"\n");
+		rEngineEnd();
+	}
+	
+	@Override
+	public void doDesignLattice(String dataFileName, String outFileName, 
+			Integer numTrmt, Integer rep, Integer trial){
+
+		//defining the R statements for randomization for Lattice
+		rscriptCommand = new StringBuilder();
+		String sinkIn = "sink(\"" + outFileName + "\")";
+		String pkgIntro = "cat(\"Statistical Tool for Agricultural Research (STAR)\\nResult of Randomization\\n\",date(),\"\\n\\n\\n\", sep = \"\")";
+		String funcRandomize = "result <- try(";
+		String command = "designLattice(list(Treatment = paste(\"T\", paste(1:"+ numTrmt +"), sep = \"\"))";
+		command = command + ", r = "+ rep +", trial = "+ trial + ", file = \"" + dataFileName +"\")";
+		funcRandomize = funcRandomize + command + ", silent = TRUE)";
+		
+		System.out.println(sinkIn);
+		System.out.println(pkgIntro);
+		System.out.println(funcRandomize);
+
+		rEngine.eval(sinkIn);
+		rEngine.eval(pkgIntro);
+		rEngine.eval(funcRandomize);
+
+		String runSuccessCommand = rEngine.eval("class(result)").asString();
+		if (runSuccessCommand.equals("try-error")) {
+			String errorMsg1 = "msg <- trim.strings(strsplit(result, \":\")[[1]])";
+			String errorMsg2 = "msg <- trim.strings(paste(strsplit(msg, \"\\n\")[[length(msg)]], collapse = \" \"))";
+			String errorMsg3 = "msg <- gsub(\"\\\"\", \"\", msg)";
+			String errorMsg4 = "cat(\"Error in designLattice:\\n\",msg, sep = \"\")";
+
+			System.out.println(errorMsg1);
+			System.out.println(errorMsg2);
+			System.out.println(errorMsg3);
+			System.out.println(errorMsg4);
+			
+			rEngine.eval(errorMsg1);
+			rEngine.eval(errorMsg2);
+			rEngine.eval(errorMsg3);
+			rEngine.eval(errorMsg4);
+		} 
+
+		String sinkOut = "sink()";
+		System.out.println(sinkOut);
+		rEngine.eval(sinkOut);
+
+		rscriptCommand.append(command+"\n");
+		rEngineEnd();
+	}
+	
+	@Override
+	public void doDesignAlpha(String dataFileName, String outFileName, 
+			Integer numTrmt, Integer blkSize, Integer rep, Integer trial){
+
+		//defining the R statements for randomization for Alpha Lattice
+		rscriptCommand= new StringBuilder();
+		String sinkIn = "sink(\"" + outFileName + "\")";
+		String pkgIntro = "cat(\"Statistical Tool for Agricultural Research (STAR)\\nResult of Randomization\\n\",date(),\"\\n\\n\\n\", sep = \"\")";
+		String funcRandomize = "result <- try(";
+		String command = "designAlphaLattice(list(Treatment = paste(\"T\", paste(1:"+ numTrmt +"), sep = \"\"))";
+		command = command + ", blksize = "+ blkSize +", r = "+ rep +", trial = "+ trial + ", file = \"" + dataFileName +"\")";
+		funcRandomize = funcRandomize + command + ", silent = TRUE)";
+		
+		System.out.println(sinkIn);
+		System.out.println(pkgIntro);
+		System.out.println(funcRandomize);
+
+		//R statements passed on to the R engine
+		rEngine.eval(sinkIn);
+		rEngine.eval(pkgIntro);
+		rEngine.eval(funcRandomize);
+		
+		String runSuccessCommand = rEngine.eval("class(result)").asString();
+		if (runSuccessCommand.equals("try-error")) {
+			String errorMsg1 = "msg <- trim.strings(strsplit(result, \":\")[[1]])";
+			String errorMsg2 = "msg <- trim.strings(paste(strsplit(msg, \"\\n\")[[length(msg)]], collapse = \" \"))";
+			String errorMsg3 = "msg <- gsub(\"\\\"\", \"\", msg)";
+			String errorMsg4 = "cat(\"Error in designAlphaLattice:\\n\",msg, sep = \"\")";
+
+			System.out.println(errorMsg1);
+			System.out.println(errorMsg2);
+			System.out.println(errorMsg3);
+			System.out.println(errorMsg4);
+			
+			rEngine.eval(errorMsg1);
+			rEngine.eval(errorMsg2);
+			rEngine.eval(errorMsg3);
+			rEngine.eval(errorMsg4);
+		} 
+
+		String sinkOut = "sink()";
+		System.out.println(sinkOut);
+		rEngine.eval(sinkOut);
+			
+		rscriptCommand.append(command+"\n");
+		rEngineEnd();
+		//return msg;
+	}
+
+	public StringBuilder getRscriptCommand() {
+		return rscriptCommand;
+	}
+	
+	
+}
+

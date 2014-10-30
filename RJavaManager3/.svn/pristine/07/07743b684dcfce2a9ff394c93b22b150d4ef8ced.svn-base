@@ -1,0 +1,38 @@
+package org.irri.breedingtool.rjava.pbtoolsanalysis;
+
+import org.irri.breedingtool.rjava.manager.RJavaManager;
+
+public class TestTTCME {
+
+	private static String BSLASH = "\\";
+	private static String FSLASH = "/";
+	private static String PATH1 = System.getProperty("user.dir")+ System.getProperty("file.separator") + "sample_datasets" + System.getProperty("file.separator");
+	public static String DATA_PATH = PATH1.replace(BSLASH, FSLASH);
+	
+	public static void main(String[] args) {
+		
+		//supply path and name of active data
+		String dataFileName = DATA_PATH + "TTC_ME.csv";
+		//supply path and name of text file where text output is going to be saved
+		String outFileName = DATA_PATH + "TTC_ME_output.txt";
+		
+		//specify parameters
+		String design = "RCB";
+		String[] respvars = {"Y"};
+		String tester = "Female";
+		String f2lines = "Male";
+		String rep = "NULL";
+		String block = "Block";
+		String environment = "Env";
+		String individual = "NULL";
+		String codeP1 = "P1";
+		String codeP2 = "P2";
+		String codeF1 = "F1";
+		String alpha = "0.05";
+		
+		RJavaManager rJavaManager= new RJavaManager();
+		rJavaManager.initPBtool();
+		rJavaManager.getPbToolAnalysisManager().doTTCME(dataFileName, outFileName, design, respvars, tester, f2lines, rep, block, individual, environment, codeP1, codeP2, codeF1, alpha);
+	}
+
+}

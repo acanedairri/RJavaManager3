@@ -1,0 +1,62 @@
+
+DESIGN: NORTH CAROLINA EXPERIMENT II IN RowColumn (INBRED)
+
+
+RESPONSE VARIABLE: Y
+
+-----------------------------
+ANALYSIS FOR: Trial = 1
+-----------------------------
+
+DATA SUMMARY: 
+ Factors   No of Levels   Levels             
+ Trial     1              1                  
+ row       21             1  10  11 ... 9    
+ col       3              1  2  3            
+ rep       3              1  2  3            
+ male      7              1  2  3  4  5  6  7
+ fem       3              F1  F2  F3         
+
+Number of observations read: 63
+Number of missing observations: 0
+
+
+LINEAR MIXED MODEL FIT BY RESTRICTED MAXIMUM LIKELIHOOD:
+
+ Formula:  Y ~ 1 + (1|rep) + (1|row:rep) + (1|col:rep) + (1|male) + (1|fem) + (1|male:fem) 
+
+      AIC      BIC    logLik deviance  REMLdev
+ 748.9276 766.0727 -366.4638 740.5328 732.9276
+
+ Fixed Effects:
+            Estimate Std. Error t value
+(Intercept) 132.2657    17.9515  7.3679
+
+ Random Effects:                                  
+ Groups    Variance Std. Deviation
+ male:fem 1198.2300        34.6150
+ row:rep     0.0000         0.0000
+ col:rep     0.0000         0.0000
+ male      725.8100        26.9410
+ fem         0.0000         0.0000
+ rep       199.5500        14.1260
+ Residual 5988.7400        77.3870
+
+
+ESTIMATES OF GENETIC VARIANCE COMPONENTS:                                                     
+                                             Estimate
+ VA                                          725.8100
+ VD                                         1198.2300
+ Narrow sense heritability(plot-mean based)    0.0917
+ Broad sense heritability(plot-mean based)     0.2432
+ Dominance Ratio                               1.8171
+
+
+ESTIMATES OF HERITABILITY:
+          Family Selection Narrow Sense Broad sense
+ male                 0.41         0.18        0.33
+ fem                  0.00         0.00        0.17
+ Full-sib             0.63         0.09        0.24
+
+
+==============================================================

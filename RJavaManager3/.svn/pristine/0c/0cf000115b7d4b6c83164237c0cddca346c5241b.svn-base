@@ -1,0 +1,61 @@
+
+DESIGN: NORTH CAROLINA EXPERIMENT I IN RowColumn (INBRED)
+
+
+RESPONSE VARIABLE: Y
+
+-----------------------------
+ANALYSIS FOR: Trial = 1
+-----------------------------
+
+DATA SUMMARY: 
+ Factors   No of Levels   Levels             
+ Trial     1              1                  
+ row       21             1  10  11 ... 9    
+ col       3              1  2  3            
+ rep       3              1  2  3            
+ male      7              1  2  3  4  5  6  7
+ fem       3              F1  F2  F3         
+
+Number of observations read: 63
+Number of missing observations: 0
+
+
+LINEAR MIXED MODEL FIT BY RESTRICTED MAXIMUM LIKELIHOOD:
+
+ Formula:  Y ~ 1 + (1|rep) + (1|row:rep) + (1|col:rep) + (1|male/fem) 
+
+      AIC      BIC    logLik deviance  REMLdev
+ 746.9276 761.9295 -366.4638  740.533 732.9276
+
+ Fixed Effects:
+            Estimate Std. Error t value
+(Intercept) 132.2657    17.9535  7.3671
+
+ Random Effects:                                  
+ Groups    Variance Std. Deviation
+ fem:male 1198.2300        34.6150
+ row:rep     0.0000         0.0000
+ col:rep     0.0000         0.0000
+ male      725.7600        26.9400
+ rep       199.6200        14.1290
+ Residual 5988.7300        77.3870
+
+
+ESTIMATES OF GENETIC VARIANCE COMPONENTS:                          
+                  Estimate
+ VA              1451.5200
+ VD               472.4700
+ h2-narrow sense    0.1834
+ H2-broad sense     0.2432
+ Dominance Ratio    0.8068
+
+
+ESTIMATES OF HERITABILITY:
+          Family Selection Narrow Sense Broad sense
+ male                 0.41         0.09        0.24
+ fem                  0.38         0.30        0.36
+ Full-sib             0.49         0.24        0.30
+
+
+==============================================================

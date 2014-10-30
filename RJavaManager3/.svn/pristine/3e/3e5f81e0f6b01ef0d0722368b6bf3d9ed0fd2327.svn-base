@@ -1,0 +1,159 @@
+
+DIALLEL ANALYSIS: GRIFFING METHOD II IN CRD (CROSS)
+
+
+RESPONSE VARIABLE: Y
+
+-----------------------------
+ANALYSIS FOR: Trial = 1
+-----------------------------
+
+DATA SUMMARY: 
+ Factors     No of Levels   Levels            
+ Trial       1              1                 
+ replication 2              1  2              
+ p1          5              P1  P2  P3  P4  P5
+ p2          5              P1  P2  P3  P4  P5
+
+Number of observations read: 30
+Number of missing observations: 0
+
+
+ANOVA TABLE: (Trt = p1:p2)
+ Formula: Y ~ Trt
+
+           Df    Sum Sq   Mean Sq F value Pr(>F)
+ Trt       14 153541.63 10967.259    1.69 0.1628
+ Residuals 15  97438.66  6495.911               
+
+
+MATRIX OF MEANS:
+   P1       P2       P3       P4       P5      
+P1  94.9950 244.0818  60.2325  42.4385 268.8353
+P2          192.7219  84.0267 153.1182  44.5024
+P3                   200.7318  91.0605 174.8037
+P4                            196.1548  92.8405
+P5                                      76.6497
+
+
+ANALYSIS OF VARIANCE:                                         
+ SV    Df   Sum Sq Mean Sq F value Pr(>F)
+ GCA    4  2486.33  621.58    0.08 0.9856
+ SCA   10 74284.48 7428.45    2.29 0.0718
+ Error 15 48719.33 3247.96               
+
+
+ESTIMATES OF VARIANCE COMPONENTS:
+       Estimate Std. Error
+ GCA      0.000   1034.157
+ SCA   4180.493   3322.168
+ Error 3247.955   1185.986
+
+
+ESTIMATES OF GENETIC VARIANCE COMPONENTS:
+                   Estimate
+ VA                  0.0000
+ VD              16721.9707
+ h2-narrow sense     0.0000
+ H2-broad sense      0.8374
+ Dominance Ratio        Inf
+
+
+GENERAL COMBINING ABILITY EFFECTS (diagonal), SPECIFIC COMBINING
+ABILITY EFFECTS (above diagonal):
+   P1       P2       P3       P4       P5      
+P1  -0.1856  94.8885 -74.7343 -86.8397 144.9122
+P2           14.8994 -66.0250   8.7550 -94.5056
+P3                     0.6728 -39.0761  50.0222
+P4                             -5.0157 -26.2525
+P5                                     -10.3709
+
+
+TABLE OF STANDARD ERRORS AND LSDs:
+        Std. Error      LSD
+Gi         19.2664         
+Sii        39.3274         
+Sij        49.7457         
+Gi-Gj      30.4629  64.9301
+Sii-Sjj    52.7633 112.4622
+Sij-Sik    74.6185 159.0456
+Sij-Skl    68.1171 145.1881
+
+-----------------------------
+ANALYSIS FOR: Trial = 2
+-----------------------------
+
+DATA SUMMARY: 
+ Factors     No of Levels   Levels            
+ Trial       1              2                 
+ replication 2              1  2              
+ p1          5              P1  P2  P3  P4  P5
+ p2          5              P1  P2  P3  P4  P5
+
+Number of observations read: 27
+Number of missing observations: 3
+
+
+ANOVA TABLE: (Trt = p1:p2)
+ Formula: Y ~ Trt
+
+           Df   Sum Sq   Mean Sq F value Pr(>F)
+ Trt       14 118116.7  8436.907    0.72 0.7223
+ Residuals 12 140217.9 11684.828               
+
+
+MATRIX OF MEANS:
+   P1       P2       P3       P4       P5      
+P1 144.9950 244.0818 260.2325 142.4385 268.8353
+P2          218.2612 134.0267 153.1182  94.5024
+P3                   200.7318 246.0605 274.8037
+P4                            196.1548  21.3176
+P5                                     126.6613
+-------
+REMARK: Raw data and estimates of the missing values are used. 
+
+
+ANALYSIS OF VARIANCE:                                         
+ SV    Df   Sum Sq Mean Sq F value Pr(>F)
+ GCA    4 16433.45 4108.36    0.71 0.6063
+ SCA   10 58269.91 5826.99    1.00 0.4943
+ Error 12 70108.97 5842.41               
+
+
+ESTIMATES OF VARIANCE COMPONENTS:
+       Estimate Std. Error
+ GCA      0.000   1204.361
+ SCA      0.000   2606.097
+ Error 5842.414   2385.155
+
+
+ESTIMATES OF GENETIC VARIANCE COMPONENTS:
+                 Estimate
+ VA                     0
+ VD                     0
+ h2-narrow sense        0
+ H2-broad sense         0
+ Dominance Ratio         
+
+
+GENERAL COMBINING ABILITY EFFECTS (diagonal), SPECIFIC COMBINING
+ABILITY EFFECTS (above diagonal):
+   P1        P2        P3        P4        P5       
+P1   16.4414   49.9262   29.7432  -36.4303   96.0325
+P2             -4.0339  -75.9873   -5.2755  -57.8251
+P3                       32.2998   51.3332   86.1425
+P4                                -19.3206 -115.7232
+P5                                          -25.3867
+
+
+TABLE OF STANDARD ERRORS AND LSDs:
+        Std. Error      LSD
+Gi         25.8400         
+Sii        52.7456         
+Sij        66.7185         
+Gi-Gj      40.8566  89.0189
+Sii-Sjj    70.7657 154.1852
+Sij-Sik   100.0778 218.0508
+Sij-Skl    91.3581 199.0522
+
+==============================================================

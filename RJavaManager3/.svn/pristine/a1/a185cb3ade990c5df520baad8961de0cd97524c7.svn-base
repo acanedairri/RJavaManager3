@@ -1,0 +1,69 @@
+package org.irri.breedingtool.rjava.graph;
+
+
+import org.irri.breedingtool.rjava.manager.RJavaManager;
+
+public class TestGraphBar {
+
+	private static String BSLASH = "\\";
+	private static String FSLASH = "/";
+	private static String PATH1 = System.getProperty("user.dir")+ System.getProperty("file.separator") + "sample_datasets" + System.getProperty("file.separator");
+	public static String DATA_PATH = PATH1.replace(BSLASH, FSLASH);
+	
+	public static void main(String[] args) {
+		
+		//supply path and name of active data
+		String dataFileName = DATA_PATH + "Gerua.csv"; 
+//		String dataFileName = DATA_PATH + "gerua_aggregate.csv";
+		
+		String[] nVar = {"GRNYLD", "PLHT"}; //, "PLHT", "DFF", "PNCC"};
+//		String[] nVar = {"PLHT", "DFF"};
+//		String[] nVar = {"Mean.DFF", "Median.DFF", "Mean.PLHT", "Median.PLHT"};
+//		String cVar = "TPL";
+		String cVar = "REP";
+		String mTitle = ""; //"The Main Title"; //null; //
+		String yAxisLab = ""; //"y-axis label"; //null; // 
+		String xAxisLab = ""; //"x-axis label"; //null; //
+		String minValue = null; //"20";//
+		String maxValue = "6000"; //null; //"300";//
+		String typeData = "raw"; //"sumStat";//
+		String descStat = "mean"; //#c(NULL, "mean", "median", "sum", "freq")
+		String barsHoriz = "FALSE"; //"TRUE"; //
+		String barsClust = "FALSE"; //"TRUE"; //
+		//String barsPatterned = "TRUE"; //"FALSE"; //
+		String byVar = null; //"CULT"; // ;//"REP"; //"TPL"; //#NULL; 
+		String errBars = "FALSE"; //"TRUE"; //
+		String typeErrBar = "stdDev"; //null; // #c(NULL, "stdDev", "stdErr", "confInt")
+		int errMult = 2;
+		double confLev = 0.95;
+		String[] barColor = {"rgb(255,0,255, max = 255)","rgb(0,255,0, max = 255)"}; //{"rgb(255,0,255, max = 255)","rgb(0,255,0, max = 255)", "rgb(255,0,0, max = 255)"}; //{"rgb(255,0,255, max = 255)"}; //{"(rgb(255,0,255, max = 255)","rgb(0,255,0, max = 255))"} //{"NULL"}; //{"lightblue", "mistyrose"};
+		String showLeg = "TRUE"; //"FALSE"; //
+		String legPos = "bottomright"; //null; //eight other choices
+		String legTitle = ""; //"The Title"; //null; //
+		String boxed = "FALSE"; //"TRUE"; //
+		String multGraphs = "FALSE"; //"TRUE"; //
+		int numRowsGraphs = 1;
+		int numColsGraphs = 1;
+		String orientGraphs = "top-bottom"; // #c("left-right", "top-bottom"))
+		String showVarNames = "FALSE"; //"TRUE"; //
+		int[] barDensity = {100, 10}; //{0,10,10,10};
+		int[] barLineAngle = {0, 45};//{0,0,90,135}; //{0,45,90,135};
+		
+//		String path = System.getProperty("user.dir")+ System.getProperty("file.separator") + "sample_datasets";
+		String outputPath = DATA_PATH;
+		
+//		System.out.println(dataFileName);
+//		System.out.println(outputPath);
+		
+		RJavaManager rJavaManager= new RJavaManager();
+		rJavaManager.initPBtool();
+
+		rJavaManager.getRJavaGraphManager().createGraphBarplot(outputPath, dataFileName, nVar, cVar, 
+				mTitle, yAxisLab, xAxisLab, minValue, maxValue, typeData, descStat, 
+				barsHoriz, barsClust, byVar, errBars, typeErrBar, errMult, confLev, 
+				barColor, showLeg, legPos, legTitle, boxed, 
+				multGraphs, numRowsGraphs, numColsGraphs, orientGraphs, showVarNames, barDensity, barLineAngle);
+	}
+
+}
+

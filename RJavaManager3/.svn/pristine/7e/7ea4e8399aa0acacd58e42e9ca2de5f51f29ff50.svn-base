@@ -1,0 +1,512 @@
+attr(nancycats)
+str(nancycats)
+b
+length(b)
+rownames(b)
+nancycats@pop.names
+names(b)
+b<-nancycats@pop.names
+names(b)
+paste(names(b), b)
+paste(names(b), ":", b, sep="")
+paste(names(b), ": ", b, sep="")
+b
+rm(list=ls(all=TRUE))
+library(adegenet)
+load("E:/NSALES/juno workspace/workspace_1/RJavaManager/sample_datasets/trialImport.RData")
+b<-as.vector(data@pop.names)
+b
+data@pop.names
+data@pop
+b
+class(b)
+is.vector(b)
+paste(names(b), ": ", b)
+b<-nancycats@ind.names
+b<-data@ind.names
+b
+paste(names(b), ": ", b)
+is.vector(paste(names(b), ": ", b))
+.jarray(b)
+library(rJava)
+.jarray(b)
+b
+library(adegenet)
+data(nancycats)
+nancycats@all.names
+b<-nancycats@all.names
+b
+names(b)
+names(b$L1)
+class(b)
+paste(names(b), ":", b$names[1])
+length(b)
+i=1
+names(b)[i]
+locusList<-eval(parse(text=paste("b$", names(b)[i], sep="")))
+locusList
+length(locusList)
+locusList[1]
+paste(names(alleleList), ": ", alleleList, sep="")
+alleleList<-eval(parse(text=paste("b$", names(b)[i], sep="")))
+paste(names(alleleList), ": ", alleleList, sep="")
+newRows<-paste(names(b)[i], ".", names(alleleList), ": ", alleleList, sep="")
+newRows
+finalVector<-NULL
+for (i in 1:length(b)) {
+alleleList<-eval(parse(text=paste("b$", names(b)[i], sep="")))
+newRows<-paste(names(b)[i], ".", names(alleleList), ": ", alleleList, sep="")
+finalVector<-rbind(finalVector, newRows)
+}
+finalVector
+finalVector<-NULL
+for (i in 1:length(b)) {
+alleleList<-eval(parse(text=paste("b$", names(b)[i], sep="")))
+newRows<-data.frame(alleleNames=paste(names(b)[i], ".", names(alleleList), ": ", alleleList, sep=""))
+finalVector<-rbind(finalVector, newRows)
+}
+finalVector
+finalVector$alleleNames
+as.vector(finalVector$alleleNames)
+load("E:/NSALES/juno workspace/workspace_1/RJavaManager/sample_datasets/trialImport.RData")
+b<-data@all.names
+finalVector<-NULL
+for (i in 1:length(b)) {
+alleleList<-eval(parse(text=paste("b$", names(b)[i], sep="")))
+newRows<-data.frame(alleleNames=paste(names(b)[i], ".", names(alleleList), ": ", alleleList, sep=""))
+finalVector<-rbind(finalVector, newRows)
+}
+as.vector(finalVector$alleleNames)
+rm(list=ls(all=TRUE))
+library(adegenet)
+load("E:/NSALES/juno workspace/workspace_1/RJavaManager/sample_datasets/trialImport.RData")
+b<-data@all.names
+finalVector<-NULL
+for (i in 1:length(b)) {
+alleleList<-eval(parse(text=paste("b$", names(b)[i], sep="")))
+newRows<-data.frame(alleleNames=paste(names(b)[i], ".", names(alleleList), ": ", alleleList, sep=""))
+finalVector<-rbind(finalVector, newRows)
+}
+as.vector(finalVector$alleleNames)
+rm(list=ls(all=TRUE))
+library(adegenet)
+load("E:/NSALES/juno workspace/workspace_1/RJavaManager/sample_datasets/trialImport.RData")
+b<-data@all.names
+finalVector<-NULL
+for (i in 1:length(b)) {
+alleleList<-eval(parse(text=paste("b$", names(b)[i], sep="")))
+newRows<-data.frame(alleleNames=paste(names(b)[i], ".", names(alleleList), ": ", alleleList, sep=""))
+finalVector<-rbind(finalVector, newRows)
+}
+as.vector(finalVector$alleleNames)
+is.vector(as.vector(finalVector$alleleNames))
+b
+unlist(b)
+paste(names(unlist(b)), ": ", unlist(b))
+paste(names(unlist(b)), ": ", unlist(b), sep="")
+nancycats@loc.nall
+data@loc.nall
+#----------------------------------------------------------------
+# This function imports csv data and converts it to genind object.
+# PBTools uses this for popgen analysis
+#
+# Script Created by: Nellwyn L. Sales
+#----------------------------------------------------------------
+importGenFile<-function(filename, extension=c("csv", "gtx", "str", "stru", "dat", "gen"), population=NULL, individual=NULL, ploidyDegree=2, sep=NULL) UseMethod("importGenFile")
+importGenFile.default<-function(filename, extension=c("csv", "gtx", "str", "stru", "dat", "gen"), population=NULL, individual=NULL, ploidyDegree=2, sep=NULL) {
+library(adegenet)
+if (extension=="csv") {
+data1<-read.csv(filename, header=TRUE)
+if (is.null(sep)) {
+data1<-df2genind(data1[-c(match(population, names(data1)),match(individual, names(data1)))], ploidy=ploidyDegree, pop=data1[,population], ind.names=data1[,individual], sep="")
+} else {
+if (sep=="/") {
+data1<-df2genind(data1[-c(match(population, names(data1)),match(individual, names(data1)))], ploidy=ploidyDegree, pop=data1[,population], ind.names=data1[,individual], sep="/")
+}
+}
+}
+if (extension=="gtx") {
+data1<-read.genetix(filename)
+}
+if (extension=="str" || extension=="stru") {
+data1<-read.structure(filename)
+}
+if (extension=="dat") {
+data1<-read.fstat(filename)
+}
+if (extension=="gen") {
+data1<-read.genpop(filename)
+}
+return(data1)
+}
+library(adegenet)
+data(nancycats)
+write.csv(nancycats, "E:\\NSALES\\sampleDatasets\\tab.csv")
+write.csv(nancycats@tab, "E:\\NSALES\\sampleDatasets\\tab.csv")
+library(adegenet)
+obj1 <- read.genetix(system.file("files/nancycats.gtx", package = "adegenet"))
+rm(list=ls(all=TRUE))
+library(adegenet)
+load("E:/NSALES/juno workspace/workspace_1/RJavaManager/sample_datasets/trialImport5.RData")
+is.genind(data)
+fix(data)
+library(PBTools)
+library(adegenet)
+load("E:/NSALES/juno workspace/workspace_1/RJavaManager/sample_datasets/trialImport.RData")
+result<-genDistance(data, method=3, displayDiag=TRUE, displayUpper=FALSE)
+write.table(result,file = "E:/NSALES/juno workspace/workspace_1/RJavaManager/sample_datasets/genDistanceMatrix.csv",sep=",",col.names=NA, row.names=TRUE)
+as.data.frame(result)
+result
+as.matrix(result)
+library(ape)
+dist.gene
+library(genetics)
+g1 <- genotype( c(’T/A’, NA, ’T/T’, NA, ’T/A’, NA, ’T/T’, ’T/A’,
+’T/T’, ’T/T’, ’T/A’, ’A/A’, ’T/T’, ’T/A’, ’T/A’, ’T/T’,
+NA, ’T/A’, ’T/A’, NA) )
+g2 <- genotype( c(’C/A’, ’C/A’, ’C/C’, ’C/A’, ’C/C’, ’C/A’, ’C/A’, ’C/A’,
+’C/A’, ’C/C’, ’C/A’, ’A/A’, ’C/A’, ’A/A’, ’C/A’, ’C/C’,
+’C/A’, ’C/A’, ’C/A’, ’A/A’) )
+g3 <- genotype( c(’T/A’, ’T/A’, ’T/T’, ’T/A’, ’T/T’, ’T/A’, ’T/A’, ’T/A’,
+’T/A’, ’T/T’, ’T/A’, ’T/T’, ’T/A’, ’T/A’, ’T/A’, ’T/T’,
+’T/A’, ’T/A’, ’T/A’, ’T/T’) )
+g1 <- genotype( c("T/A", NA, "T/T", NA, "T/A", NA, "T/T", "T/A",
+"T/T", "T/T", "T/A", "A/A", "T/T", "T/A", "T/A", "T/T",
+NA, "T/A", "T/A", NA) )
+g1
+g2 <- genotype( c("C/A", "C/A", "C/C", "C/A", "C/C", "C/A", "C/A", "C/A",
+"C/A", "C/C", "C/A", "A/A", "C/A", "A/A", "C/A", "C/C",
+"C/A", "C/A", "C/A", "A/A") )
+LD(g1,g2)
+g1 <- genotype( c("T/A", NA, "T/T", NA, "T/A", NA, "T/T", "T/A",
+"T/T", "T/T", "T/A", "A/A", "T/T", "T/A", "T/A", "T/T",
+NA, "T/A", "T/A", NA) )
+g2 <- genotype( c("C/A", "C/A", "C/C", "C/A", "C/C", "C/A", "C/A", "C/A",
+"C/A", "C/C", "C/A", "A/A", "C/A", "A/A", "C/A", "C/C",
+"C/A", "C/A", "C/A", "A/A") )
+g3 <- genotype( c("T/A", "T/A", "T/T", "T/A", "T/T", "T/A", "T/A", "T/A",
+"T/A", "T/T", "T/A", "T/T", "T/A", "T/A", "T/A", "T/T",
+"T/A", "T/A", "T/A", "T/T") )
+library(ape)
+g1 <- genotype( c("T/A", NA, "T/T", NA, "T/A", NA, "T/T", "T/A",
+"T/T", "T/T", "T/A", "A/A", "T/T", "T/A", "T/A", "T/T",
+NA, "T/A", "T/A", NA) )
+g2 <- genotype( c("C/A", "C/A", "C/C", "C/A", "C/C", "C/A", "C/A", "C/A",
+"C/A", "C/C", "C/A", "A/A", "C/A", "A/A", "C/A", "C/C",
+"C/A", "C/A", "C/A", "A/A") )
+g3 <- genotype( c("T/A", "T/A", "T/T", "T/A", "T/T", "T/A", "T/A", "T/A",
+"T/A", "T/T", "T/A", "T/T", "T/A", "T/A", "T/A", "T/T",
+"T/A", "T/A", "T/A", "T/T") )
+library(genetics)
+g1 <- genotype( c("T/A", NA, "T/T", NA, "T/A", NA, "T/T", "T/A",
+"T/T", "T/T", "T/A", "A/A", "T/T", "T/A", "T/A", "T/T",
+NA, "T/A", "T/A", NA) )
+g2 <- genotype( c("C/A", "C/A", "C/C", "C/A", "C/C", "C/A", "C/A", "C/A",
+"C/A", "C/C", "C/A", "A/A", "C/A", "A/A", "C/A", "C/C",
+"C/A", "C/A", "C/A", "A/A") )
+g3 <- genotype( c("T/A", "T/A", "T/T", "T/A", "T/T", "T/A", "T/A", "T/A",
+"T/A", "T/T", "T/A", "T/T", "T/A", "T/A", "T/A", "T/T",
+"T/A", "T/A", "T/A", "T/T") )
+data <- makeGenotypes(data.frame(g1,g2,g3))
+LD(data)
+rstudio::viewData(data)
+data
+data$g1
+rm(list=ls(all=TRUE))
+library(adegenet)
+load("E:/NSALES/juno workspace/workspace_1/RJavaManager/sample_datasets/trialImport.RData")
+genotypes(data)
+b<-genind2genotype(data)
+b
+library(genetics)
+LD(b)
+LD.genotype(b)
+LD(g1=b)
+class(b)
+c<-makeGenotypes(b)
+class(c)
+LD(c)
+rstudio::viewData(b)
+b$fca8
+LD(b$fca8, b$fca23)
+summary(c)
+c$fca8
+data(nancycats)
+Hs(genind2genpop(nancycats))
+install.packages("LDcorSV")
+library(LDcorSV)
+data(data.test)
+Geno<-data.test[[1]]
+Geno.test<-Geno[,1:5]
+V.WAIS<-data.test[[2]]
+S.2POP<-data.test[[3]]
+LD<-LD.Measures(Geno.test,V=V.WAIS,S=S.2POP,data ="G",supinfo=TRUE,na.presence=TRUE)
+LD
+fix(data.test)
+Geno
+set <- c("A/A", "A/B", "A/B", "B/B", "B/B", "B/B",
+"B/B", "B/C", "C/C", "C/C")
+set <- genotype(set, alleles=c("A", "B", "C"), reorder="yes")
+plot(set)
+plot(set, type="allele", what="number")
+example.data   <- c("D/D","D/I","D/D","I/I","D/D",
+"D/D","D/D","D/D","I/I","")
+g1  <- genotype(example.data)
+g1
+summary(g1)
+summary(c$fca8)
+summary(c)
+summary(Geno)
+library(PBTools)
+library(adegenet)
+data(nancycats)
+is.genind(nancycats)
+nancycats
+packageDescription("adegenet", fields = "Version")
+nancycats@tab
+nancycats@tab
+head(nancycats@tab)
+nancycats@ind.names
+nancycats@ind.names
+nancycats@ind.names
+nancycats@loc.names
+nancycats@loc.nall
+nancycats@loc.fac
+ncol(nancycats@tab)
+ncol(nancycats@loc.fac)
+length(nancycats@loc.fac)
+nancycats@loc.fac
+nancycats@loc.fac
+nancycats@all.names
+nancycats@all.names
+nancycats@ploidy
+nancycats@type
+nancycats@pop
+nancycats@pop.names
+nancycats@others
+nancycats@other
+nancycats@other$xy
+nancycats@other
+catpop <- genind2genpop(nancycats)
+catpop
+head(catpop@tab)
+head(catpop@tab)
+catpop@pop.names
+catpop@loc.names
+catpop@all.names
+obj1 <- read.genetix("C:\Documents and Settings\NSales\Desktop\import data/nancycats.gtx")
+obj1 <- read.genetix("C:\\Documents and Settings\\NSales\\Desktop\\import data\\nancycats.gtx")
+obj1
+obj1@all.names
+obj1@loc.names
+obj1@pop.names
+genotype(nancycats)
+genotypes(nancycats)
+library(ade4)
+genotypes(nancycats)
+genotype(nancycats)
+b<-genind2df(nancycats)
+b
+Genotype(nancycats)
+dat <- read.table(system.file("files/AFLP.txt",package="adegenet"), header=TRUE)
+dat
+obj <- genind(dat, ploidy=1, type="PA")
+obj
+obj@tab
+dat
+nancycats[1:3]
+nancycats[1:3]@pop.names
+nancycats[1:3]@tab
+nancycats[1:3,]@tab
+catpop[1:3,]
+catpop[1:3,]@tab
+catpop[,1:3]@tab
+nancycats[1:3,]
+catpop[1:3,]@pop.names
+nancycats[,1:3]
+nancycats[,1:3]@loc.names
+nancycats[,1:3]@tab
+2
+nancycats[,2:3]@tab
+nancycats[,5:7]@tab
+catpop[,2:3]
+catpop[,2:3]@loc.names
+catpop[,2:3]@tab
+seploc(nancycats)
+seploc(nancycats)$fca96
+seploc(nancycats)$fca96@loc.names
+seploc(nancycats)$fca96@tab
+catpop[, 5:10]
+catpop[, 5:10]@tab
+catpop[, 5:10]@loc.names
+catpop@tab
+catpop@all.names
+catpop[,10:20]@all.names
+catpop[,30:40]@all.names
+seploc(nancycats)$fca96@tab
+catsByMarket<-seploc(nancycats)
+catsByMarker<-seploc(nancycats)
+names(catsByMarker)
+catsByMarker$fca96@loc.names
+catsByPop<-seppop(catpop)
+catpop
+catsByPop<-seppop(nancycats)
+names(catsByPop)
+catsByPop$11@pop.names
+catsByPop$"11"@pop.names
+summary(nancycats)
+summary(catpop)
+HWE.test(nancycats, res="matix")
+HWE.test.genind(nancycats, res="matix")
+HWE.test.genind(nancycats, res.type="matix")
+HWE.test.genind(nancycats, res.type="matrix")
+HWE.test.genind(nancycats, res.type="full")
+fstat(nancycats)
+DATA_nmle <- read.csv("E:/NSALES/personal/personal docs/TalithaJanJasarino/emailed_dec17/DATA_nmle.csv")
+viewData(DATA_nmle)
+rstudio::viewData(DATA_nmle)
+DATA_nmle <- read.csv("E:/NSALES/personal/personal docs/TalithaJanJasarino/emailed_dec17/DATA_nmle.csv")
+viewData(DATA_nmle)
+rstudio::viewData(DATA_nmle)
+rstudio::viewData(DATA_nmle)
+table(Q4)
+table(DATA_nmle$Q4)
+table(DATA_nmle$Q2)
+table(DATA_nmle$Q2, DATA_nmle$Q4)
+table(DATA_nmle$Q4, DATA_nmle$Q2)
+ftable(table(DATA_nmle$Q4, DATA_nmle$Q2))
+ftable(table(DATA_nmle$Q4, DATA_nmle$Q3))
+ftable(table(DATA_nmle$Q4, DATA_nmle$Q5))
+ftable(table(DATA_nmle$Q4, DATA_nmle$Q6))
+ftable(table(DATA_nmle$Q4, DATA_nmle$Q7))
+ftable(table(DATA_nmle$Q4, DATA_nmle$Q8))
+ftable(table(DATA_nmle$Q4, DATA_nmle$Q9))
+rstudio::viewData(DATA_nmle)
+ftable(table(DATA_nmle$Q4, DATA_nmle$Q9a))
+ftable(table(DATA_nmle$Q4, DATA_nmle$Q9c))
+ftable(table(DATA_nmle$Q4, DATA_nmle$Q10))
+ftable(table(DATA_nmle$Q4, DATA_nmle$Q11))
+ftable(table(DATA_nmle$Q4, DATA_nmle$Q12))
+ftable(table(DATA_nmle$Q4, DATA_nmle$Q13))
+ftable(table(DATA_nmle$Q4, DATA_nmle$Q14))
+ftable(table(DATA_nmle$Q4, DATA_nmle$Q15))
+ftable(table(DATA_nmle$Q4, DATA_nmle$Q16))
+ftable(table(DATA_nmle$Q4, DATA_nmle$Q17))
+ftable(table(DATA_nmle$Q4, DATA_nmle$Q18))
+ftable(table(DATA_nmle$Q4, DATA_nmle$Q19))
+ftable(table(DATA_nmle$Q4, DATA_nmle$Q20))
+ftable(table(DATA_nmle$Q4, DATA_nmle$Q21))
+ftable(table(DATA_nmle$Q4, DATA_nmle$Q22))
+DATA_nmle <- read.csv("E:/NSALES/personal/personal docs/TalithaJanJasarino/emailed_dec17/DATA_nmle.csv")
+ftable(table(DATA_nmle$Q4, DATA_nmle$Q22))
+ftable(table(DATA_nmle$Q4, DATA_nmle$Q23))
+ftable(table(DATA_nmle$Q4, DATA_nmle$Q24))
+ftable(table(DATA_nmle$Q4, DATA_nmle$Q25))
+ftable(table(DATA_nmle$Q4, DATA_nmle$Q26))
+ftable(table(DATA_nmle$Q4, DATA_nmle$Q27))
+ftable(table(DATA_nmle$Q4, DATA_nmle$Q28))
+ftable(table(DATA_nmle$Q4, DATA_nmle$Q29))
+ftable(table(DATA_nmle$Q4, DATA_nmle$Q30))
+ftable(table(DATA_nmle$Q4, DATA_nmle$Q31))
+ftable(table(DATA_nmle$Q4, DATA_nmle$Q32))
+ftable(table(DATA_nmle$Q4, DATA_nmle$Q33))
+ftable(table(DATA_nmle$Q4, DATA_nmle$Q34))
+ftable(table(DATA_nmle$Q4, DATA_nmle$Q35))
+ftable(table(DATA_nmle$Q4, DATA_nmle$Q36))
+ftable(table(DATA_nmle$Q4, DATA_nmle$Q37))
+ftable(table(DATA_nmle$Q4, DATA_nmle$Q38))
+ftable(table(DATA_nmle$Q4, DATA_nmle$Q39))
+ftable(table(DATA_nmle$Q4, DATA_nmle$Q40))
+ftable(table(DATA_nmle$Q4, DATA_nmle$Q41))
+ftable(table(DATA_nmle$Q4, DATA_nmle$Q42))
+ftable(table(DATA_nmle$Q4, DATA_nmle$Q43))
+ftable(table(DATA_nmle$Q4, DATA_nmle$Q44))
+ftable(table(DATA_nmle$Q4, DATA_nmle$Q45))
+HWETest<-function(genindObject) UseMethod("HWETest")
+HWETest.default<-function(genindObject) {
+library(adegenet)
+#result<-HWE.test.genind(genindObject, res.type="matrix")
+#result<-format(round(as.data.frame(result),4), digits=4, nsmall=4, scientific=FALSE)
+result2<-HWE.test.genind(genindObject, res.type="full")
+summaryTable<-NULL
+for (i in 1:length(result2)) {
+locusList<-eval(parse(text=paste("result2$", names(result2)[i], sep="")))
+for (j in 1:length(locusList)) {
+popnList<-eval(parse(text=paste("locusList$", names(locusList)[j], sep="")))
+newRow<-data.frame(Locus=names(result2)[i], Population=names(locusList)[j], Chi_value=popnList$statistic, df=popnList$parameter, p_value=popnList$p.value)
+summaryTable<-rbind(summaryTable, newRow)
+}
+}
+#format summaryTable
+rownames(summaryTable)<-NULL
+colnames(summaryTable)<-c("Locus", "Population", "Chisq Value", "df", "Pr(>Chisq)")
+summaryTable[, "Chisq Value"]<- formatC(as.numeric(format(summaryTable[, "Chisq Value"], scientific=FALSE)), format="f")
+summaryTable[, "Pr(>Chisq)"]<- formatC(as.numeric(format(summaryTable[, "Pr(>Chisq)"], scientific=FALSE)), format="f")
+cat("HARDY-WEINBERG EQUILIBRIUM TEST\n\n")
+cat("SUMMARY OF TESTS:\n\n")
+print(summaryTable)
+#cat("\n\nMATRIX OF P-VALUES:\n\n")
+#print(summaryTable)
+return(summaryTable)
+}
+HWETest<-function(genindObject) UseMethod("HWETest")
+HWETest.default<-function(genindObject) {
+library(adegenet)
+#result<-HWE.test.genind(genindObject, res.type="matrix")
+#result<-format(round(as.data.frame(result),4), digits=4, nsmall=4, scientific=FALSE)
+result2<-HWE.test.genind(genindObject, res.type="full")
+summaryTable<-NULL
+for (i in 1:length(result2)) {
+locusList<-eval(parse(text=paste("result2$", names(result2)[i], sep="")))
+for (j in 1:length(locusList)) {
+popnList<-eval(parse(text=paste("locusList$", names(locusList)[j], sep="")))
+newRow<-data.frame(Locus=names(result2)[i], Population=names(locusList)[j], Chi_value=popnList$statistic, df=popnList$parameter, p_value=popnList$p.value)
+summaryTable<-rbind(summaryTable, newRow)
+}
+}
+#format summaryTable
+rownames(summaryTable)<-NULL
+colnames(summaryTable)<-c("Locus", "Population", "Chisq Value", "df", "Pr(>Chisq)")
+summaryTable[, "Chisq Value"]<- formatC(as.numeric(format(summaryTable[, "Chisq Value"], scientific=FALSE)), format="f")
+summaryTable[, "Pr(>Chisq)"]<- formatC(as.numeric(format(summaryTable[, "Pr(>Chisq)"], scientific=FALSE)), format="f")
+cat("HARDY-WEINBERG EQUILIBRIUM TEST\n\n")
+cat("SUMMARY OF TESTS:\n\n")
+print(summaryTable)
+#cat("\n\nMATRIX OF P-VALUES:\n\n")
+#print(summaryTable)
+return(summaryTable)
+}
+dataMeaOneStage <- read.csv("E:/NSALES/juno workspace/workspace_1/RJavaManager/sample_datasets/RCB_ME_env3.csv", header = TRUE, na.strings = c("NA","."," ",""), blank.lines.skip=TRUE, sep = ",")
+setwd("E:/NSALES/juno workspace/workspace_1/RJavaManager/sample_datasets/")
+meaOne1 <- try(GEOneStage.test("RCB",dataMeaOneStage,c("Yield"),"Genotype","Block",column = NULL, rep = NULL,"environment", is.genoRandom = FALSE), silent=TRUE)
+genoEnvMeans <- meaOne1$output[[1]]$means.GenoEnv
+library(PBTools)
+dataMeaOneStage <- read.csv("E:/NSALES/juno workspace/workspace_1/RJavaManager/sample_datasets/Dule_GxE.csv", header = TRUE, na.strings = c("NA","."," ",""), blank.lines.skip=TRUE, sep = ",")
+setwd("E:/NSALES/juno workspace/workspace_1/RJavaManager/sample_datasets/")
+meaOne1 <- try(GEOneStage.test("LatinAlpha",dataMeaOneStage,c("PlantHt","YLD"),"Geno","Block",column = NULL,"Rep","Env", is.genoRandom = FALSE), silent=TRUE)
+genoEnvMeans <- meaOne1$output[[1]]$means.GenoEnv
+genoEnvMeans
+x <- c(1:5); y <- x # create some data
+par(pch=22, col="red") # plotting symbol and color
+par(mfrow=c(2,4)) # all plots on one page
+opts = c("p","l","o","b","c","s","S","h")
+for(i in 1:length(opts)){
+heading = paste("type=",opts[i])
+plot(x, y, type="n", main=heading)
+lines(x, y, type=opts[i])
+}
+opts
+a<-genoEnvMeans
+names(a)
+plot(a$Geno, a$PlantHt_means)
+par(mfrow=c(1,1)) # all plots on one page
+plot(a$Geno, a$PlantHt_means)
+plot(a$Env, a$PlantHt_means, type="n")
+plot(a$Env, a$PlantHt_means, type="a")
+write.csv(a, "E:\\NSALES\\sampleDatasets\\genoEnvMeansSample.csv")
+plot(a$Env, a$PlantHt_means, type="n")
+plot(a$Env, a$PlantHt_means)
+plot(a$Env,a$PlantHt_means,cex=0.8, xlab = "PC 2", ylab = "PC 3", frame = TRUE, pch=Type.code,col=Type.code, main=paste(forFilename, " Biplot for ", gsub("_means", "", yVar), sep=""))
+plot(a$Env,a$PlantHt_means,cex=0.8, xlab = "PC 2", ylab = "PC 3", frame = TRUE)
+a$Env
+a$PlantHt_means

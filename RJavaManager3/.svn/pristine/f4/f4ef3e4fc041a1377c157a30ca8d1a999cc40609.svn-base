@@ -1,0 +1,32 @@
+package org.irri.breedingtool.rjava.staranalysis;
+
+import org.irri.breedingtool.rjava.manager.RJavaManager;
+
+public class TestClusterAgglomerative {
+
+	private static String BSLASH = "\\";
+	private static String FSLASH = "/";
+	private static String PATH1 = System.getProperty("user.dir")+ System.getProperty("file.separator") + "sample_datasets" + System.getProperty("file.separator");
+	public static String DATA_PATH = PATH1.replace(BSLASH, FSLASH);
+	
+	public static void main(String[] args) {
+		//supply path and name of active data
+		String dataFileName = DATA_PATH + "Ratio_agro.csv"; 
+		//supply path where the output will be placed
+		String resultFolder = DATA_PATH; 
+
+		//specify parameters
+		String[] var = {"GWT", "GrainL", "GrainW", "Flower", "PlantH"};
+		boolean stand = true;
+		String[] distance = {"Euclidean", "Maximum", "Manhattan", "Minkowski", "Canberra"};
+		String[] clusmethod = {"Single", "Complete", "Average", "Ward", "Centroid"};
+		Integer clusterNum = 2;
+		boolean dendrogram = true;
+		
+		RJavaManager rJavaManager= new RJavaManager();
+		rJavaManager.initStar();
+		rJavaManager.getSTARAnalysisManager().doClusterAgglo(dataFileName, resultFolder,
+				var, stand, distance, clusmethod, clusterNum, dendrogram);
+	}
+
+}

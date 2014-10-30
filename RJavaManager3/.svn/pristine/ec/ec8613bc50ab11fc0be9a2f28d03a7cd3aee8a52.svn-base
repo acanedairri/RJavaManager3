@@ -1,0 +1,131 @@
+
+DESIGN: NORTH CAROLINA EXPERIMENT II IN RCB (INBRED)
+
+
+RESPONSE VARIABLE: Y
+
+-----------------------------
+ANALYSIS FOR: Env = A
+-----------------------------
+
+DATA SUMMARY: 
+ Factors   No of Levels   Levels          
+ Env       1              A               
+ Female    8              1  2  3 ... 8   
+ Male      8              10  11  12 ... 9
+ Block     3              1  2  3         
+
+Number of observations read: 192
+Number of missing observations: 0
+
+
+ANOVA TABLE FOR THE EXPERIMENT
+             Df Sum Sq Mean Sq F value   Pr(>F)
+Block         2   22.4   11.18   1.144  0.32197
+Male          7 1112.6  158.95  16.263 4.02e-15
+Female        7  735.3  105.04  10.747 1.44e-10
+Male:Female  49  823.1   16.80   1.719  0.00857
+Residuals   126 1231.5    9.77                 
+-------
+REMARK: Raw dataset is balanced.
+
+
+LINEAR MIXED MODEL FIT BY RESTRICTED MAXIMUM LIKELIHOOD:
+
+ Formula:  Y ~ 1 + (1|Block) + (1|Male) + (1|Female) + (1|Male:Female) 
+
+      AIC     BIC    logLik deviance  REMLdev
+ 1057.665 1077.21 -522.8323 1047.758 1045.665
+
+ Fixed Effects:
+            Estimate Std. Error t value
+(Intercept)  55.6076     1.1379 48.8702
+
+ Random Effects:                                    
+ Groups      Variance Std. Deviation
+ Male:Female   2.3418         1.5303
+ Female        3.6767         1.9175
+ Male          5.9229         2.4337
+ Block         0.0219         0.1481
+ Residual      9.7736         3.1263
+
+
+ESTIMATES OF GENETIC VARIANCE COMPONENTS:                                                    
+                                            Estimate
+ VA                                           9.5997
+ VD                                           2.3418
+ Narrow sense heritability(plot-mean based)   0.4421
+ Broad sense heritability(plot-mean based)    0.5499
+ Dominance Ratio                              0.6985
+
+
+ESTIMATES OF HERITABILITY:
+          Family Selection Narrow Sense Broad sense
+ Male                 0.89         0.66        0.79
+ Female               0.84         0.47        0.61
+ Full-sib             0.96         0.44        0.55
+
+
+-----------------------------
+ANALYSIS FOR: Env = B
+-----------------------------
+
+DATA SUMMARY: 
+ Factors   No of Levels   Levels          
+ Env       1              B               
+ Female    8              1  2  3 ... 8   
+ Male      8              10  11  12 ... 9
+ Block     3              1  2  3         
+
+Number of observations read: 192
+Number of missing observations: 0
+
+
+ANOVA TABLE FOR THE EXPERIMENT
+             Df Sum Sq Mean Sq F value   Pr(>F)
+Block         2   70.7   35.33   3.141  0.04664
+Male          7  221.0   31.57   2.807  0.00949
+Female        7  302.4   43.20   3.840  0.00081
+Male:Female  49 1384.7   28.26   2.512 2.04e-05
+Residuals   126 1417.3   11.25                 
+-------
+REMARK: Raw dataset is balanced.
+
+
+LINEAR MIXED MODEL FIT BY RESTRICTED MAXIMUM LIKELIHOOD:
+
+ Formula:  Y ~ 1 + (1|Block) + (1|Male) + (1|Female) + (1|Male:Female) 
+
+      AIC      BIC    logLik deviance  REMLdev
+ 1085.627 1105.172 -536.8137 1074.462 1073.627
+
+ Fixed Effects:
+            Estimate Std. Error t value
+(Intercept)  55.9098     0.6064 92.2054
+
+ Random Effects:                                    
+ Groups      Variance Std. Deviation
+ Male:Female   5.6702         2.3812
+ Female        0.6225         0.7890
+ Male          0.1380         0.3715
+ Block         0.3763         0.6135
+ Residual     11.2485         3.3539
+
+
+ESTIMATES OF GENETIC VARIANCE COMPONENTS:                                                    
+                                            Estimate
+ VA                                           0.7605
+ VD                                           5.6702
+ Narrow sense heritability(plot-mean based)   0.0430
+ Broad sense heritability(plot-mean based)    0.3637
+ Dominance Ratio                              3.8616
+
+
+ESTIMATES OF HERITABILITY:
+          Family Selection Narrow Sense Broad sense
+ Male                 0.10         0.02        0.35
+ Female               0.35         0.07        0.39
+ Full-sib             0.76         0.04        0.36
+
+
+==============================================================

@@ -1,0 +1,338 @@
+
+DATA FILE: E:/NSALES/juno workspace/workspace_1/RJavaManager/sample_datasets/NC2RowCol.csv
+
+SINGLE-ENVIRONMENT ANALYSIS
+
+DESIGN: Latinized Row-Column
+
+==============================
+GENOTYPE AS: Random
+==============================
+
+------------------------------
+RESPONSE VARIABLE: Y
+------------------------------
+
+DESCRIPTIVE STATISTICS:
+
+  Variable Trial N_NonMissObs     Mean   StdDev
+1        Y     1           62 132.0768 89.68341
+2        Y     2           63 214.3043 88.98778
+
+------------------------------
+ANALYSIS FOR: Trial  =  1 
+------------------------------
+
+DATA SUMMARY:
+
+Number of observations read:  63 
+Number of observations used:  62 
+
+ Factors   Number of Levels   Levels             
+ trmt      21                 T1  T10  T11 ... T9
+ rep       3                  1  2  3            
+ row       21                 1  10  11 ... 9    
+ col       3                  1  2  3            
+
+
+VARIANCE COMPONENTS TABLE:
+
+    Groups     Variance     Std.Dev.
+1     trmt 1.865389e+03 4.319015e+01
+2      row 0.000000e+00 0.000000e+00
+3  rep:col 2.628454e-18 1.621251e-09
+4      col 0.000000e+00 0.000000e+00
+5      rep 2.212865e+02 1.487570e+01
+6 Residual 6.078695e+03 7.796598e+01
+
+
+TESTING FOR THE SIGNIFICANCE OF GENOTYPIC EFFECT USING -2 LOGLIKELIHOOD RATIO TEST:
+
+Formula for Model1:  Y ~ 1 + (1|rep) + (1|col) + (1|rep:col) + (1|row) + (1|trmt) 
+Formula for Model2:  Y ~ 1 + (1|rep) + (1|col) + (1|rep:col) + (1|row) 
+
+            AIC      BIC    logLik  Chisq Df Pr(>Chisq)
+Model2 737.1706 749.9334 -362.5853                     
+Model1 736.7069 751.5969 -361.3535 2.4637  1     0.1165
+
+
+PREDICTED MEANS:
+
+   trmt     Means
+1    T1 198.34154
+2   T10  75.67806
+3   T11  86.65788
+4   T12 144.51805
+5   T13 111.40094
+6   T14 116.75189
+7   T15 109.01854
+8   T16 140.94561
+9   T17 168.26603
+10  T18 105.80581
+11  T19 155.14106
+12   T2 166.69482
+13  T20 111.51728
+14  T21 133.35650
+15   T3 127.28065
+16   T4 167.60291
+17   T5 129.38981
+18   T6 116.86423
+19   T7 147.18576
+20   T8 109.67896
+21   T9 147.33181
+
+
+HERITABILITY:
+     
+0.47 
+
+
+------------------------------
+ANALYSIS FOR: Trial  =  2 
+------------------------------
+
+DATA SUMMARY:
+
+Number of observations read:  63 
+Number of observations used:  63 
+
+ Factors   Number of Levels   Levels             
+ trmt      21                 T1  T10  T11 ... T9
+ rep       3                  1  2  3            
+ row       21                 1  10  11 ... 9    
+ col       3                  1  2  3            
+
+
+VARIANCE COMPONENTS TABLE:
+
+    Groups  Variance Std.Dev.
+1     trmt    0.0000  0.00000
+2      row 2937.6321 54.19993
+3  rep:col  199.1855 14.11331
+4      col  681.6656 26.10873
+5      rep    0.0000  0.00000
+6 Residual 4481.4345 66.94352
+
+
+TESTING FOR THE SIGNIFICANCE OF GENOTYPIC EFFECT USING -2 LOGLIKELIHOOD RATIO TEST:
+
+Formula for Model1:  Y ~ 1 + (1|rep) + (1|col) + (1|rep:col) + (1|row) + (1|trmt) 
+Formula for Model2:  Y ~ 1 + (1|rep) + (1|col) + (1|rep:col) + (1|row) 
+
+            AIC      BIC    logLik Chisq Df Pr(>Chisq)
+Model2 739.4103 752.2691 -363.7051                    
+Model1 741.4103 756.4122 -363.7051     0  1     0.9993
+
+
+PREDICTED MEANS:
+
+   trmt    Means
+1    T1 214.3043
+2   T10 214.3043
+3   T11 214.3043
+4   T12 214.3043
+5   T13 214.3043
+6   T14 214.3043
+7   T15 214.3043
+8   T16 214.3043
+9   T17 214.3043
+10  T18 214.3043
+11  T19 214.3043
+12   T2 214.3043
+13  T20 214.3043
+14  T21 214.3043
+15   T3 214.3043
+16   T4 214.3043
+17   T5 214.3043
+18   T6 214.3043
+19   T7 214.3043
+20   T8 214.3043
+21   T9 214.3043
+
+
+HERITABILITY:
+  
+0 
+
+
+------------------------------
+RESPONSE VARIABLE: Y2
+------------------------------
+
+DESCRIPTIVE STATISTICS:
+
+  Variable Trial N_NonMissObs     Mean   StdDev
+1       Y2     1           63 143.7307 82.67310
+2       Y2     2           63 153.1068 93.65235
+
+------------------------------
+ANALYSIS FOR: Trial  =  1 
+------------------------------
+
+DATA SUMMARY:
+
+Number of observations read:  63 
+Number of observations used:  63 
+
+ Factors   Number of Levels   Levels             
+ trmt      21                 T1  T10  T11 ... T9
+ rep       3                  1  2  3            
+ row       21                 1  10  11 ... 9    
+ col       3                  1  2  3            
+
+
+VARIANCE COMPONENTS TABLE:
+
+    Groups  Variance Std.Dev.
+1     trmt  770.2107 27.75267
+2      row  321.2097 17.92232
+3  rep:col    0.0000  0.00000
+4      col  480.5345 21.92110
+5      rep    0.0000  0.00000
+6 Residual 5438.8621 73.74864
+
+
+TESTING FOR THE SIGNIFICANCE OF GENOTYPIC EFFECT USING -2 LOGLIKELIHOOD RATIO TEST:
+
+Formula for Model1:  Y2 ~ 1 + (1|rep) + (1|col) + (1|rep:col) + (1|row) + (1|trmt) 
+Formula for Model2:  Y2 ~ 1 + (1|rep) + (1|col) + (1|rep:col) + (1|row) 
+
+            AIC      BIC    logLik  Chisq Df Pr(>Chisq)
+Model2 738.3094 751.1682 -363.1547                     
+Model1 739.5401 754.5420 -362.7701 0.7693  1     0.3804
+
+
+PREDICTED MEANS:
+
+   trmt    Means
+1    T1 145.4262
+2   T10 142.8185
+3   T11 135.1162
+4   T12 121.4035
+5   T13 129.9133
+6   T14 125.3457
+7   T15 146.9310
+8   T16 121.2769
+9   T17 155.6311
+10  T18 187.9281
+11  T19 143.6077
+12   T2 137.1585
+13  T20 154.1349
+14  T21 131.5450
+15   T3 150.3384
+16   T4 148.8144
+17   T5 137.4474
+18   T6 154.8490
+19   T7 146.9867
+20   T8 157.2190
+21   T9 144.4538
+
+
+HERITABILITY:
+    
+0.3 
+
+
+------------------------------
+ANALYSIS FOR: Trial  =  2 
+------------------------------
+
+DATA SUMMARY:
+
+Number of observations read:  63 
+Number of observations used:  63 
+
+ Factors   Number of Levels   Levels             
+ trmt      21                 T1  T10  T11 ... T9
+ rep       3                  1  2  3            
+ row       21                 1  10  11 ... 9    
+ col       3                  1  2  3            
+
+
+VARIANCE COMPONENTS TABLE:
+
+    Groups     Variance     Std.Dev.
+1     trmt 6.646935e+02 2.578165e+01
+2      row 0.000000e+00 0.000000e+00
+3  rep:col 2.024837e-10 1.422968e-05
+4      col 0.000000e+00 0.000000e+00
+5      rep 5.154977e+02 2.270457e+01
+6 Residual 7.778306e+03 8.819470e+01
+
+
+TESTING FOR THE SIGNIFICANCE OF GENOTYPIC EFFECT USING -2 LOGLIKELIHOOD RATIO TEST:
+
+Formula for Model1:  Y2 ~ 1 + (1|rep) + (1|col) + (1|rep:col) + (1|row) + (1|trmt) 
+Formula for Model2:  Y2 ~ 1 + (1|rep) + (1|col) + (1|rep:col) + (1|row) 
+
+            AIC      BIC    logLik  Chisq Df Pr(>Chisq)
+Model2 754.2193 767.0781 -371.1097                     
+Model1 755.8638 770.8658 -370.9319 0.3555  1     0.5510
+
+
+PREDICTED MEANS:
+
+   trmt    Means
+1    T1 135.6234
+2   T10 154.4919
+3   T11 130.5680
+4   T12 147.0223
+5   T13 158.4553
+6   T14 143.4538
+7   T15 152.2187
+8   T16 159.1389
+9   T17 177.8925
+10  T18 160.8941
+11  T19 145.1109
+12   T2 163.6050
+13  T20 152.0863
+14  T21 155.0921
+15   T3 142.6096
+16   T4 147.8966
+17   T5 154.7506
+18   T6 144.0357
+19   T7 175.6318
+20   T8 163.7191
+21   T9 150.9453
+
+
+HERITABILITY:
+    
+0.2 
+
+
+==============================
+
+GENOTYPIC CORRELATIONS:
+
+Trial =  1
+
+   Y       Y2     
+Y          -0.9165
+Y2 -0.9165        
+
+
+Trial =  2
+
+   Y       Y2     
+Y          -1.0000
+Y2 -1.0000        
+
+
+PHENOTYPIC CORRELATIONS:
+
+Trial =  1
+
+   Y       Y2     
+Y          -0.2686
+Y2 -0.2686        
+
+
+Trial =  2
+
+   Y      Y2    
+Y         0.0086
+Y2 0.0086       
+
+
+==============================

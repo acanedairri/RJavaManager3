@@ -1,0 +1,512 @@
+}
+if (exptl.design == "Alpha" || exptl.design == "LatinAlpha") {
+temp.data[,match(rep, names(temp.data))] <- factor(trimStrings(temp.data[,match(rep, names(temp.data))]))
+}
+if (exptl.design == "RowCol" || exptl.design == "LatinRowCol") {
+temp.data[,match(column, names(temp.data))] <- factor(trimStrings(temp.data[,match(column, names(temp.data))]))
+temp.data[,match(rep, names(temp.data))] <- factor(trimStrings(temp.data[,match(rep, names(temp.data))]))
+}
+# --- compute harmonic mean --- #
+no.reps <- data.frame(n = tapply(eval(parse(text = paste("temp.data$", respvar[i], sep = ""))), eval(parse(text = paste("temp.data$", geno, sep = ""))), FUN = length))
+no.reps <- as.numeric(1/sapply(1/no.reps, mean))
+result[[i]]$site[[j]]$numreps <- no.reps
+# --- if design is Latinized Row-Column, check if the data follow case1 or case3 labeling --- #
+if (exptl.design == "LatinRowCol") {
+lengthPerCross<-tapply(temp.data[,respvar[i]], temp.data[,c(row,column)], length)
+if (all(lengthPerCross<=1, na.rm=TRUE)) {
+if (nlevels(temp.data[, row])>nlevels(temp.data[, column])) {
+longerRow<-TRUE
+} else {
+longerRow<-FALSE
+}
+} else {
+stop("The levels of the row/column variable should be continuous across replicates.")
+}
+}
+# --- compute response rate --- #
+responseRate<-(obsused/obsread)
+result[[i]]$site[[j]]$responseRate <- responseRate
+(responseRate < 0.80)
+j=2
+# --- create temp.data with one respvar only --- #
+#temp.data <- data[sort(match(c(respvar[i], geno, row, column, rep, env), names(data)))]
+temp.data <- data
+result[[i]]$site[[j]] <- list()
+result[[i]]$site[[j]]$env <- levels(temp.data[,match(env, names(temp.data))])[j]
+# --- create temp.data with one environment level only --- #
+#temp.data <- subset(temp.data, temp.data[,match(env, names(temp.data))] == levels(temp.data[,match(env, names(temp.data))])[j])
+temp.data <- temp.data[temp.data[,match(env, names(temp.data))] == levels(temp.data[,match(env, names(temp.data))])[j],]
+# --- count number of observations read and used --- #
+obsread <- nrow(temp.data)
+result[[i]]$site[[j]]$obsread <- obsread
+temp.data <- subset(temp.data, subset = (is.na(temp.data[,match(respvar[i], names(temp.data))]) == F))
+obsused <- nrow(temp.data)
+result[[i]]$site[[j]]$obsused <- obsused
+# --- define all factors --- #
+temp.data[,match(geno, names(temp.data))] <- factor(trimStrings(temp.data[,match(geno, names(temp.data))]))
+temp.data[,match(row, names(temp.data))] <- factor(trimStrings(temp.data[,match(row, names(temp.data))]))
+if (exptl.design == "AugLS") {
+temp.data[,match(column, names(temp.data))] <- factor(trimStrings(temp.data[,match(column, names(temp.data))]))
+}
+if (exptl.design == "Alpha" || exptl.design == "LatinAlpha") {
+temp.data[,match(rep, names(temp.data))] <- factor(trimStrings(temp.data[,match(rep, names(temp.data))]))
+}
+if (exptl.design == "RowCol" || exptl.design == "LatinRowCol") {
+temp.data[,match(column, names(temp.data))] <- factor(trimStrings(temp.data[,match(column, names(temp.data))]))
+temp.data[,match(rep, names(temp.data))] <- factor(trimStrings(temp.data[,match(rep, names(temp.data))]))
+}
+# --- compute harmonic mean --- #
+no.reps <- data.frame(n = tapply(eval(parse(text = paste("temp.data$", respvar[i], sep = ""))), eval(parse(text = paste("temp.data$", geno, sep = ""))), FUN = length))
+no.reps <- as.numeric(1/sapply(1/no.reps, mean))
+result[[i]]$site[[j]]$numreps <- no.reps
+# --- if design is Latinized Row-Column, check if the data follow case1 or case3 labeling --- #
+if (exptl.design == "LatinRowCol") {
+lengthPerCross<-tapply(temp.data[,respvar[i]], temp.data[,c(row,column)], length)
+if (all(lengthPerCross<=1, na.rm=TRUE)) {
+if (nlevels(temp.data[, row])>nlevels(temp.data[, column])) {
+longerRow<-TRUE
+} else {
+longerRow<-FALSE
+}
+} else {
+stop("The levels of the row/column variable should be continuous across replicates.")
+}
+}
+# --- compute response rate --- #
+responseRate<-(obsused/obsread)
+result[[i]]$site[[j]]$responseRate <- responseRate
+(responseRate < 0.80)
+# --- check if items in checkList are in temp.data, if not adjust checkList and create warnings --- #
+checkTestWarning="NONE"
+(!is.null(checkList))
+checkList<-trimStrings(checkList)
+levelsGenoTemp<-levels(temp.data[,match(geno, names(temp.data))])
+canProceedToAnalysis<-all(checkList %in% levelsGenoTemp)
+(!canProceedToAnalysis)
+newCheckList<-checkList
+newExcludeCheck<-TRUE
+(!excludeCheck)
+(is.random)
+# --- if design if AugRCB or AugLS, automatically define the vector newCheckList
+if (exptl.design == "AugRCB" | exptl.design == "AugLS") {
+if (excludeCheck) {
+library(doBy)
+nobs <- summaryBy(formula(paste(respvar[i], " ~ ", geno, sep = "")), data=temp.data, FUN=length)
+newCheckList <- as.vector(nobs[nobs[,match(paste(respvar[i],".length", sep=""), names(nobs))]>1, geno])
+result[[i]]$site[[j]]$newCheckListLength<-length(newCheckList)
+detach("package:doBy")
+}
+newExcludeCheck <- excludeCheck
+}
+(!newExcludeCheck)
+# --- create Test and Check columns --- #
+for (k in (1:nrow(temp.data))) {
+if (is.na(match(temp.data[k,match(geno, names(temp.data))], newCheckList))) {
+temp.data$Test[k] <- levels(temp.data[,match(geno, names(temp.data))])[temp.data[k,match(geno, names(temp.data))]]
+temp.data$Check[k] <- "0"
+}else {
+temp.data$Test[k] <- "0"
+temp.data$Check[k] <- newCheckList[match(temp.data[k,match(geno, names(temp.data))], newCheckList)]
+}
+}
+temp.data$Check <- factor(temp.data$Check)
+temp.data$Test <- factor(temp.data$Test)
+# --- myformula1 uses Check and Test columns in the model --- #
+if (exptl.design == "RCB" | exptl.design == "AugRCB") { myformula1 <- paste(respvar[i], " ~ 1 + Check + (1|", row, ") + (1|Test:Check)", sep = "") }
+if (exptl.design == "AugLS") { myformula1 <- paste(respvar[i], " ~ 1 + Check + (1|", row, ") + (1|", column, ") + (1|Test:Check)", sep = "") }
+if (exptl.design == "Alpha") { myformula1 <- paste(respvar[i], " ~ 1 + Check + (1|", rep,"/", row,") + (1|Test:Check)", sep = "") }
+if (exptl.design == "RowCol") { myformula1 <- paste(respvar[i], " ~ 1 + Check + (1|", rep,") + (1|", rep,":", row,") + (1|", rep, ":", column,") + (1|Test:Check)", sep = "") }
+if (exptl.design == "LatinAlpha") { myformula1 <- paste(respvar[i], " ~ 1 + Check + (1|", rep,") + (1|", row,") + (1|", rep, ":", row, ") + (1|Test:Check)", sep = "") }
+if (exptl.design == "LatinRowCol") {
+if (longerRow) {
+myformula1 <- paste(respvar[i], " ~ 1 + Check + (1|", rep,") + (1|", column, ") + (1|", rep,":", column,") + (1|", row, ") + (1|Test:Check)", sep = "")
+} else {
+myformula1 <- paste(respvar[i], " ~ 1 + Check + (1|", rep,") + (1|", row, ") + (1|", rep,":", row,") + (1|", column, ") + (1|Test:Check)", sep = "")
+}
+}
+myformula1
+(!is.random)
+result[[i]]$site[[j]]$lmerRun <- "NO ERROR"
+result[[i]]$site[[j]]$formula1 <- myformula1
+result[[i]]$site[[j]]$model <- model
+model <- try(lmer(formula(myformula1), data = temp.data), silent=TRUE)
+result[[i]]$site[[j]]$lmerRun <- "NO ERROR"
+result[[i]]$site[[j]]$formula1 <- myformula1
+result[[i]]$site[[j]]$model <- model
+# --- for saving variance and num of reps --- #
+result[[i]]$site[[j]]$varcompnRep <- as.data.frame(attr(VarCorr(model), "sc")**2)
+result[[i]]$site[[j]]$varcompnRep$numRep <- result[[i]]$site[[j]]$numreps
+result[[i]]$site[[j]]$varcompnRep$env <- result[[i]]$site[[j]]$env[[1]]
+colnames(result[[i]]$site[[j]]$varcompnRep) <- c(paste(respvar[i],"sigma2",sep="_"),paste(respvar[i],"No.rep",sep="_"),env)
+if (j == 1) {result[[i]]$out.sigma2 <- result[[i]]$site[[j]]$varcompnRep
+} else {result[[i]]$out.sigma2 <- rbind(result[[i]]$out.sigma2, result[[i]]$site[[j]]$varcompnRep)}
+varcomp
+varcomp <- NULL
+for (k in (1:length(VarCorr(model)))) { varcomp <- rbind(varcomp, data.frame(Groups = names(VarCorr(model))[k], Variance = VarCorr(model)[[k]][1], Std.Dev. = attr(VarCorr(model)[[k]], "stddev")[[1]])) }
+varcomp <- rbind(varcomp, data.frame(Groups = "Residual", Variance = attr(VarCorr(model), "sc")**2, Std.Dev. = attr(VarCorr(model), "sc")))
+attr(varcomp, "heading") <- "Variance Components for Random Effects\n"
+result[[i]]$site[[j]]$varcomp.table <- varcomp
+varcomp
+# --- for saving variance and num of reps --- #
+result[[i]]$site[[j]]$varcompnRep <- as.data.frame(attr(VarCorr(model), "sc")**2)
+result[[i]]$site[[j]]$varcompnRep$numRep <- result[[i]]$site[[j]]$numreps
+result[[i]]$site[[j]]$varcompnRep$env <- result[[i]]$site[[j]]$env[[1]]
+colnames(result[[i]]$site[[j]]$varcompnRep) <- c(paste(respvar[i],"sigma2",sep="_"),paste(respvar[i],"No.rep",sep="_"),env)
+if (j == 1) {result[[i]]$out.sigma2 <- result[[i]]$site[[j]]$varcompnRep
+} else {result[[i]]$out.sigma2 <- rbind(result[[i]]$out.sigma2, result[[i]]$site[[j]]$varcompnRep)}
+# --- TEST SIGNIFICANCE OF GENOTYPIC VARIANCE USING LRT --- #
+# --- contruct myformula2 without the geno/test:check column --- #
+if (!newExcludeCheck) { myformula2 <- gsub(paste(" + (1|", geno,")", sep = ""), "", myformula1, fixed = TRUE)
+} else { myformula2 <- gsub("+ (1|Test:Check)", "", myformula1, fixed = TRUE)  }
+myformula2
+result[[i]]$site[[j]]$formula2 <- myformula2
+result[[i]]$site[[j]]$models.table <- models.table
+result[[i]]$site[[j]]$model1 <- model1
+# --- compare the two models --- #
+model1 <- lmer(formula(myformula1), data = temp.data, REML = T)
+model2 <- lmer(formula(myformula2), data = temp.data, REML = T)
+models.table<-modelComparisonTable(model1, model2)
+models.table
+(newExcludeCheck)
+myformula3 <- gsub("~ 1", "~ 0", myformula1)
+myformula3
+model3 <- lmer(formula(myformula3), data = temp.data)
+lsmeans.checks <- data.frame(summary(model3)@coefs)[-1,1:2] #first row is deleted since it is the lsmeans of check=0
+lsmeans.checks
+rownames(lsmeans.checks)
+library(PBTools)
+data <- read.csv("E:/NSALES/juno workspace/workspace_1/RJavaManager/sample_datasets/MET_example.csv", header = TRUE, na.strings = c("NA","."," ",""), blank.lines.skip=TRUE, sep = ",")
+outFileName<-"E:/NSALES/testingFolder/output.txt"
+respvar<-"Yield"
+environment<-"Env"
+genotype<-"Genotype"
+#trim the strings
+outFileName<-trimStrings(outFileName)
+respvar<-trimStrings(respvar)
+environment<-trimStrings(environment)
+genotype<-trimStrings(genotype)
+#add title
+capture.output(cat("\nSTABILITY ANALYSIS\n\n\n"),file=outFileName,append = FALSE)
+result<-list()
+i=1
+temp.data <- data
+result$respvar[[i]]<-list()
+#set environment and genotype to factors
+temp.data[,environment]<-factor(temp.data[,environment])
+temp.data[,genotype]<-factor(temp.data[,genotype])
+capture.output(cat("------------------------------\n"),file=outFileName,append = TRUE)
+capture.output(cat("RESPONSE VARIABLE: ", respvar[i], "\n"),file=outFileName,append = TRUE)
+capture.output(cat("------------------------------\n\n\n"),file=outFileName,append = TRUE)
+result$respvar[[i]]<-respvar[i]
+#check if data contains one value for each env-geno combination
+rep<-tapply(temp.data[, respvar[i]] , data[,c(environment, genotype)], function(x) length(which(!is.na(x))))
+result$respvar[[i]]$Error<-"ERROR: Too many missing observations."
+result
+result$respvar[[1]]$Error<-"E."
+i
+result
+source('E:/NSALES/creatingRPackage/PBTools Package/In package format/PBTools/R/stabilityTest.R')
+data <- read.csv("E:/NSALES/juno workspace/workspace_1/RJavaManager/sample_datasets/MET_example.csv", header = TRUE, na.strings = c("NA","."," ",""), blank.lines.skip=TRUE, sep = ",")
+outFileName<-"E:/NSALES/testingFolder/output.txt"
+respvar<-"Yield"
+environment<-"Env"
+genotype<-"Genotype"
+stabilityTest(data, outFileName, respvar, environment, genotype, useFinlay=FALSE, useShukla=TRUE)
+suppressWarnings(result$respvar[[i]]$Error<-"ERROR: Too many missing observations.")
+result
+source('E:/NSALES/creatingRPackage/PBTools Package/In package format/PBTools/R/stabilityTest.R')
+data <- read.csv("E:/NSALES/juno workspace/workspace_1/RJavaManager/sample_datasets/MET_example.csv", header = TRUE, na.strings = c("NA","."," ",""), blank.lines.skip=TRUE, sep = ",")
+outFileName<-"E:/NSALES/testingFolder/output.txt"
+respvar<-"Yield"
+environment<-"Env"
+genotype<-"Genotype"
+stabilityTest(data, outFileName, respvar, environment, genotype, useFinlay=FALSE, useShukla=TRUE)
+source('E:/NSALES/creatingRPackage/PBTools Package/In package format/PBTools/R/stabilityTest.R')
+data <- read.csv("E:/NSALES/juno workspace/workspace_1/RJavaManager/sample_datasets/MET_example.csv", header = TRUE, na.strings = c("NA","."," ",""), blank.lines.skip=TRUE, sep = ",")
+outFileName<-"E:/NSALES/testingFolder/output.txt"
+respvar<-"Yield"
+environment<-"Env"
+genotype<-"Genotype"
+stabilityTest(data, outFileName, respvar, environment, genotype, useFinlay=FALSE, useShukla=TRUE)
+stabilityTest(data, outFileName, respvar, environment, genotype, useFinlay=TRUE, useShukla=TRUE)
+data <- read.csv("E:/NSALES/juno workspace/workspace_1/RJavaManager/sample_datasets/RCB_Multi.csv", header = TRUE, na.strings = c("NA","."," ",""), blank.lines.skip=TRUE, sep = ",")
+outFileName<-"E:/NSALES/testingFolder/output.txt"
+respvar<-c("Y1", "Y2")
+environment<-"Site"
+genotype<-"Gen"
+stabilityTest(data, outFileName, respvar, environment, genotype, useFinlay=TRUE, useShukla=FALSE)
+data <- read.csv("E:/NSALES/juno workspace/workspace_1/RJavaManager/sample_datasets/summaryStats2_b.csv", header = TRUE, na.strings = c("NA","."," ",""), blank.lines.skip=TRUE, sep = ",")
+outFileName<-"E:/NSALES/testingFolder/output.txt"
+respvar<-c("Y2_Mean", "Y3_Mean")
+environment<-"Set"
+genotype<-"EntryNo"
+method="regression"
+a<-stabilityTest(data, outFileName, respvar, environment, genotype, useFinlay=TRUE, useShukla=FALSE)
+data <- read.csv("E:/NSALES/juno workspace/workspace_1/RJavaManager/sample_datasets/RCB_Multi.csv", header = TRUE, na.strings = c("NA","."," ",""), blank.lines.skip=TRUE, sep = ",")
+outFileName<-"E:/NSALES/testingFolder/output.txt"
+respvar<-c("Y1", "Y2")
+environment<-"Site"
+genotype<-"Gen"
+stabilityTest(data, outFileName, respvar, environment, genotype, useFinlay=FALSE, useShukla=TRUE)
+data <- read.csv("E:/NSALES/juno workspace/workspace_1/RJavaManager/sample_datasets/summaryStats2_b.csv", header = TRUE, na.strings = c("NA","."," ",""), blank.lines.skip=TRUE, sep = ",")
+outFileName<-"E:/NSALES/testingFolder/output.txt"
+respvar<-c("Y2_Mean", "Y3_Mean")
+environment<-"Set"
+genotype<-"EntryNo"
+method="regression"
+a<-stabilityTest(data, outFileName, respvar, environment, genotype, useFinlay=TRUE, useShukla=FALSE)
+data <- read.csv("E:/NSALES/juno workspace/workspace_1/RJavaManager/sample_datasets/RCB_ME.csv", header = TRUE, na.strings = c("NA","."," ",""), blank.lines.skip=TRUE, sep = ",")
+outFileName<-"E:/NSALES/testingFolder/output.txt"
+respvar<-c("Yield", "Y2")
+environment<-"Env"
+genotype<-"Genotype"
+stabilityTest(data, outFileName, respvar, environment, genotype, useFinlay=TRUE, useShukla=TRUE)
+data <- read.csv("E:/NSALES/juno workspace/workspace_1/RJavaManager/sample_datasets/summaryStats2_b.csv", header = TRUE, na.strings = c("NA","."," ",""), blank.lines.skip=TRUE, sep = ",")
+outFileName<-"E:/NSALES/testingFolder/output.txt"
+respvar<-c("Y2_Mean", "Y3_Mean")
+environment<-"Set"
+genotype<-"EntryNo"
+#trim the strings
+outFileName<-trimStrings(outFileName)
+respvar<-trimStrings(respvar)
+environment<-trimStrings(environment)
+genotype<-trimStrings(genotype)
+#add title
+capture.output(cat("\nSTABILITY ANALYSIS\n\n\n"),file=outFileName,append = FALSE)
+result<-list()
+i=1
+temp.data <- data
+result$respvar[[i]]<-list()
+#set environment and genotype to factors
+temp.data[,environment]<-factor(temp.data[,environment])
+temp.data[,genotype]<-factor(temp.data[,genotype])
+capture.output(cat("------------------------------\n"),file=outFileName,append = TRUE)
+capture.output(cat("RESPONSE VARIABLE: ", respvar[i], "\n"),file=outFileName,append = TRUE)
+capture.output(cat("------------------------------\n\n\n"),file=outFileName,append = TRUE)
+result$respvar[[i]]<-respvar[i]
+(nlevels(temp.data[,environment])>4)
+#check if data contains one value for each env-geno combination
+rep<-tapply(temp.data[, respvar[i]] , data[,c(environment, genotype)], function(x) length(which(!is.na(x))))
+sum(rep==0)
+nlevels(temp.data[,environment])
+nlevels(temp.data[,genotype])
+temp.data[,genotype]
+rstudio::viewData(data)
+responseRate<-1-(sum(rep==0)/(nlevels(temp.data[,environment])*nlevels(temp.data[,genotype])))
+responseRate
+source('E:/NSALES/creatingRPackage/PBTools Package/In package format/PBTools/R/stabilityTest.R')
+data <- read.csv("E:/NSALES/juno workspace/workspace_1/RJavaManager/sample_datasets/summaryStats2_b.csv", header = TRUE, na.strings = c("NA","."," ",""), blank.lines.skip=TRUE, sep = ",")
+outFileName<-"E:/NSALES/testingFolder/output.txt"
+respvar<-c("Y2_Mean", "Y3_Mean")
+environment<-"Set"
+genotype<-"EntryNo"
+a<-stabilityTest(data, outFileName, respvar, environment, genotype, useFinlay=TRUE, useShukla=FALSE)
+source('E:/NSALES/creatingRPackage/PBTools Package/In package format/PBTools/R/stabilityTest.R')
+data <- read.csv("E:/NSALES/juno workspace/workspace_1/RJavaManager/sample_datasets/MET_example.csv", header = TRUE, na.strings = c("NA","."," ",""), blank.lines.skip=TRUE, sep = ",")
+outFileName<-"E:/NSALES/testingFolder/output.txt"
+respvar<-"Yield"
+environment<-"Env"
+genotype<-"Genotype"
+stabilityTest(data, outFileName, respvar, environment, genotype, useFinlay=TRUE, useShukla=TRUE)
+data <- read.csv("E:/NSALES/juno workspace/workspace_1/RJavaManager/sample_datasets/RCB_ME.csv", header = TRUE, na.strings = c("NA","."," ",""), blank.lines.skip=TRUE, sep = ",")
+outFileName<-"E:/NSALES/testingFolder/output.txt"
+respvar<-c("Yield", "Y2")
+environment<-"Env"
+genotype<-"Genotype"
+stabilityTest(data, outFileName, respvar, environment, genotype, useFinlay=TRUE, useShukla=TRUE)
+data <- read.csv("E:/NSALES/juno workspace/workspace_1/RJavaManager/sample_datasets/RCB_Multi.csv", header = TRUE, na.strings = c("NA","."," ",""), blank.lines.skip=TRUE, sep = ",")
+outFileName<-"E:/NSALES/testingFolder/output.txt"
+respvar<-c("Y1", "Y2")
+environment<-"Site"
+genotype<-"Gen"
+stabilityTest(data, outFileName, respvar, environment, genotype, useFinlay=FALSE, useShukla=TRUE)
+dt<-read.csv("E:/NSALES/personal/personal docs/TalithaJanJasarino/emailed_dec17/DATA_nmle.csv", header=TRUE)
+for (i in 1:nrow(dt)) {
+if (dt$Q9a[i]==2) {
+dt$Q9an[i]<-0
+} else dt$Q9an[i]<-1
+if (dt$Q10[i]==2) {
+dt$share[i]<-0
+} else dt$share[i]<-1
+if (dt$Q11[i]==4 || dt$Q11[i]==5) {
+dt$Q11n[i]<-1
+} else dt$Q11n[i]<-0
+if (dt$Q12[i]==4 || dt$Q12[i]==5) {
+dt$Q12n[i]<-1
+} else dt$Q12n[i]<-0
+if (dt$Q13[i]==4 || dt$Q13[i]==5) {
+dt$Q13n[i]<-1
+} else dt$Q13n[i]<-0
+if (dt$Q14[i]==4 || dt$Q14[i]==5) {
+dt$Q14n[i]<-1
+} else dt$Q14n[i]<-0
+if (dt$Q15[i]==4 || dt$Q15[i]==5) {
+dt$Q15n[i]<-1
+} else dt$Q15n[i]<-0
+if (dt$Q16[i]==4 || dt$Q16[i]==5) {
+dt$Q16n[i]<-1
+} else dt$Q16n[i]<-0
+if (dt$Q17[i]==4 || dt$Q17[i]==5) {
+dt$Q17n[i]<-1
+} else dt$Q17n[i]<-0
+if (dt$Q18[i]==4 || dt$Q18[i]==5) {
+dt$Q18n[i]<-1
+} else dt$Q18n[i]<-0
+if (dt$Q19[i]==4 || dt$Q19[i]==5) {
+dt$Q19n[i]<-1
+} else dt$Q19n[i]<-0
+if (dt$Q20[i]==4 || dt$Q20[i]==5) {
+dt$Q20n[i]<-1
+} else dt$Q20n[i]<-0
+if (dt$Q21[i]==4 || dt$Q21[i]==5) {
+dt$Q21n[i]<-1
+} else dt$Q21n[i]<-0
+if (dt$Q22[i]==4 || dt$Q22[i]==5) {
+dt$Q22n[i]<-1
+} else dt$Q22n[i]<-0
+if (dt$Q23[i]==4 || dt$Q23[i]==5) {
+dt$Q23n[i]<-1
+} else dt$Q23n[i]<-0
+if (dt$Q24[i]==4 || dt$Q24[i]==5) {
+dt$Q24n[i]<-1
+} else dt$Q24n[i]<-0
+if (dt$Q25[i]==4 || dt$Q25[i]==5) {
+dt$Q25n[i]<-1
+} else dt$Q25n[i]<-0
+if (dt$Q26[i]==4 || dt$Q26[i]==5) {
+dt$Q26n[i]<-1
+} else dt$Q26n[i]<-0
+if (dt$Q27[i]==4 || dt$Q27[i]==5) {
+dt$Q27n[i]<-1
+} else dt$Q27n[i]<-0
+if (dt$Q28[i]==4 || dt$Q28[i]==5) {
+dt$Q28n[i]<-1
+} else dt$Q28n[i]<-0
+if (dt$Q29[i]==4 || dt$Q29[i]==5) {
+dt$Q29n[i]<-1
+} else dt$Q29n[i]<-0
+if (dt$Q30[i]==4 || dt$Q30[i]==5) {
+dt$Q30n[i]<-1
+} else dt$Q30n[i]<-0
+if (dt$Q31[i]==4 || dt$Q31[i]==5) {
+dt$Q31n[i]<-1
+} else dt$Q31n[i]<-0
+if (dt$Q32[i]==4 || dt$Q32[i]==5) {
+dt$Q32n[i]<-1
+} else dt$Q32n[i]<-0
+if (dt$Q33[i]==4 || dt$Q33[i]==5) {
+dt$Q33n[i]<-1
+} else dt$Q33n[i]<-0
+if (dt$Q34[i]==4 || dt$Q34[i]==5) {
+dt$Q34n[i]<-1
+} else dt$Q34n[i]<-0
+if (dt$Q35[i]==4 || dt$Q35[i]==5) {
+dt$Q35n[i]<-1
+} else dt$Q35n[i]<-0
+if (dt$Q36[i]==4 || dt$Q36[i]==5) {
+dt$Q36n[i]<-1
+} else dt$Q36n[i]<-0
+if (dt$Q37[i]==4 || dt$Q37[i]==5) {
+dt$Q37n[i]<-1
+} else dt$Q37n[i]<-0
+if (dt$Q38[i]==4 || dt$Q38[i]==5) {
+dt$Q38n[i]<-1
+} else dt$Q38n[i]<-0
+if (dt$Q39[i]==4 || dt$Q39[i]==5) {
+dt$Q39n[i]<-1
+} else dt$Q39n[i]<-0
+if (dt$Q40[i]==4 || dt$Q40[i]==5) {
+dt$Q40n[i]<-1
+} else dt$Q40n[i]<-0
+if (dt$Q41[i]==4 || dt$Q41[i]==5) {
+dt$Q41n[i]<-1
+} else dt$Q41n[i]<-0
+if (dt$Q42[i]==4 || dt$Q42[i]==5) {
+dt$Q42n[i]<-1
+} else dt$Q42n[i]<-0
+if (dt$Q43[i]==4 || dt$Q43[i]==5) {
+dt$Q43n[i]<-1
+} else dt$Q43n[i]<-0
+if (dt$Q44[i]==4 || dt$Q44[i]==5) {
+dt$Q44n[i]<-1
+} else dt$Q44n[i]<-0
+if (dt$Q45[i]==4 || dt$Q45[i]==5) {
+dt$Q45n[i]<-1
+} else dt$Q45n[i]<-0
+}
+dt$Q2<-factor(dt$Q2)
+dt$Q3<-factor(dt$Q3)
+dt$Q4<-factor(dt$Q4)
+dt$Q5<-factor(dt$Q5)
+dt$Q6<-factor(dt$Q6)
+dt$Q7<-factor(dt$Q7)
+dt$Q8<-factor(dt$Q8)
+dt$Q9an<-factor(dt$Q9an)
+dt$share<-factor(dt$share)
+dt$Q11n<-factor(dt$Q11n)
+dt$Q12n<-factor(dt$Q12n)
+dt$Q13n<-factor(dt$Q13n)
+dt$Q14n<-factor(dt$Q14n)
+dt$Q15n<-factor(dt$Q15n)
+dt$Q16n<-factor(dt$Q16n)
+dt$Q17n<-factor(dt$Q17n)
+dt$Q18n<-factor(dt$Q18n)
+dt$Q19n<-factor(dt$Q19n)
+dt$Q20n<-factor(dt$Q20n)
+dt$Q21n<-factor(dt$Q21n)
+dt$Q22n<-factor(dt$Q22n)
+dt$Q23n<-factor(dt$Q23n)
+dt$Q24n<-factor(dt$Q24n)
+dt$Q25n<-factor(dt$Q25n)
+dt$Q26n<-factor(dt$Q26n)
+dt$Q27n<-factor(dt$Q27n)
+dt$Q28n<-factor(dt$Q28n)
+dt$Q29n<-factor(dt$Q29n)
+dt$Q30n<-factor(dt$Q30n)
+dt$Q31n<-factor(dt$Q31n)
+dt$Q32n<-factor(dt$Q32n)
+dt$Q33n<-factor(dt$Q33n)
+dt$Q34n<-factor(dt$Q34n)
+dt$Q35n<-factor(dt$Q35n)
+dt$Q36n<-factor(dt$Q36n)
+dt$Q37n<-factor(dt$Q37n)
+dt$Q38n<-factor(dt$Q38n)
+dt$Q39n<-factor(dt$Q39n)
+dt$Q40n<-factor(dt$Q40n)
+dt$Q41n<-factor(dt$Q41n)
+dt$Q42n<-factor(dt$Q42n)
+dt$Q43n<-factor(dt$Q43n)
+dt$Q44n<-factor(dt$Q44n)
+dt$Q45n<-factor(dt$Q45n)
+library(MASS)
+#model 1 with weights
+mylogit <- glm(share ~ Q22n + Q27n + Q36n + Q39n, data = dt, family = "binomial", weights=dt$weights)
+summary(mylogit)
+mylogit
+names(logit)
+names(mylogit)
+mylogit$R
+mylogit$model
+names(mylogit)
+names(summary(mylogit))
+mylogit
+pchisq(54.93, 135)
+anova(mylogit, test="Chisq")
+anova(mylogit)
+confint(mylogit)
+with(mylogit, pchisq(null.deviance - deviance, df.null - df.residual, lower.tail = FALSE))
+summary(mylogit)
+logLik(mylogit)
+with(mylogit, null.deviance - deviance)
+with(mylogit, df.null - df.residual)
+pchisq(null.deviance - deviance, df.null - df.residual, lower.tail = FALSE)
+pchisq(27.927, 4, lower.tail = FALSE)
+with(mylogit, pchisq(null.deviance - deviance, df.null - df.residual, lower.tail = FALSE))
+anova(mylogit, test="Chisq")
+library(PBTools)
+setwd("E:/NSALES/juno workspace/workspace_1/RJavaManager/sample_datasets/")
+data <- read.csv("E:/NSALES/juno workspace/workspace_1/RJavaManager/sample_datasets/Two_stage.csv", header = TRUE, na.strings = c("NA","."," ",""), blank.lines.skip=TRUE, sep = ",")
+result <- try(multiplicativeModels(data, outFileName="E:/NSALES/juno workspace/workspace_1/RJavaManager/sample_datasets/MultiplicativeModels_output.txt", respvar=c("Yield_Mean"), environment="Env", genotype="Geno", numberOfReps = c("Yield_No.rep"), residualVariances = c("Yield_sigma2"), responsePlot = TRUE,  doAMMI = TRUE, biplotPC12 = TRUE, biplotPC13 = TRUE, biplotPC23 = TRUE, ammi1 = TRUE, adaptMap = TRUE, doGGE = TRUE, graphSym = TRUE, graphEnv = TRUE, graphGeno = TRUE), silent=TRUE)
+result
+names(data)
+source('E:/NSALES/creatingRPackage/PBTools Package/In package format/PBTools/R/multiplicativeModels.R')

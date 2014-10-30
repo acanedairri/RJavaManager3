@@ -1,0 +1,65 @@
+
+MULTIPLE ENVIRONMENT ANALYSIS
+
+DESIGN: NORTH CAROLINA EXPERIMENT I IN RowColumn (INBRED)
+
+
+RESPONSE VARIABLE: Y
+
+DATA SUMMARY: 
+ Factors   No of Levels   Levels             
+ Trial     1              1                  
+ row       21             1  10  11 ... 9    
+ col       3              1  2  3            
+ trmt      21             T1  T10  T11 ... T9
+ rep       3              1  2  3            
+ male      7              1  2  3  4  5  6  7
+ fem       3              F1  F2  F3         
+
+ Number of observations read: 63
+ Number of missing observations: 0
+
+
+LINEAR MIXED MODEL FIT BY RESTRICTED MAXIMUM LIKELIHOOD:
+
+ Formula:  Y ~ 1 + (1|Trial) + (1|Trial:rep) + (1|Trial:rep:row) + (1|Trial:rep:col) + (1|male/fem) + (1|Trial:male) + (1|Trial:fem:male) 
+
+      AIC      BIC    logLik deviance  REMLdev
+ 752.9276 774.3589 -366.4638 741.0481 732.9276
+
+ Fixed Effects:
+            Estimate Std. Error t value
+(Intercept) 132.2657    23.2278  5.6943
+
+ Random Effects:                                        
+ Groups          Variance Std. Deviation
+ Trial:fem:male 1198.1821        34.6148
+ fem:male          0.0158         0.1255
+ Trial:rep:row     0.0000         0.0000
+ Trial:rep:col     0.0000         0.0000
+ Trial:male      351.0461        18.7362
+ male            374.7310        19.3580
+ Trial:rep       199.5572        14.1265
+ Trial           217.2033        14.7378
+ Residual       5988.7719        77.3872
+
+
+ESTIMATES OF GENETIC VARIANCE COMPONENTS:                         
+                 Estimate
+ VA              749.4621
+ VAxE            702.0921
+ VD                0.0000
+ VDxE            847.1361
+ h2-narrow sense   0.0904
+ H2-broad sense    0.0904
+ Dominance Ratio   0.0000
+
+
+ESTIMATES OF HERITABILITY:
+          Family Selection Narrow Sense Broad sense
+ male                 0.21         0.05        0.05
+ fem                  0.00         0.00       -0.05
+ Full-sib             0.10         0.05        0.00
+
+
+==============================================================

@@ -1,0 +1,41 @@
+package org.irri.breedingtool.rjava.pbtoolsrandomization;
+
+import org.irri.breedingtool.rjava.manager.RJavaManager;
+
+public class TestDesignStrip {
+
+	private static String BSLASH = "\\";
+	private static String FSLASH = "/";
+	private static String PATH1 = System.getProperty("user.dir")+ System.getProperty("file.separator") + "sample_datasets" + System.getProperty("file.separator");
+	public static String DATA_PATH = PATH1.replace(BSLASH, FSLASH);
+	
+	public static void main(String[] args) {
+		
+		//supply path and name of active data
+		String dataFileName = DATA_PATH + "Strip.csv"; 
+		//supply path and name of text file where text output is going to be saved
+		String outFileName = DATA_PATH + "RandomizationStripOutput.txt"; 
+		//supply path and name of graph file
+		
+		//specify parameters
+		String vertical = "VAR";
+		String horizontal = "NITROGEN";
+		// if design = strip-split plot sub should not be equal to null
+		String sub = null;
+		// String sub = "FERT";
+		// if design = strip-split-split plot ssub should not be equal to null
+		String ssub = null;
+		// if design = strip plot, length of factorLevel is 2
+		// if design = strip-split plot, length of factorLevel is 3
+		// if design = strip-split-split plot, length of factorLevel is 4
+		Integer[] factorLevel = {5,4};
+		Integer rep = 2;
+		Integer trial = 2;
+		
+		RJavaManager rJavaManager= new RJavaManager();
+		rJavaManager.initPBtool();
+		rJavaManager.getPbToolRandomizationManager().doDesignStrip(dataFileName, outFileName, 
+				vertical, horizontal, sub, ssub, factorLevel, rep, trial);
+	}
+
+}

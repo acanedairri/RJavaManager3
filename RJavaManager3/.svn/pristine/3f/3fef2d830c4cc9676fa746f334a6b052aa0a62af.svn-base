@@ -1,0 +1,46 @@
+package org.irri.breedingtool.rjava.stardesign;
+
+import org.irri.breedingtool.rjava.manager.RJavaManager;
+
+public class TestDesignSplit {
+
+	private static String BSLASH = "\\";
+	private static String FSLASH = "/";
+	private static String PATH1 = System.getProperty("user.dir")+ System.getProperty("file.separator") + "sample_datasets" + System.getProperty("file.separator");
+	public static String DATA_PATH = PATH1.replace(BSLASH, FSLASH);
+	
+	public static void main(String[] args) {
+		
+		//supply path and name of active data
+		String dataFileName = DATA_PATH + "Split.csv"; 
+		//supply path and name of text file where text output is going to be saved
+		String outFileName = DATA_PATH + "RandomizationSplitOutput.txt"; 
+		//supply path and name of graph file
+		
+		//specify parameters
+		String main = "VAR";
+		String sub = "NITROGEN";
+		// if design = split-split plot ssub should not be equal to null
+		// String ssub = null;
+		String ssub = "FERT";
+		// if design = split-split-split plot sssub should not be equal to null
+		String sssub = null;
+		// if design = split plot, length of factorLevel is 2
+		// if design = split-split plot, length of factorLevel is 3
+		// if design = split-split-split plot, length of factorLevel is 4
+		Integer[] factorLevel = {5,4,3};
+		Integer rep = 2;
+		Integer trial = 2;
+		String design = "rcbd";
+		
+		RJavaManager rJavaManager= new RJavaManager();
+		rJavaManager.initStar();
+		rJavaManager.getSTARDesignManager().doDesignSplit(dataFileName, outFileName, 
+				main, sub, ssub, sssub, factorLevel, rep, trial, design);
+		
+		StringBuilder s = rJavaManager.getSTARDesignManager().getRscriptCommand();
+		System.out.println("Script Command:\n" +s.toString());
+
+	}
+
+}

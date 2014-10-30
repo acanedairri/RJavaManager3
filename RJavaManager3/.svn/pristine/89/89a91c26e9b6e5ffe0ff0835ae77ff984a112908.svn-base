@@ -1,0 +1,59 @@
+package org.irri.breedingtool.rjava.pbtoolsanalysis;
+
+import org.irri.breedingtool.rjava.manager.RJavaManager;
+
+public class TestSingleEnvironment {
+
+	private static String BSLASH = "\\";
+	private static String FSLASH = "/";
+	private static String PATH1 = System.getProperty("user.dir")+ System.getProperty("file.separator") + "sample_datasets" + System.getProperty("file.separator");
+	public static String DATA_PATH = PATH1.replace(BSLASH, FSLASH);
+	
+	public static void main(String[] args) {
+		
+		//supply path and name of active data
+		String dataFileName = DATA_PATH + "12DS_MET2_Complete_Data.csv";
+		//supply path and name of text file where text output is going to be saved
+		String outFileName = DATA_PATH + "SEA_output.txt";
+		//supply path where the graphs will be saved
+		String resultFolderPath = DATA_PATH;
+		
+		//specify parameters
+		int design = 4;
+		String[] respvars = {"Plot.Yield", "Tons.ha"};
+		String environment = "NULL";
+		String[] environmentLevels = {};
+		String genotype = "EntryNo";
+		String block = "NULL";
+		String rep = "Rep";
+		String row = "ROW";
+		String column = "COL";
+		boolean descriptiveStat = true; 
+		boolean varianceComponents = true;
+		boolean boxplotRawData = false;
+		boolean histogramRawData = false;
+		boolean heatmapResiduals = false;
+		String heatmapRow = "ROW";
+		String heatmapColumn = "COL";
+		boolean diagnosticPlot = false;
+		boolean genotypeFixed = true;
+		boolean performPairwise = false;
+		String pairwiseAlpha = "0.05";
+		String[] genotypeLevels = {"1",   "2",   "3",   "4",   "5",   "6",   "7",   "8",   "9",   "10",  "11",  "12",  "13",  "14",  "15",  "16",  "17",  "18",  "19",  "20",  "21",  "22",  "23",  "24",  "25",  "26",  "27",  "28",  "29",  "30",  "31",  "32",  "33",  "34",  "35",  "36",  "37",  "38",  "39",  "40",  "41",  "42",  "43",  "44",  "45",  "46",  "47",  "48",  "49",  "50",  "51",  "52",  "53",  "54",  "55",  "56",  "57",  "58",  "59",  "60",  "61",  "62",  "63",  "64",  "65",  "66",  "67",  "68",  "69",  "70",  "71",  "72",  "73",  "74",  "75",  "76",  "77",  "78",  "79",  "80",  "81",  "82",  "83",  "84",  "85",  "86",  "87",  "88",  "89",  "90",  "91",  "92",  "93",  "94",  "95",  "96",  "97",  "98",  "99", "100"}; 
+		String[] controlLevels = {"1",   "2",   "3",   "4",   "5",   "6",   "7",   "8",   "9",   "10",  "11",  "12",  "13",  "14",  "15",  "16",  "17",  "18",  "19",  "20",  "21",  "22",  "23",  "24",  "25",  "26",  "27",  "28",  "29",  "30",  "31",  "32",  "33",  "34",  "35",  "36",  "37",  "38",  "39",  "40",  "41",  "42",  "43",  "44",  "45",  "46",  "47",  "48",  "49",  "50"};
+		boolean compareControl = false;
+		boolean performAllPairwise = false;
+		boolean genotypeRandom = true;
+		boolean excludeControls = true;
+		String[] controlLevels2 = {"1",   "2",   "3",   "4",   "5",   "6",   "7",   "8",   "9",   "10",  "11",  "12",  "13",  "14",  "15",  "16",  "17",  "18",  "19",  "20",  "21",  "22",  "23",  "24",  "25",  "26",  "27",  "28",  "29",  "30",  "31",  "32",  "33",  "34",  "35",  "36",  "37",  "38",  "39",  "40",  "41",  "42",  "43",  "44",  "45",  "46",  "47",  "48",  "49",  "50"};
+		boolean genoPhenoCorrelation = false;
+		
+		RJavaManager rJavaManager= new RJavaManager();
+		rJavaManager.initPBtool();
+		rJavaManager.getPbToolAnalysisManager().doSingleEnvironmentAnalysis(dataFileName, outFileName, resultFolderPath, design, respvars, environment, environmentLevels,
+				genotype, block, rep, row, column, descriptiveStat, varianceComponents, boxplotRawData, histogramRawData, heatmapResiduals, heatmapRow, 
+				heatmapColumn, diagnosticPlot, genotypeFixed, performPairwise, pairwiseAlpha, genotypeLevels, controlLevels, compareControl, performAllPairwise,
+				genotypeRandom, excludeControls, controlLevels2, genoPhenoCorrelation);
+	}
+
+}

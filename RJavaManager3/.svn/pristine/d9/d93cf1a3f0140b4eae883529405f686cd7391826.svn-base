@@ -1,0 +1,63 @@
+package org.irri.breedingtool.rjava.graph;
+
+
+import org.irri.breedingtool.rjava.manager.RJavaManager;
+
+public class TestGraphHistogram {
+
+	private static String BSLASH = "\\";
+	private static String FSLASH = "/";
+	private static String PATH1 = System.getProperty("user.dir")+ System.getProperty("file.separator") + "sample_datasets" + System.getProperty("file.separator");
+	public static String DATA_PATH = PATH1.replace(BSLASH, FSLASH);
+	
+	public static void main(String[] args) {
+		
+		//supply path and name of active data
+ 		String dataFileName = DATA_PATH + "gerua_na.csv";
+		String[] nVar = {"GYLDL500", "yldSp3", "yldNA"}; //"DFF", "PLHT", "PNCLE", "GRNYLD"};
+
+//		String dataFileName = DATA_PATH + "Year_Parallel.csv";
+//		String[] nVar = {"GRNYLD.95", "GRNYLD.96"}; 
+//		String cVar = "Nitrogen"; //null; //
+		String mTitle = "The Main Title";//"The Main Title";
+		String yAxisLab = "";
+		String xAxisLab = "";
+		String yMinValue = null; 
+		String yMaxValue = null;
+		String xMinValue = null; 
+		String xMaxValue = null;
+		String useFreq = "FALSE"; //"TRUE"; // 
+		String numBins = "Auto"; //for "Sturges" or integer
+		String byVar = null; // NULL
+		String[] barColors = {"rgb(255,0,255, max = 255, alpha = 127)","rgb(255, 255, 0, max = 255, alpha = 127)", "rgb(0, 255, 255, max = 255, alpha = 127)"}; 
+		String dispCurve = "TRUE"; //"FALSE"; //
+		int[] lineTypes = {1, 2, 3}; 
+		String[] lineColors = {"rgb(0,0,0, max = 255)","rgb(0,0,255, max = 255)", "rgb(0, 255, 0, max = 255)"};
+		double[] lineWidths = {2, 1, 3}; //c(1,1,1)
+		String showLeg = "TRUE";
+		String legPos = "topright"; //"bottomright";
+		String legTitle = "The Title";
+		String boxed = "TRUE"; //"FALSE"; //
+		String multGraphs = "FALSE";
+		int numRowsGraphs = 1;
+		int numColsGraphs = 1;
+		String orientGraphs = "top-bottom";
+
+//		String path = System.getProperty("user.dir")+ System.getProperty("file.separator") + "sample_datasets";
+		String outputPath = DATA_PATH;
+		
+//		System.out.println(dataFileName);
+//		System.out.println(outputPath);
+		
+		RJavaManager rJavaManager= new RJavaManager();
+		rJavaManager.initStar();
+//		rJavaManager.initPBtool();
+
+		rJavaManager.getRJavaGraphManager().createGraphHist(outputPath, dataFileName, nVar, mTitle,  
+				yAxisLab, xAxisLab, yMinValue, yMaxValue, xMinValue, xMaxValue, useFreq, numBins, byVar, 
+		        barColors, dispCurve, lineTypes, lineColors, lineWidths, showLeg, legPos, legTitle, 
+		        boxed, multGraphs, numRowsGraphs, numColsGraphs, orientGraphs);
+		
+	}
+
+}

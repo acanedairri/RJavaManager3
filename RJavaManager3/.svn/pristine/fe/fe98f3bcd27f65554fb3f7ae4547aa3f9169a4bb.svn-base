@@ -1,0 +1,74 @@
+
+DATA FILE: E:/NSALES/juno workspace/workspace_1/RJavaManager/sample_datasets/NC2RowCol.csv
+
+MULTIPLE ENVIRONMENT ANALYSIS
+
+DESIGN: TRIPLE TEST CROSS (NO PARENTS) IN RowColumn
+
+-----------------------------
+RESPONSE VARIABLE: Y
+-----------------------------
+
+DATA SUMMARY: 
+
+ Factors   No of Levels   Levels             
+ Trial     2              1  2               
+ row       21             1  10  11 ... 9    
+ col       3              1  2  3            
+ trmt      21             T1  T10  T11 ... T9
+ rep       3              1  2  3            
+ male      7              1  2  3  4  5  6  7
+ fem       3              F1  F2  F3         
+
+ Number of observations read: 126
+ Number of missing observations: 0
+
+
+TESTING FOR THE SIGNIFICANCE OF CROSS EFFECT: (Crosses = fem:male)
+
+ Formula for Model 1: Y ~ Crosses + (1|Trial) + (1|Trial:rep) + (1|Trial:rep:row) + (1|Trial:rep:col) + (1|Crosses:Trial)
+ Formula for Model 2: Y ~ (1|Trial) + (1|Trial:rep) + (1|Trial:rep:row) + (1|Trial:rep:col) + (1|Crosses:Trial)
+
+        Df    AIC     BIC  logLik Chisq Chi Df Pr(>Chisq)
+ model2  7 1505.4 1525.26 -745.70                        
+ model1 27 1511.1 1587.68 -728.55  34.3     20     0.0241
+
+
+ANOVA FOR TESTING EPISTASIS:
+                                                      
+ SV           Df      Sum Sq    Mean Sq F value Pr(>F)
+ AxA           1   5097.0608  5097.0608  -23.83 1.0000
+ AxD and DxD   6  97243.6108 16207.2685    3.16 0.0934
+ AAxE          1   -213.8520  -213.8520   -0.02 1.0000
+ ADxE or DDxE  6  30734.8861  5122.4810    0.58 0.0198
+ Total        14 132861.7057  9490.1218    1.07 0.4296
+ Residual     24 213418.8316  8892.4513               
+-------
+REMARK: Raw dataset is balanced.
+
+
+ANOVA TABLE:
+                                              
+ SV   Df      Sum Sq    Mean Sq F value Pr(>F)
+ s     6 106450.0774 17741.6796    3.69 0.0097
+ sxe   6  30205.8468  5034.3078    1.05 0.4208
+ e(s) 24 115462.2754  4810.9281               
+ d     6  29218.6283  4869.7714    0.64 0.6978
+ dxe   6  78088.8887 13014.8148    1.71 0.1622
+ e(d) 24 182819.4018  7617.4751               
+-------
+REMARK: Raw dataset is balanced.
+
+
+ESTIMATES OF GENETIC VARIANCE COMPONENTS:
+                            
+                    Estimate
+ VA              5747.000631
+ VD                 0.000000
+ h2-narrow sense    0.463617
+ H2-broad sense     0.463617
+ Dominance Ratio    0.000000
+
+
+
+==============================================================

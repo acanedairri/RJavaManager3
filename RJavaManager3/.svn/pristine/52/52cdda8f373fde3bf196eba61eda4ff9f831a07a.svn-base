@@ -1,0 +1,53 @@
+
+DESIGN: NORTH CAROLINA EXPERIMENT II IN CRD (INBRED)
+
+-----------------------------
+RESPONSE VARIABLE: respvar
+-----------------------------
+
+-----------------------------
+ANALYSIS FOR: environment = A
+-----------------------------
+
+DATA SUMMARY: 
+ Factors     No of Levels   Levels         
+ environment 1              A              
+ male        4              1  2  3  4     
+ female      11             1  10  11 ... 9
+
+Number of observations read: 84
+Number of missing observations: 4
+
+
+ANOVA TABLE FOR THE EXPERIMENT
+            Df Sum Sq Mean Sq F value   Pr(>F)
+male         3  439.7  146.56  20.533 2.79e-08
+female      10  479.4   47.94   6.716 4.48e-06
+male:female 29  665.6   22.95   3.215 0.000316
+Residuals   41  292.6    7.14                 
+-------
+REMARK: Raw dataset is unbalanced.
+
+
+LINEAR MIXED MODEL FIT BY RESTRICTED MAXIMUM LIKELIHOOD:
+
+ Formula:  respvar ~ 1 + (1|male) + (1|female) + (1|male:female) 
+
+      AIC      BIC    logLik deviance  REMLdev
+ 475.3692 487.5233 -232.6846 467.9279 465.3692
+
+ Fixed Effects:
+            Estimate Std. Error t value
+(Intercept)  28.3626     1.4382  19.721
+
+ Random Effects:                                    
+ Groups      Variance Std. Deviation
+ male:female   8.1743         2.8591
+ female        3.2507         1.8030
+ male          5.9794         2.4453
+ Residual      7.1736         2.6784
+
+*** 
+ERROR in nc2Test function:
+  undefined columns selected
+***

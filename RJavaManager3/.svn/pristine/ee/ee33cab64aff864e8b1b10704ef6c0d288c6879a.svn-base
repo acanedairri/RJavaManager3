@@ -1,0 +1,76 @@
+
+MULTIPLE ENVIRONMENT ANALYSIS
+
+DESIGN: NORTH CAROLINA EXPERIMENT II IN CRD (INBRED)
+
+
+RESPONSE VARIABLE: Y
+
+DATA SUMMARY: 
+ Factors     No of Levels   Levels             
+ Trial       2              1  2               
+ replication 2              1  2               
+ Treatment   12             T1  T10  T11 ... T9
+ male        4              1  2  3  4         
+ fem         3              1  2  3            
+
+ Number of observations read: 44
+ Number of missing observations: 4
+
+
+ANOVA TABLE
+               Df Sum Sq Mean Sq F value  Pr(>F)
+Trial           1 378011  378011  12.401 0.00175
+male            3 102216   34072   1.118 0.36147
+fem             2  61017   30508   1.001 0.38240
+Trial:male      3 136603   45534   1.494 0.24150
+Trial:fem       2  13366    6683   0.219 0.80472
+male:fem        6 179838   29973   0.983 0.45817
+Trial:male:fem  6 395002   65834   2.160 0.08320
+Residuals      24 731581   30483                
+-------
+REMARK: Raw data and estimates of the missing values are used.
+
+
+LINEAR MIXED MODEL FIT BY RESTRICTED MAXIMUM LIKELIHOOD:
+
+ Formula:  Y ~ 1 + (1|Trial) + (1|male) + (1|fem) + (1|male:fem) + (1|Trial:male) + (1|Trial:fem) + (1|Trial:male:fem) 
+
+      AIC      BIC    logLik deviance  REMLdev
+ 598.8051 614.8628 -290.4025 591.5465 580.8051
+
+ Fixed Effects:
+            Estimate Std. Error t value
+(Intercept) 296.0585    86.2771  3.4315
+
+ Random Effects:                                         
+ Groups           Variance Std. Deviation
+ Trial:male:fem  2503.5000        50.0350
+ male:fem           0.0000         0.0016
+ Trial:male       500.9000        22.3810
+ Trial:fem          0.0000         0.0000
+ male             306.7200        17.5130
+ fem                0.0000         0.0000
+ Trial          12815.0000       113.2000
+ Residual       34580.0000       185.9600
+
+
+ESTIMATES OF GENETIC VARIANCE COMPONENTS:                          
+                  Estimate
+ VA               306.7200
+ VAxE             500.9000
+ VD                 0.0000
+ VDxE            2503.5000
+ h2-narrow sense    0.0081
+ H2-broad sense     0.0081
+ Dominance Ratio    0.0001
+
+
+ESTIMATES OF HERITABILITY:
+          Family Selection Narrow Sense Broad sense
+ male                 0.09         0.02        0.02
+ fem                  0.00         0.00        0.00
+ Full-sib             0.09         0.01        0.01
+
+
+==============================================================

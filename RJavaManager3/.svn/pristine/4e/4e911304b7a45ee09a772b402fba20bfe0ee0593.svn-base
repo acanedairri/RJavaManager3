@@ -1,0 +1,299 @@
+package org.irri.breedingtool.rjava.manager;
+
+import org.irri.breedingtool.rjava.manager.api.IRJavaSTARDesignManager;
+import org.irri.breedingtool.rjava.utilities.InputTransform;
+import org.rosuda.JRI.Rengine;
+
+public class PBToolsRandomizationManager implements IRJavaSTARDesignManager {
+
+	private Rengine rEngine;
+	private InputTransform inputTransform;
+	
+	public PBToolsRandomizationManager(Rengine rEngine) {
+		this.rEngine = rEngine;
+		this.inputTransform= new InputTransform();
+	}
+	
+	private void rEngineEnd(){
+		String rm = "rm(list=ls(all=TRUE))";
+		rEngine.eval(rm);
+		rEngine.end();
+	}
+	
+	@Override
+	public void doDesignCRD(String dataFileName, String outFileName, String[] factorName, Integer[] factorLevel,
+			Integer rep, Integer trial){
+
+		String inputList = inputTransform.createRList(factorName, factorLevel);
+
+		//defining the R statements for randomization of completely randomized design
+		String sinkIn = "sink(\"" + outFileName + "\")";
+//		String pkgIntro = "cat(\"Statistical Tool for Agricultural Research (STAR) ... \", date(),\"\nResult of Randomization\n\n\", sep = \"\")";
+		String funcRandomize = "designCRD("+inputList+", r = "+ rep +", trial = "+ trial +", file = \""+ dataFileName+"\")";
+		String sinkOut = "sink()";
+		
+		System.out.println(sinkIn);
+//		System.out.println(pkgIntro);
+		System.out.println(funcRandomize);
+		System.out.println(sinkOut);
+		
+		//R statements passed on to the R engine
+		rEngine.eval(sinkIn);
+//		rEngine.eval(pkgIntro);
+		rEngine.eval(funcRandomize);
+		rEngine.eval(sinkOut);
+		
+		rEngineEnd();
+	}
+	
+	@Override
+	public void doDesignRCBD(String dataFileName, String outFileName, String[] factorName, Integer[] factorLevel,
+			Integer rep, Integer trial){
+
+		String inputList = inputTransform.createRList(factorName, factorLevel);
+
+		//defining the R statements for randomization of randomized complete block design
+		String sinkIn = "sink(\"" + outFileName + "\")";
+//		String pkgIntro = "cat(\"Statistical Tool for Agricultural Research (STAR) ... \", date(),\"\nResult of Randomization\n\n\", sep = \"\")";
+		String funcRandomize = "designRCBD("+inputList+", r = "+ rep +", trial = "+ trial +", file = \""+ dataFileName+"\")";
+		String sinkOut = "sink()";
+		
+		System.out.println(sinkIn);
+//		System.out.println(pkgIntro);
+		System.out.println(funcRandomize);
+		System.out.println(sinkOut);
+		
+		//R statements passed on to the R engine
+		rEngine.eval(sinkIn);
+//		rEngine.eval(pkgIntro);
+		rEngine.eval(funcRandomize);
+		rEngine.eval(sinkOut);
+		
+		rEngineEnd();
+	}
+	
+	@Override
+	public void doDesignLSD(String dataFileName, String outFileName, String[] factorName, Integer[] factorLevel,
+			Integer trial){
+
+		String inputList = inputTransform.createRList(factorName, factorLevel);
+
+		//defining the R statements for randomization of latin square design
+		String sinkIn = "sink(\"" + outFileName + "\")";
+//		String pkgIntro = "cat(\"Statistical Tool for Agricultural Research (STAR) ... \", date() ,\"\nResult of Randomization\n\n\", sep = \"\")";
+		String funcRandomize = "designLSD("+inputList+", trial = "+ trial +", file = \""+ dataFileName+"\")";
+		String sinkOut = "sink()";
+		
+		System.out.println(sinkIn);
+//		System.out.println(pkgIntro);
+		System.out.println(funcRandomize);
+		System.out.println(sinkOut);
+		
+		//R statements passed on to the R engine
+		rEngine.eval(sinkIn);
+//		rEngine.eval(pkgIntro);
+		rEngine.eval(funcRandomize);
+		rEngine.eval(sinkOut);
+		
+		rEngineEnd();
+	}
+	
+	@Override
+	public void doDesignSplit(String dataFileName, String outFileName, 
+			String main, String sub, String ssub, String sssub,
+			Integer[] factorLevel, Integer rep, Integer trial, String design){
+
+		String mainFactor = "list("+ main +" = "+ factorLevel[0]+")";
+		String subFactor  = "list("+ sub  +" = "+ factorLevel[1]+")";
+		
+		//defining the R statements for randomization of Family of Split plot design
+		String sinkIn = "sink(\"" + outFileName + "\")";
+//		String pkgIntro1 = "cat(\"Statistical Tool for Agricultural Research (STAR) ... \", date(),\"\n\", sep = \"\")";
+		String pkgIntro2 = "cat(\"Result of Randomization\n\n\", sep = \"\")";
+		String funcRandomize = "designSplit(main = "+ mainFactor +", sub = "+ subFactor;
+		if (ssub != null) {
+			funcRandomize = funcRandomize + ", ssub = list(" + ssub + " = " + factorLevel[2]+")";
+		}
+		if (sssub != null) {
+			funcRandomize = funcRandomize + ", sssub = list(" + sssub + " = " + factorLevel[3]+")";
+		}
+		if (design != "lsd") {
+			funcRandomize = funcRandomize + ", r = "+ rep ;
+		}
+		funcRandomize = funcRandomize + ", trial = "+ trial + ", design = \""+ design +"\", file = \"" + dataFileName +"\")";
+				
+		String sinkOut = "sink()";
+		
+		System.out.println(sinkIn);
+//		System.out.println(pkgIntro1);
+		System.out.println(pkgIntro2);
+		System.out.println(funcRandomize);
+		System.out.println(sinkOut);
+		
+		//R statements passed on to the R engine
+		rEngine.eval(sinkIn);
+//		rEngine.eval(pkgIntro1);
+		rEngine.eval(pkgIntro2);
+		rEngine.eval(funcRandomize);
+		rEngine.eval(sinkOut);
+		
+		rEngineEnd();
+	}
+	
+	@Override
+	public void doDesignStrip(String dataFileName, String outFileName, 
+			String vertical, String horizontal, String sub, String ssub, 
+			Integer[] factorLevel, Integer rep, Integer trial){
+
+		//defining the R statements for randomization for Family of Strip Design
+		String sinkIn = "sink(\"" + outFileName + "\")";
+//		String pkgIntro1 = "cat(\"Statistical Tool for Agricultural Research (STAR) ... \", date(),\"\n\")";
+		String pkgIntro2 = "cat(\"Result of Randomization\n\n\")";
+		String funcRandomize = "designStrip(vertical = list("+ vertical +" = "+ factorLevel[0] +") , horizontal = list("+ horizontal +" = "+ factorLevel[1] +")";
+		if (sub != null) {
+			funcRandomize = funcRandomize + ", sub = list(" + sub + " = " + factorLevel[2]+")";
+		}
+		if (ssub != null) {
+			funcRandomize = funcRandomize + ", ssub = list(" + ssub + " = " + factorLevel[3]+")";
+		}
+		funcRandomize = funcRandomize + ", trial = "+ trial + ", file = \"" + dataFileName +"\")";
+				
+		String sinkOut = "sink()";
+		
+		System.out.println(sinkIn);
+//		System.out.println(pkgIntro1);
+		System.out.println(pkgIntro2);
+		System.out.println(funcRandomize);
+		System.out.println(sinkOut);
+		
+		//R statements passed on to the R engine
+		rEngine.eval(sinkIn);
+//		rEngine.eval(pkgIntro1);
+		rEngine.eval(pkgIntro2);
+		rEngine.eval(funcRandomize);
+		rEngine.eval(sinkOut);
+		
+		rEngineEnd();
+	}
+	
+	@Override
+	public void doDesignBIBD(String dataFileName, String outFileName, 
+			Integer numTrmt, Integer blkSize, 
+			Integer trial){
+
+		//defining the R statements for randomization for balanced incomplete block design
+		String sinkIn = "sink(\"" + outFileName + "\")";
+//		String pkgIntro1 = "cat(\"Statistical Tool for Agricultural Research (STAR) ... \", date(),\"\n\")";
+		String pkgIntro2 = "cat(\"Result of Randomization\n\n\")";
+		String funcRandomize = "designBIBD(list(Treatment = paste(\"T\", paste(1:"+ numTrmt +"), sep = \"\"))";
+		funcRandomize = funcRandomize + ", blkSize = "+ blkSize +", trial = "+ trial + ", file = \"" + dataFileName +"\")";
+		String sinkOut = "sink()";
+		
+		System.out.println(sinkIn);
+//		System.out.println(pkgIntro1);
+		System.out.println(pkgIntro2);
+		System.out.println(funcRandomize);
+		System.out.println(sinkOut);
+		
+		//R statements passed on to the R engine
+		rEngine.eval(sinkIn);
+//		rEngine.eval(pkgIntro1);
+		rEngine.eval(pkgIntro2);
+		rEngine.eval(funcRandomize);
+		rEngine.eval(sinkOut);
+		
+		rEngineEnd();
+	}
+	
+	@Override
+	public void doDesignAug(String dataFileName, String outFileName, 
+			Integer repTrmt, Integer unrepTrmt, Integer rep, Integer trial,
+			String design){
+
+		//defining the R statements for randomization for augmented design
+		String sinkIn = "sink(\"" + outFileName + "\")";
+//		String pkgIntro1 = "cat(\"Statistical Tool for Agricultural Research (STAR)...\", date(),\"\n\")";
+		String pkgIntro2 = "cat(\"Result of Randomization\n\n\")";
+		String funcRandomize = "designAugmented(check = "+ repTrmt +", newTrmt = "+ unrepTrmt;
+		if (design == "rcbd") {
+			funcRandomize = funcRandomize + ", r = "+ rep +", trial = "+ trial + ", design = \""+ design + "\", file = \""+ dataFileName +"\")";
+		} else {
+			funcRandomize = funcRandomize + ", trial = "+ trial + ", design = \""+ design + "\", file = \""+ dataFileName +"\")";
+		}
+		String sinkOut = "sink()";
+		
+		System.out.println(sinkIn);
+//		System.out.println(pkgIntro1);
+		System.out.println(pkgIntro2);
+		System.out.println(funcRandomize);
+		System.out.println(sinkOut);
+		
+		//R statements passed on to the R engine
+		rEngine.eval(sinkIn);
+//		rEngine.eval(pkgIntro1);
+		rEngine.eval(pkgIntro2);
+		rEngine.eval(funcRandomize);
+		rEngine.eval(sinkOut);
+		
+		rEngineEnd();
+	}
+	
+	@Override
+	public void doDesignLattice(String dataFileName, String outFileName, 
+			Integer numTrmt, Integer rep, Integer trial){
+
+		//defining the R statements for randomization for Lattice
+		String sinkIn = "sink(\"" + outFileName + "\")";
+//		String pkgIntro1 = "cat(\"Statistical Tool for Agricultural Research (STAR)...\", date(),\"\n\")";
+		String pkgIntro2 = "cat(\"Result of Randomization\n\n\")";
+		String funcRandomize = "designLattice(list(Treatment = paste(\"T\", paste(1:"+ numTrmt +"), sep = \"\"))";
+		funcRandomize = funcRandomize + ", r = "+ rep +", trial = "+ trial + ", file = \"" + dataFileName +"\")";
+		String sinkOut = "sink()";
+		
+		System.out.println(sinkIn);
+//		System.out.println(pkgIntro1);
+		System.out.println(pkgIntro2);
+		System.out.println(funcRandomize);
+		System.out.println(sinkOut);
+		
+		//R statements passed on to the R engine
+		rEngine.eval(sinkIn);
+//		rEngine.eval(pkgIntro1);
+		rEngine.eval(pkgIntro2);
+		rEngine.eval(funcRandomize);
+		rEngine.eval(sinkOut);
+		
+		rEngineEnd();
+	}
+	
+	@Override
+	public void doDesignAlpha(String dataFileName, String outFileName, 
+			Integer numTrmt, Integer blkSize, Integer rep, Integer trial){
+
+		//defining the R statements for randomization for Alpha Lattice
+		String sinkIn = "sink(\"" + outFileName + "\")";
+//		String pkgIntro1 = "cat(\"Statistical Tool for Agricultural Research (STAR)...\", date(),\"\n\")";
+		String pkgIntro2 = "cat(\"Result of Randomization\n\n\")";
+		String funcRandomize = "designAlphaLattice(list(Treatment = paste(\"T\", paste(1:"+ numTrmt +"), sep = \"\"))";
+		funcRandomize = funcRandomize + ", blksize = "+ blkSize +", r = "+ rep +", trial = "+ trial + ", file = \"" + dataFileName +"\")";
+		String sinkOut = "sink()";
+		
+		System.out.println(sinkIn);
+//		System.out.println(pkgIntro1);
+		System.out.println(pkgIntro2);
+		System.out.println(funcRandomize);
+		System.out.println(sinkOut);
+		
+		//R statements passed on to the R engine
+		rEngine.eval(sinkIn);
+//		rEngine.eval(pkgIntro1);
+		rEngine.eval(pkgIntro2);
+		rEngine.eval(funcRandomize);
+		rEngine.eval(sinkOut);
+		
+		rEngineEnd();
+	}
+	
+	
+}
+

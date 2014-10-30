@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="rscript"/>
+	<classpathentry kind="src" path="src/main/java"/>
+	<classpathentry kind="src" path="src/main/resources"/>
+	<classpathentry kind="src" path="src/main/test"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="lib/JRI.jar"/>
+	<classpathentry kind="lib" path="E:/Applications/R/R-3.0.2/library/rJava/jri/JRI.jar"/>
+	<classpathentry kind="lib" path="E:/Applications/R/R-3.0.2/library/rJava/jri/JRIEngine.jar"/>
+	<classpathentry kind="lib" path="E:/Applications/R/R-3.0.2/library/rJava/jri/REngine.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

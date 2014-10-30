@@ -1,0 +1,73 @@
+
+DATA FILE: E:/NSALES/juno workspace/workspace_1/RJavaManager/sample_datasets/NC2RowCol.csv
+
+MULTIPLE ENVIRONMENT ANALYSIS
+
+DESIGN: NORTH CAROLINA EXPERIMENT II IN ROW-COLUMN (INBRED)
+
+-----------------------------
+RESPONSE VARIABLE: Y
+-----------------------------
+
+DATA SUMMARY: 
+
+ Factors   No of Levels   Levels             
+ Trial     2              1  2               
+ row       21             1  10  11 ... 9    
+ col       3              1  2  3            
+ trmt      21             T1  T10  T11 ... T9
+ rep       3              1  2  3            
+ male      7              1  2  3  4  5  6  7
+ fem       3              F1  F2  F3         
+
+ Number of observations read: 126
+ Number of missing observations: 0
+
+
+LINEAR MIXED MODEL FIT BY RESTRICTED MAXIMUM LIKELIHOOD:
+
+ Formula:  Y ~ 1 + (1|Trial) + (1|Trial:rep) + (1|Trial:rep:row) + (1|Trial:rep:col) + (1|male) + (1|fem) + (1|male:fem) + (1|Trial:male) + (1|Trial:fem) + (1|Trial:male:fem) 
+
+      AIC      BIC    logLik deviance  REMLdev
+ 1504.378 1538.413 -740.1888 1489.683 1480.378
+
+ Fixed Effects:
+            Estimate Std. Error t value
+(Intercept)  173.285     41.912  4.1345
+
+ Random Effects:                                        
+ Groups          Variance Std. Deviation
+ Trial:male:fem   17.9160         4.2327
+ Trial:rep:row   503.7700        22.4448
+ male:fem        429.7000        20.7292
+ Trial:rep:col   292.1000        17.0909
+ Trial:male        0.0000         0.0006
+ male            387.9500        19.6965
+ Trial:fem         0.0000         0.0000
+ Trial:rep         0.0000         0.0000
+ fem               0.0000         0.0017
+ Trial          3206.8000        56.6287
+ Residual       6358.1000        79.7375
+
+
+ESTIMATES OF GENETIC VARIANCE COMPONENTS:
+                           
+                   Estimate
+ VA              387.950003
+ VAxE              3.09e-07
+ VD              429.700000
+ VDxE             17.916000
+ h2-narrow sense   0.053929
+ H2-broad sense    0.113662
+ Dominance Ratio   1.488366
+
+
+ESTIMATES OF HERITABILITY:
+
+          Family Selection Narrow Sense Broad sense
+ male                 0.44         0.11        0.17
+ fem                  0.00         0.00        0.06
+ Full-sib             0.60         0.05        0.11
+
+
+==============================================================

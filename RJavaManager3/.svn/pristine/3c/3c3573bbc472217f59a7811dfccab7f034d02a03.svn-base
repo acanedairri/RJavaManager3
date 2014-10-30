@@ -1,0 +1,56 @@
+
+DIALLEL ANALYSIS: GRIFFING METHOD I IN RCB (CROSS)
+
+
+RESPONSE VARIABLE: Plant_height
+
+-----------------------------
+ANALYSIS FOR: Env = Normal
+-----------------------------
+
+DATA SUMMARY: 
+ Factors   No of Levels   Levels             
+ Env       1              Normal             
+ P1        7              1  2  3  4  5  6  7
+ P2        7              1  2  3  4  5  6  7
+ Block     3              1  2  3            
+
+Number of observations read: 147
+Number of missing observations: 0
+
+
+ANOVA TABLE FOR THE EXPERIMENT
+            Df Sum Sq Mean Sq F value   Pr(>F)
+Block        2   3027    1513  19.745 6.57e-08
+P1           6  32497    5416  70.668  < 2e-16
+P2           6  21855    3643  47.527  < 2e-16
+P1:P2       36  22865     635   8.287  < 2e-16
+Residuals   96   7358      77                 
+-------
+REMARK: Raw dataset is balanced.
+
+TESTING FOR THE DIFFERENCES AMONG CROSSES: (Crosses = P1:P2)
+ Formula for Model 1: Plant_height ~ Crosses + (1|Block)
+ Formula for Model 2: Plant_height ~ (1|Block)
+
+        Df     AIC     BIC  logLik  Chisq Chi Df Pr(>Chisq)
+ model2  3 1362.21 1371.18 -678.11                         
+ model1 51 1106.37 1258.88 -502.18 351.85     48     0.0000
+
+
+MATRIX OF MEANS:
+ P1     P2=1     P2=2     P2=3     P2=4     P2=5     P2=6     P2=7
+  1 142.9000 148.3333 163.9000 152.9000 142.3667 160.6667 191.3333
+  2 144.7667 129.6667 142.9000 143.9000 131.5667 143.5333 186.6667
+  3 167.5667 149.0333 131.5667 163.5667 136.9000 166.4333 189.7667
+  4 154.1000 156.1000 147.7667 159.3333 149.8000 164.8000 200.2333
+  5 142.1000 133.8000 138.9000 149.6667 122.4333 138.9000 175.7667
+  6 173.1000 146.2000 167.7667 184.3333 156.7667 146.1333 195.5667
+  7 195.7667 194.5667 193.8000 213.4667 169.1000 218.0333 157.5333
+
+
+ANALYSIS OF VARIANCE:
+*** 
+ERROR in diallel1Test function:
+  subscript out of bounds
+***

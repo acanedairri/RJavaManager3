@@ -1,0 +1,512 @@
+dt$Q27<-factor(dt$Q27)
+dt$Q28<-factor(dt$Q28)
+dt$Q29<-factor(dt$Q29)
+dt$Q30<-factor(dt$Q30)
+dt$Q31<-factor(dt$Q31)
+dt$Q32<-factor(dt$Q32)
+dt$Q33<-factor(dt$Q33)
+dt$Q34<-factor(dt$Q34)
+dt$Q35<-factor(dt$Q35)
+dt$Q36<-factor(dt$Q36)
+dt$Q37<-factor(dt$Q37)
+dt$Q38<-factor(dt$Q38)
+dt$Q39<-factor(dt$Q39)
+dt$Q40<-factor(dt$Q40)
+dt$Q41<-factor(dt$Q41)
+dt$Q42<-factor(dt$Q42)
+dt$Q43<-factor(dt$Q43)
+dt$Q44<-factor(dt$Q44)
+dt$Q45<-factor(dt$Q45)
+dt$Q46<-factor(dt$Q46)
+dt$Q47<-factor(dt$Q47)
+dt$Q48<-factor(dt$Q48)
+dt$Q49<-factor(dt$Q49)
+dt$Q50<-factor(dt$Q50)
+dt$Q51<-factor(dt$Q51)
+dt$Q52<-factor(dt$Q52)
+dt$Q53<-factor(dt$Q53)
+dt$Q54<-factor(dt$Q54)
+dt$Q55<-factor(dt$Q55)
+dt$Q56<-factor(dt$Q56)
+dt$Q57<-factor(dt$Q57)
+dt$Q58<-factor(dt$Q58)
+dt$Q59<-factor(dt$Q59)
+dt$Q33_new<-factor(dt$Q33_new)
+table(dt$UTAUT_GRP)
+cbind(table(dt$UTAUT_GRP))
+mylogit <- glm(Segregate ~ Gender + Address2 + Age + EducAttainment + OccupationClassification + NumberOfChildren + HHSize + FemaleInHH + MaleInHH + MonthlyIncome
++ Q9 + KnowledgeScore + Q27_G + Q28_G + Q29_G + Q30_G +Q31_G + Q32_G + Q33_G + Q34_G + Q35_G + Q36_G + Q37_G + Q38_G + Q39_G + Q40_G + Q41_G + Q42_G + Q43_G + Q44_G + CGS_GRP + UTAUT_GRP, data = dt, family = "binomial")
+summary(mylogit)
+mylogit <- glm(Segregate ~ Gender + Address2 + Age + EducAttainment + OccupationClassification + NumberOfChildren + HHSize + FemaleInHH + MaleInHH + MonthlyIncome
++ Q9 + KnowledgeScore + Q27_G + Q28_G + Q29_G + Q30_G +Q31_G + Q32_G + Q33_G + Q34_G + Q35_G + Q36_G + Q37_G + Q38_G + Q39_G + Q40_G + Q41_G + Q42_G + Q43_G + Q44_G + CGS_GRP, data = dt, family = "binomial")
+summary(mylogit)
+mylogit <- glm(Segregate ~ Gender + Address2 + Age + EducAttainment + OccupationClassification + NumberOfChildren + HHSize + FemaleInHH + MonthlyIncome
++ Q9 + KnowledgeScore + Q27_G + Q28_G + Q29_G + Q30_G +Q31_G + Q32_G + Q33_G + Q34_G + Q35_G + Q36_G + Q37_G + Q38_G + Q39_G + Q40_G + Q41_G + Q42_G + Q43_G + Q44_G + CGS_GRP, data = dt, family = "binomial")
+summary(mylogit)
+rstudio::viewData(dt)
+mylogit <- glm(Segregate ~ Gender + Address2 + Age + EducAttainment + OccupationClassification + NumberOfChildren + HHSize + FemaleInHH + MonthlyIncome
++ Q9 + KnowledgeScore + Q27_G + Q28_G + Q29_G + Q30_G +Q31_G + Q32_G + Q33_G + Q34_G + Q35_G + Q36_G + Q37_G + Q38_G + Q39_G + Q40_G + Q41_G + Q42_G + Q43_G + Q44_G + CGS_E + CGS_IPE, data = dt, family = "binomial")
+summary(mylogit)
+mylogit <- glm(Segregate ~ Gender + Address2 + Age + EducAttainment + OccupationClassification + NumberOfChildren + HHSize + FemaleInHH + MonthlyIncome
++ Q9 + KnowledgeScore + Q27_G + Q28_G + Q29_G + Q30_G +Q31_G + Q32_G + Q33_G + Q34_G + Q35_G + Q36_G + Q37_G + Q38_G + Q39_G + Q41_G + Q42_G + Q43_G + Q44_G + CGS_E + CGS_IPE, data = dt, family = "binomial")
+summary(mylogit)
+mylogit <- glm(Segregate ~ Gender + Address2 + Age + EducAttainment + OccupationClassification + NumberOfChildren + HHSize + FemaleInHH + MonthlyIncome
++ Q9 + KnowledgeScore + Q27_G + Q28_G + Q29_G + Q30_G +Q31_G + Q32_G + Q33_G + Q34_G + Q35_G + Q36_G + Q37_G + Q38_G + Q41_G + Q42_G + Q43_G + Q44_G + CGS_E + CGS_IPE, data = dt, family = "binomial")
+summary(mylogit)
+mylogit <- glm(Segregate ~ Gender + Address2 + Age + EducAttainment + OccupationClassification + NumberOfChildren + HHSize + FemaleInHH + MonthlyIncome
++ Q9 + KnowledgeScore + Q28_G + Q29_G + Q30_G +Q31_G + Q32_G + Q33_G + Q34_G + Q35_G + Q36_G + Q37_G + Q38_G + Q41_G + Q42_G + Q43_G + Q44_G + CGS_E + CGS_IPE, data = dt, family = "binomial")
+summary(mylogit)
+mylogit <- glm(Segregate ~ Gender + Address2 + Age + EducAttainment + OccupationClassification + NumberOfChildren + HHSize + FemaleInHH + MonthlyIncome
++ Q9 + KnowledgeScore + Q29_G + Q30_G +Q31_G + Q32_G + Q33_G + Q34_G + Q35_G + Q36_G + Q37_G + Q38_G + Q41_G + Q42_G + Q43_G + Q44_G + CGS_E + CGS_IPE, data = dt, family = "binomial")
+summary(mylogit)
+mylogit <- glm(Segregate ~ Gender + Address2 + Age + EducAttainment + OccupationClassification + NumberOfChildren + HHSize + FemaleInHH + MonthlyIncome
++ Q9 + KnowledgeScore + Q29_G + Q31_G + Q32_G + Q33_G + Q34_G + Q35_G + Q36_G + Q37_G + Q38_G + Q41_G + Q42_G + Q43_G + Q44_G + CGS_E + CGS_IPE, data = dt, family = "binomial")
+summary(mylogit)
+mylogit <- glm(Segregate ~ Gender + Address2 + EducAttainment + OccupationClassification + NumberOfChildren + HHSize + FemaleInHH + MonthlyIncome
++ Q9 + KnowledgeScore + Q29_G + Q31_G + Q32_G + Q33_G + Q34_G + Q35_G + Q36_G + Q37_G + Q38_G + Q41_G + Q42_G + Q43_G + Q44_G + CGS_E + CGS_IPE, data = dt, family = "binomial")
+summary(mylogit)
+mylogit <- glm(Segregate ~ Gender + Address2 + EducAttainment + OccupationClassification + NumberOfChildren + HHSize + FemaleInHH + MonthlyIncome
++ Q9 + KnowledgeScore + Q29_G + Q31_G + Q33_G + Q34_G + Q35_G + Q36_G + Q37_G + Q38_G + Q41_G + Q42_G + Q43_G + Q44_G + CGS_E + CGS_IPE, data = dt, family = "binomial")
+summary(mylogit)
+mylogit <- glm(Segregate ~ Gender + Address2 + Elem + College + OccupationClassification + NumberOfChildren + HHSize + FemaleInHH + MonthlyIncome
++ Q9 + KnowledgeScore + Q29_G + Q31_G + Q33_G + Q34_G + Q35_G + Q36_G + Q37_G + Q38_G + Q41_G + Q42_G + Q43_G + Q44_G + CGS_E + CGS_IPE, data = dt, family = "binomial")
+summary(mylogit)
+mylogit <- glm(Segregate ~ Gender + Address2 + Elem + OccupationClassification + NumberOfChildren + HHSize + FemaleInHH + MonthlyIncome
++ Q9 + KnowledgeScore + Q29_G + Q31_G + Q33_G + Q34_G + Q35_G + Q36_G + Q37_G + Q38_G + Q41_G + Q42_G + Q43_G + Q44_G + CGS_E + CGS_IPE, data = dt, family = "binomial")
+summary(mylogit)
+mylogit <- glm(Segregate ~ Address2 + Elem + OccupationClassification + NumberOfChildren + HHSize + FemaleInHH + MonthlyIncome
++ Q9 + KnowledgeScore + Q29_G + Q31_G + Q33_G + Q34_G + Q35_G + Q36_G + Q37_G + Q38_G + Q41_G + Q42_G + Q43_G + Q44_G + CGS_E + CGS_IPE, data = dt, family = "binomial")
+summary(mylogit)
+mylogit <- glm(Segregate ~ Address2 + Elem + OccupationClassification + NumberOfChildren + HHSize + MonthlyIncome
++ Q9 + KnowledgeScore + Q29_G + Q31_G + Q33_G + Q34_G + Q35_G + Q36_G + Q37_G + Q38_G + Q41_G + Q42_G + Q43_G + Q44_G + CGS_E + CGS_IPE, data = dt, family = "binomial")
+summary(mylogit)
+mylogit <- glm(Segregate ~ Address2 + Elem + OccupationClassification + NumberOfChildren + HHSize + MonthlyIncome
++ Q9 + KnowledgeScore + Q29_G + Q31_G + Q33_G + Q34_G + Q35_G + Q36_G + Q37_G + Q41_G + Q42_G + Q43_G + Q44_G + CGS_E + CGS_IPE, data = dt, family = "binomial")
+summary(mylogit)
+mylogit <- glm(Segregate ~ Address2 + Elem + OccupationClassification + NumberOfChildren + HHSize + MonthlyIncome
++ Q9 + KnowledgeScore + Q29_G + Q31_G + Q33_G + Q34_G + Q35_G + Q36_G + Q37_G + Q42_G + Q43_G + Q44_G + CGS_E + CGS_IPE, data = dt, family = "binomial")
+summary(mylogit)
+mylogit <- glm(Segregate ~ Address2 + Elem + SelfEmployed + NumberOfChildren + HHSize + MonthlyIncome
++ Q9 + KnowledgeScore + Q29_G + Q31_G + Q33_G + Q34_G + Q35_G + Q36_G + Q37_G + Q42_G + Q43_G + Q44_G + CGS_E + CGS_IPE, data = dt, family = "binomial")
+summary(mylogit)
+mylogit <- glm(Segregate ~ Address2 + Elem + SelfEmployed + NumberOfChildren + HHSize + MonthlyIncome
++ Q9 + KnowledgeScore + Q29_G + Q31_G + Q33_G + Q34_G + Q35_G + Q36_G +Q42_G + Q43_G + Q44_G + CGS_E + CGS_IPE, data = dt, family = "binomial")
+summary(mylogit)
+mylogit <- glm(Segregate ~ Address2 + Elem + SelfEmployed + NumberOfChildren + HHSize + MonthlyIncome
++ Q9 + KnowledgeScore + Q31_G + Q33_G + Q34_G + Q35_G + Q36_G +Q42_G + Q43_G + Q44_G + CGS_E + CGS_IPE, data = dt, family = "binomial")
+summary(mylogit)
+mylogit <- glm(Segregate ~ Address2 + Elem + SelfEmployed + NumberOfChildren + HHSize + MonthlyIncome
++ Q9 + KnowledgeScore + Q31_G + Q33_G + Q34_G + Q35_G + Q36_G +Q42_G + Q43_G + CGS_E + CGS_IPE, data = dt, family = "binomial")
+summary(mylogit)
+mylogit <- glm(Segregate ~ Address2 + Elem + SelfEmployed + NumberOfChildren + HHSize + MonthlyIncome
++ Q9 + KnowledgeScore + Q31_G + Q33_G + Q35_G + Q36_G +Q42_G + Q43_G + CGS_E + CGS_IPE, data = dt, family = "binomial")
+summary(mylogit)
+mylogit <- glm(Segregate ~ Address2 + Elem + SelfEmployed + NumberOfChildren + HHSize + MonthlyIncome
++ Q9 + KnowledgeScore + Q31_G + Q33_G + Q35_G + Q36_G + Q43_G + CGS_E + CGS_IPE, data = dt, family = "binomial")
+summary(mylogit)
+mylogit <- glm(Segregate ~ Address2 + Elem + SelfEmployed + NumberOfChildren + MonthlyIncome
++ Q9 + KnowledgeScore + Q31_G + Q33_G + Q35_G + Q36_G + Q43_G + CGS_E + CGS_IPE, data = dt, family = "binomial")
+summary(mylogit)
+mylogit <- glm(Segregate ~ Address2 + Elem + SelfEmployed + NumberOfChildren + MonthlyIncome
++ Q9 + KnowledgeScore + Q33_G + Q35_G + Q36_G + Q43_G + CGS_E + CGS_IPE, data = dt, family = "binomial")
+summary(mylogit)
+mylogit <- glm(Segregate ~ Address2 + Elem + SelfEmployed + NumberOfChildren + MonthlyIncome
++ Q9 + KnowledgeScore + Q33_G + Q36_G + Q43_G + CGS_E + CGS_IPE, data = dt, family = "binomial")
+summary(mylogit)
+mylogit <- glm(Segregate ~ Address2 + Elem + NumberOfChildren + MonthlyIncome
++ Q9 + KnowledgeScore + Q33_G + Q36_G + Q43_G + CGS_E + CGS_IPE, data = dt, family = "binomial")
+summary(mylogit)
+mylogit <- glm(Segregate ~ Address2 + Elem + NumberOfChildren + MonthlyIncome
++ Q9 + KnowledgeScore + Q33_G + Q36_G + CGS_E + CGS_IPE, data = dt, family = "binomial")
+summary(mylogit)
+mylogit <- glm(Segregate ~ Address2 + Elem + NumberOfChildren
++ Q9 + KnowledgeScore + Q33_G + Q36_G + CGS_E + CGS_IPE, data = dt, family = "binomial")
+summary(mylogit)
+mylogit <- glm(Segregate ~ Address2 + Elem
++ Q9 + KnowledgeScore + Q33_G + Q36_G + CGS_E + CGS_IPE, data = dt, family = "binomial")
+summary(mylogit)
+mylogit <- glm(Segregate ~ Address2 + Q9 + KnowledgeScore + Q33_G + Q36_G + CGS_E + CGS_IPE, data = dt, family = "binomial")
+summary(mylogit)
+mylogit <- glm(Segregate ~ Address2 + Q9 + KnowledgeScore + Q33_G + Q36_G + CGS_E, data = dt, family = "binomial")
+summary(mylogit)
+mylogit <- glm(Segregate ~ Address2 + Q9 + KnowledgeScore + Q36_G + CGS_E, data = dt, family = "binomial")
+summary(mylogit)
+mylogit <- glm(Segregate ~ Address2 + Q9 + KnowledgeScore + Q33_G + Q36_G + Q47_G + Q48_G + Q59_G + CGS_E, data = dt, family = "binomial")
+summary(mylogit)
+mylogit <- glm(Segregate ~ Address2 + Q9 + KnowledgeLevel + Q33_G + Q36_G + Q47_G + Q48_G + Q59_G + CGS_E, data = dt, family = "binomial")
+summary(mylogit)
+mylogit <- glm(Segregate ~ UTAUT_GRP, data = dt, family = "binomial")
+summary(mylogit)
+data <- tryCatch(read.csv("E:/NSALES/juno workspace/workspace_1/RJavaManager/sample_datasets/QTL_pheno.csv", header = TRUE, na.strings = c("NA","."), blank.lines.skip=TRUE, sep = ","), error=function(err) "notRun")
+data<-tryCatch(data[which(data[match("ENV", names(data))] == "2"),], error=function(err) "notRun")
+data
+rstudio::viewData(data)
+ssa1 <- tryCatch(ssa.test("RCB",data,c("HEIGHT","FTIME"),"GENOTYPE","REP",column=NULL, rep=NULL, env = "ENV", is.random = FALSE), error=function(err) "notRun")
+ssa.test("RCB",data,c("HEIGHT","FTIME"),"GENOTYPE","REP",column=NULL, rep=NULL, env = "ENV", is.random = FALSE)
+library(PBTools)
+ssa.test("RCB",data,c("HEIGHT","FTIME"),"GENOTYPE","REP",column=NULL, rep=NULL, env = "ENV", is.random = FALSE)
+ssa1 <- tryCatch(ssa.test("RCB",data,c("HEIGHT","FTIME"),"GENOTYPE","REP",column=NULL, rep=NULL, env = "ENV", is.random = FALSE), error=function(err) "notRun")
+dataMeans<-tryCatch(ssa1$meansse, error=function(err) "notRun")
+outDesc <- tryCatch(DescriptiveStatistics(data, "HEIGHT", "ENV"), error=function(err) "notRun")
+library(PBTools)
+dataRead <- read.csv("E:/NSALES/juno workspace/workspace_1/RJavaManager/sample_datasets/Diallel_M1.csv", header = TRUE, na.strings = c("NA","."), blank.lines.skip=TRUE, sep = ",")
+result<-try(diallel1Test("RCB", "dataRead", c("Plant_height"), "P1", "P2", rep = NULL, block = "Block", row = NULL, column = NULL, cross = TRUE, individual = NULL, environment = "Env", alpha = 0.05), silent = TRUE)
+design="RCB"; data<-"dataRead"; respvar<-c("Plant_height"); p1<-"P1";
+p2<-"P2"
+rep = NULL
+block = "Block"
+row = NULL
+column = NULL
+cross = TRUE
+individual = NULL
+environment = "Env"
+alpha = 0.05
+options(show.signif.stars=FALSE)
+data <- eval(parse(text = data))
+#trim the strings
+respvar <- trim.strings(respvar)
+p1 <- trim.strings(p1)
+p2 <- trim.strings(p2)
+if (!is.null(block)) {block <- trim.strings(block) }
+if (!is.null(rep)) {rep <- trim.strings(rep) }
+if (!is.null(row)) {row <- trim.strings(row) }
+if (!is.null(column)) {column <- trim.strings(column) }
+if (!is.null(individual)) {individual <- trim.strings(individual) }
+if (!is.null(environment)) {environment <-trim.strings(environment) }
+alpha <- trim.strings(alpha)
+# --- create titles --- #
+if (cross) {parentsType<-"CROSS"
+} else {parentsType<-"SELF"}
+cat("\nDIALLEL ANALYSIS: GRIFFING METHOD I IN ",design, " (", parentsType, ")\n", sep="")
+# --- get number of environment levels --- #
+if (!is.null(environment)) {
+data[,match(environment, names(data))] <- factor(trim.strings(data[,match(environment, names(data))]))
+envNumLevels<-nlevels(data[,match(environment, names(data))])
+} else {envNumLevels<-1}
+result <- list()
+i=1
+j=1
+result[[i]] <- list()
+cat("\n\nRESPONSE VARIABLE: ", respvar[i], "\n", sep="")
+result[[i]]$site[[j]] <- list()
+if (!is.null(environment)) {
+crdVars<-c(respvar[i], p1, p2, rep, environment)
+rcbVars<-c(respvar[i], p1, p2, block, environment)
+alphaVars<-c(respvar[i], p1, p2, rep, block, environment)
+rowcolVars<-c(respvar[i], p1, p2, rep, row, column, environment)
+} else {
+crdVars<-c(respvar[i], p1, p2, rep)
+rcbVars<-c(respvar[i], p1, p2, block)
+alphaVars<-c(respvar[i], p1, p2, rep, block)
+rowcolVars<-c(respvar[i], p1, p2, rep, row, column)
+}
+if (design == "CRD") {temp.data <- data[sort(match(crdVars, names(data)))]}
+if (design == "RCB") {temp.data <- data[sort(match(rcbVars, names(data)))]}
+if (design == "Alpha") {temp.data <- data[sort(match(alphaVars, names(data)))]}
+if (design == "RowColumn") {temp.data <- data[sort(match(rowcolVars, names(data)))]}
+if (!is.null(environment)) {
+cat("\n-----------------------------")
+cat("\nANALYSIS FOR: ",environment, " = " ,levels(temp.data[,match(environment, names(temp.data))])[j],"\n", sep="")
+cat("-----------------------------\n")
+#temp.data <- subset(temp.data, temp.data[,match(environment, names(temp.data))] == levels(temp.data[,match(environment, names(temp.data))])[j])
+temp.data <- temp.data[temp.data[,match(environment, names(temp.data))] == levels(temp.data[,match(environment, names(temp.data))])[j],]
+temp.data[,match(environment, names(temp.data))] <- factor(trim.strings(temp.data[,match(environment, names(temp.data))]))
+}
+# --- define factors and number of levels --- #
+temp.data[,match(p1, names(temp.data))] <- factor(trim.strings(temp.data[,match(p1, names(temp.data))]))
+temp.data[,match(p2, names(temp.data))] <- factor(trim.strings(temp.data[,match(p2, names(temp.data))]))
+p <- length(unique(c(levels(data[,match(p1, names(data))]), levels(data[,match(p2, names(data))]))))
+if (design == "CRD") {
+temp.data[,match(rep, names(temp.data))] <- factor(trim.strings(temp.data[,match(rep, names(temp.data))]))
+r <- nlevels(temp.data[,match(rep, names(temp.data))])
+}
+if (design == "RCB") {
+temp.data[,match(block, names(temp.data))] <- factor(trim.strings(temp.data[,match(block, names(temp.data))]))
+r <- nlevels(temp.data[,match(block, names(temp.data))])
+}
+if (design == "Alpha") {
+temp.data[,match(rep, names(temp.data))] <- factor(trim.strings(temp.data[,match(rep, names(temp.data))]))
+temp.data[,match(block, names(temp.data))] <- factor(trim.strings(temp.data[,match(block, names(temp.data))]))
+r <- nlevels(temp.data[,match(rep, names(temp.data))])
+if (!is.null(environment)) {
+blockSizeFrame<-as.data.frame.table(tapply(temp.data[,respvar[i]], temp.data[,c(environment, rep, block)], length))
+} else {
+blockSizeFrame<-as.data.frame.table(tapply(temp.data[,respvar[i]], temp.data[,c(rep, block)], length))
+}
+blockSize<-max(blockSizeFrame$Freq, na.rm=TRUE)
+}
+if (design == "RowColumn") {
+temp.data[,match(rep, names(temp.data))] <- factor(trim.strings(temp.data[,match(rep, names(temp.data))]))
+temp.data[,match(row, names(temp.data))] <- factor(trim.strings(temp.data[,match(row, names(temp.data))]))
+temp.data[,match(column, names(temp.data))] <- factor(trim.strings(temp.data[,match(column, names(temp.data))]))
+r <- nlevels(temp.data[,match(rep, names(temp.data))])
+if (!is.null(environment)) {
+rowWithinRepFrame<-as.data.frame.table(tapply(temp.data[,respvar[i]], temp.data[,c(environment, rep, row)], length))
+} else {
+rowWithinRepFrame<-as.data.frame.table(tapply(temp.data[,respvar[i]], temp.data[,c(rep, row)], length))
+}
+rowWithinRep<-max(rowWithinRepFrame$Freq, na.rm=TRUE)
+if (!is.null(environment)) {
+columnWithinRepFrame<-as.data.frame.table(tapply(temp.data[,respvar[i]], temp.data[,c(environment, rep, column)], length))
+} else {
+columnWithinRepFrame<-as.data.frame.table(tapply(temp.data[,respvar[i]], temp.data[,c(rep, column)], length))
+}
+columnWithinRep<-max(columnWithinRepFrame$Freq, na.rm=TRUE)
+}
+# --- check if raw data is balanced. If not, generate estimates for missing values --- #
+#temp.data <- subset(temp.data, subset = (is.na(temp.data[,match(respvar[i], names(temp.data))]) == FALSE))
+temp.data <- temp.data[(is.na(temp.data[,match(respvar[i], names(temp.data))]) == FALSE),]
+if (design == "CRD" || design == "Alpha" || design == "RowColumn") {
+tempDataForAnova<-temp.data[,c(p1, p2, rep, respvar[i])]
+balancedData<-generateBalancedData(design="FACTORIAL", data=tempDataForAnova, respvar[i], p1, p2, rep)
+}
+if (design == "RCB") {
+tempDataForAnova<-temp.data[,c(p1, p2, block, respvar[i])]
+balancedData<-generateBalancedData(design="FACTORIAL", data=tempDataForAnova, respvar[i], p1, p2, block)
+}
+# --- data summary --- #
+funcTrialSum <- class.information2(names(temp.data),temp.data)
+cat("\nDATA SUMMARY: ","\n", sep="")
+print(funcTrialSum)
+cat("\nNumber of observations read: ",nrow(temp.data), sep="")
+cat("\nNumber of missing observations: ",nrow(balancedData)-nrow(temp.data), sep="")
+# --- ANOVA for Diallel Method 1 experiment --- #
+estimatedMissing <- FALSE
+if (design == "CRD" || design == "RCB") {cat("\n\n\nANOVA TABLE FOR THE EXPERIMENT\n") }
+if ((nrow(temp.data)/nrow(balancedData)) >= 0.90) {
+if (nrow(temp.data) == nrow(balancedData)) {
+anovaRemark <- "REMARK: Raw dataset is balanced."
+dataForAnova<-tempDataForAnova
+} else {
+if (design == "CRD") {dataForAnova<-estimateMissingData(design="CRD", data=balancedData, respvar[i], p1, p2, rep)  }
+if (design == "RCB") {dataForAnova<-estimateMissingData(design="RCB", data=balancedData, respvar[i], p1, p2, block)  }
+if (design == "Alpha" || design == "RowColumn") {dataForAnova<-estimateMissingData(design="RCB", data=balancedData, respvar[i], p1, p2, rep)  }
+anovaRemark <- "REMARK: Raw data and estimates of the missing values are used."
+estimatedMissing <- TRUE
+}
+if (design == "CRD" || design == "RCB") {
+if (design == "CRD") {myformula <- paste(respvar[i], " ~ ", p1, "*", p2, sep = "")  }
+if (design == "RCB") {myformula <- paste(respvar[i], " ~ ", block, " + ", p1, "*", p2, sep = "")  }
+anova.factorial<-summary(aov(formula(myformula), data=dataForAnova))
+print(anova.factorial)
+cat("-------\n")
+cat(anovaRemark)
+result[[i]]$site[[j]]$diallel1.anova <- anova.factorial
+}
+} else {anovaRemark <- "ERROR: Too many missing values. Cannot perform ANOVA for balanced data."
+cat("\n",anovaRemark)
+}
+Crosses <- temp.data[,match(p1, names(temp.data))]:temp.data[,match(p2, names(temp.data))]
+pValue <- 0
+if (design == "CRD") {cat("\n\n\nANOVA TABLE: (Crosses = ", p1,":", p2, ")", sep="")
+} else {cat("\n\nTESTING FOR THE DIFFERENCES AMONG CROSSES: (Crosses = ", p1,":", p2, ")", sep="")}
+if (design == "CRD") {
+myformula1 <- paste(respvar[i], " ~ Crosses",sep = "")
+model1 <- aov(formula(myformula1), data=temp.data)
+anova.table<-summary(model1)
+rownames(anova.table[[1]])<-c(" Crosses", " Residuals")
+pValue<-anova.table[[1]]$"Pr(>F)"[[1]]
+# print anova table
+pVal<-formatC(as.numeric(format(anova.table[[1]][1,5], scientific=FALSE)), format="f")
+f<-round(anova.table[[1]][1,4],digits=2)
+anova_new<-cbind(round(anova.table[[1]][1:3],digits=4),rbind(f," "),rbind(pVal, " "))
+anova_print<-replace(anova_new, is.na(anova_new), " ")
+colnames(anova_print)<-c("Df", "Sum Sq", "Mean Sq", "F value", "Pr(>F)")
+cat("\n Formula: ", myformula1, "\n\n", sep="")
+#get MSE
+EMS <- as.numeric(anova.table[[1]]$"Mean Sq"[2])
+EDF <- as.numeric(anova.table[[1]]$"Df"[2])
+}
+if (design == "RCB") {
+myformula1 <- paste(respvar[i], " ~ Crosses + (1|", block, ")", sep = "")
+myformula2 <- paste(respvar[i], " ~ (1|", block, ")", sep = "")
+library(lme4)
+model1 <- lmer(formula(myformula1), data=temp.data)
+model2 <- lmer(formula(myformula2), data=temp.data)
+anova1<-anova(model1)
+anova.table<-anova(model1, model2)
+pValue<-anova.table$"Pr(>Chisq)"[[2]]
+# print anova table
+pVal<-formatC(as.numeric(format(anova.table[2,7], scientific=FALSE)), format="f")
+anova_new<-cbind(round(anova.table[1:6],digits=2), rbind(" ",pVal))
+rownames(anova_new)<-c(" model2", " model1")
+colnames(anova_new)<-c("Df", "AIC", "BIC", "logLik", "Chisq", "Chi Df","Pr(>Chisq)" )
+anova_print<-replace(anova_new, is.na(anova_new), " ")
+cat("\n Formula for Model 1: ", myformula1, sep="")
+cat("\n Formula for Model 2: ", myformula2,"\n\n", sep="")
+#get MSE
+varcomp <- summary(model1)@REmat
+EMS <- as.numeric(varcomp[varcomp[,1] == "Residual", "Variance"])
+EDF <- ((p*p)-1)*(r-1)
+}
+if (design == "Alpha") {
+myformula1 <- paste(respvar[i], " ~ Crosses + (1|", rep, ") + (1|", block, ":", rep, ")", sep = "")
+myformula2 <- paste(respvar[i], " ~ (1|", rep, ") + (1|", block, ":", rep, ")", sep = "")
+library(lme4)
+model1 <- lmer(formula(myformula1), data=temp.data)
+model2 <- lmer(formula(myformula2), data=temp.data)
+anova1<-anova(model1)
+anova.table<-anova(model1, model2)
+pValue<-anova.table$"Pr(>Chisq)"[[2]]
+# print anova table
+pVal<-formatC(as.numeric(format(anova.table[2,7], scientific=FALSE)), format="f")
+anova_new<-cbind(round(anova.table[1:6],digits=2), rbind(" ",pVal))
+rownames(anova_new)<-c(" model2", " model1")
+colnames(anova_new)<-c("Df", "AIC", "BIC", "logLik", "Chisq", "Chi Df","Pr(>Chisq)" )
+anova_print<-replace(anova_new, is.na(anova_new), " ")
+cat("\n Formula for Model 1: ", myformula1, sep="")
+cat("\n Formula for Model 2: ", myformula2,"\n\n", sep="")
+#get MSE
+varcomp <- summary(model1)@REmat
+EMS <- as.numeric(varcomp[varcomp[,1] == "Residual", "Variance"])
+EDF <- (blockSize-1)*(((p*p)/blockSize)-1)*(r-1)
+}
+if (design == "RowColumn") {
+myformula1 <- paste(respvar[i], " ~ Crosses + (1|", rep, ") + (1|", row, ":", rep, ") + (1|", column, ":", rep, ")", sep = "")
+myformula2 <- paste(respvar[i], " ~ (1|", rep, ") + (1|", row, ":", rep, ") + (1|", column, ":", rep, ")", sep = "")
+library(lme4)
+model1 <- lmer(formula(myformula1), data=temp.data)
+model2 <- lmer(formula(myformula2), data=temp.data)
+anova1<-anova(model1)
+anova.table<-anova(model1, model2)
+pValue<-anova.table$"Pr(>Chisq)"[[2]]
+# print anova table
+pVal<-formatC(as.numeric(format(anova.table[2,7], scientific=FALSE)), format="f")
+anova_new<-cbind(round(anova.table[1:6],digits=2), rbind(" ",pVal))
+rownames(anova_new)<-c(" model2", " model1")
+colnames(anova_new)<-c("Df", "AIC", "BIC", "logLik", "Chisq", "Chi Df","Pr(>Chisq)" )
+anova_print<-replace(anova_new, is.na(anova_new), " ")
+cat("\n Formula for Model 1: ", myformula1, sep="")
+cat("\n Formula for Model 2: ", myformula2,"\n\n", sep="")
+#get MSE
+varcomp <- summary(model1)@REmat
+EMS <- as.numeric(varcomp[varcomp[,1] == "Residual", "Variance"])
+numberTrt<-p*p
+EDF <- ((numberTrt*r)-1)-(numberTrt-1)-(r-1)-((rowWithinRep-1)*(r-1))-((columnWithinRep-1)*(r-1))
+}
+print(anova_print)
+result[[i]]$site[[j]]$genoEffect.anova <-anova_print
+# --- mean data of full diallel --- #
+library(doBy)
+myformula2<- paste(respvar[i], " ~ ", p1," + ",p2, sep = "")
+if ((nrow(temp.data)/nrow(balancedData)) >= 0.90) {
+meandata <- summaryBy(formula(myformula2), data=dataForAnova)
+} else {
+meandata <- summaryBy(formula(myformula2), data=temp.data)
+}
+respvardotmean<-paste(respvar[i],".mean", sep = "")
+mdata <- reshape(meandata, v.names=respvardotmean, idvar=p1, timevar=p2, direction="wide", sep=".")
+# --- printing the matrix of means --- #
+respvardotmeandot<-paste(respvardotmean,".", sep="")
+p2equals<-paste(p2,"=", sep="")
+colnames(mdata) <- gsub(respvardotmeandot, p2equals, colnames(mdata))
+mdata_print<-round(data.matrix(mdata), digits=4)
+rownames(mdata_print)<-rep("",nrow(mdata_print))
+cat("\n\nMATRIX OF MEANS:\n")
+print(mdata_print)
+result[[i]]$site[[j]]$means.matrix <-mdata_print
+if (estimatedMissing) {
+cat("-------\n")
+cat(anovaRemark,"\n")
+}
+mdata[,match(p1, names(mdata))] <- NULL
+alpha <- as.numeric(alpha)
+pValue < alph
+pValue < alpha
+cat("\n\nANALYSIS OF VARIANCE:")
+(nrow(temp.data)/nrow(balancedData)) >= 0.90
+XI <- rowSums(mdata)
+XJ <- colSums(mdata)
+SUMX <- sum(mdata)
+MEPRIME <-EMS/r            #  MSE PRIME (ME')
+# --- GENERAL COMBINING ABILITY (GCA) SUM OF SQUARES ---- #
+SG <- round(((1/(2*p))*sum((XI+XJ)^2)) - ((2/(p^2))*(SUMX^2)), 6)
+# --- SPECIFIC COMBINING ABILITY (SCA) SUM OF SQUARES --- #
+B1 <- as.matrix(rep(0,p*p),nrow=p, ncol=p)
+dim(B1) <- c(p,p)
+for (I in 1:p)  {
+for (J in 1:p)   {
+B1[I,J] <- mdata[I,J]*(mdata[I,J] + mdata[J,I])
+}
+}
+SS <- round(((1/2)*sum(B1))-((1/(2*p))*sum((XI+XJ)^2))+((1/(p^2))*(SUMX^2)),6)
+# --- RECIPROCAL SUM OF SQUARES ---- #
+B2 <- as.matrix(rep(0,p*p),nrow=p, ncol=p)
+dim(B2) <- c(p,p)
+for (I in 1:p)  {
+for (J in 1:p)   {
+if (I>J) B2[I,J] <- mdata[I,J] - mdata[J,I]
+}
+}
+SR <- round((1/2)*sum(B2^2),6)
+# --- ERROR PRIME SUM OF SQUARES --- #
+SE <- round(MEPRIME * EDF,6)
+# --- COMPUTATION OF MEAN SQUARE AND F-VALUES ---- #
+DG <- p-1
+DS <- p*(p-1)/2
+DR <- DS
+DE <- EDF
+MG <- SG/DG
+MS <- SS/DS
+MR <- SR/DR
+p
+p <- length(unique(c(levels(data[,match(p1, names(data))]), levels(data[,match(p2, names(data))]))))
+p
+levels(data[,match(p1, names(data))])
+str(data)
+temp.data[,match(p1, names(temp.data))] <- factor(trim.strings(temp.data[,match(p1, names(temp.data))]))
+temp.data[,match(p2, names(temp.data))] <- factor(trim.strings(temp.data[,match(p2, names(temp.data))]))
+p <- length(unique(c(levels(temp.data[,match(p1, names(temp.data))]), levels(temp.data[,match(p2, names(temp.data))]))))
+source('E:/NSALES/creatingRPackage/PBTools Package/In package format/PBTools/R/diallel1Test.R')
+result<-try(diallel1Test("RCB", "dataRead", c("Plant_height"), "P1", "P2", rep = NULL, block = "Block", row = NULL, column = NULL, cross = TRUE, individual = NULL, environment = "Env", alpha = 0.05), silent = TRUE)
+library(PBTools)
+data <- read.csv("E:/NSALES/juno workspace/workspace_1/RJavaManager/sample_datasets/JohnAlpha.csv", header = TRUE, na.strings = c("NA","."), blank.lines.skip=TRUE, sep = ",")
+setwd("E:/NSALES/juno workspace/workspace_1/RJavaManager/sample_datasets/")
+ssa1 <- try(ssa.test("Alpha",data,c("yield"),"gen","block",column=NULL,"rep",NULL, is.random = FALSE), silent = TRUE)
+pwControl <- try(ssa.pairwise(c("G01","G02","G03","G04","G05","G06","G07","G08","G09","G10","G11","G12","G13","G14","G15","G16","G17","G18","G19","G20","G21","G22","G23","G24"), ssa1$output[[1]]$site[[1]]$model, type = "Dunnett", alpha = 0.05, control.level = c("G19","G22")), silent=TRUE)
+pwContol
+pwControl
+ssa.pairwise(c("G01","G02","G03","G04","G05","G06","G07","G08","G09","G10","G11","G12","G13","G14","G15","G16","G17","G18","G19","G20","G21","G22","G23","G24"), ssa1$output[[1]]$site[[1]]$model, type = "Dunnett", alpha = 0.05, control.level = c("G19","G22"))
+data <- read.csv("E:/NSALES/personal/Celina Noreen Reyes/THESIS DATA_newTemplate.csv", header = TRUE, na.strings = c("NA","."), blank.lines.skip=TRUE, sep = ",")
+rstudio::viewData(data)
+table(data$KASARIAN, data$SCHOOL)
+table(data$P2Q1)
+table(data$P2Q1, data$SCHOOL)
+table(data$P2Q2, data$SCHOOL)
+table(data$P2Q3, data$SCHOOL)
+table(data$P2Q4, data$SCHOOL)
+table(data$P2Q5, data$SCHOOL)
+table(data$P2Q6, data$SCHOOL)
+table(data$P2Q7, data$SCHOOL)
+table(data$P2Q8, data$SCHOOL)
+table(data$P2Q9, data$SCHOOL)
+table(data$P2Q10, data$SCHOOL)
+table(data$P2Q11, data$SCHOOL)
+table(data$P2Q12, data$SCHOOL)
+table(data$P2Q13, data$SCHOOL)
+table(data$P2Q14, data$SCHOOL)
+table(data$P2Q15, data$SCHOOL)
+prop.test(x=c(20,178), n=c(20,180), alternative="two.sided", conf.level=.95)
+prop.test(x=c(0,2), n=c(20,180), alternative="two.sided", conf.level=.95)
+prop.test(x=c(20,2), n=c(20,180), alternative="two.sided", conf.level=.95)
+prop.test(x=c(0,178), n=c(20,180), alternative="two.sided", conf.level=.95)
+prop.test(x=c(20,180), n=c(20,180), alternative="two.sided", conf.level=.95)
+prop.test(x=c(19,120), n=c(20,180), alternative="two.sided", conf.level=.95)
+prop.test(x=c(1,60), n=c(20,180), alternative="two.sided", conf.level=.95)
+prop.test(x=c(12,15), n=c(20,180), alternative="two.sided", conf.level=.95)
+prop.test(x=c(8,165), n=c(20,180), alternative="two.sided", conf.level=.95)
+prop.test(x=c(20,147), n=c(20,180), alternative="two.sided", conf.level=.95)
+prop.test(x=c(0,33), n=c(20,180), alternative="two.sided", conf.level=.95)
+prop.test(x=c(18,154), n=c(20,180), alternative="two.sided", conf.level=.95)
+prop.test(x=c(2,26), n=c(20,180), alternative="two.sided", conf.level=.95)
+prop.test(x=c(19,148), n=c(20,180), alternative="two.sided", conf.level=.95)
+prop.test(x=c(19,160), n=c(20,180), alternative="two.sided", conf.level=.95)
+prop.test(x=c(1,20), n=c(20,180), alternative="two.sided", conf.level=.95)
+prop.test(x=c(19,161), n=c(20,180), alternative="two.sided", conf.level=.95)
+prop.test(x=c(1,19), n=c(20,180), alternative="two.sided", conf.level=.95)
+prop.test(x=c(19,176), n=c(20,180), alternative="two.sided", conf.level=.95)
+prop.test(x=c(1,4), n=c(20,180), alternative="two.sided", conf.level=.95)
+prop.test(x=c(20,165), n=c(20,180), alternative="two.sided", conf.level=.95)
+prop.test(x=c(0,15), n=c(20,180), alternative="two.sided", conf.level=.95)
+prop.test(x=c(20,150), n=c(20,180), alternative="two.sided", conf.level=.95)
+prop.test(x=c(0,30), n=c(20,180), alternative="two.sided", conf.level=.95)

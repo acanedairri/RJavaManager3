@@ -1,0 +1,35 @@
+package org.irri.breedingtool.rjava.pbtoolsanalysis;
+
+import org.irri.breedingtool.rjava.manager.RJavaManager;
+
+public class TestNCIME {
+
+	private static String BSLASH = "\\";
+	private static String FSLASH = "/";
+	private static String PATH1 = System.getProperty("user.dir")+ System.getProperty("file.separator") + "sample_datasets" + System.getProperty("file.separator");
+	public static String DATA_PATH = PATH1.replace(BSLASH, FSLASH);
+	
+	public static void main(String[] args) {
+		
+		//supply path and name of active data
+		String dataFileName = DATA_PATH + "testDataNC2.csv";
+		//supply path and name of text file where text output is going to be saved
+		String outFileName = DATA_PATH + "NCI_ME_output.txt";
+		
+		//specify parameters
+		String design = "RCB";
+		String[] respvars = {"respvar"};
+		String female = "female";
+		String male = "male";
+		String rep = "NULL";
+		String block = "block";
+		String inbred = "TRUE";
+		String environment = "environment";
+		String individual = "NULL";
+		
+		RJavaManager rJavaManager= new RJavaManager();
+		rJavaManager.initPBtool();
+		rJavaManager.getPbToolAnalysisManager().doNC1ME(dataFileName, outFileName, design, respvars, female, male, rep, block, inbred, individual, environment);
+	}
+
+}

@@ -1,0 +1,195 @@
+
+DATA FILE: E:/NSALES/juno workspace/workspace_1/RJavaManager/sample_datasets/RCB_ME.csv
+
+MULTI-ENVIRONMENT ANALYSIS (ONE-STAGE)
+
+DESIGN: Randomized Complete Block (RCB)
+
+==============================
+GENOTYPE AS: Fixed
+==============================
+
+------------------------------
+RESPONSE VARIABLE: Yield
+------------------------------
+
+Trial Summary:
+
+Number of observations read:  495 
+Number of observations used:  495 
+
+ Factors   Number of Levels   Levels                     
+ Env       11                 E1  E10  E11 ... E9        
+ Genotype  15                 GEN1  GEN10  GEN11 ... GEN9
+ Block     3                  1  2  3                    
+
+
+Descriptive Statistics:
+
+  Variable N_NonMissObs     Mean   StdDev
+1    Yield          495 1718.596 1117.791
+
+
+Variance Components Table:
+
+        Groups   Variance  Std.Dev.
+1 Genotype:Env 664747.696 815.32061
+2    Block:Env   6497.161  80.60497
+3          Env 530979.863 728.68365
+4     Residual  94709.288 307.74874
+
+
+Testing for the Significance of Genotypic Effect:
+
+Models:
+model2: Yield ~ 1 + (1|Env) + (1|Block:Env) + (1|Genotype:Env)
+model1: Yield ~ 1 + Genotype + (1|Env) + (1|Block:Env) + (1|Genotype:Env)
+
+       Df    AIC    BIC  logLik  Chisq Chi Df Pr(>Chisq)
+model2  5 7640.1 7661.1 -3815.1                         
+model1 19 7652.8 7732.7 -3807.4 15.313     14     0.3571
+
+         Df  Sum Sq Mean Sq F value p-value
+Genotype 14 1524832  108917    1.15  0.3571
+
+
+Testing for the Significance of Genotype X Environment Effect:
+
+Response Variable: Yield
+
+              Chisq Pr(>Chisq)
+Genotype:Env 471.97  < 2.2e-16
+
+
+Significant Pairwise Comparisons (if any): 
+Compared with control(s)
+
+  Trmt[i] Trmt[j] Estimate      lwr      upr
+1   GEN14    GEN5 917.5048 11.78169 1823.228
+
+
+Stability Analysis using Finlay-Wilkinson Model
+
+          Slope        SE  t.value         Prob      MSReg      MSDev
+GEN1  1.2781068 0.2844126 4.493847 1.502182e-03  9332417.6  462123.09
+GEN10 0.6527849 0.2813760 2.319973 4.548779e-02  2434445.5  452307.80
+GEN11 1.6932433 0.2287290 7.402837 4.091093e-05 16379423.5  298883.70
+GEN12 1.6800025 0.2291829 7.330400 4.418676e-05 16124257.8  300071.21
+GEN13 1.0057795 0.3020917 3.329384 8.807711e-03  5779170.2  521359.88
+GEN14 1.5848878 0.5707898 2.776658 2.151802e-02 14350165.8 1861282.35
+GEN15 1.0948669 0.3462029 3.162501 1.150386e-02  6848296.6  684733.14
+GEN2  1.1363548 0.2719630 4.178344 2.381936e-03  7377136.1  422551.36
+GEN3  0.8969413 0.4169984 2.150947 5.994425e-02  4596083.4  993410.28
+GEN4  0.3024868 0.2899820 1.043123 3.240997e-01   522724.4  480398.97
+GEN5  0.7151867 0.1240071 5.767305 2.703442e-04  2922125.1   87852.27
+GEN6  0.6888218 0.2543126 2.708563 2.405402e-02  2710651.2  369484.01
+GEN7  0.6136909 0.2464923 2.489696 3.443918e-02  2151588.5  347109.54
+GEN8  0.9025519 0.3482402 2.591751 2.912969e-02  4653763.4  692815.70
+GEN9  0.7542942 0.2547682 2.960708 1.594118e-02  3250434.9  370809.14
+
+
+Stability Analysis using Shukla's model
+
+           lower      est.     upper
+GEN1  264.805740  703.6167  1869.584
+GEN10  16.424694  738.2801 33185.250
+GEN11 151.126221  937.3589  5813.959
+GEN12 135.445669  943.9686  6578.851
+GEN13 177.323849  786.7224  3490.405
+GEN14 182.708778 1427.7333 11156.674
+GEN15 211.352595  953.4036  4300.767
+GEN2  163.700619  778.2112  3699.514
+GEN3  125.120648  944.0875  7123.534
+GEN4    5.338358  687.2203 88467.608
+GEN5    3.165181  218.8051 15125.728
+GEN6   46.682322  511.4079  5602.508
+GEN7   28.716855  497.1291  8606.003
+GEN8  160.228588  787.3109  3868.589
+GEN9  124.674720  621.5542  3098.701
+
+
+AMMI Analysis
+Percentage of Total Variation Accounted for by the Principal Components: 
+
+     percent  acum Df      Sum.Sq    Mean.Sq F.value   Pr.F
+PC1     38.2  38.2 23 101890340.4 4430014.80   46.77 0.0000
+PC2     23.9  62.1 21  63620736.9 3029558.90   31.99 0.0000
+PC3     19.2  81.3 19  51267271.5 2698277.45   28.49 0.0000
+PC4      8.7  90.0 17  23217503.0 1365735.47   14.42 0.0000
+PC5      5.4  95.4 15  14268487.9  951232.52   10.04 0.0000
+PC6      2.4  97.8 13   6282476.7  483267.44    5.10 0.0000
+PC7      1.2  99.0 11   3123773.8  283979.43    3.00 0.0008
+PC8      0.6  99.6  9   1635022.9  181669.21    1.92 0.0487
+PC9      0.4 100.0  7   1129431.9  161347.42    1.70 0.1084
+PC10     0.0 100.0  5    100764.4   20152.87    0.21 0.9582
+PC11     0.0 100.0  3         0.0       0.00    0.00 1.0000
+
+
+==============================
+GENOTYPE AS: Random
+==============================
+
+------------------------------
+RESPONSE VARIABLE: Yield
+------------------------------
+
+Trial Summary:
+
+Number of observations read:  495 
+Number of observations used:  495 
+
+ Factors   Number of Levels   Levels                     
+ Env       11                 E1  E10  E11 ... E9        
+ Genotype  15                 GEN1  GEN10  GEN11 ... GEN9
+ Block     3                  1  2  3                    
+
+
+Descriptive Statistics:
+
+  Variable N_NonMissObs     Mean   StdDev
+1    Yield          495 1718.596 1117.791
+
+
+Variance Components Table:
+
+        Groups   Variance  Std.Dev.
+1 Genotype:Env 664747.522 815.32050
+2    Block:Env   6497.219  80.60533
+3     Genotype   2876.978  53.63747
+4          Env 530984.967 728.68715
+5     Residual  94709.311 307.74878
+
+
+Testing for the Significance of Genotypic Effect:
+
+Models:
+model2: Yield ~ 1 + (1|Env) + (1|Block:Env) + (1|Genotype:Env)
+model1: Yield ~ 1 + (1|Genotype) + (1|Env) + (1|Block:Env) + (1|Genotype:Env)
+
+       Df    AIC    BIC  logLik  Chisq Chi Df Pr(>Chisq)
+model2  5 7640.1 7661.1 -3815.1                         
+model1  6 7642.1 7667.3 -3815.0 0.0091      1     0.9242
+
+
+Testing for the Significance of Genotype X Environment Effect:
+
+Response Variable: Yield
+
+              Chisq Pr(>Chisq)
+Genotype:Env 486.99  < 2.2e-16
+
+
+Testing for the Significance of Environment Effect:
+
+Response Variable: Yield
+
+     Chisq Pr(>Chisq)
+Env 57.555  3.287e-14
+
+
+Heritability:
+     
+0.05 
+
+
+==============================

@@ -1,0 +1,70 @@
+# --------------------------------------------------------       
+# plotDiscDist: plots empirical and theoretical discrete distributions
+#               modified "plotdist" function of the fitdistrplus package
+#
+# ARGUMENTS:
+# data - name of R dataframe
+# distr - discrete distribution(s) to fit
+# para - list of parameters for the fitted distribution(s)
+# --------------------------------------------------------
+
+plotDiscDist <- function (data, distr, para, ...) 
+{
+  def.par <- par(no.readonly = TRUE)
+  if (missing(data) || !is.vector(data, mode = "numeric")) 
+    stop("data must be a numeric vector")
+  if ((missing(distr) & !missing(para)) || (missing(distr) & 
+                                              !missing(para))) 
+    stop("distr and para must defined")
+  xlim <- c(min(data), max(data))
+
+  if (!is.character(distr)) 
+    distname <- substring(as.character(match.call()$distr), 2)
+  else distname <- distr
+  if (!is.list(para)) 
+    stop("'para' must be a named list")
+  ddistname <- paste("d", distname, sep = "")
+  if (!exists(ddistname, mode = "function")) 
+    stop(paste("The ", ddistname, " function must be defined"))
+  pdistname <- paste("p", distname, sep = "")
+  if (!exists(pdistname, mode = "function")) 
+    stop(paste("The ", pdistname, " function must be defined"))
+  qdistname <- paste("q", distname, sep = "")
+  if (!exists(qdistname, mode = "function")) 
+    stop(paste("The ", qdistname, " function must be defined"))
+  densfun <- get(ddistname, mode = "function")
+  nm <- names(para)
+  f <- formals(densfun)
+  args <- names(f)
+  m <- match(nm, args)
+  if (any(is.na(m))) 
+    stop(paste("'para' specifies names which are not arguments to ", ddistname))
+  n <- length(data)
+  par(mfrow = c(1, 2))
+  t <- table(data)
+  xval <- as.numeric(names(t))
+  xvalfin <- seq(min(xval), max(xval))
+  xlinesdec <- min((max(xval) - min(xval))/30, 0.4)
+  yd <- do.call(ddistname, c(list(x = xvalfin), as.list(para)))
+  ydobs <- as.vector(t)/n
+  ydmax <- max(yd, ydobs)
+  plot(xvalfin + xlinesdec, yd, type = "h", xlim = c(min(xval), 
+         max(xval) + xlinesdec), ylim = c(0, ydmax), lty = 3, 
+         col = "red", main = "Emp. and theo. distr.", 
+         xlab = "Data", ylab = "Density", ...)
+  points(xval, ydobs, type = "h", lty = 1, col = "black", ...)
+  legend("topright", lty = c(1, 3), col = c("black", 
+         "red"), legend = c("empirical", paste("theoretical")), 
+         bty = "o", bg = "white", cex = 0.6, ...)
+  ycdfobs <- ecdf(data)(xvalfin)
+  ycdf <- do.call(pdistname, c(list(q = xvalfin), as.list(para)))
+  plot(xvalfin + xlinesdec, ycdf, type = "h", xlim = c(min(xval), 
+         max(xval) + xlinesdec), ylim = c(0, 1), lty = 3, 
+         col = "red", main = "Emp. and theo. CDFs", xlab = "Data", 
+         ylab = "CDF", ...)
+  points(xvalfin, ycdfobs, type = "h", lty = 1, col = "black",  ...)
+  legend("bottomright", lty = c(1, 3), col = c("black", 
+         "red"), legend = c("empirical", paste("theoretical")), 
+         bty = "o", bg = "white", cex = 0.6, ...)
+  par(def.par)
+}

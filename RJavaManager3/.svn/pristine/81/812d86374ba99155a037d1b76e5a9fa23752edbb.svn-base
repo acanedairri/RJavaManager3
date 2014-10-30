@@ -1,0 +1,555 @@
+
+DATA FILE: E:/NSALES/juno workspace/workspace_1/RJavaManager/sample_datasets/RCB_ME.csv
+
+SINGLE-ENVIRONMENT ANALYSIS
+
+DESIGN: Randomized Complete Block (RCB)
+
+==============================
+GENOTYPE AS: Random
+==============================
+
+------------------------------
+RESPONSE VARIABLE: Yield
+------------------------------
+------------------------------
+ANALYSIS FOR: Env  =  E1 
+------------------------------
+
+DATA SUMMARY:
+
+Number of observations read:  45 
+Number of observations used:  45 
+
+ Factors   Number of Levels   Levels                     
+ Genotype  15                 GEN1  GEN10  GEN11 ... GEN9
+ Block     3                  1  2  3                    
+
+
+PREDICTED MEANS:
+
+   Genotype    Means
+1      GEN1 2509.936
+2     GEN10 2365.856
+3     GEN11 2472.875
+4     GEN12 2450.604
+5     GEN13 2462.980
+6     GEN14 2399.755
+7     GEN15 2320.240
+8      GEN2 2511.615
+9      GEN3 2348.901
+10     GEN4 2391.497
+11     GEN5 2289.580
+12     GEN6 2323.479
+13     GEN7 2467.560
+14     GEN8 2374.328
+15     GEN9 2368.360
+
+
+HERITABILITY:
+     
+0.18 
+
+
+TESTING FOR THE SIGNIFICANCE OF GENOTYPIC VARIANCE:
+Models:
+model2: Yield ~ 1 + (1|Block)
+model1: Yield ~ 1 + (1|Block) + (1|Genotype)
+
+       Df    AIC    BIC  logLik  Chisq Chi Df Pr(>Chisq)
+model2  3 715.34 720.76 -354.67                         
+model1  4 717.26 724.49 -354.63 0.0817      1      0.775
+
+
+------------------------------
+ANALYSIS FOR: Env  =  E10 
+------------------------------
+
+DATA SUMMARY:
+
+Number of observations read:  45 
+Number of observations used:  45 
+
+ Factors   Number of Levels   Levels                     
+ Genotype  15                 GEN1  GEN10  GEN11 ... GEN9
+ Block     3                  1  2  3                    
+
+
+PREDICTED MEANS:
+
+   Genotype     Means
+1      GEN1  995.1110
+2     GEN10 3508.0784
+3     GEN11 2163.8324
+4     GEN12 3331.8876
+5     GEN13 2923.5512
+6     GEN14 1754.1637
+7     GEN15 3214.6104
+8      GEN2 2338.3579
+9      GEN3 1170.3246
+10     GEN4 1870.7361
+11     GEN5  936.3728
+12     GEN6 1024.4207
+13     GEN7 1023.7545
+14     GEN8 2338.3579
+15     GEN9  755.3050
+
+
+HERITABILITY:
+  
+1 
+
+
+TESTING FOR THE SIGNIFICANCE OF GENOTYPIC VARIANCE:
+Models:
+model2: Yield ~ 1 + (1|Block)
+model1: Yield ~ 1 + (1|Block) + (1|Genotype)
+
+       Df    AIC    BIC logLik  Chisq Chi Df Pr(>Chisq)
+model2  3 748.99 754.41 -371.5                         
+model1  4 588.80 596.03 -290.4 162.19      1  < 2.2e-16
+
+
+------------------------------
+ANALYSIS FOR: Env  =  E11 
+------------------------------
+
+DATA SUMMARY:
+
+Number of observations read:  45 
+Number of observations used:  45 
+
+ Factors   Number of Levels   Levels                     
+ Genotype  15                 GEN1  GEN10  GEN11 ... GEN9
+ Block     3                  1  2  3                    
+
+
+PREDICTED MEANS:
+
+   Genotype     Means
+1      GEN1 2073.6462
+2     GEN10 2350.7552
+3     GEN11 3193.0604
+4     GEN12 3062.9888
+5     GEN13 3584.9386
+6     GEN14 6859.6827
+7     GEN15 1503.4601
+8      GEN2 1520.7586
+9      GEN3  444.5907
+10     GEN4 1763.6033
+11     GEN5 2161.4694
+12     GEN6 1655.4876
+13     GEN7 2440.2419
+14     GEN8 2273.5772
+15     GEN9 1033.4059
+
+
+HERITABILITY:
+  
+1 
+
+
+TESTING FOR THE SIGNIFICANCE OF GENOTYPIC VARIANCE:
+Models:
+model2: Yield ~ 1 + (1|Block)
+model1: Yield ~ 1 + (1|Block) + (1|Genotype)
+
+       Df   AIC    BIC  logLik  Chisq Chi Df Pr(>Chisq)
+model2  3 788.2 793.62 -391.10                         
+model1  4 659.3 666.52 -325.65 130.91      1  < 2.2e-16
+
+
+------------------------------
+ANALYSIS FOR: Env  =  E2 
+------------------------------
+
+DATA SUMMARY:
+
+Number of observations read:  45 
+Number of observations used:  45 
+
+ Factors   Number of Levels   Levels                     
+ Genotype  15                 GEN1  GEN10  GEN11 ... GEN9
+ Block     3                  1  2  3                    
+
+
+PREDICTED MEANS:
+
+   Genotype     Means
+1      GEN1  794.5710
+2     GEN10  883.8643
+3     GEN11  654.2393
+4     GEN12  593.0691
+5     GEN13  559.5486
+6     GEN14  524.0396
+7     GEN15  577.2874
+8      GEN2 2047.0134
+9      GEN3 2688.1327
+10     GEN4 2155.0240
+11     GEN5 1160.6453
+12     GEN6 1141.2021
+13     GEN7 2145.6180
+14     GEN8 3822.4327
+15     GEN9 1242.0793
+
+
+HERITABILITY:
+     
+0.95 
+
+
+TESTING FOR THE SIGNIFICANCE OF GENOTYPIC VARIANCE:
+Models:
+model2: Yield ~ 1 + (1|Block)
+model1: Yield ~ 1 + (1|Block) + (1|Genotype)
+
+       Df    AIC    BIC  logLik  Chisq Chi Df Pr(>Chisq)
+model2  3 759.74 765.16 -376.87                         
+model1  4 721.44 728.66 -356.72 40.307      1   2.17e-10
+
+
+------------------------------
+ANALYSIS FOR: Env  =  E3 
+------------------------------
+
+DATA SUMMARY:
+
+Number of observations read:  45 
+Number of observations used:  45 
+
+ Factors   Number of Levels   Levels                     
+ Genotype  15                 GEN1  GEN10  GEN11 ... GEN9
+ Block     3                  1  2  3                    
+
+
+PREDICTED MEANS:
+
+   Genotype     Means
+1      GEN1 1394.5064
+2     GEN10 1951.5671
+3     GEN11 1101.9462
+4     GEN12 1097.7043
+5     GEN13 1646.7817
+6     GEN14  935.0625
+7     GEN15 1606.0488
+8      GEN2 1280.6335
+9      GEN3 1160.5162
+10     GEN4 1788.9253
+11     GEN5 1362.1783
+12     GEN6 1931.3587
+13     GEN7 1402.5951
+14     GEN8 1394.5064
+15     GEN9 1768.7696
+
+
+HERITABILITY:
+     
+0.79 
+
+
+TESTING FOR THE SIGNIFICANCE OF GENOTYPIC VARIANCE:
+Models:
+model2: Yield ~ 1 + (1|Block)
+model1: Yield ~ 1 + (1|Block) + (1|Genotype)
+
+       Df    AIC    BIC  logLik  Chisq Chi Df Pr(>Chisq)
+model2  3 688.74 694.16 -341.37                         
+model1  4 679.33 686.56 -335.67 11.414      1  0.0007289
+
+
+------------------------------
+ANALYSIS FOR: Env  =  E4 
+------------------------------
+
+DATA SUMMARY:
+
+Number of observations read:  45 
+Number of observations used:  45 
+
+ Factors   Number of Levels   Levels                     
+ Genotype  15                 GEN1  GEN10  GEN11 ... GEN9
+ Block     3                  1  2  3                    
+
+
+PREDICTED MEANS:
+
+   Genotype    Means
+1      GEN1 1304.280
+2     GEN10 1853.292
+3     GEN11 1350.668
+4     GEN12 1951.809
+5     GEN13 2141.189
+6     GEN14 1686.389
+7     GEN15 2086.671
+8      GEN2 1306.671
+9      GEN3 1614.654
+10     GEN4 2233.967
+11     GEN5 1492.226
+12     GEN6 2633.292
+13     GEN7 1943.679
+14     GEN8 2000.588
+15     GEN9 1307.627
+
+
+HERITABILITY:
+     
+0.96 
+
+
+TESTING FOR THE SIGNIFICANCE OF GENOTYPIC VARIANCE:
+Models:
+model2: Yield ~ 1 + (1|Block)
+model1: Yield ~ 1 + (1|Block) + (1|Genotype)
+
+       Df    AIC    BIC  logLik  Chisq Chi Df Pr(>Chisq)
+model2  3 681.46 686.88 -337.73                         
+model1  4 639.32 646.55 -315.66 44.141      1  3.055e-11
+
+
+------------------------------
+ANALYSIS FOR: Env  =  E5 
+------------------------------
+
+DATA SUMMARY:
+
+Number of observations read:  45 
+Number of observations used:  45 
+
+ Factors   Number of Levels   Levels                     
+ Genotype  15                 GEN1  GEN10  GEN11 ... GEN9
+ Block     3                  1  2  3                    
+
+
+PREDICTED MEANS:
+
+   Genotype     Means
+1      GEN1  361.7046
+2     GEN10 1000.5596
+3     GEN11 1108.6885
+4     GEN12  934.2149
+5     GEN13 1630.7240
+6     GEN14 1226.4527
+7     GEN15 1765.0193
+8      GEN2 1375.3268
+9      GEN3  284.6541
+10     GEN4  432.1742
+11     GEN5  503.0846
+12     GEN6  372.7253
+13     GEN7  503.0846
+14     GEN8  845.4194
+15     GEN9  555.7006
+
+
+HERITABILITY:
+     
+0.94 
+
+
+TESTING FOR THE SIGNIFICANCE OF GENOTYPIC VARIANCE:
+Models:
+model2: Yield ~ 1 + (1|Block)
+model1: Yield ~ 1 + (1|Block) + (1|Genotype)
+
+       Df    AIC    BIC  logLik  Chisq Chi Df Pr(>Chisq)
+model2  3 696.72 702.14 -345.36                         
+model1  4 658.36 665.59 -325.18 40.351      1  2.122e-10
+
+
+------------------------------
+ANALYSIS FOR: Env  =  E6 
+------------------------------
+
+DATA SUMMARY:
+
+Number of observations read:  45 
+Number of observations used:  45 
+
+ Factors   Number of Levels   Levels                     
+ Genotype  15                 GEN1  GEN10  GEN11 ... GEN9
+ Block     3                  1  2  3                    
+
+
+PREDICTED MEANS:
+
+   Genotype     Means
+1      GEN1 1826.7384
+2     GEN10 2434.8805
+3     GEN11 4238.4820
+4     GEN12 3955.4876
+5     GEN13 3137.4590
+6     GEN14 2980.1700
+7     GEN15 4081.1930
+8      GEN2 3923.9355
+9      GEN3 2351.0140
+10     GEN4  515.9863
+11     GEN5 1459.7202
+12     GEN6 1774.2982
+13     GEN7 1512.1289
+14     GEN8 2351.0140
+15     GEN9 3179.3923
+
+
+HERITABILITY:
+     
+0.94 
+
+
+TESTING FOR THE SIGNIFICANCE OF GENOTYPIC VARIANCE:
+Models:
+model2: Yield ~ 1 + (1|Block)
+model1: Yield ~ 1 + (1|Block) + (1|Genotype)
+
+       Df    AIC    BIC  logLik  Chisq Chi Df Pr(>Chisq)
+model2  3 773.15 778.57 -383.58                         
+model1  4 736.79 744.02 -364.40 38.361      1  5.879e-10
+
+
+------------------------------
+ANALYSIS FOR: Env  =  E7 
+------------------------------
+
+DATA SUMMARY:
+
+Number of observations read:  45 
+Number of observations used:  45 
+
+ Factors   Number of Levels   Levels                     
+ Genotype  15                 GEN1  GEN10  GEN11 ... GEN9
+ Block     3                  1  2  3                    
+
+
+PREDICTED MEANS:
+
+   Genotype     Means
+1      GEN1  505.5800
+2     GEN10 1521.8082
+3     GEN11  381.0573
+4     GEN12  571.2756
+5     GEN13 1012.7410
+6     GEN14 1419.8304
+7     GEN15  514.6834
+8      GEN2  532.2657
+9      GEN3 1176.3064
+10     GEN4 1602.0298
+11     GEN5  651.2672
+12     GEN6 1406.7833
+13     GEN7 1157.3108
+14     GEN8  478.2698
+15     GEN9 1006.8912
+
+
+HERITABILITY:
+     
+0.99 
+
+
+TESTING FOR THE SIGNIFICANCE OF GENOTYPIC VARIANCE:
+Models:
+model2: Yield ~ 1 + (1|Block)
+model1: Yield ~ 1 + (1|Block) + (1|Genotype)
+
+       Df    AIC    BIC  logLik  Chisq Chi Df Pr(>Chisq)
+model2  3 679.44 684.86 -336.72                         
+model1  4 603.71 610.93 -297.85 77.735      1  < 2.2e-16
+
+
+------------------------------
+ANALYSIS FOR: Env  =  E8 
+------------------------------
+
+DATA SUMMARY:
+
+Number of observations read:  45 
+Number of observations used:  45 
+
+ Factors   Number of Levels   Levels                     
+ Genotype  15                 GEN1  GEN10  GEN11 ... GEN9
+ Block     3                  1  2  3                    
+
+
+PREDICTED MEANS:
+
+   Genotype    Means
+1      GEN1 298.9965
+2     GEN10 707.8152
+3     GEN11 283.1015
+4     GEN12 334.5605
+5     GEN13 563.3565
+6     GEN14 668.1744
+7     GEN15 293.5994
+8      GEN2 298.6165
+9      GEN3 531.1222
+10     GEN4 699.2816
+11     GEN5 324.5778
+12     GEN6 721.4689
+13     GEN7 521.9768
+14     GEN8 225.6208
+15     GEN9 279.9779
+
+
+HERITABILITY:
+     
+0.97 
+
+
+TESTING FOR THE SIGNIFICANCE OF GENOTYPIC VARIANCE:
+Models:
+model2: Yield ~ 1 + (1|Block)
+model1: Yield ~ 1 + (1|Block) + (1|Genotype)
+
+       Df    AIC    BIC  logLik  Chisq Chi Df Pr(>Chisq)
+model2  3 606.86 612.28 -300.43                         
+model1  4 555.71 562.94 -273.86 53.149      1  3.091e-13
+
+
+------------------------------
+ANALYSIS FOR: Env  =  E9 
+------------------------------
+
+DATA SUMMARY:
+
+Number of observations read:  45 
+Number of observations used:  45 
+
+ Factors   Number of Levels   Levels                     
+ Genotype  15                 GEN1  GEN10  GEN11 ... GEN9
+ Block     3                  1  2  3                    
+
+
+PREDICTED MEANS:
+
+   Genotype    Means
+1      GEN1 4101.344
+2     GEN10 1346.099
+3     GEN11 3706.608
+4     GEN12 3802.162
+5     GEN13 1463.729
+6     GEN14 3485.187
+7     GEN15 2417.291
+8      GEN2 2395.214
+9      GEN3 4295.747
+10     GEN4 1730.951
+11     GEN5 2056.822
+12     GEN6 2966.231
+13     GEN7 1412.328
+14     GEN8 2527.672
+15     GEN9 1502.280
+
+
+HERITABILITY:
+     
+0.99 
+
+
+TESTING FOR THE SIGNIFICANCE OF GENOTYPIC VARIANCE:
+Models:
+model2: Yield ~ 1 + (1|Block)
+model1: Yield ~ 1 + (1|Block) + (1|Genotype)
+
+       Df    AIC    BIC  logLik Chisq Chi Df Pr(>Chisq)
+model2  3 758.50 763.92 -376.25                        
+model1  4 676.98 684.21 -334.49 83.52      1  < 2.2e-16
+
+
+
+==============================

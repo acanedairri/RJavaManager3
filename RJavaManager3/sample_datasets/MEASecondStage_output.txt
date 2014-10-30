@@ -1,0 +1,149 @@
+
+DATA FILE: E:/AAGulles/BBI/PROGRAMS/ECLIPSE JUNO WORKSPACE/RJavaManager3/sample_datasets/Two_stage.csv
+
+MULTI-ENVIRONMENT ANALYSIS (TWO-STAGE)
+
+WEIGHT OPTION: 1/(sem^2)
+
+==============================
+GENOTYPE AS: Fixed
+==============================
+
+------------------------------
+RESPONSE VARIABLE: Yield_Mean
+------------------------------
+
+DATA SUMMARY:
+
+Number of observations read:  120 
+Number of observations used:  120 
+
+ Factors   Number of Levels   Levels             
+ Geno      12                 G1  G10  G11 ... G9
+ Env       10                 E1  E10  E2 ... E9 
+
+
+DESCRIPTIVE STATISTICS:
+
+    Variable N_NonMissObs    Mean    StdDev
+1 Yield_Mean          120 1.29527 0.6884791
+
+
+VARIANCE COMPONENTS TABLE:
+
+    Groups  Variance  Std.Dev.
+1      Env 0.2383356 0.4881962
+2 Residual 5.9965978 2.4487952
+
+
+TESTING FOR THE SIGNIFICANCE OF GENOTYPIC EFFECT:
+
+Analysis of Variance Table with Satterthwaite Denominator Df
+         Df Sum Sq Mean Sq F value  Denom Pr(>F)
+Geno 1.6299 0.1482      11 98.9818 0.5011 0.8984
+
+
+GENOTYPE LSMEANS AND STANDARD ERRORS:
+
+   Geno   LSMean StdErrMean
+1    G1 1.332266  0.1907202
+2   G10 1.286291  0.1914012
+3   G11 1.504174  0.1907202
+4   G12 1.327196  0.1910533
+5    G2 1.116620  0.1912823
+6    G3 1.376782  0.1907202
+7    G4 1.137605  0.1914442
+8    G5 1.171776  0.1910378
+9    G6 1.324722  0.1913097
+10   G7 1.284563  0.1907202
+11   G8 1.215052  0.1914435
+12   G9 1.374120  0.1907202
+
+
+STANDARD ERROR OF THE DIFFERENCE (SED):
+
+           Estimate
+ Minimum   0.1487  
+ Average   0.1494  
+ Maximum   0.1505  
+
+
+SIGNIFICANT PAIRWISE COMPARISONS (IF ANY): 
+
+                                       
+(No significant pairwise comparisons.) 
+
+
+
+
+==============================
+GENOTYPE AS: Random
+==============================
+
+------------------------------
+RESPONSE VARIABLE: Yield_Mean
+------------------------------
+
+DATA SUMMARY:
+
+Number of observations read:  120 
+Number of observations used:  120 
+
+ Factors   Number of Levels   Levels             
+ Geno      12                 G1  G10  G11 ... G9
+ Env       10                 E1  E10  E2 ... E9 
+
+
+DESCRIPTIVE STATISTICS:
+
+    Variable N_NonMissObs    Mean    StdDev
+1 Yield_Mean          120 1.29527 0.6884791
+
+
+VARIANCE COMPONENTS TABLE:
+
+    Groups    Variance   Std.Dev.
+1     Geno 0.001354807 0.03680771
+2      Env 0.238962932 0.48883835
+3 Residual 5.995313414 2.44853291
+
+
+TESTING FOR THE SIGNIFICANCE OF GENOTYPIC EFFECT USING -2 LOGLIKELIHOOD RATIO TEST:
+
+Formula for Model1:  Yield_Mean ~ 1 + (1|Geno) + (1|Env) 
+Formula for Model2:  Yield_Mean ~ 1 + (1|Env) 
+
+            AIC      BIC    logLik Chisq Chi Df Pr(>Chisq)
+Model2 193.6772 202.0397 -93.83860    NA     NA         NA
+Model1 195.6102 206.7601 -93.80508 0.067      1  0.7956857
+
+
+TESTING FOR THE SIGNIFICANCE OF ENVIRONMENT EFFECT USING -2 LOGLIKELIHOOD RATIO TEST:
+
+Formula for Model1:  Yield_Mean ~ 1 + (1|Geno) + (1|Env) 
+Formula for Model2:  Yield_Mean ~ 1 + (1|Geno) 
+
+            AIC      BIC     logLik    Chisq Chi Df   Pr(>Chisq)
+Model2 326.5623 334.9248 -160.28115       NA     NA           NA
+Model1 195.6102 206.7601  -93.80508 132.9521      1 9.261809e-31
+
+
+PREDICTED GENOTYPE MEANS:
+
+   Geno     Mean
+1    G1 1.293387
+2   G10 1.288370
+3   G11 1.312145
+4   G12 1.292800
+5    G2 1.270123
+6    G3 1.298244
+7    G4 1.272506
+8    G5 1.275952
+9    G6 1.292511
+10   G7 1.288181
+11   G8 1.280754
+12   G9 1.297954
+
+
+
+==============================

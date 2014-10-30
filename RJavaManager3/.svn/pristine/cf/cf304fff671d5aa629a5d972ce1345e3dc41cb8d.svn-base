@@ -1,0 +1,107 @@
+
+DATA FILE: E:/NSALES/juno workspace/workspace_1/RJavaManager/sample_datasets/Diallel2Alpha.csv
+
+MULTIPLE ENVIRONMENT ANALYSIS
+
+DIALLEL ANALYSIS: GRIFFING METHOD II IN ALPHA-LATTICE (CROSS)
+
+-----------------------------
+RESPONSE VARIABLE: Y
+-----------------------------
+
+DATA SUMMARY: 
+
+ Factors     No of Levels   Levels                 
+ par1        5              A56  C33  N76  S34  T14
+ par2        5              A56  C33  N76  S34  T14
+ Trial       2              1  2                   
+ replication 2              1  2                   
+ block       10             1  10  2 ... 9         
+
+ Number of observations read: 60
+ Number of observations used: 60
+
+
+ANOVA TABLE: (Crosses = par1:par2)
+
+                        Df      Sum Sq    Mean Sq F value Pr(>F)
+Trial                    1  69482.9100 69482.9100    2.47 0.2568
+Trial:replication        2  56304.1200 28152.0600    9.78 0.0030
+Trial:replication:block 16 221383.8000 13836.4800    4.81 0.0044
+Crosses                 14 192716.5000 13765.4600    3.29 0.0165
+Crosses x Trial         14  58534.4900  4181.0350    1.45 0.2613
+Error                   12  34529.7700  2877.4810               
+-------
+REMARK: Raw dataset is balanced.
+
+
+ANOVA TABLE:
+
+      Df      Sum Sq    Mean Sq F value Pr(>F)
+GCA    4   5065.7860  1266.4470    0.68 0.6395
+SCA   10 187650.7000 18765.0700    3.67 0.0260
+GCAxE  4   7414.9890  1853.7470    0.64 0.6414
+SCAxE 10  51119.5000  5111.9500    1.78 0.1716
+Error 12  34529.7700  2877.4810               
+-------
+REMARK: Raw dataset is balanced.
+
+
+MATRIX OF MEANS:
+
+    A56      C33      N76      S34      T14     
+A56 200.7318 168.5605 224.8037 160.2325 109.0267
+C33          196.1548 134.2481  92.4385 153.1182
+N76                   152.4894 268.8353  69.5024
+S34                            119.9950 244.0818
+T14                                     233.4262
+-------
+REMARK: Raw dataset is balanced.
+
+
+GENERAL COMBINING ABILITY EFFECTS, SPECIFIC COMBINING ABILITY EFFECTS (above diagonal):
+
+    A56       C33       N76       S34       T14      
+A56              2.5300   49.9598  -15.0699  -71.5619
+C33                      -22.9655  -65.2335   -9.8401
+N76                                102.3499 -102.2692
+S34                                           71.8516
+T14                                                  
+GCA    7.5756  -10.0547   -1.2414   -0.7828    4.5034
+
+
+TABLE OF STANDARD ERRORS AND LSDs:
+
+         Std. Error     LSD
+ Gi          9.0672        
+ Sii        23.4114        
+ Sij        18.5083        
+ Gi-Gj      14.3365 31.2365
+ Sii-Sjj    24.8315 54.1032
+ Sij-Sik    35.1170 76.5134
+ Sij-Skl    32.0573 69.8469
+
+
+ESTIMATES OF VARIANCE COMPONENTS:
+
+        Estimate
+ GCA   -508.5865
+ SCA   3413.2805
+ GCAxE -232.7287
+ SCAxE 1117.2346
+ Error 2877.4805
+
+
+ESTIMATES OF GENETIC VARIANCE COMPONENTS:
+                             
+                     Estimate
+ VA                  0.000000
+ VAxE                0.000000
+ VD              13653.122041
+ VDxE             4468.938363
+ h2-narrow sense     0.000000
+ H2-broad sense      0.650163
+ Dominance Ratio          Inf
+
+
+==============================================================

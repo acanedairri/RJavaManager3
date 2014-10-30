@@ -1,0 +1,34 @@
+package org.irri.breedingtool.rjava.stardesign;
+
+import org.irri.breedingtool.rjava.manager.RJavaManager;
+
+public class TestDesignCRD {
+
+	private static String BSLASH = "\\";
+	private static String FSLASH = "/";
+	private static String PATH1 = System.getProperty("user.dir")+ System.getProperty("file.separator") + "sample_datasets" + System.getProperty("file.separator");
+	public static String DATA_PATH = PATH1.replace(BSLASH, FSLASH);
+	
+	public static void main(String[] args) {
+		
+		//supply path and name of active data
+		String dataFileName = DATA_PATH + "fieldbookCRD.csv"; 
+		//supply path and name of text file where text output is going to be saved
+		String outFileName = DATA_PATH + "RandomizationCRDOutput.txt"; 
+		//supply path and name of graph file
+		
+		//specify parameters
+		String[] factorName = {" VARIETY", "NITROGEN"};
+		Integer[] factorLevel = {2,4};
+		Integer rep = 2;
+		Integer trial = 2;
+		
+		RJavaManager rJavaManager= new RJavaManager();
+		rJavaManager.initStar();
+		rJavaManager.getSTARDesignManager().doDesignCRD(dataFileName, outFileName, factorName, factorLevel, rep, trial);
+		
+		StringBuilder s = rJavaManager.getSTARDesignManager().getRscriptCommand();
+		System.out.println("Script Command:\n" +s.toString());
+	}
+
+}

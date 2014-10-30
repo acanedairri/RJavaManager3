@@ -1,0 +1,119 @@
+
+MULTIPLE ENVIRONMENT ANALYSIS
+
+DIALLEL ANALYSIS: GRIFFING METHOD I IN RCB (CROSS)
+
+-----------------------------
+RESPONSE VARIABLE: Plant_height
+-----------------------------
+
+DATA SUMMARY: 
+
+ Factors   No of Levels   Levels             
+ P1        7              1  2  3  4  5  6  7
+ P2        7              1  2  3  4  5  6  7
+ Env       2              Normal  Saline     
+ Rep       3              1  2  3            
+
+ Number of observations read: 294
+ Number of observations used: 291
+
+
+ANOVA TABLE: (Crosses = P1:P2)
+
+               Df      Sum Sq    Mean Sq F value Pr(>F)
+Env             1  33980.9800 33980.9800   26.85 0.0066
+Rep(Env)        4   5061.6550  1265.4140   20.45 0.0000
+Crosses        48 154145.5000  3211.3650   38.79 0.0000
+Crosses x Env  48   3973.8770    82.7891    1.34 0.0877
+Residuals     192  11879.0000    61.8698               
+-------
+REMARK: Raw data and estimates of the missing values are used.
+
+
+ANOVA TABLE:
+
+           Df      Sum Sq    Mean Sq F value Pr(>F)
+GCA         6 114593.3000 19098.8900  114.52 0.0000
+SCA        21  36150.2500  1721.4400   22.53 0.0000
+REC        21   3401.9560   161.9979    2.49 0.0213
+  MAT       6   1480.1310   246.6886    6.00 0.0233
+  NONM     15   1921.8250   128.1217    1.71 0.1541
+GCAxE       6   1000.6420   166.7737    2.70 0.0155
+SCAxE      21   1604.5800    76.4086    1.23 0.2259
+RECxE      21   1368.6540    65.1740    1.05 0.4022
+  MATxE     6    246.7894    41.1316    0.66 0.6782
+  NONMxE   15   1121.8650    74.7910    1.21 0.2677
+Residuals 192  11879.0000    61.8698               
+-------
+REMARK: Raw data and estimates of the missing values are used.
+
+
+MATRIX OF MEANS:
+
+         P2=1     P2=2     P2=3     P2=4     P2=5     P2=6     P2=7
+P1=1 122.7500 130.0000 153.5500 140.7333 128.9000 154.4333 182.2833
+P1=2 135.0667 116.8333 130.5500 133.8500 122.7167 129.0500 175.9000
+P1=3 154.1833 133.1333 122.0000 154.5000 131.2167 153.2167 177.7833
+P1=4 139.8833 141.7667 139.7833 137.3333 138.5667 155.7833 195.2333
+P1=5 131.6667 122.6167 130.6667 135.7833 111.8833 132.5667 166.3333
+P1=6 159.6000 138.3833 153.7667 169.9500 147.2000 143.0167 188.6167
+P1=7 188.9333 180.9500 183.3333 197.7333 164.0000 202.3000 155.1000
+-------
+REMARK: Raw data and estimates of the missing values are used.
+
+
+GENERAL COMBINING ABILITY EFFECTS, SPECIFIC COMBINING ABILITY EFFECTS
+(above diagonal) AND RECIPROCAL EFFECTS (below diagonal):
+         P2=1     P2=2     P2=3     P2=4     P2=5     P2=6     P2=7
+P1=1        0 -0.07772 11.82466 -7.34439 -0.06701  5.60204  9.71514
+P1=2 -2.53333        0 -0.40867 -0.05272  2.10799 -7.90629 12.32347
+P1=3 -0.31667 -1.29167        0 -0.15034  0.95204  2.43776  5.02585
+P1=4  0.42500 -3.95833  7.35833        0  1.57466  6.20204 15.34014
+P1=5 -1.38333  0.05000  0.27500  1.39167        0  0.52109  1.32585
+P1=6 -2.58333 -4.66667 -0.27500 -7.08333 -7.31667        0 10.55323
+P1=7 -3.32500 -2.52500 -2.77500 -1.25000  1.16667 -6.84167        0
+GCA   -3.6497 -13.4413  -4.0104   1.6003 -15.7020   5.3622  29.8408
+
+
+TABLE OF STANDARD ERRORS AND LSDs:
+
+         Std. Error    LSD
+ Gi          0.7946       
+ Sii         2.7524       
+ Sij         1.9731       
+ Rij         2.2706       
+ Gi-Gj       1.2137 2.3939
+ Sii-Sjj     3.8381 7.5702
+ Sii-Sij     3.7409 7.3785
+ Sii-Sjk     3.3239 6.5560
+ Sij-Sik     2.9730 5.8639
+ Sij-Skl     2.7139 5.3530
+ Rij-Rkl     3.2112 6.3337
+
+
+ESTIMATES OF VARIANCE COMPONENTS:
+
+            Estimate
+ GCA        206.2540
+ SCA       1806.3982
+ REC          8.0687
+ GCAxE        2.1596
+ SCAxE        2.7612
+ RECxE        0.5507
+ Residuals   61.8698
+
+
+ESTIMATES OF GENETIC VARIANCE COMPONENTS:
+                            
+                    Estimate
+ VA               825.016113
+ VAxE               8.638405
+ VD              7225.592660
+ VDxE              11.044972
+ h2-narrow sense    0.101451
+ H2-broad sense     0.989972
+ Dominance Ratio    4.185241
+
+
+==============================================================

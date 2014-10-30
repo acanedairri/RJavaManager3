@@ -1,0 +1,1338 @@
+
+DATA FILE: E:/NSALES/juno workspace/workspace_1/RJavaManager/sample_datasets/RCB_ME.csv
+
+SINGLE-ENVIRONMENT ANALYSIS
+
+DESIGN: Randomized Complete Block (RCB)
+
+==============================
+GENOTYPE AS: Fixed
+==============================
+
+------------------------------
+RESPONSE VARIABLE: Yield
+------------------------------
+
+DESCRIPTIVE STATISTICS:
+
+   Variable Env N_NonMissObs      Mean    StdDev
+1     Yield  E1           45 2403.8378  647.9983
+2     Yield E10           45 1956.5910  941.7641
+3     Yield E11           45 2394.7778 1455.9706
+4     Yield  E2           45 1399.2511 1061.2780
+5     Yield  E3           45 1454.8733  482.1972
+6     Yield  E4           45 1793.8000  444.7185
+7     Yield  E5           45  859.9689  526.8493
+8     Yield  E6           45 2648.1267 1231.7961
+9     Yield  E7           45  929.2067  434.8357
+10    Yield  E8           45  450.1498  194.1254
+11    Yield  E9           45 2613.9778 1046.7411
+
+------------------------------
+ANALYSIS FOR: Env  =  E1 
+------------------------------
+
+DATA SUMMARY:
+
+Number of observations read:  45 
+Number of observations used:  45 
+
+ Factors   Number of Levels   Levels                     
+ Genotype  15                 GEN1  GEN10  GEN11 ... GEN9
+ Block     3                  1  2  3                    
+
+
+VARIANCE COMPONENTS TABLE:
+
+    Groups Variance Std.Dev.
+1    Block      0.0   0.0000
+2 Residual 392838.8 626.7685
+
+
+TESTING FOR THE SIGNIFICANCE OF GENOTYPIC EFFECT USING MAXIMUM LIKELIHOOD RATIO TEST:
+
+Formula for Model1: Yield ~ 1 + Genotype + (1|Block)
+Formula for Model2: Yield ~ 1 + (1|Block)
+
+       Df    AIC    BIC  logLik  Chisq Chi Df Pr(>Chisq)
+Model2  3 715.34 720.76 -354.67                         
+Model1 17 723.11 753.82 -344.56 20.233     14      0.123
+
+Analysis of Variance Table with  Satterthwaite  approximation for degrees of freedom
+         Df  Sum Sq Mean Sq F value Denom Pr(>F)
+Genotype 14 6690518  477894  1.2165    30 0.3143
+
+
+GENOTYPE LSMEANS AND STANDARD ERRORS:
+
+   Genotype   LSMean StdErrMean
+1      GEN1 2999.967    361.865
+2     GEN10 2190.433    361.865
+3     GEN11 2791.733    361.865
+4     GEN12 2666.600    361.865
+5     GEN13 2736.133    361.865
+6     GEN14 2380.900    361.865
+7     GEN15 1934.133    361.865
+8      GEN2 3009.400    361.865
+9      GEN3 2095.167    361.865
+10     GEN4 2334.500    361.865
+11     GEN5 1761.867    361.865
+12     GEN6 1952.333    361.865
+13     GEN7 2761.867    361.865
+14     GEN8 2238.033    361.865
+15     GEN9 2204.500    361.865
+
+------------------------------
+ANALYSIS FOR: Env  =  E10 
+------------------------------
+
+DATA SUMMARY:
+
+Number of observations read:  45 
+Number of observations used:  45 
+
+ Factors   Number of Levels   Levels                     
+ Genotype  15                 GEN1  GEN10  GEN11 ... GEN9
+ Block     3                  1  2  3                    
+
+
+VARIANCE COMPONENTS TABLE:
+
+    Groups Variance Std.Dev.
+1    Block    0.000  0.00000
+2 Residual 2248.935 47.42294
+
+
+TESTING FOR THE SIGNIFICANCE OF GENOTYPIC EFFECT USING MAXIMUM LIKELIHOOD RATIO TEST:
+
+Formula for Model1: Yield ~ 1 + Genotype + (1|Block)
+Formula for Model2: Yield ~ 1 + (1|Block)
+
+       Df    AIC    BIC  logLik  Chisq Chi Df Pr(>Chisq)
+Model2  3 748.99 754.41 -371.50                         
+Model1 17 490.78 521.49 -228.39 286.21     14  < 2.2e-16
+
+Analysis of Variance Table with  Satterthwaite  approximation for degrees of freedom
+         Df   Sum Sq Mean Sq F value Denom    Pr(>F)
+Genotype 14 38956999 2782643  1237.3    30 < 2.2e-16
+
+
+GENOTYPE LSMEANS AND STANDARD ERRORS:
+
+   Genotype    LSMean StdErrMean
+1      GEN1  994.3333   27.37965
+2     GEN10 3509.3333   27.37965
+3     GEN11 2164.0000   27.37965
+4     GEN12 3333.0000   27.37965
+5     GEN13 2924.3333   27.37965
+6     GEN14 1754.0000   27.37965
+7     GEN15 3215.6280   27.37965
+8      GEN2 2338.6667   27.37965
+9      GEN3 1169.6887   27.37965
+10     GEN4 1870.6667   27.37965
+11     GEN5  935.5476   27.37965
+12     GEN6 1023.6667   27.37965
+13     GEN7 1023.0000   27.37965
+14     GEN8 2338.6667   27.37965
+15     GEN9  754.3333   27.37965
+
+------------------------------
+ANALYSIS FOR: Env  =  E11 
+------------------------------
+
+DATA SUMMARY:
+
+Number of observations read:  45 
+Number of observations used:  45 
+
+ Factors   Number of Levels   Levels                     
+ Genotype  15                 GEN1  GEN10  GEN11 ... GEN9
+ Block     3                  1  2  3                    
+
+
+VARIANCE COMPONENTS TABLE:
+
+    Groups  Variance  Std.Dev.
+1    Block  6251.304  79.06519
+2 Residual 13294.608 115.30225
+
+
+TESTING FOR THE SIGNIFICANCE OF GENOTYPIC EFFECT USING MAXIMUM LIKELIHOOD RATIO TEST:
+
+Formula for Model1: Yield ~ 1 + Genotype + (1|Block)
+Formula for Model2: Yield ~ 1 + (1|Block)
+
+       Df   AIC    BIC logLik Chisq Chi Df Pr(>Chisq)
+Model2  3 788.2 793.62 -391.1                        
+Model1 17 577.0 607.71 -271.5 239.2     14  < 2.2e-16
+
+Analysis of Variance Table with  Satterthwaite  approximation for degrees of freedom
+         Df   Sum Sq Mean Sq F value Denom    Pr(>F)
+Genotype 14 92687044 6620503  497.98    28 < 2.2e-16
+
+
+GENOTYPE LSMEANS AND STANDARD ERRORS:
+
+   Genotype    LSMean StdErrMean
+1      GEN1 2073.0000   80.71295
+2     GEN10 2350.6667   80.71295
+3     GEN11 3194.6667   80.71295
+4     GEN12 3064.3333   80.71295
+5     GEN13 3587.3333   80.71295
+6     GEN14 6868.6667   80.71295
+7     GEN15 1501.6667   80.71295
+8      GEN2 1519.0000   80.71295
+9      GEN3  440.6667   80.71295
+10     GEN4 1762.3333   80.71295
+11     GEN5 2161.0000   80.71295
+12     GEN6 1654.0000   80.71295
+13     GEN7 2440.3333   80.71295
+14     GEN8 2273.3333   80.71295
+15     GEN9 1030.6667   80.71295
+
+------------------------------
+ANALYSIS FOR: Env  =  E2 
+------------------------------
+
+DATA SUMMARY:
+
+Number of observations read:  45 
+Number of observations used:  45 
+
+ Factors   Number of Levels   Levels                     
+ Genotype  15                 GEN1  GEN10  GEN11 ... GEN9
+ Block     3                  1  2  3                    
+
+
+VARIANCE COMPONENTS TABLE:
+
+    Groups  Variance Std.Dev.
+1    Block  10761.03 103.7354
+2 Residual 167643.16 409.4425
+
+
+TESTING FOR THE SIGNIFICANCE OF GENOTYPIC EFFECT USING MAXIMUM LIKELIHOOD RATIO TEST:
+
+Formula for Model1: Yield ~ 1 + Genotype + (1|Block)
+Formula for Model2: Yield ~ 1 + (1|Block)
+
+       Df    AIC    BIC  logLik  Chisq Chi Df Pr(>Chisq)
+Model2  3 759.74 765.16 -376.87                         
+Model1 17 686.81 717.53 -326.41 100.93     14  3.145e-15
+
+Analysis of Variance Table with  Satterthwaite  approximation for degrees of freedom
+         Df   Sum Sq Mean Sq F value Denom    Pr(>F)
+Genotype 14 44205559 3157540  18.835    28 1.246e-10
+
+
+GENOTYPE LSMEANS AND STANDARD ERRORS:
+
+   Genotype    LSMean StdErrMean
+1      GEN1  760.6667    243.856
+2     GEN10  854.9667    243.856
+3     GEN11  612.4667    243.856
+4     GEN12  547.8667    243.856
+5     GEN13  512.4667    243.856
+6     GEN14  474.9667    243.856
+7     GEN15  531.2000    243.856
+8      GEN2 2083.3333    243.856
+9      GEN3 2760.4000    243.856
+10     GEN4 2197.4000    243.856
+11     GEN5 1147.2667    243.856
+12     GEN6 1126.7333    243.856
+13     GEN7 2187.4667    243.856
+14     GEN8 3958.3000    243.856
+15     GEN9 1233.2667    243.856
+
+------------------------------
+ANALYSIS FOR: Env  =  E3 
+------------------------------
+
+DATA SUMMARY:
+
+Number of observations read:  45 
+Number of observations used:  45 
+
+ Factors   Number of Levels   Levels                     
+ Genotype  15                 GEN1  GEN10  GEN11 ... GEN9
+ Block     3                  1  2  3                    
+
+
+VARIANCE COMPONENTS TABLE:
+
+    Groups  Variance Std.Dev.
+1    Block  15950.41 126.2949
+2 Residual 100745.16 317.4038
+
+
+TESTING FOR THE SIGNIFICANCE OF GENOTYPIC EFFECT USING MAXIMUM LIKELIHOOD RATIO TEST:
+
+Formula for Model1: Yield ~ 1 + Genotype + (1|Block)
+Formula for Model2: Yield ~ 1 + (1|Block)
+
+       Df    AIC    BIC  logLik  Chisq Chi Df Pr(>Chisq)
+Model2  3 688.74 694.16 -341.37                         
+Model1 17 665.52 696.24 -315.76 51.222     14  3.806e-06
+
+Analysis of Variance Table with  Satterthwaite  approximation for degrees of freedom
+         Df  Sum Sq Mean Sq F value Denom    Pr(>F)
+Genotype 14 6729756  480697  4.7714    28 0.0002174
+
+
+GENOTYPE LSMEANS AND STANDARD ERRORS:
+
+   Genotype    LSMean StdErrMean
+1      GEN1 1378.5000   197.2208
+2     GEN10 2083.2667   197.2208
+3     GEN11 1008.3667   197.2208
+4     GEN12 1003.0000   197.2208
+5     GEN13 1697.6667   197.2208
+6     GEN14  797.2333   197.2208
+7     GEN15 1646.1333   197.2208
+8      GEN2 1234.4333   197.2208
+9      GEN3 1082.4667   197.2208
+10     GEN4 1877.5000   197.2208
+11     GEN5 1337.6000   197.2208
+12     GEN6 2057.7000   197.2208
+13     GEN7 1388.7333   197.2208
+14     GEN8 1378.5000   197.2208
+15     GEN9 1852.0000   197.2208
+
+------------------------------
+ANALYSIS FOR: Env  =  E4 
+------------------------------
+
+DATA SUMMARY:
+
+Number of observations read:  45 
+Number of observations used:  45 
+
+ Factors   Number of Levels   Levels                     
+ Genotype  15                 GEN1  GEN10  GEN11 ... GEN9
+ Block     3                  1  2  3                    
+
+
+VARIANCE COMPONENTS TABLE:
+
+    Groups Variance Std.Dev.
+1    Block 22027.36 148.4162
+2 Residual 22870.05 151.2285
+
+
+TESTING FOR THE SIGNIFICANCE OF GENOTYPIC EFFECT USING MAXIMUM LIKELIHOOD RATIO TEST:
+
+Formula for Model1: Yield ~ 1 + Genotype + (1|Block)
+Formula for Model2: Yield ~ 1 + (1|Block)
+
+       Df    AIC    BIC  logLik Chisq Chi Df Pr(>Chisq)
+Model2  3 681.46 686.88 -337.73                        
+Model1 17 603.36 634.08 -284.68 106.1     14  3.179e-16
+
+Analysis of Variance Table with  Satterthwaite  approximation for degrees of freedom
+         Df  Sum Sq Mean Sq F value Denom    Pr(>F)
+Genotype 14 7355158  525368  22.972    28 1.087e-11
+
+
+GENOTYPE LSMEANS AND STANDARD ERRORS:
+
+   Genotype LSMean StdErrMean
+1      GEN1 1282.0   122.3283
+2     GEN10 1856.0   122.3283
+3     GEN11 1330.5   122.3283
+4     GEN12 1959.0   122.3283
+5     GEN13 2157.0   122.3283
+6     GEN14 1681.5   122.3283
+7     GEN15 2100.0   122.3283
+8      GEN2 1284.5   122.3283
+9      GEN3 1606.5   122.3283
+10     GEN4 2254.0   122.3283
+11     GEN5 1478.5   122.3283
+12     GEN6 2671.5   122.3283
+13     GEN7 1950.5   122.3283
+14     GEN8 2010.0   122.3283
+15     GEN9 1285.5   122.3283
+
+------------------------------
+ANALYSIS FOR: Env  =  E5 
+------------------------------
+
+DATA SUMMARY:
+
+Number of observations read:  45 
+Number of observations used:  45 
+
+ Factors   Number of Levels   Levels                     
+ Genotype  15                 GEN1  GEN10  GEN11 ... GEN9
+ Block     3                  1  2  3                    
+
+
+VARIANCE COMPONENTS TABLE:
+
+    Groups Variance Std.Dev.
+1    Block     0.00   0.0000
+2 Residual 43177.71 207.7925
+
+
+TESTING FOR THE SIGNIFICANCE OF GENOTYPIC EFFECT USING MAXIMUM LIKELIHOOD RATIO TEST:
+
+Formula for Model1: Yield ~ 1 + Genotype + (1|Block)
+Formula for Model2: Yield ~ 1 + (1|Block)
+
+       Df    AIC    BIC  logLik  Chisq Chi Df Pr(>Chisq)
+Model2  3 696.72 702.14 -345.36                         
+Model1 17 623.75 654.46 -294.87 100.97     14  3.092e-15
+
+Analysis of Variance Table with  Satterthwaite  approximation for degrees of freedom
+         Df   Sum Sq Mean Sq F value Denom    Pr(>F)
+Genotype 14 10917756  779840  18.061    30 7.003e-11
+
+
+GENOTYPE LSMEANS AND STANDARD ERRORS:
+
+   Genotype    LSMean StdErrMean
+1      GEN1  332.5000    119.969
+2     GEN10 1008.8000    119.969
+3     GEN11 1123.2667    119.969
+4     GEN12  938.5667    119.969
+5     GEN13 1675.9000    119.969
+6     GEN14 1247.9333    119.969
+7     GEN15 1818.0667    119.969
+8      GEN2 1405.5333    119.969
+9      GEN3  250.9333    119.969
+10     GEN4  407.1000    119.969
+11     GEN5  482.1667    119.969
+12     GEN6  344.1667    119.969
+13     GEN7  482.1667    119.969
+14     GEN8  844.5667    119.969
+15     GEN9  537.8667    119.969
+
+------------------------------
+ANALYSIS FOR: Env  =  E6 
+------------------------------
+
+DATA SUMMARY:
+
+Number of observations read:  45 
+Number of observations used:  45 
+
+ Factors   Number of Levels   Levels                     
+ Genotype  15                 GEN1  GEN10  GEN11 ... GEN9
+ Block     3                  1  2  3                    
+
+
+VARIANCE COMPONENTS TABLE:
+
+    Groups  Variance Std.Dev.
+1    Block  28532.38 168.9153
+2 Residual 236377.08 486.1863
+
+
+TESTING FOR THE SIGNIFICANCE OF GENOTYPIC EFFECT USING MAXIMUM LIKELIHOOD RATIO TEST:
+
+Formula for Model1: Yield ~ 1 + Genotype + (1|Block)
+Formula for Model2: Yield ~ 1 + (1|Block)
+
+       Df    AIC    BIC  logLik  Chisq Chi Df Pr(>Chisq)
+Model2  3 773.15 778.57 -383.58                         
+Model1 17 703.35 734.07 -334.68 97.802     14  1.249e-14
+
+Analysis of Variance Table with  Satterthwaite  approximation for degrees of freedom
+         Df   Sum Sq Mean Sq F value Denom    Pr(>F)
+Genotype 14 58814866 4201062  17.773    28 2.511e-10
+
+
+GENOTYPE LSMEANS AND STANDARD ERRORS:
+
+   Genotype    LSMean StdErrMean
+1      GEN1 1777.7667   297.1508
+2     GEN10 2422.1667   297.1508
+3     GEN11 4333.3000   297.1508
+4     GEN12 4033.4333   297.1508
+5     GEN13 3166.6333   297.1508
+6     GEN14 2999.9667   297.1508
+7     GEN15 4166.6333   297.1508
+8      GEN2 4000.0000   297.1508
+9      GEN3 2333.3000   297.1508
+10     GEN4  388.8667   297.1508
+11     GEN5 1388.8667   297.1508
+12     GEN6 1722.2000   297.1508
+13     GEN7 1444.4000   297.1508
+14     GEN8 2333.3000   297.1508
+15     GEN9 3211.0667   297.1508
+
+------------------------------
+ANALYSIS FOR: Env  =  E7 
+------------------------------
+
+DATA SUMMARY:
+
+Number of observations read:  45 
+Number of observations used:  45 
+
+ Factors   Number of Levels   Levels                     
+ Genotype  15                 GEN1  GEN10  GEN11 ... GEN9
+ Block     3                  1  2  3                    
+
+
+VARIANCE COMPONENTS TABLE:
+
+    Groups Variance Std.Dev.
+1    Block    0.000  0.00000
+2 Residual 8117.978 90.09982
+
+
+TESTING FOR THE SIGNIFICANCE OF GENOTYPIC EFFECT USING MAXIMUM LIKELIHOOD RATIO TEST:
+
+Formula for Model1: Yield ~ 1 + Genotype + (1|Block)
+Formula for Model2: Yield ~ 1 + (1|Block)
+
+       Df    AIC    BIC  logLik Chisq Chi Df Pr(>Chisq)
+Model2  3 679.44 684.86 -336.72                        
+Model1 17 548.54 579.25 -257.27 158.9     14  < 2.2e-16
+
+Analysis of Variance Table with  Satterthwaite  approximation for degrees of freedom
+         Df  Sum Sq Mean Sq F value Denom    Pr(>F)
+Genotype 14 8076072  576862   71.06    30 < 2.2e-16
+
+
+GENOTYPE LSMEANS AND STANDARD ERRORS:
+
+   Genotype    LSMean StdErrMean
+1      GEN1  499.5333   52.01916
+2     GEN10 1530.2667   52.01916
+3     GEN11  373.2333   52.01916
+4     GEN12  566.1667   52.01916
+5     GEN13 1013.9333   52.01916
+6     GEN14 1426.8333   52.01916
+7     GEN15  508.7667   52.01916
+8      GEN2  526.6000   52.01916
+9      GEN3 1179.8333   52.01916
+10     GEN4 1611.6333   52.01916
+11     GEN5  647.3000   52.01916
+12     GEN6 1413.6000   52.01916
+13     GEN7 1160.5667   52.01916
+14     GEN8  471.8333   52.01916
+15     GEN9 1008.0000   52.01916
+
+------------------------------
+ANALYSIS FOR: Env  =  E8 
+------------------------------
+
+DATA SUMMARY:
+
+Number of observations read:  45 
+Number of observations used:  45 
+
+ Factors   Number of Levels   Levels                     
+ Genotype  15                 GEN1  GEN10  GEN11 ... GEN9
+ Block     3                  1  2  3                    
+
+
+VARIANCE COMPONENTS TABLE:
+
+    Groups Variance Std.Dev.
+1    Block    0.000  0.00000
+2 Residual 3746.891 61.21185
+
+
+TESTING FOR THE SIGNIFICANCE OF GENOTYPIC EFFECT USING MAXIMUM LIKELIHOOD RATIO TEST:
+
+Formula for Model1: Yield ~ 1 + Genotype + (1|Block)
+Formula for Model2: Yield ~ 1 + (1|Block)
+
+       Df    AIC    BIC  logLik  Chisq Chi Df Pr(>Chisq)
+Model2  3 606.86 612.28 -300.43                         
+Model1 17 513.75 544.46 -239.88 121.11     14  < 2.2e-16
+
+Analysis of Variance Table with  Satterthwaite  approximation for degrees of freedom
+         Df  Sum Sq Mean Sq F value Denom    Pr(>F)
+Genotype 14 1545719  110408  29.467    30 1.075e-13
+
+
+GENOTYPE LSMEANS AND STANDARD ERRORS:
+
+   Genotype   LSMean StdErrMean
+1      GEN1 293.6867   35.34068
+2     GEN10 716.8667   35.34068
+3     GEN11 277.2333   35.34068
+4     GEN12 330.5000   35.34068
+5     GEN13 567.3333   35.34068
+6     GEN14 675.8333   35.34068
+7     GEN15 288.1000   35.34068
+8      GEN2 293.2933   35.34068
+9      GEN3 533.9667   35.34068
+10     GEN4 708.0333   35.34068
+11     GEN5 320.1667   35.34068
+12     GEN6 731.0000   35.34068
+13     GEN7 524.5000   35.34068
+14     GEN8 217.7333   35.34068
+15     GEN9 274.0000   35.34068
+
+------------------------------
+ANALYSIS FOR: Env  =  E9 
+------------------------------
+
+DATA SUMMARY:
+
+Number of observations read:  45 
+Number of observations used:  45 
+
+ Factors   Number of Levels   Levels                     
+ Genotype  15                 GEN1  GEN10  GEN11 ... GEN9
+ Block     3                  1  2  3                    
+
+
+VARIANCE COMPONENTS TABLE:
+
+    Groups Variance Std.Dev.
+1    Block     0.00   0.0000
+2 Residual 38688.09 196.6929
+
+
+TESTING FOR THE SIGNIFICANCE OF GENOTYPIC EFFECT USING MAXIMUM LIKELIHOOD RATIO TEST:
+
+Formula for Model1: Yield ~ 1 + Genotype + (1|Block)
+Formula for Model2: Yield ~ 1 + (1|Block)
+
+       Df    AIC    BIC  logLik Chisq Chi Df Pr(>Chisq)
+Model2  3 758.50 763.92 -376.25                        
+Model1 17 618.81 649.52 -292.40 167.7     14  < 2.2e-16
+
+Analysis of Variance Table with  Satterthwaite  approximation for degrees of freedom
+         Df   Sum Sq Mean Sq F value Denom    Pr(>F)
+Genotype 14 47048700 3360621  86.865    30 < 2.2e-16
+
+
+GENOTYPE LSMEANS AND STANDARD ERRORS:
+
+   Genotype   LSMean StdErrMean
+1      GEN1 4118.667   113.5607
+2     GEN10 1331.333   113.5607
+3     GEN11 3719.333   113.5607
+4     GEN12 3816.000   113.5607
+5     GEN13 1450.333   113.5607
+6     GEN14 3495.333   113.5607
+7     GEN15 2415.000   113.5607
+8      GEN2 2392.667   113.5607
+9      GEN3 4315.333   113.5607
+10     GEN4 1720.667   113.5607
+11     GEN5 2050.333   113.5607
+12     GEN6 2970.333   113.5607
+13     GEN7 1398.333   113.5607
+14     GEN8 2526.667   113.5607
+15     GEN9 1489.333   113.5607
+
+==============================
+GENOTYPE AS: Random
+==============================
+
+------------------------------
+RESPONSE VARIABLE: Yield
+------------------------------
+
+DESCRIPTIVE STATISTICS:
+
+   Variable Env N_NonMissObs      Mean    StdDev
+1     Yield  E1           45 2403.8378  647.9983
+2     Yield E10           45 1956.5910  941.7641
+3     Yield E11           45 2394.7778 1455.9706
+4     Yield  E2           45 1399.2511 1061.2780
+5     Yield  E3           45 1454.8733  482.1972
+6     Yield  E4           45 1793.8000  444.7185
+7     Yield  E5           45  859.9689  526.8493
+8     Yield  E6           45 2648.1267 1231.7961
+9     Yield  E7           45  929.2067  434.8357
+10    Yield  E8           45  450.1498  194.1254
+11    Yield  E9           45 2613.9778 1046.7411
+
+
+------------------------------
+ANALYSIS FOR: Env  =  E1 
+------------------------------
+
+DATA SUMMARY:
+
+Number of observations read:  45 
+Number of observations used:  45 
+
+ Factors   Number of Levels   Levels                     
+ Genotype  15                 GEN1  GEN10  GEN11 ... GEN9
+ Block     3                  1  2  3                    
+
+
+VARIANCE COMPONENTS TABLE:
+
+      Groups     Variance     Std.Dev.
+1 Test:Check 2.310782e+04 1.520126e+02
+2      Block 3.586090e-17 5.988397e-09
+3   Residual 3.928387e+05 6.267685e+02
+
+
+TESTING FOR THE SIGNIFICANCE OF GENOTYPIC VARIANCE USING -2 LOGLIKELIHOOD RATIO TEST:
+
+Formula for Model1:  Yield ~ 1 + Check + (1|Block) + (1|Test:Check) 
+Formula for Model2:  Yield ~ 1 + Check + (1|Block)  
+
+            AIC      BIC    logLik  Chisq Df pvalue
+Model2 678.1261 687.1594 -334.0630                 
+Model1 680.0103 690.8503 -334.0052 0.1158  1 0.7337
+
+
+PREDICTED MEANS:
+
+   Genotype    Means
+1     GEN10 2337.383
+2     GEN11 2427.577
+3     GEN12 2408.808
+4     GEN13 2419.237
+5     GEN14 2365.953
+6     GEN15 2298.939
+7      GEN2 2460.227
+8      GEN3 2323.094
+9      GEN5 2273.099
+10     GEN6 2301.669
+11     GEN7 2423.097
+12     GEN8 2344.523
+13     GEN9 2339.493
+
+
+LSMEANS OF CHECKS:
+
+  Genotype   LSMean StdErrMean
+1     GEN1 2999.967   392.4965
+2     GEN4 2334.500   392.4965
+
+
+HERITABILITY:
+     
+0.15 
+
+
+------------------------------
+ANALYSIS FOR: Env  =  E10 
+------------------------------
+
+DATA SUMMARY:
+
+Number of observations read:  45 
+Number of observations used:  45 
+
+ Factors   Number of Levels   Levels                     
+ Genotype  15                 GEN1  GEN10  GEN11 ... GEN9
+ Block     3                  1  2  3                    
+
+
+VARIANCE COMPONENTS TABLE:
+
+      Groups   Variance  Std.Dev.
+1 Test:Check 996569.579 998.28332
+2      Block      0.000   0.00000
+3   Residual   2248.936  47.42295
+
+
+TESTING FOR THE SIGNIFICANCE OF GENOTYPIC VARIANCE USING -2 LOGLIKELIHOOD RATIO TEST:
+
+Formula for Model1:  Yield ~ 1 + Check + (1|Block) + (1|Test:Check) 
+Formula for Model2:  Yield ~ 1 + Check + (1|Block)  
+
+            AIC      BIC    logLik    Chisq Df pvalue
+Model2 708.7948 717.8282 -349.3974                   
+Model1 547.5353 558.3752 -267.7676 163.2596  1      0
+
+
+PREDICTED MEANS:
+
+   Genotype     Means
+1     GEN10 3508.2268
+2     GEN11 2163.9047
+3     GEN12 3332.0260
+4     GEN13 2923.6665
+5     GEN14 1754.2129
+6     GEN15 3214.7422
+7      GEN2 2338.4401
+8      GEN3 1170.3408
+9      GEN5  936.3757
+10     GEN6 1024.4285
+11     GEN7 1023.7623
+12     GEN8 2338.4401
+13     GEN9  755.2976
+
+
+LSMEANS OF CHECKS:
+
+  Genotype    LSMean StdErrMean
+1     GEN1  994.3333   998.6587
+2     GEN4 1870.6667   998.6587
+
+
+HERITABILITY:
+  
+1 
+
+
+------------------------------
+ANALYSIS FOR: Env  =  E11 
+------------------------------
+
+DATA SUMMARY:
+
+Number of observations read:  45 
+Number of observations used:  45 
+
+ Factors   Number of Levels   Levels                     
+ Genotype  15                 GEN1  GEN10  GEN11 ... GEN9
+ Block     3                  1  2  3                    
+
+
+VARIANCE COMPONENTS TABLE:
+
+      Groups    Variance  Std.Dev.
+1 Test:Check 2522412.366 1588.2104
+2      Block    6251.275   79.0650
+3   Residual   13294.609  115.3023
+
+
+TESTING FOR THE SIGNIFICANCE OF GENOTYPIC VARIANCE USING -2 LOGLIKELIHOOD RATIO TEST:
+
+Formula for Model1:  Yield ~ 1 + Check + (1|Block) + (1|Test:Check) 
+Formula for Model2:  Yield ~ 1 + Check + (1|Block)  
+
+            AIC      BIC    logLik    Chisq Df pvalue
+Model2 748.0314 757.0647 -369.0157                   
+Model1 616.1703 627.0103 -302.0851 133.8611  1      0
+
+
+PREDICTED MEANS:
+
+   Genotype     Means
+1     GEN10 2350.8728
+2     GEN11 3193.3926
+3     GEN12 3063.2878
+4     GEN13 3585.3706
+5     GEN14 6860.9492
+6     GEN15 1503.3617
+7      GEN2 1520.6647
+8      GEN3  444.2225
+9      GEN5 2161.5387
+10     GEN6 1655.4279
+11     GEN7 2440.3822
+12     GEN8 2273.6751
+13     GEN9 1033.1878
+
+
+LSMEANS OF CHECKS:
+
+  Genotype   LSMean StdErrMean
+1     GEN1 2073.000    1590.26
+2     GEN4 1762.333    1590.26
+
+
+HERITABILITY:
+  
+1 
+
+
+------------------------------
+ANALYSIS FOR: Env  =  E2 
+------------------------------
+
+DATA SUMMARY:
+
+Number of observations read:  45 
+Number of observations used:  45 
+
+ Factors   Number of Levels   Levels                     
+ Genotype  15                 GEN1  GEN10  GEN11 ... GEN9
+ Block     3                  1  2  3                    
+
+
+VARIANCE COMPONENTS TABLE:
+
+      Groups   Variance  Std.Dev.
+1 Test:Check 1084818.65 1041.5463
+2      Block   10761.03  103.7354
+3   Residual  167643.16  409.4425
+
+
+TESTING FOR THE SIGNIFICANCE OF GENOTYPIC VARIANCE USING -2 LOGLIKELIHOOD RATIO TEST:
+
+Formula for Model1:  Yield ~ 1 + Check + (1|Block) + (1|Test:Check) 
+Formula for Model2:  Yield ~ 1 + Check + (1|Block)  
+
+            AIC      BIC    logLik   Chisq Df pvalue
+Model2 719.5032 728.5365 -354.7516                  
+Model1 679.8374 690.6774 -333.9187 41.6658  1      0
+
+
+PREDICTED MEANS:
+
+   Genotype     Means
+1     GEN10  881.0290
+2     GEN11  650.4087
+3     GEN12  588.9733
+4     GEN13  555.3075
+5     GEN14  519.6446
+6     GEN15  573.1231
+7      GEN2 2049.2199
+8      GEN3 2693.1182
+9      GEN5 1159.0097
+10     GEN6 1139.4823
+11     GEN7 2148.2520
+12     GEN8 3832.3350
+13     GEN9 1240.7967
+
+
+LSMEANS OF CHECKS:
+
+  Genotype    LSMean StdErrMean
+1     GEN1  760.6667   1069.712
+2     GEN4 2197.4000   1069.712
+
+
+HERITABILITY:
+     
+0.95 
+
+
+------------------------------
+ANALYSIS FOR: Env  =  E3 
+------------------------------
+
+DATA SUMMARY:
+
+Number of observations read:  45 
+Number of observations used:  45 
+
+ Factors   Number of Levels   Levels                     
+ Genotype  15                 GEN1  GEN10  GEN11 ... GEN9
+ Block     3                  1  2  3                    
+
+
+VARIANCE COMPONENTS TABLE:
+
+      Groups Variance Std.Dev.
+1 Test:Check 137216.9 370.4280
+2      Block  15950.4 126.2949
+3   Residual 100745.2 317.4038
+
+
+TESTING FOR THE SIGNIFICANCE OF GENOTYPIC VARIANCE USING -2 LOGLIKELIHOOD RATIO TEST:
+
+Formula for Model1:  Yield ~ 1 + Check + (1|Block) + (1|Test:Check) 
+Formula for Model2:  Yield ~ 1 + Check + (1|Block)  
+
+           AIC      BIC    logLik   Chisq Df pvalue
+Model2 653.344 662.3773 -321.6720                  
+Model1 642.857 653.6970 -315.4285 12.4869  1  4e-04
+
+
+PREDICTED MEANS:
+
+   Genotype    Means
+1     GEN10 1954.478
+2     GEN11 1090.920
+3     GEN12 1086.609
+4     GEN13 1644.693
+5     GEN14  921.299
+6     GEN15 1603.292
+7      GEN2 1272.539
+8      GEN3 1150.451
+9      GEN5 1355.421
+10     GEN6 1933.938
+11     GEN7 1396.501
+12     GEN8 1388.279
+13     GEN9 1768.682
+
+
+LSMEANS OF CHECKS:
+
+  Genotype LSMean StdErrMean
+1     GEN1 1378.5   419.6577
+2     GEN4 1877.5   419.6577
+
+
+HERITABILITY:
+    
+0.8 
+
+
+------------------------------
+ANALYSIS FOR: Env  =  E4 
+------------------------------
+
+DATA SUMMARY:
+
+Number of observations read:  45 
+Number of observations used:  45 
+
+ Factors   Number of Levels   Levels                     
+ Genotype  15                 GEN1  GEN10  GEN11 ... GEN9
+ Block     3                  1  2  3                    
+
+
+VARIANCE COMPONENTS TABLE:
+
+      Groups  Variance Std.Dev.
+1 Test:Check 157192.45 396.4750
+2      Block  22027.28 148.4159
+3   Residual  22870.07 151.2285
+
+
+TESTING FOR THE SIGNIFICANCE OF GENOTYPIC VARIANCE USING -2 LOGLIKELIHOOD RATIO TEST:
+
+Formula for Model1:  Yield ~ 1 + Check + (1|Block) + (1|Test:Check) 
+Formula for Model2:  Yield ~ 1 + Check + (1|Block)  
+
+            AIC      BIC    logLik   Chisq Df pvalue
+Model2 640.9902 650.0235 -315.4951                  
+Model1 600.9884 611.8283 -294.4942 42.0018  1      0
+
+
+PREDICTED MEANS:
+
+   Genotype    Means
+1     GEN10 1853.307
+2     GEN11 1352.113
+3     GEN12 1951.542
+4     GEN13 2140.384
+5     GEN14 1686.878
+6     GEN15 2086.021
+7      GEN2 1308.241
+8      GEN3 1615.347
+9      GEN5 1493.267
+10     GEN6 2631.087
+11     GEN7 1943.436
+12     GEN8 2000.184
+13     GEN9 1309.194
+
+
+LSMEANS OF CHECKS:
+
+  Genotype LSMean StdErrMean
+1     GEN1   1282   414.9162
+2     GEN4   2254   414.9162
+
+
+HERITABILITY:
+     
+0.95 
+
+
+------------------------------
+ANALYSIS FOR: Env  =  E5 
+------------------------------
+
+DATA SUMMARY:
+
+Number of observations read:  45 
+Number of observations used:  45 
+
+ Factors   Number of Levels   Levels                     
+ Genotype  15                 GEN1  GEN10  GEN11 ... GEN9
+ Block     3                  1  2  3                    
+
+
+VARIANCE COMPONENTS TABLE:
+
+      Groups  Variance Std.Dev.
+1 Test:Check 242441.64 492.3836
+2      Block      0.00   0.0000
+3   Residual  43177.71 207.7925
+
+
+TESTING FOR THE SIGNIFICANCE OF GENOTYPIC VARIANCE USING -2 LOGLIKELIHOOD RATIO TEST:
+
+Formula for Model1:  Yield ~ 1 + Check + (1|Block) + (1|Test:Check) 
+Formula for Model2:  Yield ~ 1 + Check + (1|Block)  
+
+            AIC      BIC    logLik   Chisq Df pvalue
+Model2 657.2438 666.2771 -323.6219                  
+Model1 619.9016 630.7416 -303.9508 39.3422  1      0
+
+
+PREDICTED MEANS:
+
+   Genotype     Means
+1     GEN10 1004.6856
+2     GEN11 1112.7378
+3     GEN12  938.3881
+4     GEN13 1634.4024
+5     GEN14 1230.4183
+6     GEN15 1768.6023
+7      GEN2 1379.1867
+8      GEN3  289.2886
+9      GEN5  507.5640
+10     GEN6  377.2973
+11     GEN7  507.5640
+12     GEN8  849.6557
+13     GEN9  560.1426
+
+
+LSMEANS OF CHECKS:
+
+  Genotype LSMean StdErrMean
+1     GEN1  332.5   506.7881
+2     GEN4  407.1   506.7881
+
+
+HERITABILITY:
+     
+0.94 
+
+
+------------------------------
+ANALYSIS FOR: Env  =  E6 
+------------------------------
+
+DATA SUMMARY:
+
+Number of observations read:  45 
+Number of observations used:  45 
+
+ Factors   Number of Levels   Levels                     
+ Genotype  15                 GEN1  GEN10  GEN11 ... GEN9
+ Block     3                  1  2  3                    
+
+
+VARIANCE COMPONENTS TABLE:
+
+      Groups   Variance  Std.Dev.
+1 Test:Check 1003688.34 1001.8425
+2      Block   28532.25  168.9149
+3   Residual  236376.98  486.1862
+
+
+TESTING FOR THE SIGNIFICANCE OF GENOTYPIC VARIANCE USING -2 LOGLIKELIHOOD RATIO TEST:
+
+Formula for Model1:  Yield ~ 1 + Check + (1|Block) + (1|Test:Check) 
+Formula for Model2:  Yield ~ 1 + Check + (1|Block)  
+
+            AIC      BIC    logLik  Chisq Df pvalue
+Model2 719.9525 728.9858 -354.9762                 
+Model1 690.2345 701.0744 -339.1172 31.718  1      0
+
+
+PREDICTED MEANS:
+
+   Genotype    Means
+1     GEN10 2456.137
+2     GEN11 4228.162
+3     GEN12 3950.122
+4     GEN13 3146.415
+5     GEN14 2991.880
+6     GEN15 4073.626
+7      GEN2 3919.122
+8      GEN3 2373.739
+9      GEN5 1498.050
+10     GEN6 1807.120
+11     GEN7 1549.541
+12     GEN8 2373.739
+13     GEN9 3187.614
+
+
+LSMEANS OF CHECKS:
+
+  Genotype    LSMean StdErrMean
+1     GEN1 1777.7667   1044.982
+2     GEN4  388.8667   1044.982
+
+
+HERITABILITY:
+     
+0.93 
+
+
+------------------------------
+ANALYSIS FOR: Env  =  E7 
+------------------------------
+
+DATA SUMMARY:
+
+Number of observations read:  45 
+Number of observations used:  45 
+
+ Factors   Number of Levels   Levels                     
+ Genotype  15                 GEN1  GEN10  GEN11 ... GEN9
+ Block     3                  1  2  3                    
+
+
+VARIANCE COMPONENTS TABLE:
+
+      Groups     Variance     Std.Dev.
+1 Test:Check 1.670261e+05 4.086883e+02
+2      Block 1.023560e-08 1.011712e-04
+3   Residual 8.117981e+03 9.009984e+01
+
+
+TESTING FOR THE SIGNIFICANCE OF GENOTYPIC VARIANCE USING -2 LOGLIKELIHOOD RATIO TEST:
+
+Formula for Model1:  Yield ~ 1 + Check + (1|Block) + (1|Test:Check) 
+Formula for Model2:  Yield ~ 1 + Check + (1|Block)  
+
+            AIC      BIC    logLik  Chisq Df pvalue
+Model2 635.9818 645.0151 -312.9909                 
+Model1 564.7938 575.6338 -276.3969 73.188  1      0
+
+
+PREDICTED MEANS:
+
+   Genotype     Means
+1     GEN10 1520.3742
+2     GEN11  381.7871
+3     GEN12  571.6445
+4     GEN13 1012.2726
+5     GEN14 1418.5898
+6     GEN15  515.1597
+7      GEN2  532.7087
+8      GEN3 1175.5277
+9      GEN5  651.4844
+10     GEN6 1405.5675
+11     GEN7 1156.5682
+12     GEN8  478.8151
+13     GEN9 1006.4339
+
+
+LSMEANS OF CHECKS:
+
+  Genotype    LSMean StdErrMean
+1     GEN1  499.5333   411.9855
+2     GEN4 1611.6333   411.9855
+
+
+HERITABILITY:
+     
+0.98 
+
+
+------------------------------
+ANALYSIS FOR: Env  =  E8 
+------------------------------
+
+DATA SUMMARY:
+
+Number of observations read:  45 
+Number of observations used:  45 
+
+ Factors   Number of Levels   Levels                     
+ Genotype  15                 GEN1  GEN10  GEN11 ... GEN9
+ Block     3                  1  2  3                    
+
+
+VARIANCE COMPONENTS TABLE:
+
+      Groups  Variance  Std.Dev.
+1 Test:Check 34039.681 184.49846
+2      Block     0.000   0.00000
+3   Residual  3746.891  61.21185
+
+
+TESTING FOR THE SIGNIFICANCE OF GENOTYPIC VARIANCE USING -2 LOGLIKELIHOOD RATIO TEST:
+
+Formula for Model1:  Yield ~ 1 + Check + (1|Block) + (1|Test:Check) 
+Formula for Model2:  Yield ~ 1 + Check + (1|Block)  
+
+            AIC      BIC    logLik   Chisq Df pvalue
+Model2 571.9335 580.9668 -280.9668                  
+Model1 522.7512 533.5912 -255.3756 51.1823  1      0
+
+
+PREDICTED MEANS:
+
+   Genotype    Means
+1     GEN10 707.1507
+2     GEN11 283.0772
+3     GEN12 334.4586
+4     GEN13 562.9098
+5     GEN14 667.5696
+6     GEN15 293.5593
+7      GEN2 298.5688
+8      GEN3 530.7240
+9      GEN5 324.4910
+10     GEN6 720.7838
+11     GEN7 521.5924
+12     GEN8 225.6831
+13     GEN9 279.9583
+
+
+LSMEANS OF CHECKS:
+
+  Genotype   LSMean StdErrMean
+1     GEN1 293.6867   187.8527
+2     GEN4 708.0333   187.8527
+
+
+HERITABILITY:
+     
+0.96 
+
+
+------------------------------
+ANALYSIS FOR: Env  =  E9 
+------------------------------
+
+DATA SUMMARY:
+
+Number of observations read:  45 
+Number of observations used:  45 
+
+ Factors   Number of Levels   Levels                     
+ Genotype  15                 GEN1  GEN10  GEN11 ... GEN9
+ Block     3                  1  2  3                    
+
+
+VARIANCE COMPONENTS TABLE:
+
+      Groups     Variance     Std.Dev.
+1 Test:Check 1.036442e+06 1.018058e+03
+2      Block 2.589001e-07 5.088223e-04
+3   Residual 3.868810e+04 1.966929e+02
+
+
+TESTING FOR THE SIGNIFICANCE OF GENOTYPIC VARIANCE USING -2 LOGLIKELIHOOD RATIO TEST:
+
+Formula for Model1:  Yield ~ 1 + Check + (1|Block) + (1|Test:Check) 
+Formula for Model2:  Yield ~ 1 + Check + (1|Block)  
+
+            AIC      BIC    logLik   Chisq Df pvalue
+Model2 712.1224 721.1557 -351.0612                  
+Model1 633.4976 644.3376 -310.7488 80.6248  1      0
+
+
+PREDICTED MEANS:
+
+   Genotype    Means
+1     GEN10 1346.519
+2     GEN11 3705.171
+3     GEN12 3800.650
+4     GEN13 1464.056
+5     GEN14 3483.924
+6     GEN15 2416.867
+7      GEN2 2394.809
+8      GEN3 4293.846
+9      GEN5 2056.682
+10     GEN6 2965.376
+11     GEN7 1412.695
+12     GEN8 2527.162
+13     GEN9 1502.577
+
+
+LSMEANS OF CHECKS:
+
+  Genotype   LSMean StdErrMean
+1     GEN1 4118.667   1024.372
+2     GEN4 1720.667   1024.372
+
+
+HERITABILITY:
+     
+0.99 
+
+
+==============================
+*** 
+ERROR in genoNpheno.corr function:
+  Correlation cannot be performed. At least two response variable is required.
+***
+
+
+==============================

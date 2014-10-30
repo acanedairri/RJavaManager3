@@ -1,0 +1,114 @@
+
+DATA FILE: E:/NSALES/juno workspace/workspace_1/RJavaManager/sample_datasets/Diallel_M3.csv
+
+MULTIPLE ENVIRONMENT ANALYSIS
+
+DIALLEL ANALYSIS: GRIFFING METHOD III IN CRD (CROSS)
+
+-----------------------------
+RESPONSE VARIABLE: Grain_yield
+-----------------------------
+
+DATA SUMMARY: 
+
+ Factors     No of Levels   Levels                    
+ p1          7              P1  P2  P3  P4  P5  P6  P7
+ p2          7              P1  P2  P3  P4  P5  P6  P7
+ environment 2              Normal  Saline            
+
+ Number of observations read: 252
+ Number of observations used: 252
+
+
+ANOVA TABLE: (Crosses = p1:p2)
+
+                       Df     Sum Sq   Mean Sq F value Pr(>F)
+environment             1  9132.4600 9132.4600   85.72 0.0000
+Crosses                41 33971.6800  828.5775    6.74 0.0000
+Crosses x environment  41  5041.1140  122.9540    1.15 0.2616
+Error                 168 17898.1400  106.5365               
+-------
+REMARK: Raw dataset is balanced.
+
+
+ANOVA TABLE:
+
+          Df     Sum Sq   Mean Sq F value Pr(>F)
+GCA        6  9890.0640 1648.3440   10.85 0.0053
+SCA       14 12106.5400  864.7530    4.01 0.0069
+REC       21 11975.0700  570.2414   10.77 0.0000
+  MAT      6  2031.9510  338.6585   13.33 0.0031
+  NONM    15  9943.1190  662.8746   10.36 0.0000
+GCAxE      6   911.1869  151.8645    1.43 0.2076
+SCAxE     14  3017.5980  215.5427    2.02 0.0187
+RECxE     21  1112.3290   52.9681    0.50 0.9684
+  MATxE    6   152.3970   25.3995    0.24 0.9633
+  NONMxE  15   959.9321   63.9955    0.60 0.8716
+Error    168 17898.1400  106.5365               
+-------
+REMARK: Raw dataset is balanced.
+
+
+MATRIX OF MEANS:
+
+   P1      P2      P3      P4      P5      P6      P7     
+P1         35.5150 31.0183 20.2783 37.8233 16.4750 22.3900
+P2 34.6100         36.4700 23.8883 28.6767 32.5817 31.1033
+P3  9.4850 27.4950         21.0417 29.3433 23.1383 35.2733
+P4 20.6433 14.2867 33.6333         35.8967 22.9300 32.3883
+P5 32.1450 23.6550 26.9017 54.9150         27.5550 29.1917
+P6 21.5317 18.6600  3.7633 13.9750 22.7250         47.2783
+P7 24.5400 55.7067 34.4333 65.4317 28.5400 28.0583        
+-------
+REMARK: Raw dataset is balanced.
+
+
+GENERAL COMBINING ABILITY EFFECTS (diagonal), SPECIFIC COMBINING ABILITY EFFECTS
+(above diagonal) AND RECIPROCAL EFFECTS (below diagonal): (AVERAGED OVER ENVIRONMENTS)
+
+   P1       P2       P3       P4       P5       P6       P7      
+P1  -4.0800   8.6652  -1.0804  -5.6024   7.1149   1.0037 -10.1009
+P2   0.4525   1.5394   5.0311 -12.5951  -7.3228   2.0019   4.2197
+P3  10.7667   4.4875  -3.5258   0.7201  -0.3009  -5.1029   0.7332
+P4  -0.1825   4.8008  -6.2958   1.2054  12.2512  -4.8324  10.0587
+P5   2.8392   2.5108   1.2208  -9.5092   3.0114   0.0491 -11.7914
+P6  -2.5283   6.9608   9.6875   4.4775   2.4150  -6.8583   6.8807
+P7  -1.0750 -12.3017   0.4200 -16.5217   0.3258   9.6100   8.7080
+
+
+TABLE OF STANDARD ERRORS AND LSDs:
+
+         Std. Error    LSD
+ Gi          1.2337       
+ Sij         2.4328       
+ Rij         2.9796       
+ Gi-Gj       1.8845 3.7203
+ Sij-Sik     3.7689 7.4406
+ Sij-Skl     3.2640 6.4437
+
+
+ESTIMATES OF VARIANCE COMPONENTS:
+
+       Estimate
+ GCA    28.2423
+ SCA    54.1009
+ REC    43.1061
+ GCAxE  -2.1226
+ SCAxE  18.1677
+ RECxE  -8.9281
+ Error 106.5365
+
+
+ESTIMATES OF GENETIC VARIANCE COMPONENTS:
+                           
+                   Estimate
+ VA              112.969240
+ VAxE              0.000000
+ VD              216.403423
+ VDxE             72.670805
+ h2-narrow sense   0.222127
+ H2-broad sense    0.647632
+ Dominance Ratio   1.957343
+
+
+==============================================================

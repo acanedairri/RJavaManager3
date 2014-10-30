@@ -1,0 +1,210 @@
+
+DATA FILE: E:/NSALES/juno workspace/workspace_1/RJavaManager/sample_datasets/Diallel_M2_missing.csv
+
+DIALLEL ANALYSIS: GRIFFING METHOD II IN RCB (CROSS)
+
+-----------------------------
+RESPONSE VARIABLE: Grain_yield
+-----------------------------
+-----------------------------
+ANALYSIS FOR: environment = Normal
+-----------------------------
+
+DATA SUMMARY: 
+
+ Factors     No of Levels   Levels             
+ p1          7              1  2  3  4  5  6  7
+ p2          7              1  2  3  4  5  6  7
+ block       3              1  2  3            
+ environment 1              Normal             
+
+Number of observations read: 84
+Number of observations used: 80
+
+
+ANOVA TABLE FOR THE EXPERIMENT: 
+
+Formula:  Grain_yield ~ block + p1:p2 
+
+            Df     Sum Sq  Mean Sq F value Pr(>F)
+block        2   787.5734 393.7867    7.23 0.0017
+p1:p2       26 11329.7600 435.7600    8.00 0.0000
+Residuals   51  2778.8680  54.4876               
+
+
+TESTING FOR THE SIGNIFICANCE OF CROSS EFFECT: (Crosses = p1:p2)
+
+Formula for Model 1: Grain_yield ~ Crosses + (1|block)
+Formula for Model 2: Grain_yield ~ (1|block)
+
+            AIC      BIC    logLik    Chisq Df Pr(>Chisq)
+Model2 647.7638 654.9098 -320.8819                       
+Model1 453.5059 522.5847 -197.7529 246.2579  1     0.0000
+
+
+MATRIX OF MEANS:
+
+  1       2       3       4       5       6       7      
+1 18.0100 27.6150 29.8653 27.6533 43.2133 22.0267 26.5267
+2         26.0100 47.1833 31.1933 33.9333 49.0867 30.8733
+3                 18.4500 22.0500 42.2267 27.5700 39.9900
+4                         18.8100 40.7200 27.6000 40.9567
+5                                 22.3567 32.7200 25.9567
+6                                         10.2400 58.6000
+7                                                  5.9333
+-------
+REMARK: Raw data and estimates of the missing values are used. 
+
+
+ANALYSIS OF VARIANCE:
+      Df    Sum Sq  Mean Sq F value Pr(>F)
+GCA    6  276.1292  46.0215    0.28 0.9422
+SCA   21 3507.8140 167.0388    9.20 0.0000
+Error 54  980.8560  18.1640               
+
+
+ESTIMATES OF VARIANCE COMPONENTS:
+
+       Estimate Std. Error
+ GCA     0.0000    16.7415
+ SCA   148.8748    51.5558
+ Error  18.1640     3.4957
+
+
+ESTIMATES OF GENETIC VARIANCE COMPONENTS:
+                           
+                   Estimate
+ VA                0.000000
+ VD              595.499009
+ h2-narrow sense   0.000000
+ H2-broad sense    0.970401
+ Dominance Ratio        Inf
+
+
+GENERAL COMBINING ABILITY EFFECTS (diagonal), SPECIFIC COMBINING
+ABILITY EFFECTS (above diagonal):
+
+  1       2       3       4       5       6       7      
+1 -3.2428 -2.7164  2.4361  2.2232 13.8177 -4.5468  0.3214
+2          3.3110 13.2002 -0.7906 -2.0162 15.9594 -1.8858
+3                  0.4088 -7.0318  9.1793 -2.6551 10.1330
+4                         -1.5903  9.6718 -0.6260 13.0988
+5                                  2.3753  0.5284 -5.8667
+6                                         -0.4469 29.5988
+7                                                 -0.8151
+
+
+TABLE OF STANDARD ERRORS AND LSDs:
+
+        Std. Error     LSD
+Gi          1.3153        
+Sii         3.2551        
+Sij         3.8252        
+Gi-Gj       2.0091  4.0280
+Sii-Sjj     4.4925  9.0068
+Sij-Sik     5.6826 11.3929
+Sij-Skl     5.3156 10.6570
+
+
+-----------------------------
+ANALYSIS FOR: environment = Saline
+-----------------------------
+
+DATA SUMMARY: 
+
+ Factors     No of Levels   Levels             
+ p1          7              1  2  3  4  5  6  7
+ p2          7              1  2  3  4  5  6  7
+ block       3              1  2  3            
+ environment 1              Saline             
+
+Number of observations read: 84
+Number of observations used: 82
+
+
+ANOVA TABLE FOR THE EXPERIMENT: 
+
+Formula:  Grain_yield ~ block + p1:p2 
+
+            Df    Sum Sq  Mean Sq F value Pr(>F)
+block        2  996.1123 498.0561    8.49 0.0006
+p1:p2       27 6702.1150 248.2265    4.23 0.0000
+Residuals   52 3051.1040  58.6751               
+
+
+TESTING FOR THE SIGNIFICANCE OF CROSS EFFECT: (Crosses = p1:p2)
+
+Formula for Model 1: Grain_yield ~ Crosses + (1|block)
+Formula for Model 2: Grain_yield ~ (1|block)
+
+            AIC      BIC   logLik    Chisq Df Pr(>Chisq)
+Model2 633.1380 640.3581 -313.569                       
+Model1 467.2439 539.4455 -203.622 219.8941  1     0.0000
+
+
+MATRIX OF MEANS:
+
+  1       2       3       4       5       6       7      
+1 11.8633 26.6700 30.7367 12.9033 32.4333 10.9233 18.2533
+2         11.2500 25.7567 16.5833 23.4200 16.0767 31.3333
+3                 13.1267 20.0333 16.4600 18.7067 30.5567
+4                          4.0700 31.0733 18.2600 23.8200
+5                                 10.6933 22.3900 32.4267
+6                                          2.0700 35.9567
+7                                                 12.8033
+-------
+REMARK: Raw dataset is unbalanced. 
+
+
+ANALYSIS OF VARIANCE:
+      Df    Sum Sq Mean Sq F value Pr(>F)
+GCA    6  433.1063 72.1844    0.84 0.5522
+SCA   21 1801.6800 85.7943    4.39 0.0000
+Error 54 1056.1500 19.5583               
+
+
+ESTIMATES OF VARIANCE COMPONENTS:
+
+       Estimate Std. Error
+ GCA     0.0000    14.2533
+ SCA    66.2360    26.4904
+ Error  19.5583     3.7640
+
+
+ESTIMATES OF GENETIC VARIANCE COMPONENTS:
+                           
+                   Estimate
+ VA                0.000000
+ VD              264.943822
+ h2-narrow sense   0.000000
+ H2-broad sense    0.931254
+ Dominance Ratio        Inf
+
+
+GENERAL COMBINING ABILITY EFFECTS (diagonal), SPECIFIC COMBINING
+ABILITY EFFECTS (above diagonal):
+
+  1       2       3       4       5       6       7      
+1 -0.5043  6.9118 10.2936 -3.3519 10.7584 -4.8475 -5.4619
+2          0.2394  4.5699 -0.4156  1.0014 -0.4379  6.8744
+3                  0.9242  2.3495 -6.6434  1.5073  5.4129
+4                         -3.2636 12.1577  5.2484  2.8640
+5                                  2.1560  3.9588  6.0510
+6                                         -3.7480 15.4851
+7                                                  4.1964
+
+
+TABLE OF STANDARD ERRORS AND LSDs:
+
+        Std. Error     LSD
+Gi          1.3648        
+Sii         3.3777        
+Sij         3.9693        
+Gi-Gj       2.0848  4.1797
+Sii-Sjj     4.6617  9.3462
+Sij-Sik     5.8966 11.8221
+Sij-Skl     5.5158 11.0585
+
+
+
+==============================================================

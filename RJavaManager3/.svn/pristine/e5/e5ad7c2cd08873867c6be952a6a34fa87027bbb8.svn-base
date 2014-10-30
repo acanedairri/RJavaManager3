@@ -1,0 +1,70 @@
+
+MULTIPLE ENVIRONMENT ANALYSIS
+
+DESIGN: NORTH CAROLINA EXPERIMENT III IN CRD
+
+
+RESPONSE VARIABLE: Y
+
+DATA SUMMARY: 
+ Factors     No of Levels   Levels             
+ Trial       2              1  2               
+ replication 2              1  2               
+ Treatment   12             T1  T10  T11 ... T9
+ male        6              1  2  3  4  5  6   
+ fem         2              F1  F2             
+
+ Number of observations read: 48
+ Number of missing observations: 0
+
+
+ANOVA TABLE
+               Df Sum Sq Mean Sq F value   Pr(>F)
+Trial           1  37663   37663   5.506   0.0275
+male            5 504403  100881  14.748 1.18e-06
+fem             1  13619   13619   1.991   0.1711
+Trial:male      5   7342    1468   0.215   0.9529
+Trial:fem       1   3614    3614   0.528   0.4743
+male:fem        5  33040    6608   0.966   0.4580
+Trial:male:fem  5  17167    3433   0.502   0.7717
+Residuals      24 164163    6840                 
+-------
+REMARK: Raw dataset is balanced.
+
+
+LINEAR MIXED MODEL FIT BY RESTRICTED MAXIMUM LIKELIHOOD:
+
+ Formula:  Y ~ 1 + (fem) + (1|Trial) + (1|male) + (1|fem:male) + (1|Trial:fem) + (1|Trial:male) + (1|Trial:fem:male) 
+
+      AIC      BIC    logLik deviance  REMLdev
+ 568.5003 585.3411 -275.2502 568.2108 550.5003
+
+ Fixed Effects:
+             Estimate Std. Error t value
+ (Intercept) 201.1929    53.7193  3.7453
+ fem         -33.6887    21.6663 -1.5549
+
+ Random Effects:                                         
+ Groups           Variance Std. Deviation
+ Trial:fem:male     0.0000         0.0000
+ Trial:male         0.0000         0.0000
+ fem:male           0.0000         0.0000
+ male           11906.0000       109.1100
+ Trial:fem          0.0000         0.0001
+ Trial           1334.6000        36.5320
+ Residual        5633.2000        75.0540
+
+
+ESTIMATES OF GENETIC VARIANCE COMPONENTS:                           
+                   Estimate
+ VA              47624.0000
+ VAxE                0.0000
+ VD                  0.0000
+ VDxE                0.0000
+ h2-narrow sense     0.8942
+ H2-broad sense      0.8942
+ h2-family           0.8942
+ Dominance Ratio     0.0000
+
+
+==============================================================

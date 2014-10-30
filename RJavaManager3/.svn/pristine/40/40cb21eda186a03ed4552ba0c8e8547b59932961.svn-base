@@ -1,0 +1,59 @@
+package org.irri.breedingtool.rjava.graph;
+
+
+import org.irri.breedingtool.rjava.manager.RJavaManager;
+
+public class TestGraphScatter {
+
+	private static String BSLASH = "\\";
+	private static String FSLASH = "/";
+	private static String PATH1 = System.getProperty("user.dir")+ System.getProperty("file.separator") + "sample_datasets" + System.getProperty("file.separator");
+	public static String DATA_PATH = PATH1.replace(BSLASH, FSLASH);
+	
+	public static void main(String[] args) {
+		
+		//supply path and name of active data
+		String dataFileName = DATA_PATH + "gerua.csv";
+		String[] xVar = {"PLHT","DFF"}; 
+		String[] yVar = {"PNCLE", "GRNYLD"};
+		String mTitle = null; //"The Main Title";
+		String[] xAxisLab = {"", ""};  //{"PLHT","DFF"}; //
+		String[] yAxisLab = {"", ""};  // {"PNCLE", "GRNYLD"}; //
+		String[] xMinValue = null;//"{"50", "0"}; //
+		String[] xMaxValue = null;//"{"200", "200"}; //
+		String[] yMinValue = null;//"{"0", "0"}; //
+		String[] yMaxValue = null;//"{"400", "7000"}; //
+		String byVar = null; //"TPL"; // 
+		String pointCol = "rgb(0,0,0, max = 255)"; 
+		int pointChar = 1; 
+		double pointCharSize = 1; 
+		int lineType = 1; 
+		String lineCol = "rgb(0,0,0, max = 255)"; 
+		double lineWidth = 1;
+		String dispR2P = "TRUE";
+		String r2PPos = "bottomright";
+		String boxed = "TRUE"; //"FALSE"; //
+		String multGraphs = "FALSE";
+		int numRowsGraphs = 3;
+		int numColsGraphs = 1;
+		String orientGraphs = "top-bottom";
+
+//		String path = System.getProperty("user.dir")+ System.getProperty("file.separator") + "sample_datasets";
+		String outputPath = DATA_PATH;
+		
+//		System.out.println(dataFileName);
+//		System.out.println(outputPath);
+		
+		RJavaManager rJavaManager= new RJavaManager();
+		rJavaManager.initPBtool();
+
+		rJavaManager.getRJavaGraphManager().createGraphScatterplot(outputPath, dataFileName, xVar, yVar, mTitle, xAxisLab, yAxisLab,  
+				xMinValue, xMaxValue, yMinValue, yMaxValue, 
+				byVar, pointCol, pointChar, pointCharSize,
+				lineType, lineCol, lineWidth, dispR2P, r2PPos, boxed,
+				multGraphs, numRowsGraphs, numColsGraphs, orientGraphs);
+
+	}
+
+}
+

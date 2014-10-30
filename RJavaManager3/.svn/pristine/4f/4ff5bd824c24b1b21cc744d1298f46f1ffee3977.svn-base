@@ -1,0 +1,77 @@
+
+MULTIPLE ENVIRONMENT ANALYSIS
+
+DESIGN: TRIPLE TEST CROSS (NO PARENTS) IN CRD
+
+
+RESPONSE VARIABLE: Y
+
+DATA SUMMARY: 
+ Factors     No of Levels   Levels             
+ Trial       2              1  2               
+ replication 2              1  2               
+ Treatment   12             T1  T10  T11 ... T9
+ male        4              1  2  3  4         
+ fem         3              1  2  3            
+
+ Number of observations read: 44
+ Number of missing observations: 4
+
+
+ANOVA TABLE
+               Df Sum Sq Mean Sq F value  Pr(>F)
+Trial           1 378011  378011  12.401 0.00175
+male            3 102216   34072   1.118 0.36147
+fem             2  61017   30508   1.001 0.38240
+Trial:male      3 136603   45534   1.494 0.24150
+Trial:fem       2  13366    6683   0.219 0.80472
+male:fem        6 179838   29973   0.983 0.45817
+Trial:male:fem  6 395002   65834   2.160 0.08320
+Residuals      24 731581   30483                
+-------
+REMARK: Raw data and estimates of the missing values are used.
+
+
+ANOVA TABLE: (Trt = fem:male)
+ Formula for Model 1: Y ~ Trt + (1|Trial) + (1|Trt:Trial)
+ Formula for Model 2: Y ~ (1|Trial) + (1|Trt:Trial)
+
+        Df    AIC    BIC  logLik Chisq Chi Df Pr(>Chisq)
+ model2  4 599.58 606.71 -295.79                        
+ model1 15 608.35 635.11 -289.17 13.23     11     0.2787
+
+
+ANOVA FOR TESTING EPISTASIS:                                                      
+ SV           Df      Sum Sq    Mean Sq F value Pr(>F)
+ AxA           1  45179.4523 45179.4523  -97.67 1.0000
+ AxD and DxD   3 126979.9086 42326.6362    1.74 0.3301
+ AAxE          1   -462.5571  -462.5571   -0.02 1.0000
+ ADxE or DDxE  3  72950.1089 24316.7030    0.80 0.2359
+ Total         8 244646.9126 30580.8641    1.00 0.5001
+ Residual      8 244671.4824 30583.9353               
+-------
+REMARK: Raw data and estimates of the missing values are used.
+
+
+ANOVA TABLE                                               
+ SV   Df      Sum Sq     Mean Sq F value Pr(>F)
+ s     3 102216.1412  34072.0471    0.80 0.5259
+ sxe   3 136603.4931  45534.4977    1.07 0.4129
+ e(s)  8 338985.8182  42373.2273               
+ d     3  52858.1249  17619.3750    0.95 0.4600
+ dxe   3 322052.1094 107350.7031    5.81 0.0209
+ e(d)  8 147923.3126  18490.4141               
+-------
+REMARK: Raw data and estimates of the missing values are used.
+
+
+ESTIMATES OF GENETIC VARIANCE COMPONENTS:
+                   Estimate
+ VA              -5534.1201
+ VD                  0.0000
+ h2-narrow sense    -0.1743
+ H2-broad sense     -0.1743
+ Dominance Ratio     0.0000
+
+
+==============================================================

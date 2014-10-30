@@ -1,0 +1,225 @@
+
+DESIGN: TRIPLE TEST CROSS (NO PARENTS) IN CRD
+
+
+RESPONSE VARIABLE: Y1
+
+-----------------------------
+ANALYSIS FOR: Env = Env1
+-----------------------------
+
+DATA SUMMARY: 
+ Factors   No of Levels   Levels           
+ Env       1              Env1             
+ Block     3              A  B  C          
+ Female    3              1  2  3          
+ Male      200            1  10  100 ... 99
+
+Number of observations read: 1800
+Number of missing observations: 0
+
+
+ANOVA TABLE FOR THE EXPERIMENT
+              Df   Sum Sq Mean Sq F value Pr(>F)
+Female         2    77596   38798   1.151 0.3166
+Male         199  8349997   41960   1.245 0.0177
+Female:Male  398 15354850   38580   1.145 0.0460
+Residuals   1200 40440526   33700               
+-------
+REMARK: Raw dataset is balanced.
+
+
+ANOVA TABLE: (Trt = Female:Male)
+ Formula: Y1 ~ Trt
+
+             Df   Sum Sq  Mean Sq F value Pr(>F)
+ Trt        599 23782443 39703.58    1.18 0.0095
+ Residuals 1200 40440526 33700.44               
+
+
+ANOVA FOR TESTING EPISTASIS:                                                        
+ SV           Df        Sum Sq    Mean Sq F value Pr(>F)
+ AxA           1    19770.0958 19770.0958    0.61 0.4338
+ AxD and DxD 199  6691014.4429 33623.1882    1.04 0.3567
+ Total       200  6710784.5388 33553.9227    1.04 0.3627
+ Residual    398 12814243.9693 32196.5929               
+-------
+REMARK: Raw dataset is balanced.
+
+
+ANOVA TABLE:                                                 
+ SV    Df        Sum Sq    Mean Sq F value Pr(>F)
+ s    199  8349997.1663 41959.7848    1.16 0.1092
+ e(s) 398 14404612.3363 36192.4933               
+ d    199  8161202.2485 41011.0666    1.27 0.0237
+ e(d) 398 12867307.0920 32329.9173               
+
+
+ESTIMATES OF GENETIC VARIANCE COMPONENTS:
+ VA = 2563.241;  se = 4754198
+ VD = 2893.716;  se = 2440169
+ VE = 36192.49
+ VP = 41649.45
+ Heritability, Broad sense = 0.131;  se = 0.00201
+ Heritability, Narrow sense = 0.0615;  se = 0.00186
+ Dominance Ratio = 1.5026
+
+
+-----------------------------
+ANALYSIS FOR: Env = Env2
+-----------------------------
+
+DATA SUMMARY: 
+ Factors   No of Levels   Levels           
+ Env       1              Env2             
+ Block     3              A  B  C          
+ Female    3              1  2  3          
+ Male      200            1  10  100 ... 99
+
+Number of observations read: 1800
+Number of missing observations: 0
+
+
+ANOVA TABLE FOR THE EXPERIMENT
+              Df   Sum Sq Mean Sq F value Pr(>F)
+Female         2    17551    8775   0.257  0.773
+Male         199  6948580   34917   1.024  0.404
+Female:Male  398 14196557   35670   1.046  0.287
+Residuals   1200 40930832   34109               
+-------
+REMARK: Raw dataset is balanced.
+
+
+ANOVA TABLE: (Trt = Female:Male)
+ Formula: Y1 ~ Trt
+
+             Df   Sum Sq  Mean Sq F value Pr(>F)
+ Trt        599 21162687 35330.03    1.04 0.3065
+ Residuals 1200 40930832 34109.03               
+
+-----------------------------
+ANALYSIS FOR: Env = Env3
+-----------------------------
+
+DATA SUMMARY: 
+ Factors   No of Levels   Levels           
+ Env       1              Env3             
+ Block     3              A  B  C          
+ Female    3              1  2  3          
+ Male      200            1  10  100 ... 99
+
+Number of observations read: 1800
+Number of missing observations: 0
+
+
+ANOVA TABLE FOR THE EXPERIMENT
+              Df   Sum Sq Mean Sq F value  Pr(>F)
+Female         2    63051   31525   0.944 0.38952
+Male         199  7257002   36467   1.091 0.19970
+Female:Male  398 16562372   41614   1.246 0.00303
+Residuals   1200 40092418   33410                
+-------
+REMARK: Raw dataset is balanced.
+
+
+ANOVA TABLE: (Trt = Female:Male)
+ Formula: Y1 ~ Trt
+
+             Df   Sum Sq  Mean Sq F value Pr(>F)
+ Trt        599 23882425 39870.49    1.19 0.0057
+ Residuals 1200 40092418 33410.35               
+
+
+ANOVA FOR TESTING EPISTASIS:                                                        
+ SV           Df        Sum Sq    Mean Sq F value Pr(>F)
+ AxA           1    18578.2482 18578.2482    0.51 0.4765
+ AxD and DxD 199  7355908.2393 36964.3630    1.01 0.4610
+ Total       200  7374486.4875 36872.4324    1.01 0.4690
+ Residual    398 14560796.9513 36584.9170               
+-------
+REMARK: Raw dataset is balanced.
+
+
+ANOVA TABLE:                                                 
+ SV    Df        Sum Sq    Mean Sq F value Pr(>F)
+ s    199  7257002.2027 36467.3478    1.14 0.1384
+ e(s) 398 12690849.0827 31886.5555               
+ d    199  9046625.4415 45460.4294    1.42 0.0018
+ e(d) 398 12739002.8264 32007.5448               
+
+
+ESTIMATES OF GENETIC VARIANCE COMPONENTS:
+ VA = 2035.908;  se = 3618029
+ VD = 4484.295;  se = 2854011
+ VE = 31886.56
+ VP = 38406.76
+ Heritability, Broad sense = 0.1698;  se = 0.00207
+ Heritability, Narrow sense = 0.053;  se = 0.00184
+ Dominance Ratio = 2.0989
+
+
+-----------------------------
+ANALYSIS FOR: Env = Env4
+-----------------------------
+
+DATA SUMMARY: 
+ Factors   No of Levels   Levels           
+ Env       1              Env4             
+ Block     3              A  B  C          
+ Female    3              1  2  3          
+ Male      200            1  10  100 ... 99
+
+Number of observations read: 1800
+Number of missing observations: 0
+
+
+ANOVA TABLE FOR THE EXPERIMENT
+              Df   Sum Sq Mean Sq F value Pr(>F)
+Female         2     2501    1251   0.034  0.966
+Male         199  6783416   34088   0.930  0.739
+Female:Male  398 14442232   36287   0.990  0.545
+Residuals   1200 43998443   36665               
+-------
+REMARK: Raw dataset is balanced.
+
+
+ANOVA TABLE: (Trt = Female:Male)
+ Formula: Y1 ~ Trt
+
+             Df   Sum Sq  Mean Sq F value Pr(>F)
+ Trt        599 21228149 35439.31    0.97 0.6815
+ Residuals 1200 43998443 36665.37               
+
+-----------------------------
+ANALYSIS FOR: Env = Env5
+-----------------------------
+
+DATA SUMMARY: 
+ Factors   No of Levels   Levels           
+ Env       1              Env5             
+ Block     3              A  B  C          
+ Female    3              1  2  3          
+ Male      200            1  10  100 ... 99
+
+Number of observations read: 1800
+Number of missing observations: 0
+
+
+ANOVA TABLE FOR THE EXPERIMENT
+              Df   Sum Sq Mean Sq F value Pr(>F)
+Female         2    75246   37623   1.207 0.2995
+Male         199  6892492   34636   1.111 0.1564
+Female:Male  398 13767616   34592   1.110 0.0978
+Residuals   1200 37413449   31178               
+-------
+REMARK: Raw dataset is balanced.
+
+
+ANOVA TABLE: (Trt = Female:Male)
+ Formula: Y1 ~ Trt
+
+             Df   Sum Sq  Mean Sq F value Pr(>F)
+ Trt        599 20735354 34616.62    1.11 0.0675
+ Residuals 1200 37413449 31177.87               
+
+==============================================================

@@ -1,0 +1,66 @@
+
+DATA FILE: E:/NSALES/juno workspace/workspace_1/RJavaManager/sample_datasets/NC3RowCol.csv
+
+MULTIPLE ENVIRONMENT ANALYSIS
+
+DESIGN: NORTH CAROLINA EXPERIMENT III IN ROW-COLUMN
+
+-----------------------------
+RESPONSE VARIABLE: Y
+-----------------------------
+
+DATA SUMMARY: 
+
+ Factors   No of Levels   Levels             
+ Trial     2              1  2               
+ row       18             1  10  11 ... 9    
+ col       3              1  2  3            
+ trmt      18             T1  T10  T11 ... T9
+ rep       3              1  2  3            
+ male      9              1  2  3 ... 9      
+ fem       2              P1  P2             
+
+ Number of observations read: 108
+ Number of missing observations: 0
+
+
+LINEAR MIXED MODEL FIT BY RESTRICTED MAXIMUM LIKELIHOOD:
+
+ Formula:  Y ~ 1 + (fem) + (1|Trial) + (1|Trial:rep) + (1|Trial:rep:row) + (1|Trial:rep:col) + (1|male) + (1|fem:male) + (1|Trial:fem) + (1|Trial:male) + (1|Trial:fem:male) 
+
+      AIC      BIC    logLik deviance  REMLdev
+ 1259.702 1291.887 -617.8508 1251.342 1235.702
+
+ Fixed Effects:
+             Estimate Std. Error t value
+ (Intercept) 118.1060     20.353  5.8029
+ fem         -14.4818     24.773 -0.5846
+
+ Random Effects:                                        
+ Groups          Variance Std. Deviation
+ Trial:fem:male    0.0000         0.0000
+ Trial:rep:row     0.0000         0.0000
+ Trial:male        0.0000         0.0000
+ fem:male       1940.4900        44.0510
+ Trial:rep:col     0.0000         0.0000
+ male            103.4400        10.1710
+ Trial:rep       575.3700        23.9870
+ Trial:fem         0.0000         0.0000
+ Trial             0.0000         0.0000
+ Residual       4927.0700        70.1930
+
+
+ESTIMATES OF GENETIC VARIANCE COMPONENTS:
+                            
+                    Estimate
+ VA               413.760000
+ VAxE               0.000000
+ VD              3880.980000
+ VDxE               0.000000
+ h2-narrow sense    0.044868
+ H2-broad sense     0.465716
+ h2-family          0.111873
+ Dominance Ratio    4.331232
+
+
+==============================================================

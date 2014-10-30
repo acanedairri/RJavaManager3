@@ -1,0 +1,117 @@
+
+DATA FILE: E:/NSALES/juno workspace/workspace_1/RJavaManager/sample_datasets/Diallel1Alpha_missingEnv1.csv
+
+DIALLEL ANALYSIS: GRIFFING METHOD I IN RCB (SELF)
+
+------------------------------
+RESPONSE VARIABLE: Y2
+------------------------------
+
+Too many missing observations. Cannot proceed with the analysis.
+
+
+------------------------------
+RESPONSE VARIABLE: Y
+------------------------------
+
+DATA SUMMARY:
+
+ Factors     No of Levels   Levels            
+ replication 2              1  2              
+ p1          4              A21  B11  D76  N34
+ p2          4              A21  B11  D76  N34
+
+Number of observations read:  32 
+Number of observations used:  29 
+
+
+ANOVA TABLE FOR THE EXPERIMENT:
+
+            Df     Sum Sq    Mean Sq F value Pr(>F)
+replication  1  6117.9430  6117.9430    2.18 0.1609
+p1           3  7769.0960  2589.6990    0.92 0.4546
+p2           3 35307.2700 11769.0900    4.18 0.0244
+p1:p2        9 61904.0200  6878.2250    2.45 0.0606
+Residuals   12 42189.7200  2812.6480               
+-------
+REMARK: Raw data and estimates of the missing values are used. 
+
+
+TESTING FOR THE SIGNIFICANCE OF CROSS EFFECT: (Crosses = p1:p2)
+
+Model: Y ~ Crosses + (1|replication) 
+
+Analysis of Variance Table with Satterthwaite Denominator Df
+        Df   Sum Sq  Mean Sq F value   Denom Pr(>F)
+Crosses 15 97504.58 6500.306  1.8489 12.0638 0.1439
+
+
+MATRIX OF MEANS:
+
+         p2=A21   p2=B11   p2=D76   p2=N34
+p1=A21 139.4319 264.0600 127.9488  67.4368
+p1=B11  88.7088 197.3065 164.0576 150.8837
+p1=D76 110.3657 196.2273  80.0124  99.4981
+p1=N34 212.1430  82.3266 116.4102  55.1802
+-------
+REMARK: Raw data and estimates of the missing values are used. 
+
+
+ANALYSIS OF VARIANCE:
+
+           Df     Sum Sq   Mean Sq F value Pr(>F)
+GCA         3 17750.3500 5916.7820    5.82 0.0061
+SCA         6  5730.8100  955.1350    0.54 0.7676
+Reciprocal  6 29009.0400 4834.8400    2.75 0.0524
+Error      15 26368.5800 1757.9050               
+-------
+NOTE: MS* = 1016.886495   Error used for GCA MS with df = 17.3
+
+
+GENERAL COMBINING ABILITY EFFECTS (diagonal), SPECIFIC COMBINING
+ABILITY EFFECTS (above diagonal) AND RECIPROCAL EFFECTS (below diagonal):
+
+         p2=A21   p2=B11   p2=D76   p2=N34
+p1=A21   9.1910  -0.4162 -11.8503  25.7165
+p1=B11  87.6756  33.1098  25.2161 -21.3870
+p1=D76   8.7915 -16.0849 -12.6833  15.7551
+p1=N34 -72.3531  34.2785  -8.4560 -29.6175
+
+
+ESTIMATES OF VARIANCE COMPONENTS:
+
+            Estimate Std. Error
+GCA         612.4869   607.2533
+SCA           0.0000   520.7641
+Reciprocal 1538.4674  1432.1245
+Error      1757.9050   641.8961
+
+
+ESTIMATES OF GENETIC VARIANCE COMPONENTS:
+                           
+                   Estimate
+VA              1224.973825
+VD                 0.000000
+h2-narrow sense    0.410668
+H2-broad sense     0.410668
+Dominance Ratio    0.000000
+
+
+TABLE OF STANDARD ERRORS AND LSDs:
+
+        Std. Error     LSD
+Gi         12.8376        
+Sii        31.4455        
+Sij        23.4381        
+Rij        29.6471        
+Gi-Gj      20.9637 44.6830
+Sii-Sjj    41.9274 89.3661
+Sii-Sij    46.8762 99.9143
+Sii-Sjk    36.3102 77.3933
+Sij-Sik    36.3102 77.3933
+Sij-Skl    29.6471 63.1914
+Rij-Rkl    41.9274 89.3661
+
+
+
+==============================

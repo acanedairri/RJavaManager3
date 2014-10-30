@@ -1,0 +1,61 @@
+package org.irri.breedingtool.rjava.manager.api;
+
+public interface IRJavaGraphManager {
+	
+	/**
+	 * Create Graph Histogram
+	 * 
+	 * @param plotPath - path of the graph
+	 * @param dataFileName - path and name of active data file
+	 * @param respvar - 
+	 */
+	public void createGraphHistogram(String plotPath,String dataFileName, String respvar);
+
+//	void createGraphBarplot(String plotPath, String dataFileName, String nVar,
+//			String cVar, String mTitle, String yAxisLab, String xAxisLab,
+//			String typeData, String descStat, String barsHoriz,
+//			String barsClust, String barsPatterned, String byVar,
+//			String errBars, String typeErrBar, String errMult, double confLev,
+//			String barColor, String showLeg, String legPos, String legTitle,
+//			String boxed, String multGraphs, int numRowsGraphs,
+//			int numColsGraphs, String orientGraphs);
+
+//	public void createGraphBarplot(String plotPath, String dataFileName,
+//			String[] nVar, String cVar, String mTitle, String yAxisLab,
+//			String xAxisLab, String minValue, String maxValue, String typeData, String descStat,
+//			String barsHoriz, String barsClust, String barsPatterned,
+//			String byVar, String errBars, String typeErrBar, int errMult,
+//			double confLev, String[] barColor, String showLeg, String legPos,
+//			String legTitle, String boxed, String multGraphs,
+//			int numRowsGraphs, int numColsGraphs, String orientGraphs);
+
+	void createGraphBarplot(String outputPath, String dataFileName,
+			String[] nVar, String cVar, String mTitle, String yAxisLab,
+			String xAxisLab, String minValue, String maxValue, String typeData,
+			String descStat, String barsHoriz, String barsClust,
+			String byVar, String errBars,
+			String typeErrBar, int errMult, double confLev, String[] barColor,
+			String showLeg, String legPos, String legTitle, String boxed,
+			String multGraphs, int numRowsGraphs, int numColsGraphs,
+			String orientGraphs, String showVarNames, int[] barDensity, int[] barLineAngle);
+
+	void createGraphLineplot(String outputPath, String dataFileName, 
+			String[] nVar, String cVar, String mTitle, String yAxisLab, String xAxisLab, 
+			String yMinValue, String yMaxValue, String plotData, 
+			String byVar, String errBars, String typeErrBar, int errMult, double confLev, 
+			String[] plotCol, String showLeg, String legPos, String legTitle, String boxed,
+			String[] linePtTypes, int[] lineTypes, double[] lineWidths, String[] pointChars, double[] pointCharSizes, 
+			String multGraphs, int numRowsGraphs, int numColsGraphs, String orientGraphs);
+
+//
+//	void createGraphLineplot(String outputPath, String dataFileName,
+//			String[] nVar, String cVar, String mTitle, String yAxisLab,
+//			String xAxisLab, String yMinValue, String yMaxValue,
+//			String[] plotCol, String showLeg, String legPos, String legTitle,
+//			String boxed, String[] lineTypes, double[] lineWidths,
+//			String[] pointChars, double[] pointCharSizes, String byVar,
+//			String multGraphs, int numRowsGraphs, int numColsGraphs,
+//			String orientGraphs);
+
+	
+}

@@ -1,0 +1,138 @@
+
+DATA FILE: E:/NSALES/juno workspace/workspace_1/RJavaManager/sample_datasets/RCB_ME_env2.csv
+
+SINGLE-ENVIRONMENT ANALYSIS
+
+DESIGN: Randomized Complete Block (RCB)
+
+==============================
+GENOTYPE AS: Random
+==============================
+
+------------------------------
+RESPONSE VARIABLE: Yield
+------------------------------
+
+DESCRIPTIVE STATISTICS:
+
+  Variable Env N_NonMissObs     Mean    StdDev
+1    Yield  E1           45 2403.838  647.9983
+2    Yield  E2           46 1439.093 1083.6526
+
+------------------------------
+ANALYSIS FOR: Env  =  E1 
+------------------------------
+
+DATA SUMMARY:
+
+Number of observations read:  45 
+Number of observations used:  45 
+
+ Factors   Number of Levels   Levels                     
+ Genotype  15                 GEN1  GEN10  GEN11 ... GEN9
+ Block     3                  1  2  3                    
+
+
+VARIANCE COMPONENTS TABLE:
+
+    Groups     Variance     Std.Dev.
+1 Genotype 2.835179e+04 1.683799e+02
+2    Block 4.205789e-10 2.050802e-05
+3 Residual 3.928389e+05 6.267686e+02
+
+
+TESTING FOR THE SIGNIFICANCE OF GENOTYPIC VARIANCE USING -2 LOGLIKELIHOOD RATIO TEST:
+
+Formula for Model1:  Yield ~ 1 + (1|Block) + (1|Genotype) 
+Formula for Model2:  Yield ~ 1 + (1|Block) 
+
+            AIC      BIC    logLik  Chisq Df Pr(>Chisq)
+Model2 704.3754 709.7954 -349.1877                     
+Model1 706.1879 713.4146 -349.0940 0.1875  1      0.665
+
+
+PREDICTED MEANS:
+
+   Genotype    Means
+1      GEN1 2509.936
+2     GEN10 2365.856
+3     GEN11 2472.875
+4     GEN12 2450.604
+5     GEN13 2462.980
+6     GEN14 2399.755
+7     GEN15 2320.240
+8      GEN2 2511.615
+9      GEN3 2348.901
+10     GEN4 2391.497
+11     GEN5 2289.580
+12     GEN6 2323.479
+13     GEN7 2467.560
+14     GEN8 2374.328
+15     GEN9 2368.360
+
+
+HERITABILITY:
+     
+0.18 
+
+
+------------------------------
+ANALYSIS FOR: Env  =  E2 
+------------------------------
+
+DATA SUMMARY:
+
+Number of observations read:  46 
+Number of observations used:  46 
+
+ Factors   Number of Levels   Levels                      
+ Genotype  16                 GEN1  GEN10  GEN100 ... GEN9
+ Block     3                  1  2  3                     
+
+
+VARIANCE COMPONENTS TABLE:
+
+    Groups   Variance  Std.Dev.
+1 Genotype 1102035.91 1049.7790
+2    Block   11786.39  108.5651
+3 Residual  167817.97  409.6559
+
+
+TESTING FOR THE SIGNIFICANCE OF GENOTYPIC VARIANCE USING -2 LOGLIKELIHOOD RATIO TEST:
+
+Formula for Model1:  Yield ~ 1 + (1|Block) + (1|Genotype) 
+Formula for Model2:  Yield ~ 1 + (1|Block) 
+
+            AIC      BIC    logLik   Chisq Df Pr(>Chisq)
+Model2 766.4614 771.9474 -380.2307                      
+Model1 726.8367 734.1512 -359.4183 41.6248  1  1.106e-10
+
+
+PREDICTED MEANS:
+
+   Genotype     Means
+1      GEN1  796.4804
+2     GEN10  886.2250
+3    GEN100 2969.2565
+4     GEN11  655.4396
+5     GEN12  593.9603
+6     GEN13  560.2704
+7     GEN14  524.5820
+8     GEN15  578.0988
+9      GEN2 2055.2519
+10     GEN3 2699.6109
+11     GEN4 2163.8082
+12     GEN5 1164.4046
+13     GEN6 1144.8632
+14     GEN7 2154.3547
+15     GEN8 3839.6429
+16     GEN9 1246.2501
+
+
+HERITABILITY:
+     
+0.95 
+
+
+
+==============================

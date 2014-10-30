@@ -1,0 +1,274 @@
+
+DATA FILE: E:/NSALES/juno workspace/workspace_1/RJavaManager/sample_datasets/RCB_ME_env2.csv
+
+SINGLE-ENVIRONMENT ANALYSIS
+
+DESIGN: Randomized Complete Block (RCB)
+
+==============================
+GENOTYPE AS: Fixed
+==============================
+
+------------------------------
+RESPONSE VARIABLE: Yield
+------------------------------
+
+Descriptive Statistics:
+
+  Variable Env N_NonMissObs     Mean    StdDev
+1    Yield  E1           45 2403.838  647.9983
+2    Yield  E2           45 1399.251 1061.2780
+
+------------------------------
+ANALYSIS FOR: Env  =  E1 
+------------------------------
+
+Data Summary:
+
+Number of observations read:  45 
+Number of observations used:  45 
+
+ Factors   Number of Levels   Levels                     
+ Genotype  15                 GEN1  GEN10  GEN11 ... GEN9
+ Block     3                  1  2  3                    
+
+Variance Components Table:
+
+    Groups Variance Std.Dev.
+1    Block      0.0   0.0000
+2 Residual 392838.8 626.7685
+
+Testing for the Significance of Genotypic Effect:
+
+Models:
+model2: Yield ~ 1 + (1|Block)
+model1: Yield ~ 1 + Genotype + (1|Block)
+
+       Df    AIC    BIC  logLik  Chisq Chi Df Pr(>Chisq)
+model2  3 715.34 720.76 -354.67                         
+model1 17 723.11 753.82 -344.56 20.233     14      0.123
+
+         Df  Sum Sq  Mean Sq  F value p-value
+Genotype 14 6690518 477894.1 1.216515  0.1230
+
+Genotype LSMeans and Standard Errors:
+
+   Genotype   LSMean StdErrMean
+1      GEN1 2999.967    361.865
+2     GEN10 2190.433    361.865
+3     GEN11 2791.733    361.865
+4     GEN12 2666.600    361.865
+5     GEN13 2736.133    361.865
+6     GEN14 2380.900    361.865
+7     GEN15 1934.133    361.865
+8      GEN2 3009.400    361.865
+9      GEN3 2095.167    361.865
+10     GEN4 2334.500    361.865
+11     GEN5 1761.867    361.865
+12     GEN6 1952.333    361.865
+13     GEN7 2761.867    361.865
+14     GEN8 2238.033    361.865
+15     GEN9 2204.500    361.865
+
+
+Significant Pairwise Comparisons (if any): 
+Compared with control(s)
+
+                                       
+(No significant pairwise comparisons.) 
+
+
+------------------------------
+ANALYSIS FOR: Env  =  E2 
+------------------------------
+
+Data Summary:
+
+Number of observations read:  45 
+Number of observations used:  45 
+
+ Factors   Number of Levels   Levels                     
+ Genotype  15                 GEN1  GEN10  GEN11 ... GEN9
+ Block     3                  1  2  3                    
+
+Variance Components Table:
+
+    Groups  Variance Std.Dev.
+1    Block  10761.03 103.7354
+2 Residual 167643.16 409.4425
+
+Testing for the Significance of Genotypic Effect:
+
+Models:
+model2: Yield ~ 1 + (1|Block)
+model1: Yield ~ 1 + Genotype + (1|Block)
+
+       Df    AIC    BIC  logLik  Chisq Chi Df Pr(>Chisq)
+model2  3 759.74 765.16 -376.87                         
+model1 17 686.81 717.53 -326.41 100.93     14  3.145e-15
+
+         Df   Sum Sq Mean Sq  F value p-value
+Genotype 14 44205559 3157540 18.83489  0.0000
+
+Genotype LSMeans and Standard Errors:
+
+   Genotype    LSMean StdErrMean
+1      GEN1  760.6667    243.856
+2     GEN10  854.9667    243.856
+3     GEN11  612.4667    243.856
+4     GEN12  547.8667    243.856
+5     GEN13  512.4667    243.856
+6     GEN14  474.9667    243.856
+7     GEN15  531.2000    243.856
+8      GEN2 2083.3333    243.856
+9      GEN3 2760.4000    243.856
+10     GEN4 2197.4000    243.856
+11     GEN5 1147.2667    243.856
+12     GEN6 1126.7333    243.856
+13     GEN7 2187.4667    243.856
+14     GEN8 3958.3000    243.856
+15     GEN9 1233.2667    243.856
+
+
+Significant Pairwise Comparisons (if any): 
+Compared with control(s)
+
+   Trmt[i] Trmt[j]   Estimate        lwr        upr
+1     GEN2    GEN1  1322.6667   383.2208 2262.11256
+2     GEN3    GEN1  1999.7333  1060.2874 2939.17923
+3     GEN4    GEN1  1436.7333   497.2874 2376.17923
+4     GEN7    GEN1  1426.8000   487.3541 2366.24590
+5     GEN8    GEN1  3197.6333  2258.1874 4137.07923
+6     GEN1    GEN4 -1436.7333 -2375.9963 -497.47034
+7    GEN10    GEN4 -1342.4333 -2281.6963 -403.17034
+8    GEN11    GEN4 -1584.9333 -2524.1963 -645.67034
+9    GEN12    GEN4 -1649.5333 -2588.7963 -710.27034
+10   GEN13    GEN4 -1684.9333 -2624.1963 -745.67034
+11   GEN14    GEN4 -1722.4333 -2661.6963 -783.17034
+12   GEN15    GEN4 -1666.2000 -2605.4630 -726.93701
+13    GEN5    GEN4 -1050.1333 -1989.3963 -110.87034
+14    GEN6    GEN4 -1070.6667 -2009.9297 -131.40368
+15    GEN8    GEN4  1760.9000   821.6370 2700.16299
+16    GEN9    GEN4  -964.1333 -1903.3963  -24.87034
+
+
+==============================
+GENOTYPE AS: Random
+==============================
+
+------------------------------
+RESPONSE VARIABLE: Yield
+------------------------------
+
+Descriptive Statistics:
+
+  Variable Env N_NonMissObs     Mean    StdDev
+1    Yield  E1           45 2403.838  647.9983
+2    Yield  E2           45 1399.251 1061.2780
+
+------------------------------
+ANALYSIS FOR: Env  =  E1 
+------------------------------
+
+Data Summary:
+
+Number of observations read:  45 
+Number of observations used:  45 
+
+ Factors   Number of Levels   Levels                     
+ Genotype  15                 GEN1  GEN10  GEN11 ... GEN9
+ Block     3                  1  2  3                    
+
+Variance Components Table:
+
+    Groups     Variance     Std.Dev.
+1 Genotype 2.835179e+04 1.683799e+02
+2    Block 4.205789e-10 2.050802e-05
+3 Residual 3.928389e+05 6.267686e+02
+
+Predicted means:
+
+   Genotype    Means
+1      GEN1 2509.936
+2     GEN10 2365.856
+3     GEN11 2472.875
+4     GEN12 2450.604
+5     GEN13 2462.980
+6     GEN14 2399.755
+7     GEN15 2320.240
+8      GEN2 2511.615
+9      GEN3 2348.901
+10     GEN4 2391.497
+11     GEN5 2289.580
+12     GEN6 2323.479
+13     GEN7 2467.560
+14     GEN8 2374.328
+15     GEN9 2368.360
+
+Heritability:
+     
+0.18 
+
+Testing for the Significance of Genotypic Variance:
+Models:
+model2: Yield ~ 1 + (1|Block)
+model1: Yield ~ 1 + (1|Block) + (1|Genotype)
+
+       Df    AIC    BIC  logLik  Chisq Chi Df Pr(>Chisq)
+model2  3 715.34 720.76 -354.67                         
+model1  4 717.26 724.49 -354.63 0.0817      1      0.775
+
+------------------------------
+ANALYSIS FOR: Env  =  E2 
+------------------------------
+
+Data Summary:
+
+Number of observations read:  45 
+Number of observations used:  45 
+
+ Factors   Number of Levels   Levels                     
+ Genotype  15                 GEN1  GEN10  GEN11 ... GEN9
+ Block     3                  1  2  3                    
+
+Variance Components Table:
+
+    Groups  Variance Std.Dev.
+1 Genotype 996633.17 998.3152
+2    Block  10761.01 103.7353
+3 Residual 167643.10 409.4424
+
+Predicted means:
+
+   Genotype     Means
+1      GEN1  794.5710
+2     GEN10  883.8643
+3     GEN11  654.2393
+4     GEN12  593.0691
+5     GEN13  559.5486
+6     GEN14  524.0396
+7     GEN15  577.2874
+8      GEN2 2047.0134
+9      GEN3 2688.1327
+10     GEN4 2155.0240
+11     GEN5 1160.6453
+12     GEN6 1141.2021
+13     GEN7 2145.6180
+14     GEN8 3822.4327
+15     GEN9 1242.0793
+
+Heritability:
+     
+0.95 
+
+Testing for the Significance of Genotypic Variance:
+Models:
+model2: Yield ~ 1 + (1|Block)
+model1: Yield ~ 1 + (1|Block) + (1|Genotype)
+
+       Df    AIC    BIC  logLik  Chisq Chi Df Pr(>Chisq)
+model2  3 759.74 765.16 -376.87                         
+model1  4 721.44 728.66 -356.72 40.307      1   2.17e-10
+
+
+==============================

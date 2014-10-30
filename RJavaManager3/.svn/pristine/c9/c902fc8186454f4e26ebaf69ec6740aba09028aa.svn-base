@@ -1,0 +1,119 @@
+
+DESIGN: TRIPLE TEST CROSS (NO PARENTS) IN RowColumn
+
+
+RESPONSE VARIABLE: Y
+
+-----------------------------
+ANALYSIS FOR: Trial = 1
+-----------------------------
+
+DATA SUMMARY: 
+ Factors   No of Levels   Levels             
+ Trial     1              1                  
+ row       21             1  10  11 ... 9    
+ col       3              1  2  3            
+ rep       3              1  2  3            
+ male      7              1  2  3  4  5  6  7
+ fem       3              F1  F2  F3         
+
+Number of observations read: 63
+Number of missing observations: 0
+
+
+ANOVA TABLE: (Trt = fem:male)
+ Formula for Model 1: Y ~ Trt + (1|rep) + (1|row:rep) + (1|col:rep)
+ Formula for Model 2: Y ~ (1|rep) + (1|row:rep) + (1|col:rep)
+
+        Df    AIC    BIC  logLik Chisq Chi Df Pr(>Chisq)
+ model2  5 753.01 763.72 -371.50                        
+ model1 25 752.78 806.36 -351.39 40.22     20     0.0047
+
+
+ANOVA FOR TESTING EPISTASIS:                                                   
+ SV          Df     Sum Sq   Mean Sq F value Pr(>F)
+ AxA          1  3699.4951 3699.4951    0.56 0.4680
+ AxD and DxD  6 56280.9420 9380.1570    1.42 0.2831
+ Total        7 59980.4371 8568.6339    1.30 0.3284
+ Residual    12 79038.8983 6586.5749               
+-------
+REMARK: Raw dataset is balanced.
+
+
+ANOVA TABLE:                                             
+ SV   Df     Sum Sq    Mean Sq F value Pr(>F)
+ s     6 96692.5774 16115.4296    3.90 0.0215
+ e(s) 12 49539.7524  4128.3127               
+ d     6 32780.8190  5463.4698    0.82 0.5752
+ e(d) 12 80211.5089  6684.2924               
+-------
+REMARK: Raw dataset is balanced.
+
+
+ESTIMATES OF GENETIC VARIANCE COMPONENTS:
+ VA = 5327.608;  se = 13305971
+ VD = -406.9409;  se = 1538355
+ VE = 4128.313
+ VP = 9048.979
+ Heritability, Broad sense = 0.5438;  se = 0.05039
+ Heritability, Narrow sense = 0.5888;  se = 0.04455
+ Dominance Ratio = NaN
+
+
+-----------------------------
+ANALYSIS FOR: Trial = 2
+-----------------------------
+
+DATA SUMMARY: 
+ Factors   No of Levels   Levels             
+ Trial     1              2                  
+ row       21             1  10  11 ... 9    
+ col       3              1  2  3            
+ rep       3              1  2  3            
+ male      7              1  2  3  4  5  6  7
+ fem       3              F1  F2  F3         
+
+Number of observations read: 63
+Number of missing observations: 0
+
+
+ANOVA TABLE: (Trt = fem:male)
+ Formula for Model 1: Y ~ Trt + (1|rep) + (1|row:rep) + (1|col:rep)
+ Formula for Model 2: Y ~ (1|rep) + (1|row:rep) + (1|col:rep)
+
+        Df    AIC    BIC  logLik Chisq Chi Df Pr(>Chisq)
+ model2  5 746.20 756.91 -368.10                        
+ model1 25 763.55 817.13 -356.77 22.65     20     0.3064
+
+
+ANOVA FOR TESTING EPISTASIS:                                                     
+ SV          Df      Sum Sq    Mean Sq F value Pr(>F)
+ AxA          1   1611.4177  1611.4177    0.14 0.7111
+ AxD and DxD  6  60396.6765 10066.1127    0.90 0.5262
+ Total        7  62008.0942  8858.2992    0.79 0.6086
+ Residual    12 134379.9333 11198.3278               
+-------
+REMARK: Raw dataset is balanced.
+
+
+ANOVA TABLE:                                              
+ SV   Df      Sum Sq    Mean Sq F value Pr(>F)
+ s     6  39963.3467  6660.5578    1.21 0.3654
+ e(s) 12  65922.5230  5493.5436               
+ d     6  74526.6980 12421.1163    1.45 0.2745
+ e(d) 12 102607.8929  8550.6577               
+-------
+REMARK: Raw dataset is balanced.
+
+
+ESTIMATES OF GENETIC VARIANCE COMPONENTS:
+ VA = 518.673;  se = 3042380
+ VD = 1290.153;  se = 5446206
+ VE = 5493.544
+ VP = 7302.369
+ Heritability, Broad sense = 0.2477;  se = 0.07031
+ Heritability, Narrow sense = 0.071;  se = 0.06253
+ Dominance Ratio = 2.2304
+
+
+==============================================================

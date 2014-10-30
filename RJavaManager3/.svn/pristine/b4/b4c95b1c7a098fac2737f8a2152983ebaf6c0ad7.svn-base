@@ -1,0 +1,186 @@
+
+DATA FILE: E:/NSALES/juno workspace/workspace_1/RJavaManager/sample_datasets/RCB_Multi.csv
+
+MULTI-ENVIRONMENT ANALYSIS (ONE-STAGE)
+
+DESIGN: Randomized Complete Block (RCB)
+
+==============================
+GENOTYPE AS: Random
+==============================
+
+------------------------------
+RESPONSE VARIABLE: Y1
+------------------------------
+
+DATA SUMMARY:
+
+Number of observations read:  64 
+Number of observations used:  60 
+
+ Factors   Number of Levels   Levels       
+ Site      2                  Env1  Env2   
+ Gen       8                  1  2  3 ... 8
+ Blk       4                  1  2  3  4   
+
+
+DESCRIPTIVE STATISTICS:
+
+  Variable N_NonMissObs     Mean   StdDev
+1       Y1           60 42.79667 6.277022
+
+
+VARIANCE COMPONENTS TABLE:
+
+    Groups  Variance Std.Dev.
+1 Gen:Site  6.988986 2.643669
+2 Blk:Site  2.023778 1.422595
+3      Gen 20.274263 4.502695
+4     Site  0.000000 0.000000
+5 Residual 12.884616 3.589515
+
+
+TESTING FOR THE SIGNIFICANCE OF GENOTYPIC VARIANCE USING -2 LOGLIKELIHOOD RATIO TEST:
+            AIC      BIC    logLik  Chisq Df Pr(>Chisq)
+Model2 368.2996 378.7713 -179.1498                     
+Model1 366.2154 378.7814 -177.1077 4.0842  1     0.0433
+
+
+TESTING FOR THE SIGNIFICANCE OF ENVIRONMENT VARIANCE USING -2 LOGLIKELIHOOD RATIO TEST:
+            AIC      BIC    logLik Chisq Df Pr(>Chisq)
+Model2 364.2154 374.6871 -177.1077                    
+Model1 366.2154 378.7814 -177.1077     0  1     0.9984
+
+
+TESTING FOR THE SIGNIFICANCE OF GENOTYPE X ENVIRONMENT VARIANCE USING -2 LOGLIKELIHOOD RATIO TEST:
+            AIC      BIC    logLik  Chisq Df Pr(>Chisq)
+Model2 369.1685 379.6402 -179.5842                     
+Model1 366.2154 378.7814 -177.1077 4.9531  1     0.0260
+
+
+GENOTYPE X ENVIRONMENT MEANS:
+
+   Gen Site Y1_means
+1    1 Env2 46.47959
+2    2 Env1 43.24725
+3    2 Env2 40.50128
+4    3 Env1 38.29386
+5    3 Env2 41.70851
+6    4 Env1 40.76542
+7    4 Env2 38.01945
+8    5 Env1 33.79847
+9    5 Env2 37.21312
+10   6 Env1 51.51221
+11   6 Env2 48.76624
+12   7 Env1 44.47502
+13   7 Env2 47.88968
+14   8 Env1 46.01004
+15   8 Env2 43.26407
+
+
+PREDICTED GENOTYPE MEANS:
+
+  Gen     Mean
+1   1 45.57997
+2   2 42.03540
+3   3 40.43770
+4   4 39.91845
+5   5 36.60322
+6   6 49.08524
+7   7 45.71011
+8   8 44.39200
+
+
+HERITABILITY:
+     
+0.82 
+
+------------------------------
+RESPONSE VARIABLE: Y3
+------------------------------
+
+DATA SUMMARY:
+
+Number of observations read:  64 
+Number of observations used:  64 
+
+ Factors   Number of Levels   Levels       
+ Site      2                  Env1  Env2   
+ Gen       8                  1  2  3 ... 8
+ Blk       4                  1  2  3  4   
+
+
+DESCRIPTIVE STATISTICS:
+
+  Variable N_NonMissObs    Mean   StdDev
+1       Y3           64 20.1625 3.252032
+
+
+VARIANCE COMPONENTS TABLE:
+
+    Groups     Variance     Std.Dev.
+1 Gen:Site 1.020260e+01 3.194151e+00
+2 Blk:Site 9.931596e-15 9.965739e-08
+3      Gen 7.530376e-01 8.677774e-01
+4     Site 0.000000e+00 0.000000e+00
+5 Residual 1.895834e-01 4.354117e-01
+
+
+TESTING FOR THE SIGNIFICANCE OF GENOTYPIC VARIANCE USING -2 LOGLIKELIHOOD RATIO TEST:
+            AIC      BIC    logLik  Chisq Df Pr(>Chisq)
+Model2 169.8230 180.6175 -79.91152                     
+Model1 171.7879 184.7412 -79.89394 0.0352  1     0.8513
+
+
+TESTING FOR THE SIGNIFICANCE OF ENVIRONMENT VARIANCE USING -2 LOGLIKELIHOOD RATIO TEST:
+            AIC      BIC    logLik Chisq Df Pr(>Chisq)
+Model2 169.7879 180.5823 -79.89394                    
+Model1 171.7879 184.7412 -79.89394     0  1     0.9999
+
+
+TESTING FOR THE SIGNIFICANCE OF GENOTYPE X ENVIRONMENT VARIANCE USING -2 LOGLIKELIHOOD RATIO TEST:
+            AIC      BIC     logLik    Chisq Df Pr(>Chisq)
+Model2 320.4214 331.2158 -155.21068                       
+Model1 171.7879 184.7412  -79.89394 150.6335  1     0.0000
+
+
+GENOTYPE X ENVIRONMENT MEANS:
+
+   Gen Site Y3_means
+1    1 Env1 20.30093
+2    1 Env2 25.27781
+3    2 Env1 19.75048
+4    2 Env2 15.76897
+5    3 Env1 18.73228
+6    3 Env2 23.70916
+7    4 Env1 20.29826
+8    4 Env2 16.31676
+9    5 Env1 20.25113
+10   5 Env2 25.22801
+11   6 Env1 19.72558
+12   6 Env2 15.74408
+13   7 Env1 20.22623
+14   7 Env2 25.20311
+15   8 Env1 20.02437
+16   8 Env2 16.04287
+
+
+PREDICTED GENOTYPE MEANS:
+
+  Gen     Mean
+1   1 20.50039
+2   2 19.85343
+3   3 20.29862
+4   4 19.92389
+5   5 20.49399
+6   6 19.85023
+7   7 20.49078
+8   8 19.88866
+
+
+HERITABILITY:
+     
+0.13 
+
+
+==============================

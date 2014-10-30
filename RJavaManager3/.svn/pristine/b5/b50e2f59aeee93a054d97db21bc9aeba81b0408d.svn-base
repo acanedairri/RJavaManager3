@@ -1,0 +1,36 @@
+package org.irri.breedingtool.rjava.pbtoolsanalysis;
+
+import org.irri.breedingtool.rjava.manager.RJavaManager;
+
+public class TestDiallel2ME {
+
+	private static String BSLASH = "\\";
+	private static String FSLASH = "/";
+	private static String PATH1 = System.getProperty("user.dir")+ System.getProperty("file.separator") + "sample_datasets" + System.getProperty("file.separator");
+	public static String DATA_PATH = PATH1.replace(BSLASH, FSLASH);
+	
+	public static void main(String[] args) {
+		
+		//supply path and name of active data
+		String dataFileName = DATA_PATH + "testDataDiallel2.csv";
+		//supply path and name of text file where text output is going to be saved
+		String outFileName = DATA_PATH + "Diallel2_ME_output.txt";
+		
+		//specify parameters
+		String design = "RCB";
+		String[] respvars = {"respvar"};
+		String p1 = "p1";
+		String p2 = "p2";
+		String rep = "NULL";
+		String block = "block";
+		String cross = "TRUE";
+		String environment = "environment";
+		String individual = "NULL";
+		String alpha = "0.05";
+		
+		RJavaManager rJavaManager= new RJavaManager();
+		rJavaManager.initPBtool();
+		rJavaManager.getPbToolAnalysisManager().doDiallel2ME(dataFileName, outFileName, design, respvars, p1, p2, rep, block, cross, individual, environment, alpha);
+	}
+
+}
