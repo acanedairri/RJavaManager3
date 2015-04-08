@@ -14,7 +14,7 @@ public class TestDiallel2new {
 		//supply path and name of active data
 //		String dataFileName = DATA_PATH + "Diallel2Alpha_missing.csv";
 		//supply path and name of text file where text output is going to be saved
-		String outFileName = DATA_PATH + "Diallel2_output.txt";
+		String outFileName = DATA_PATH + "Diallel2_outputNew.txt";
 		String resultFolderPath = DATA_PATH;
 		
 		//specify parameters
@@ -48,6 +48,7 @@ public class TestDiallel2new {
 ////		String environment = "NULL";
 //		String individual = "NULL";
 //		String alpha = "0.80";
+
 		
 		//specify parameters
 //		String dataFileName = DATA_PATH + "Diallel2Alpha_missing2.csv";
@@ -97,20 +98,53 @@ public class TestDiallel2new {
 //		String alpha = "0.80";
 		
 		//specify parameters
-		String dataFileName = DATA_PATH + "Diallel_M2.csv";
+//		String dataFileName = DATA_PATH + "Diallel_M2.csv";
+//		
+//		String design = "RCB";
+//		String[] respvar = {"Plant_height", "Grain_yield"};
+//		String p1 = "P1";
+//		String p2 = "P2";
+//		String rep = "NULL";
+//		String block = "Block";
+//		String row = "NULL";
+//		String column = "NULL";
+//		String cross = "TRUE";
+//		String environment = "Env";
+//		String individual = "NULL";
+//		String alpha = "0.05";
+
+//		//specify parameters
+//		String dataFileName = DATA_PATH + "Xie 2014_AgroData.csv";
+//		
+//		String design = "RCB";
+//		String[] respvar = {"DTH", "HT", "PAN", "SPIKE", "SST", "TGW", "Yield"};
+//		String p1 = "Female";
+//		String p2 = "Male";
+//		String rep = "NULL";
+//		String block = "Rep";
+//		String row = "NULL";
+//		String column = "NULL";
+//		String cross = "TRUE";
+//		String environment = "Env";
+//		String individual = "NULL";
+//		String alpha = "0.05";
+
+		//specify parameters
+		String dataFileName = DATA_PATH + "Xie 2014_QualityData.csv";
 		
 		String design = "RCB";
-		String[] respvar = {"Plant_height", "Grain_yield"};
-		String p1 = "P1";
-		String p2 = "P2";
+		String[] respvar = {"CHALKINESS", "CHALK_0_10", "CHALK_10_25", "CHALK_25_50", "CHALK_50_75", "CHALK_GT_75", "GT", "GW", "AC", "MR", "HR"};
+		String p1 = "Female";
+		String p2 = "Male";
 		String rep = "NULL";
-		String block = "Block";
+		String block = "Rep";
 		String row = "NULL";
 		String column = "NULL";
 		String cross = "TRUE";
 		String environment = "Env";
 		String individual = "NULL";
 		String alpha = "0.05";
+		
 		
 		RJavaManager rJavaManager= new RJavaManager();
 		rJavaManager.initPBtool();

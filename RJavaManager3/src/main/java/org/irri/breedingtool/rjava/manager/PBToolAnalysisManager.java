@@ -3538,6 +3538,8 @@ public class PBToolAnalysisManager implements IRJavaPBToolsAnalysisManager {
 			boolean genotypeFixed, boolean performPairwise, String pairwiseAlpha, String[] genotypeLevels, String[] controlLevels, boolean compareControl, boolean performAllPairwise,
 			boolean genotypeRandom, boolean excludeControls, boolean genoPhenoCorrelation) {
 		
+		// This function is for the standalone PBTools
+		
 		String respvarVector= inputTransform.createRVector(respvar);
 //		String genotypeLevelsVector= inputTransform.createRVector(genotypeLevels);
 		String controlLevelsVector= inputTransform.createRVector(controlLevels);
@@ -3585,6 +3587,16 @@ public class PBToolAnalysisManager implements IRJavaPBToolsAnalysisManager {
 					design = "LatinRowCol";
 					break;
 				}
+				case 7: {
+					designUsed = "Augmented Alpha-Lattice"; 
+					design = "Alpha";
+					break;
+				}
+				case 8: {
+					designUsed = "Augmented Row-Column"; 
+					design = "RowCol";
+					break;
+				}
 				default: {
 					designUsed = "Randomized Complete Block (RCB)"; 
 					design = "RCB";
@@ -3630,10 +3642,10 @@ public class PBToolAnalysisManager implements IRJavaPBToolsAnalysisManager {
 					} else if (designIndex == 2) {
 						funcSsaFixed = "ssa1 <- try(ssa.test(\"" + design + "\",data,"+ respvarVector + ",\"" + genotype + "\",\"" + row+ "\",\"" + column + "\", rep=NULL," + environment+ ", is.random = FALSE), silent = TRUE)";
 						groupVars = "c(\"" + genotype + "\", \"" + row + "\", \"" + column + "\")";
-					} else if (designIndex == 3 || designIndex == 5) {
+					} else if (designIndex == 3 || designIndex == 5 || designIndex == 7) {
 						funcSsaFixed = "ssa1 <- try(ssa.test(\"" + design + "\",data,"+ respvarVector + ",\"" + genotype + "\",\"" + block+ "\",column=NULL,\"" + rep + "\"," + environment+ ", is.random = FALSE), silent = TRUE)";
 						groupVars = "c(\"" + genotype + "\", \"" + block + "\", \"" + rep + "\")";
-					} else if (designIndex == 4 || designIndex == 6) {
+					} else if (designIndex == 4 || designIndex == 6 || designIndex == 8) {
 						funcSsaFixed = "ssa1 <- try(ssa.test(\"" + design + "\",data,"+ respvarVector + ",\"" + genotype + "\",\"" + row+ "\",\"" + column + "\",\"" + rep + "\","+ environment + ", is.random = FALSE), silent = TRUE)";
 						groupVars = "c(\"" + genotype + "\", \"" + rep + "\", \"" + row + "\", \"" + column + "\")";
 					}
@@ -3644,10 +3656,10 @@ public class PBToolAnalysisManager implements IRJavaPBToolsAnalysisManager {
 					} else if (designIndex == 2) {
 						funcSsaFixed = "ssa1 <- try(ssa.test(\"" + design + "\",data,"+ respvarVector + ",\"" + genotype + "\",\"" + row+ "\",\"" + column + "\", rep=NULL,\"" + environment+ "\", is.random = FALSE), silent = TRUE)";
 						groupVars = "c(\"" + genotype + "\", \"" + row + "\", \"" + column + "\")";
-					} else if (designIndex == 3 || designIndex == 5) {
+					} else if (designIndex == 3 || designIndex == 5 || designIndex == 7) {
 						funcSsaFixed = "ssa1 <- try(ssa.test(\"" + design + "\",data,"+ respvarVector + ",\"" + genotype + "\",\"" + block+ "\",column=NULL,\"" + rep + "\",\"" + environment+ "\", is.random = FALSE), silent = TRUE)";
 						groupVars = "c(\"" + genotype + "\", \"" + block + "\", \"" + rep + "\")";
-					} else if (designIndex == 4 || designIndex == 6) {
+					} else if (designIndex == 4 || designIndex == 6 || designIndex == 8) {
 						funcSsaFixed = "ssa1 <- try(ssa.test(\"" + design + "\",data,"+ respvarVector + ",\"" + genotype + "\",\"" + row+ "\",\"" + column + "\",\"" + rep + "\",\""+ environment + "\", is.random = FALSE), silent = TRUE)";
 						groupVars = "c(\"" + genotype + "\", \"" + rep + "\", \"" + row + "\", \"" + column + "\")";
 					}
@@ -4065,6 +4077,12 @@ public class PBToolAnalysisManager implements IRJavaPBToolsAnalysisManager {
 						} else if (designIndex == 4 || designIndex == 6) {
 							funcSsaRandom = "ssa2 <- try(ssa.test(\"" + design + "\",data," + respvarVector + ",\"" + genotype + "\",\"" + row + "\",\"" + column + "\",\"" + rep + "\"," + environment + ", is.random = TRUE, excludeCheck=TRUE, checkList= " + controlLevelsVector + "), silent=TRUE)";
 							groupVars = "c(\"" + genotype + "\", \"" + rep + "\", \"" + row + "\", \"" + column + "\")";
+						} else if (designIndex == 7) {
+							funcSsaRandom = "ssa2 <- try(ssa.test(\"" + design + "\",data," + respvarVector + ",\"" + genotype + "\",\"" + block + "\",column=NULL,\"" + rep + "\"," + environment + ", is.random = TRUE, excludeCheck=TRUE, checkList= NULL), silent=TRUE)";
+							groupVars = "c(\"" + genotype + "\", \"" + block + "\", \"" + rep + "\")";
+						} else if (designIndex == 8) {
+							funcSsaRandom = "ssa2 <- try(ssa.test(\"" + design + "\",data," + respvarVector + ",\"" + genotype + "\",\"" + row + "\",\"" + column + "\",\"" + rep + "\"," + environment + ", is.random = TRUE, excludeCheck=TRUE, checkList= NULL), silent=TRUE)";
+							groupVars = "c(\"" + genotype + "\", \"" + rep + "\", \"" + row + "\", \"" + column + "\")";
 						}
 					} else {
 						if (designIndex == 0){
@@ -4082,7 +4100,13 @@ public class PBToolAnalysisManager implements IRJavaPBToolsAnalysisManager {
 						} else if (designIndex == 4 || designIndex == 6) {
 							funcSsaRandom = "ssa2 <- try(ssa.test(\"" + design + "\",data," + respvarVector + ",\"" + genotype + "\",\"" + row + "\",\"" + column + "\",\"" + rep + "\",\"" + environment + "\", is.random = TRUE, excludeCheck=TRUE, checkList= " + controlLevelsVector + "), silent=TRUE)";
 							groupVars = "c(\"" + genotype + "\", \"" + rep + "\", \"" + row + "\", \"" + column + "\")";
-						}
+						} else if (designIndex == 7) {
+							funcSsaRandom = "ssa2 <- try(ssa.test(\"" + design + "\",data," + respvarVector + ",\"" + genotype + "\",\"" + block + "\",column=NULL,\"" + rep + "\",\"" + environment + "\", is.random = TRUE, excludeCheck=TRUE, checkList = NULL), silent=TRUE)";
+							groupVars = "c(\"" + genotype + "\", \"" + block + "\", \"" + rep + "\")";
+						} else if (designIndex == 8) {
+							funcSsaRandom = "ssa2 <- try(ssa.test(\"" + design + "\",data," + respvarVector + ",\"" + genotype + "\",\"" + row + "\",\"" + column + "\",\"" + rep + "\",\"" + environment + "\", is.random = TRUE, excludeCheck=TRUE, checkList = NULL), silent=TRUE)";
+							groupVars = "c(\"" + genotype + "\", \"" + rep + "\", \"" + row + "\", \"" + column + "\")";
+						} 
 					}
 				} else {
 					if (environment == "NULL") {
@@ -4092,10 +4116,10 @@ public class PBToolAnalysisManager implements IRJavaPBToolsAnalysisManager {
 						} else if (designIndex == 2) {
 							funcSsaRandom = "ssa2 <- try(ssa.test(\"" + design + "\",data," + respvarVector + ",\"" + genotype + "\",\"" + row + "\",\"" + column + "\", rep=NULL," + environment + ", is.random = TRUE), silent=TRUE)";
 							groupVars = "c(\"" + genotype + "\", \"" + row + "\", \"" + column + "\")";
-						} else if (designIndex == 3 || designIndex == 5) {
+						} else if (designIndex == 3 || designIndex == 5 || designIndex == 7) {
 							funcSsaRandom = "ssa2 <- try(ssa.test(\"" + design + "\",data," + respvarVector + ",\"" + genotype + "\",\"" + block + "\",column=NULL,\"" + rep + "\"," + environment + ", is.random = TRUE), silent=TRUE)";
 							groupVars = "c(\"" + genotype + "\", \"" + block + "\", \"" + rep + "\")";
-						} else if (designIndex == 4 || designIndex == 6) {
+						} else if (designIndex == 4 || designIndex == 6 || designIndex == 8) {
 							funcSsaRandom = "ssa2 <- try(ssa.test(\"" + design + "\",data," + respvarVector + ",\"" + genotype + "\",\"" + row + "\",\"" + column + "\",\"" + rep + "\"," + environment + ", is.random = TRUE), silent=TRUE)";
 							groupVars = "c(\"" + genotype + "\", \"" + rep + "\", \"" + row + "\", \"" + column + "\")";
 						}
@@ -4106,10 +4130,10 @@ public class PBToolAnalysisManager implements IRJavaPBToolsAnalysisManager {
 						} else if (designIndex == 2) {
 							funcSsaRandom = "ssa2 <- try(ssa.test(\"" + design + "\",data," + respvarVector + ",\"" + genotype + "\",\"" + row + "\",\"" + column + "\", rep=NULL,\"" + environment + "\", is.random = TRUE), silent=TRUE)";
 							groupVars = "c(\"" + genotype + "\", \"" + row + "\", \"" + column + "\")";
-						} else if (designIndex == 3 || designIndex == 5) {
+						} else if (designIndex == 3 || designIndex == 5 || designIndex == 7) {
 							funcSsaRandom = "ssa2 <- try(ssa.test(\"" + design + "\",data," + respvarVector + ",\"" + genotype + "\",\"" + block + "\",column=NULL,\"" + rep + "\",\"" + environment + "\", is.random = TRUE), silent=TRUE)";
 							groupVars = "c(\"" + genotype + "\", \"" + block + "\", \"" + rep + "\")";
-						} else if (designIndex == 4 || designIndex == 6) {
+						} else if (designIndex == 4 || designIndex == 6 || designIndex == 8) {
 							funcSsaRandom = "ssa2 <- try(ssa.test(\"" + design + "\",data," + respvarVector + ",\"" + genotype + "\",\"" + row + "\",\"" + column + "\",\"" + rep + "\",\"" + environment + "\", is.random = TRUE), silent=TRUE)";
 							groupVars = "c(\"" + genotype + "\", \"" + rep + "\", \"" + row + "\", \"" + column + "\")";
 						}
@@ -4381,6 +4405,10 @@ public class PBToolAnalysisManager implements IRJavaPBToolsAnalysisManager {
 								funcEstCorr = "gpcorr <- try(genoNpheno.corr(\"" + design + "\",data," + respvarVector + ",\"" + genotype + "\",\"" + block + "\",column=NULL,\"" + rep + "\"," + environment + ", excludeLevels=TRUE, excludeList = " + controlLevelsVector + "), silent=TRUE)";
 							else if (designIndex == 6)
 								funcEstCorr = "gpcorr <- try(genoNpheno.corr(\"" + design + "\",data," + respvarVector + ",\"" + genotype + "\",\"" + row + "\",\"" + column + "\",\"" + rep + "\"," + environment + ", excludeLevels=TRUE, excludeList = " + controlLevelsVector + "), silent=TRUE)";
+							else if (designIndex == 7)
+								funcEstCorr = "gpcorr <- try(genoNpheno.corr(\"" + design + "\",data," + respvarVector + ",\"" + genotype + "\",\"" + block + "\",column=NULL,\"" + rep + "\"," + environment + ", excludeLevels=TRUE, excludeList = NULL), silent=TRUE)";
+							else if (designIndex == 8)
+								funcEstCorr = "gpcorr <- try(genoNpheno.corr(\"" + design + "\",data," + respvarVector + ",\"" + genotype + "\",\"" + row + "\",\"" + column + "\",\"" + rep + "\"," + environment + ", excludeLevels=TRUE, excludeList = NULL), silent=TRUE)";
 						} else {
 							if (designIndex == 0)
 								funcEstCorr = "gpcorr <- try(genoNpheno.corr(\"" + design + "\",data," + respvarVector + ",\"" + genotype + "\",\"" + block + "\",column=NULL, rep=NULL,\"" + environment + "\", excludeLevels=TRUE, excludeList = " + controlLevelsVector + "), silent=TRUE)";
@@ -4396,6 +4424,10 @@ public class PBToolAnalysisManager implements IRJavaPBToolsAnalysisManager {
 								funcEstCorr = "gpcorr <- try(genoNpheno.corr(\"" + design + "\",data," + respvarVector + ",\"" + genotype + "\",\"" + block + "\",column=NULL,\"" + rep + "\",\"" + environment + "\", excludeLevels=TRUE, excludeList = " + controlLevelsVector + "), silent=TRUE)";
 							else if (designIndex == 6)
 								funcEstCorr = "gpcorr <- try(genoNpheno.corr(\"" + design + "\",data," + respvarVector + ",\"" + genotype + "\",\"" + row + "\",\"" + column + "\",\"" + rep + "\",\"" + environment + "\", excludeLevels=TRUE, excludeList = " + controlLevelsVector + "), silent=TRUE)";
+							else if (designIndex == 7)
+								funcEstCorr = "gpcorr <- try(genoNpheno.corr(\"" + design + "\",data," + respvarVector + ",\"" + genotype + "\",\"" + block + "\",column=NULL,\"" + rep + "\",\"" + environment + "\", excludeLevels=TRUE, excludeList = NULL), silent=TRUE)";
+							else if (designIndex == 8)
+								funcEstCorr = "gpcorr <- try(genoNpheno.corr(\"" + design + "\",data," + respvarVector + ",\"" + genotype + "\",\"" + row + "\",\"" + column + "\",\"" + rep + "\",\"" + environment + "\", excludeLevels=TRUE, excludeList = NULL), silent=TRUE)";
 						}
 					} else {
 						if (environment == "NULL") {
@@ -4403,9 +4435,9 @@ public class PBToolAnalysisManager implements IRJavaPBToolsAnalysisManager {
 								funcEstCorr = "gpcorr <- try(genoNpheno.corr(\"" + design + "\",data," + respvarVector + ",\"" + genotype + "\",\"" + block + "\",column=NULL, rep=NULL," + environment + "), silent=TRUE)";
 							else if (designIndex == 2)
 								funcEstCorr = "gpcorr <- try(genoNpheno.corr(\"" + design + "\",data," + respvarVector + ",\"" + genotype + "\",\"" + row + "\",\"" + column + "\", rep=NULL," + environment + "), silent=TRUE)";
-							else if (designIndex == 3)
+							else if (designIndex == 3 || designIndex == 7)
 								funcEstCorr = "gpcorr <- try(genoNpheno.corr(\"" + design + "\",data," + respvarVector + ",\"" + genotype + "\",\"" + block + "\",column=NULL,\"" + rep + "\"," + environment + "), silent=TRUE)";
-							else if (designIndex == 4)
+							else if (designIndex == 4 || designIndex == 8)
 								funcEstCorr = "gpcorr <- try(genoNpheno.corr(\"" + design + "\",data," + respvarVector + ",\"" + genotype + "\",\"" + row + "\",\"" + column + "\",\"" + rep + "\"," + environment + "), silent=TRUE)";
 							else if (designIndex == 5)
 								funcEstCorr = "gpcorr <- try(genoNpheno.corr(\"" + design + "\",data," + respvarVector + ",\"" + genotype + "\",\"" + block + "\",column=NULL,\"" + rep + "\"," + environment + "), silent=TRUE)";
@@ -4416,9 +4448,9 @@ public class PBToolAnalysisManager implements IRJavaPBToolsAnalysisManager {
 								funcEstCorr = "gpcorr <- try(genoNpheno.corr(\"" + design + "\",data," + respvarVector + ",\"" + genotype + "\",\"" + block + "\",column=NULL, rep=NULL,\"" + environment + "\"), silent=TRUE)";
 							else if (designIndex == 2)
 								funcEstCorr = "gpcorr <- try(genoNpheno.corr(\"" + design + "\",data," + respvarVector + ",\"" + genotype + "\",\"" + row + "\",\"" + column + "\", rep=NULL,\"" + environment + "\"), silent=TRUE)";
-							else if (designIndex == 3)
+							else if (designIndex == 3 || designIndex == 7)
 								funcEstCorr = "gpcorr <- try(genoNpheno.corr(\"" + design + "\",data," + respvarVector + ",\"" + genotype + "\",\"" + block + "\",column=NULL,\"" + rep + "\",\"" + environment + "\"), silent=TRUE)";
-							else if (designIndex == 4)
+							else if (designIndex == 4 || designIndex == 8)
 								funcEstCorr = "gpcorr <- try(genoNpheno.corr(\"" + design + "\",data," + respvarVector + ",\"" + genotype + "\",\"" + row + "\",\"" + column + "\",\"" + rep + "\",\"" + environment + "\"), silent=TRUE)";
 							else if (designIndex == 5)
 								funcEstCorr = "gpcorr <- try(genoNpheno.corr(\"" + design + "\",data," + respvarVector + ",\"" + genotype + "\",\"" + block + "\",column=NULL,\"" + rep + "\",\"" + environment + "\"), silent=TRUE)";
@@ -4973,6 +5005,8 @@ public class PBToolAnalysisManager implements IRJavaPBToolsAnalysisManager {
 			String genotype, String block, String rep, String row, String column, boolean descriptiveStat, boolean varianceComponents, boolean boxplotRawData, boolean histogramRawData, boolean diagnosticPlot, boolean genotypeFixed, boolean performPairwise, String pairwiseAlpha, String[] genotypeLevels, 
 			String[] controlLevels, boolean compareControl, boolean performAllPairwise, boolean genotypeRandom) {
 	
+		// This function is for the standalone PBTools
+		
 		String respvarVector= inputTransform.createRVector(respvar);
 		String controlLevelsVector= inputTransform.createRVector(controlLevels);
 		boolean runningFixedSuccess =true;
@@ -5017,6 +5051,16 @@ public class PBToolAnalysisManager implements IRJavaPBToolsAnalysisManager {
 				case 6: {
 					designUsed = "Latinized Row-Column"; 
 					design = "LatinRowCol";
+					break;
+				}
+				case 7: {
+					designUsed = "Augmented Alpha-Lattice"; 
+					design = "Alpha";
+					break;
+				}
+				case 8: {
+					designUsed = "Augmented Row-Column"; 
+					design = "RowCol";
 					break;
 				}
 				default: {
@@ -5064,10 +5108,10 @@ public class PBToolAnalysisManager implements IRJavaPBToolsAnalysisManager {
 				} else if (design == "AugLS") {
 					funcMeaOneStageFixed = "meaOne1 <- try(GEOneStage.test(\"" + design + "\",dataMeaOneStage,"+ respvarVector + ",\"" + genotype + "\", row = \"" + row + "\", column = \"" + column + "\", rep = NULL,\"" + environment + "\", is.genoRandom = FALSE), silent=TRUE)";
 					groupVars = "c(\"" + environment + "\", \"" + genotype + "\", \"" + row + "\", \"" + column +"\")";
-				} else if (design == "Alpha" || design == "LatinAlpha") {
+				} else if (design == "Alpha" || design == "LatinAlpha" || design == "AugAlpha") {
 					funcMeaOneStageFixed = "meaOne1 <- try(GEOneStage.test(\"" + design + "\",dataMeaOneStage,"+ respvarVector + ",\"" + genotype + "\",\"" + block+ "\",column = NULL,\"" + rep + "\",\"" + environment+ "\", is.genoRandom = FALSE), silent=TRUE)";
 					groupVars = "c(\"" + environment + "\", \"" + genotype + "\", \"" + block + "\", \"" + rep + "\")";
-				} else if (design == "RowCol" || design == "LatinRowCol") {
+				} else if (design == "RowCol" || design == "LatinRowCol" || design == "AugRowCol") {
 					funcMeaOneStageFixed = "meaOne1 <- try(GEOneStage.test(\"" + design + "\",dataMeaOneStage,"+ respvarVector + ",\"" + genotype + "\",\"" + row + "\",\"" + column + "\",\"" + rep + "\",\""+ environment + "\", is.genoRandom = FALSE), silent=TRUE)";
 					groupVars = "c(\"" + environment + "\", \"" + genotype + "\", \"" + rep + "\", \"" + row + "\", \"" + column + "\")";
 				}	
@@ -5683,10 +5727,10 @@ public class PBToolAnalysisManager implements IRJavaPBToolsAnalysisManager {
 				} else if (design == "AugLS") {
 					funcMeaOneStageRandom = "meaOne2 <- try(GEOneStage.test(\"" + design + "\",dataMeaOneStage,"+ respvarVector + ",\"" + genotype + "\", row = \"" + row + "\", column = \"" + column + "\", rep = NULL,\"" + environment + "\", is.genoRandom = TRUE), silent=TRUE)";
 					groupVars = "c(\"" + environment + "\", \"" + genotype + "\", \"" + row + "\", \"" + column +"\")";
-				} else if (design == "Alpha" || design == "LatinAlpha") {
+				} else if (design == "Alpha" || design == "LatinAlpha" || design == "AugAlpha") {
 				 	funcMeaOneStageRandom = "meaOne2 <- try(GEOneStage.test(\"" + design + "\",dataMeaOneStage,"+ respvarVector + ",\"" + genotype + "\",\"" + block+ "\",column = NULL,\"" + rep + "\",\"" + environment+ "\", is.genoRandom = TRUE), silent=TRUE)";
 					groupVars = "c(\"" + environment + "\", \"" + genotype + "\", \"" + block + "\", \"" + rep + "\")";
-				} else if (design == "RowCol" || design == "LatinRowCol") {
+				} else if (design == "RowCol" || design == "LatinRowCol" || design == "AugRowCol") {
 					funcMeaOneStageRandom = "meaOne2 <- try(GEOneStage.test(\"" + design + "\",dataMeaOneStage,"+ respvarVector + ",\"" + genotype + "\",\"" + row+ "\",\"" + column + "\",\"" + rep + "\",\""+ environment + "\", is.genoRandom = TRUE), silent=TRUE)";
 					groupVars = "c(\"" + environment + "\", \"" + genotype + "\", \"" + rep + "\", \"" + row + "\", \"" + column + "\")";
 				}
@@ -9165,8 +9209,11 @@ public class PBToolAnalysisManager implements IRJavaPBToolsAnalysisManager {
 				boolean genotypeFixed, String pairwiseAlpha, String[] genotypeLevels, String[] controlLevels, boolean compareControl, boolean specifiedContrast, String contrastFileName,
 				boolean genotypeRandom, boolean excludeControls, boolean genoPhenoCorrelation) {
 		
-			// rjava manager for single site analysisn for DMAS
-			
+			// rjava manager for single site analysisn for DMAS and BIMS?
+		
+			// calculate the running time:
+			long startTime=System.nanoTime();
+						
 			String respvarVector= inputTransform.createRVector(respvar);
 	//		String genotypeLevelsVector= inputTransform.createRVector(genotypeLevels);
 			String controlLevelsVector= inputTransform.createRVector(controlLevels);
@@ -9214,6 +9261,16 @@ public class PBToolAnalysisManager implements IRJavaPBToolsAnalysisManager {
 						design = "LatinRowCol";
 						break;
 					}
+					case 7: {
+						designUsed = "Augmented Alpha-Lattice"; 
+						design = "AugAlpha";
+						break;
+					}
+					case 8: {
+						designUsed = "Augmented Row-Column"; 
+						design = "AugRowCol";
+						break;
+					}
 					default: {
 						designUsed = "Randomized Complete Block (RCB)"; 
 						design = "RCB";
@@ -9259,10 +9316,10 @@ public class PBToolAnalysisManager implements IRJavaPBToolsAnalysisManager {
 						} else if (designIndex == 2) {
 							funcSsaFixed = "ssa1 <- try(ssa.test(\"" + design + "\",data,"+ respvarVector + ",\"" + genotype + "\",\"" + row+ "\",\"" + column + "\", rep=NULL," + environment+ ", is.random = FALSE), silent = TRUE)";
 							groupVars = "c(\"" + genotype + "\", \"" + row + "\", \"" + column + "\")";
-						} else if (designIndex == 3 || designIndex == 5) {
+						} else if (designIndex == 3 || designIndex == 5 || designIndex == 7) {
 							funcSsaFixed = "ssa1 <- try(ssa.test(\"" + design + "\",data,"+ respvarVector + ",\"" + genotype + "\",\"" + block+ "\",column=NULL,\"" + rep + "\"," + environment+ ", is.random = FALSE), silent = TRUE)";
 							groupVars = "c(\"" + genotype + "\", \"" + block + "\", \"" + rep + "\")";
-						} else if (designIndex == 4 || designIndex == 6) {
+						} else if (designIndex == 4 || designIndex == 6 || designIndex == 8) {
 							funcSsaFixed = "ssa1 <- try(ssa.test(\"" + design + "\",data,"+ respvarVector + ",\"" + genotype + "\",\"" + row+ "\",\"" + column + "\",\"" + rep + "\","+ environment + ", is.random = FALSE), silent = TRUE)";
 							groupVars = "c(\"" + genotype + "\", \"" + rep + "\", \"" + row + "\", \"" + column + "\")";
 						}
@@ -9273,10 +9330,10 @@ public class PBToolAnalysisManager implements IRJavaPBToolsAnalysisManager {
 						} else if (designIndex == 2) {
 							funcSsaFixed = "ssa1 <- try(ssa.test(\"" + design + "\",data,"+ respvarVector + ",\"" + genotype + "\",\"" + row+ "\",\"" + column + "\", rep=NULL,\"" + environment+ "\", is.random = FALSE), silent = TRUE)";
 							groupVars = "c(\"" + genotype + "\", \"" + row + "\", \"" + column + "\")";
-						} else if (designIndex == 3 || designIndex == 5) {
+						} else if (designIndex == 3 || designIndex == 5  || designIndex == 7) {
 							funcSsaFixed = "ssa1 <- try(ssa.test(\"" + design + "\",data,"+ respvarVector + ",\"" + genotype + "\",\"" + block+ "\",column=NULL,\"" + rep + "\",\"" + environment+ "\", is.random = FALSE), silent = TRUE)";
 							groupVars = "c(\"" + genotype + "\", \"" + block + "\", \"" + rep + "\")";
-						} else if (designIndex == 4 || designIndex == 6) {
+						} else if (designIndex == 4 || designIndex == 6 || designIndex == 8) {
 							funcSsaFixed = "ssa1 <- try(ssa.test(\"" + design + "\",data,"+ respvarVector + ",\"" + genotype + "\",\"" + row+ "\",\"" + column + "\",\"" + rep + "\",\""+ environment + "\", is.random = FALSE), silent = TRUE)";
 							groupVars = "c(\"" + genotype + "\", \"" + rep + "\", \"" + row + "\", \"" + column + "\")";
 						}
@@ -9448,11 +9505,23 @@ public class PBToolAnalysisManager implements IRJavaPBToolsAnalysisManager {
 									String outAnovaTable3 = "model1b <- lmer(formula(ssa1$output[[" + i + "]]$site[[" + j + "]]$formula1), data = ssa1$output[[" + i + "]]$site[[" + j + "]]$data, REML = T)";
 									String outAnovaTable4 = "a.table <- anova(model1b)";
 									String outAnovaTable5 = "pvalue <- formatC(as.numeric(format(a.table[1,6], scientific=FALSE)), format=\"f\")";
-									String outAnovaTable6 = "a.table<-cbind(round(a.table[,1:5], digits=4),pvalue)";
+									//String outAnovaTable6 = "a.table<-cbind(round(a.table[,1:5], digits=4),pvalue)";
+									String outAnovaTable6 = "a.table<-cbind(round(a.table[,c(\"NumDF\", \"Sum Sq\", \"Mean Sq\", \"F.value\", \"DenDF\")], digits=4),pvalue)";
 									String outAnovaTable7 = "colnames(a.table)<-c(\"Df\", \"Sum Sq\", \"Mean Sq\", \"F value\", \"Denom\", \"Pr(>F)\")";
 									String outAnovaTable8 = "capture.output(cat(\"Analysis of Variance Table with Satterthwaite Denominator Df\n\"),file=\"" + outFileName + "\",append = TRUE)";
 									String outAnovaTable9 = "capture.output(a.table,file=\"" + outFileName + "\",append = TRUE)";
 									String outAnovaTable10 = "detach(\"package:lmerTest\")";
+									
+									System.out.println(outAnovaTable1);
+									System.out.println(outAnovaTable2);
+									System.out.println(outAnovaTable3);
+									System.out.println(outAnovaTable4);
+									System.out.println(outAnovaTable5);
+									System.out.println(outAnovaTable6);
+									System.out.println(outAnovaTable7);
+									System.out.println(outAnovaTable8);
+									System.out.println(outAnovaTable9);
+									System.out.println(outAnovaTable10);
 									
 									rEngine.eval(outAnovaTable1);
 									rEngine.eval(outAnovaTable2);
@@ -9506,6 +9575,9 @@ public class PBToolAnalysisManager implements IRJavaPBToolsAnalysisManager {
 									String outDescStat = "capture.output(cat(\"\nGENOTYPE LSMEANS AND STANDARD ERRORS:\n\n\"),file=\"" + outFileName + "\",append = TRUE)";
 									String outDescStat2 = "capture.output(ssa1$output[[" + i + "]]$site[[" + j + "]]$summary.statistic,file=\"" + outFileName + "\",append = TRUE)"; 
 			
+									System.out.println(outDescStat);
+									System.out.println(outDescStat2);
+									
 									rEngine.eval(outDescStat);
 									rEngine.eval(outDescStat2);
 									rEngine.eval(outspace);
@@ -9514,6 +9586,9 @@ public class PBToolAnalysisManager implements IRJavaPBToolsAnalysisManager {
 									String outsedTable = "capture.output(cat(\"\nSTANDARD ERROR OF THE DIFFERENCE (SED):\n\n\"),file=\"" + outFileName + "\",append = TRUE)";
 									String outsedTable2 = "capture.output(ssa1$output[[" + i + "]]$site[[" + j + "]]$sedTable,file=\"" + outFileName + "\",append = TRUE)";
 	
+									System.out.println(outsedTable);
+									System.out.println(outsedTable2);
+									
 									rEngine.eval(outsedTable);
 									rEngine.eval(outsedTable2);
 									rEngine.eval(outspace);
@@ -9773,7 +9848,14 @@ public class PBToolAnalysisManager implements IRJavaPBToolsAnalysisManager {
 							} else if (designIndex == 4 || designIndex == 6) {
 								funcSsaRandom = "ssa2 <- try(ssa.test(\"" + design + "\",data," + respvarVector + ",\"" + genotype + "\",\"" + row + "\",\"" + column + "\",\"" + rep + "\"," + environment + ", is.random = TRUE, excludeCheck=TRUE, checkList= " + controlLevelsVector + "), silent=TRUE)";
 								groupVars = "c(\"" + genotype + "\", \"" + rep + "\", \"" + row + "\", \"" + column + "\")";
+							} else if (designIndex == 7) {
+								funcSsaRandom = "ssa2 <- try(ssa.test(\"" + design + "\",data," + respvarVector + ",\"" + genotype + "\",\"" + block + "\",column=NULL,\"" + rep + "\"," + environment + ", is.random = TRUE, excludeCheck=TRUE, checkList= NULL), silent=TRUE)";
+								groupVars = "c(\"" + genotype + "\", \"" + block + "\", \"" + rep + "\")";
+							} else if (designIndex == 8) {
+								funcSsaRandom = "ssa2 <- try(ssa.test(\"" + design + "\",data," + respvarVector + ",\"" + genotype + "\",\"" + row + "\",\"" + column + "\",\"" + rep + "\"," + environment + ", is.random = TRUE, excludeCheck=TRUE, checkList= NULL), silent=TRUE)";
+								groupVars = "c(\"" + genotype + "\", \"" + rep + "\", \"" + row + "\", \"" + column + "\")";
 							}
+							
 						} else {
 							if (designIndex == 0){
 								funcSsaRandom = "ssa2 <- try(ssa.test(\"" + design + "\",data," + respvarVector + ",\"" + genotype + "\",\"" + block + "\",column=NULL, rep=NULL,\"" + environment + "\", is.random = TRUE, excludeCheck=TRUE, checkList= " + controlLevelsVector + "), silent=TRUE)";
@@ -9790,6 +9872,12 @@ public class PBToolAnalysisManager implements IRJavaPBToolsAnalysisManager {
 							} else if (designIndex == 4 || designIndex == 6) {
 								funcSsaRandom = "ssa2 <- try(ssa.test(\"" + design + "\",data," + respvarVector + ",\"" + genotype + "\",\"" + row + "\",\"" + column + "\",\"" + rep + "\",\"" + environment + "\", is.random = TRUE, excludeCheck=TRUE, checkList= " + controlLevelsVector + "), silent=TRUE)";
 								groupVars = "c(\"" + genotype + "\", \"" + rep + "\", \"" + row + "\", \"" + column + "\")";
+							} else if (designIndex == 7) {
+								funcSsaRandom = "ssa2 <- try(ssa.test(\"" + design + "\",data," + respvarVector + ",\"" + genotype + "\",\"" + block + "\",column=NULL,\"" + rep + "\",\"" + environment + "\", is.random = TRUE, excludeCheck=TRUE, checkList= NULL), silent=TRUE)";
+								groupVars = "c(\"" + genotype + "\", \"" + block + "\", \"" + rep + "\")";
+							} else if (designIndex == 8) {
+								funcSsaRandom = "ssa2 <- try(ssa.test(\"" + design + "\",data," + respvarVector + ",\"" + genotype + "\",\"" + row + "\",\"" + column + "\",\"" + rep + "\",\"" + environment + "\", is.random = TRUE, excludeCheck=TRUE, checkList= NULL), silent=TRUE)";
+								groupVars = "c(\"" + genotype + "\", \"" + rep + "\", \"" + row + "\", \"" + column + "\")";
 							}
 						}
 					} else {
@@ -9800,10 +9888,10 @@ public class PBToolAnalysisManager implements IRJavaPBToolsAnalysisManager {
 							} else if (designIndex == 2) {
 								funcSsaRandom = "ssa2 <- try(ssa.test(\"" + design + "\",data," + respvarVector + ",\"" + genotype + "\",\"" + row + "\",\"" + column + "\", rep=NULL," + environment + ", is.random = TRUE), silent=TRUE)";
 								groupVars = "c(\"" + genotype + "\", \"" + row + "\", \"" + column + "\")";
-							} else if (designIndex == 3 || designIndex == 5) {
+							} else if (designIndex == 3 || designIndex == 5 || designIndex == 7) {
 								funcSsaRandom = "ssa2 <- try(ssa.test(\"" + design + "\",data," + respvarVector + ",\"" + genotype + "\",\"" + block + "\",column=NULL,\"" + rep + "\"," + environment + ", is.random = TRUE), silent=TRUE)";
 								groupVars = "c(\"" + genotype + "\", \"" + block + "\", \"" + rep + "\")";
-							} else if (designIndex == 4 || designIndex == 6) {
+							} else if (designIndex == 4 || designIndex == 6 || designIndex == 8) {
 								funcSsaRandom = "ssa2 <- try(ssa.test(\"" + design + "\",data," + respvarVector + ",\"" + genotype + "\",\"" + row + "\",\"" + column + "\",\"" + rep + "\"," + environment + ", is.random = TRUE), silent=TRUE)";
 								groupVars = "c(\"" + genotype + "\", \"" + rep + "\", \"" + row + "\", \"" + column + "\")";
 							}
@@ -9814,10 +9902,10 @@ public class PBToolAnalysisManager implements IRJavaPBToolsAnalysisManager {
 							} else if (designIndex == 2) {
 								funcSsaRandom = "ssa2 <- try(ssa.test(\"" + design + "\",data," + respvarVector + ",\"" + genotype + "\",\"" + row + "\",\"" + column + "\", rep=NULL,\"" + environment + "\", is.random = TRUE), silent=TRUE)";
 								groupVars = "c(\"" + genotype + "\", \"" + row + "\", \"" + column + "\")";
-							} else if (designIndex == 3 || designIndex == 5) {
+							} else if (designIndex == 3 || designIndex == 5 || designIndex == 7) {
 								funcSsaRandom = "ssa2 <- try(ssa.test(\"" + design + "\",data," + respvarVector + ",\"" + genotype + "\",\"" + block + "\",column=NULL,\"" + rep + "\",\"" + environment + "\", is.random = TRUE), silent=TRUE)";
 								groupVars = "c(\"" + genotype + "\", \"" + block + "\", \"" + rep + "\")";
-							} else if (designIndex == 4 || designIndex == 6) {
+							} else if (designIndex == 4 || designIndex == 6 || designIndex == 8) {
 								funcSsaRandom = "ssa2 <- try(ssa.test(\"" + design + "\",data," + respvarVector + ",\"" + genotype + "\",\"" + row + "\",\"" + column + "\",\"" + rep + "\",\"" + environment + "\", is.random = TRUE), silent=TRUE)";
 								groupVars = "c(\"" + genotype + "\", \"" + rep + "\", \"" + row + "\", \"" + column + "\")";
 							}
@@ -10089,6 +10177,11 @@ public class PBToolAnalysisManager implements IRJavaPBToolsAnalysisManager {
 									funcEstCorr = "gpcorr <- try(genoNpheno.corr(\"" + design + "\",data," + respvarVector + ",\"" + genotype + "\",\"" + block + "\",column=NULL,\"" + rep + "\"," + environment + ", excludeLevels=TRUE, excludeList = " + controlLevelsVector + "), silent=TRUE)";
 								else if (designIndex == 6)
 									funcEstCorr = "gpcorr <- try(genoNpheno.corr(\"" + design + "\",data," + respvarVector + ",\"" + genotype + "\",\"" + row + "\",\"" + column + "\",\"" + rep + "\"," + environment + ", excludeLevels=TRUE, excludeList = " + controlLevelsVector + "), silent=TRUE)";
+								else if (designIndex == 7)
+									funcEstCorr = "gpcorr <- try(genoNpheno.corr(\"" + design + "\",data," + respvarVector + ",\"" + genotype + "\",\"" + block + "\",column=NULL,\"" + rep + "\"," + environment + ", excludeLevels=TRUE, excludeList = NULL), silent=TRUE)";
+								else if (designIndex == 8)
+									funcEstCorr = "gpcorr <- try(genoNpheno.corr(\"" + design + "\",data," + respvarVector + ",\"" + genotype + "\",\"" + row + "\",\"" + column + "\",\"" + rep + "\"," + environment + ", excludeLevels=TRUE, excludeList = NULL), silent=TRUE)";
+								
 							} else {
 								if (designIndex == 0)
 									funcEstCorr = "gpcorr <- try(genoNpheno.corr(\"" + design + "\",data," + respvarVector + ",\"" + genotype + "\",\"" + block + "\",column=NULL, rep=NULL,\"" + environment + "\", excludeLevels=TRUE, excludeList = " + controlLevelsVector + "), silent=TRUE)";
@@ -10104,6 +10197,11 @@ public class PBToolAnalysisManager implements IRJavaPBToolsAnalysisManager {
 									funcEstCorr = "gpcorr <- try(genoNpheno.corr(\"" + design + "\",data," + respvarVector + ",\"" + genotype + "\",\"" + block + "\",column=NULL,\"" + rep + "\",\"" + environment + "\", excludeLevels=TRUE, excludeList = " + controlLevelsVector + "), silent=TRUE)";
 								else if (designIndex == 6)
 									funcEstCorr = "gpcorr <- try(genoNpheno.corr(\"" + design + "\",data," + respvarVector + ",\"" + genotype + "\",\"" + row + "\",\"" + column + "\",\"" + rep + "\",\"" + environment + "\", excludeLevels=TRUE, excludeList = " + controlLevelsVector + "), silent=TRUE)";
+								else if (designIndex == 7)
+									funcEstCorr = "gpcorr <- try(genoNpheno.corr(\"" + design + "\",data," + respvarVector + ",\"" + genotype + "\",\"" + block + "\",column=NULL,\"" + rep + "\",\"" + environment + "\", excludeLevels=TRUE, excludeList = NULL), silent=TRUE)";
+								else if (designIndex == 8)
+									funcEstCorr = "gpcorr <- try(genoNpheno.corr(\"" + design + "\",data," + respvarVector + ",\"" + genotype + "\",\"" + row + "\",\"" + column + "\",\"" + rep + "\",\"" + environment + "\", excludeLevels=TRUE, excludeList = NULL), silent=TRUE)";
+								
 							}
 						} else {
 							if (environment == "NULL") {
@@ -10111,9 +10209,9 @@ public class PBToolAnalysisManager implements IRJavaPBToolsAnalysisManager {
 									funcEstCorr = "gpcorr <- try(genoNpheno.corr(\"" + design + "\",data," + respvarVector + ",\"" + genotype + "\",\"" + block + "\",column=NULL, rep=NULL," + environment + "), silent=TRUE)";
 								else if (designIndex == 2)
 									funcEstCorr = "gpcorr <- try(genoNpheno.corr(\"" + design + "\",data," + respvarVector + ",\"" + genotype + "\",\"" + row + "\",\"" + column + "\", rep=NULL," + environment + "), silent=TRUE)";
-								else if (designIndex == 3)
+								else if (designIndex == 3 || designIndex == 7)
 									funcEstCorr = "gpcorr <- try(genoNpheno.corr(\"" + design + "\",data," + respvarVector + ",\"" + genotype + "\",\"" + block + "\",column=NULL,\"" + rep + "\"," + environment + "), silent=TRUE)";
-								else if (designIndex == 4)
+								else if (designIndex == 4 || designIndex == 8)
 									funcEstCorr = "gpcorr <- try(genoNpheno.corr(\"" + design + "\",data," + respvarVector + ",\"" + genotype + "\",\"" + row + "\",\"" + column + "\",\"" + rep + "\"," + environment + "), silent=TRUE)";
 								else if (designIndex == 5)
 									funcEstCorr = "gpcorr <- try(genoNpheno.corr(\"" + design + "\",data," + respvarVector + ",\"" + genotype + "\",\"" + block + "\",column=NULL,\"" + rep + "\"," + environment + "), silent=TRUE)";
@@ -10124,9 +10222,9 @@ public class PBToolAnalysisManager implements IRJavaPBToolsAnalysisManager {
 									funcEstCorr = "gpcorr <- try(genoNpheno.corr(\"" + design + "\",data," + respvarVector + ",\"" + genotype + "\",\"" + block + "\",column=NULL, rep=NULL,\"" + environment + "\"), silent=TRUE)";
 								else if (designIndex == 2)
 									funcEstCorr = "gpcorr <- try(genoNpheno.corr(\"" + design + "\",data," + respvarVector + ",\"" + genotype + "\",\"" + row + "\",\"" + column + "\", rep=NULL,\"" + environment + "\"), silent=TRUE)";
-								else if (designIndex == 3)
+								else if (designIndex == 3 || designIndex == 7)
 									funcEstCorr = "gpcorr <- try(genoNpheno.corr(\"" + design + "\",data," + respvarVector + ",\"" + genotype + "\",\"" + block + "\",column=NULL,\"" + rep + "\",\"" + environment + "\"), silent=TRUE)";
-								else if (designIndex == 4)
+								else if (designIndex == 4 || designIndex == 8)
 									funcEstCorr = "gpcorr <- try(genoNpheno.corr(\"" + design + "\",data," + respvarVector + ",\"" + genotype + "\",\"" + row + "\",\"" + column + "\",\"" + rep + "\",\"" + environment + "\"), silent=TRUE)";
 								else if (designIndex == 5)
 									funcEstCorr = "gpcorr <- try(genoNpheno.corr(\"" + design + "\",data," + respvarVector + ",\"" + genotype + "\",\"" + block + "\",column=NULL,\"" + rep + "\",\"" + environment + "\"), silent=TRUE)";
@@ -10297,6 +10395,8 @@ public class PBToolAnalysisManager implements IRJavaPBToolsAnalysisManager {
 								System.out.println("Saving resid (fixed) not done.");
 							} else {
 								String func1SaveResidualsCsv = "saveResid <- try(write.table(resid_f$residuals, file = residFileNameFixed ,sep=\",\",row.names=FALSE), silent=TRUE)";
+								System.out.println(residFileNameFixed);
+								System.out.println(func1SaveResidualsCsv);
 								rEngine.eval(residFileNameFixed);
 								rEngine.eval(func1SaveResidualsCsv);
 								
@@ -10670,6 +10770,11 @@ public class PBToolAnalysisManager implements IRJavaPBToolsAnalysisManager {
 				rEngine.eval(outspace);
 				rEngine.eval(sep2);
 	
+				 long elapsedTime = System.nanoTime() - startTime;
+				 //String elapsedTimeResult =((double) elapsedTime / 1000000000) + " sec";
+		         System.out.println("#####" + ": Elapsed Time = " + elapsedTime + " ns = " + ((double) elapsedTime / 1000000000) + " sec");
+				
+				
 				rEngineEnd();
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -10686,7 +10791,7 @@ public class PBToolAnalysisManager implements IRJavaPBToolsAnalysisManager {
 				boolean specifiedContrastEnv, String contrastEnvFilename, boolean ammi, boolean gge) {
 		
 
-			// This function is for DMAS with contrast analysis, ammi ang gge analysis
+			// This function is for DMAS with contrast analysis, ammi and gge analysis
 		
 			String respvarVector= inputTransform.createRVector(respvar);
 			String controlLevelsVector= inputTransform.createRVector(controlLevels);
@@ -12035,7 +12140,10 @@ public class PBToolAnalysisManager implements IRJavaPBToolsAnalysisManager {
 		
 		command = command + ", path = \""+ outputPath + "\", method = \"method2\")";
 		funcStmt = funcStmt + command + ", silent = TRUE)";
-		String saveData = "write.csv(result[[1]]$outlier, file = \""+ outputPath +"Outlier.csv\", row.names = FALSE)";
+		String saveData = "if (!is.null(result[[1]]$outlier)) {\n";
+		saveData = saveData + "write.csv(result[[1]]$outlier, file = \""+ outputPath +"Outlier.csv\", row.names = FALSE)\n";
+		saveData = saveData + "}";
+		
 		
 		System.out.println(readData);
 		System.out.println(funcStmt);

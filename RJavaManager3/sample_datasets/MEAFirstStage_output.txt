@@ -1,5 +1,5 @@
 
-DATA FILE: E:/AAGulles/BBI/PROGRAMS/ECLIPSE JUNO WORKSPACE/RJavaManager3/sample_datasets/RCB_Multi.csv
+DATA FILE: E:/AAGulles/BBI/PROGRAMS/ECLIPSE JUNO WORKSPACE/RJavaManager3/sample_datasets/StabilityData1.csv
 
 MULTI-ENVIRONMENT ANALYSIS (ONE-STAGE)
 
@@ -10,185 +10,92 @@ GENOTYPE AS: Fixed
 ==============================
 
 ------------------------------
-RESPONSE VARIABLE: Y1
+RESPONSE VARIABLE: GRAINYLD
 ------------------------------
 
 DATA SUMMARY:
 
-Number of observations read:  64 
-Number of observations used:  60 
+Number of observations read:  126 
+Number of observations used:  126 
 
- Factors   Number of Levels   Levels       
- Site      2                  Env1  Env2   
- Gen       8                  1  2  3 ... 8
- Blk       4                  1  2  3  4   
+ Factors   Number of Levels   Levels           
+ ENV       6                  E1  E2  E3 ... E6
+ GENO      7                  G1  G2  G3 ... G7
+ REP       3                  1  2  3          
 
 
 DESCRIPTIVE STATISTICS:
 
   Variable N_NonMissObs     Mean   StdDev
-1       Y1           60 42.79667 6.277022
+1 GRAINYLD          126 46.16667 17.04476
 
 
 VARIANCE COMPONENTS TABLE:
 
-    Groups  Variance Std.Dev.
-1 Gen:Site  7.080869 2.660990
-2 Blk:Site  2.031132 1.425178
-3     Site  0.000000 0.000000
-4 Residual 12.882644 3.589240
+    Groups    Variance  Std.Dev.
+1 GENO:ENV 125.4762422 11.201618
+2  REP:ENV   0.7297123  0.854232
+3      ENV   0.0000000  0.000000
+4 Residual  20.6564726  4.544939
 
 
 TESTING FOR THE SIGNIFICANCE OF GENOTYPIC EFFECT:
 
 Analysis of Variance Table with Satterthwaite Denominator Df
-          Df  Sum Sq Mean Sq F value  Denom Pr(>F)
-Gen 426.3971 60.9139       7  6.9343 4.7284 0.0293
+           Df   Sum Sq Mean Sq F value Denom Pr(>F)
+GENO 1071.577 178.5961       6 34.8755 8.646 0.0000
 
 
 TESTING FOR THE SIGNIFICANCE OF ENVIRONMENT EFFECT USING -2 LOGLIKELIHOOD RATIO TEST:
 
-Formula for Model1:  Y1 ~ 1 + Gen + (1|Site) + (1|Blk:Site) + (1|Gen:Site) 
-Formula for Model2:  Y1 ~ 1 + Gen + (1|Blk:Site) + (1|Gen:Site) 
-
-           AIC      BIC   logLik Chisq Chi Df Pr(>Chisq)
-Model2 331.532 354.5698 -154.766    NA     NA         NA
-Model1 333.532 358.6642 -154.766     0      1  0.9999998
-
-
-TESTING FOR THE SIGNIFICANCE OF GENOTYPE X ENVIRONMENT EFFECT USING -2 LOGLIKELIHOOD RATIO TEST:
-
-Formula for Model1:  Y1 ~ 1 + Gen + (1|Site) + (1|Blk:Site) + (1|Gen:Site) 
-Formula for Model2:  Y1 ~ 1 + Gen + (1|Site) + (1|Blk:Site) 
-
-            AIC      BIC    logLik  Chisq Chi Df Pr(>Chisq)
-Model2 336.5215 359.5593 -157.2607     NA     NA         NA
-Model1 333.5320 358.6642 -154.7660 4.9895      1 0.02550207
-
-
-GENOTYPE X ENVIRONMENT MEANS:
-
-  Gen     Env2     Env1
-1   1 46.91832       NA
-2   2 40.43787 43.16213
-3   3 41.53100 38.06900
-4   4 37.78787 40.51213
-5   5 36.73100 33.26900
-6   6 49.26287 51.98713
-7   7 48.13100 44.66900
-8   8 43.38787 46.11213
-
-
-GENOTYPE LSMEANS AND STANDARD ERRORS:
-
-  Gen   LSMean StdErrMean
-1   1 46.91832   3.277832
-2   2 41.80000   2.324792
-3   3 39.80000   2.324792
-4   4 39.15000   2.324792
-5   5 35.00000   2.324792
-6   6 50.62500   2.324792
-7   7 46.40000   2.324792
-8   8 44.75000   2.324792
-
-
-STANDARD ERROR OF THE DIFFERENCE (SED):
-
-           Estimate
- Minimum   3.2096  
- Average   3.3959  
- Maximum   3.9549  
-
-
-------------------------------
-RESPONSE VARIABLE: Y3
-------------------------------
-
-DATA SUMMARY:
-
-Number of observations read:  64 
-Number of observations used:  64 
-
- Factors   Number of Levels   Levels       
- Site      2                  Env1  Env2   
- Gen       8                  1  2  3 ... 8
- Blk       4                  1  2  3  4   
-
-
-DESCRIPTIVE STATISTICS:
-
-  Variable N_NonMissObs    Mean   StdDev
-1       Y3           64 20.1625 3.252032
-
-
-VARIANCE COMPONENTS TABLE:
-
-    Groups     Variance     Std.Dev.
-1 Gen:Site 1.020332e+01 3.194264e+00
-2 Blk:Site 1.586368e-03 3.982924e-02
-3     Site 9.803072e-14 3.130986e-07
-4 Residual 1.879947e-01 4.335836e-01
-
-
-TESTING FOR THE SIGNIFICANCE OF GENOTYPIC EFFECT:
-
-Analysis of Variance Table with Satterthwaite Denominator Df
-        Df Sum Sq Mean Sq F value  Denom Pr(>F)
-Gen 1.5093 0.2156       7  7.9998 1.1469 0.4216
-
-
-TESTING FOR THE SIGNIFICANCE OF ENVIRONMENT EFFECT USING -2 LOGLIKELIHOOD RATIO TEST:
-
-Formula for Model1:  Y3 ~ 1 + Gen + (1|Site) + (1|Blk:Site) + (1|Gen:Site) 
-Formula for Model2:  Y3 ~ 1 + Gen + (1|Blk:Site) + (1|Gen:Site) 
+Formula for Model1:  GRAINYLD ~ 1 + GENO + (1|ENV) + (1|REP:ENV) + (1|GENO:ENV) 
+Formula for Model2:  GRAINYLD ~ 1 + GENO + (1|REP:ENV) + (1|GENO:ENV) 
 
             AIC      BIC    logLik Chisq Chi Df Pr(>Chisq)
-Model2 147.4333 171.1811 -62.71667    NA     NA         NA
-Model1 149.4333 175.3399 -62.71667     0      1  0.9999996
+Model2 844.4552 872.8180 -412.2276    NA     NA         NA
+Model1 846.4552 877.6543 -412.2276     0      1  0.9999997
 
 
 TESTING FOR THE SIGNIFICANCE OF GENOTYPE X ENVIRONMENT EFFECT USING -2 LOGLIKELIHOOD RATIO TEST:
 
-Formula for Model1:  Y3 ~ 1 + Gen + (1|Site) + (1|Blk:Site) + (1|Gen:Site) 
-Formula for Model2:  Y3 ~ 1 + Gen + (1|Site) + (1|Blk:Site) 
+Formula for Model1:  GRAINYLD ~ 1 + GENO + (1|ENV) + (1|REP:ENV) + (1|GENO:ENV) 
+Formula for Model2:  GRAINYLD ~ 1 + GENO + (1|ENV) + (1|REP:ENV) 
 
-            AIC      BIC     logLik    Chisq Chi Df   Pr(>Chisq)
-Model2 298.0782 321.8259 -138.03911       NA     NA           NA
-Model1 149.4333 175.3399  -62.71667 150.6449      1 1.253169e-34
+            AIC      BIC    logLik    Chisq Chi Df   Pr(>Chisq)
+Model2 954.7904 983.1532 -467.3952       NA     NA           NA
+Model1 846.4552 877.6543 -412.2276 110.3352      1 8.274662e-26
 
 
 GENOTYPE X ENVIRONMENT MEANS:
 
-  Gen     Env1     Env2
-1   1 20.31154 25.28846
-2   2 19.74091 15.75909
-3   3 18.73654 23.71346
-4   4 20.29091 16.30909
-5   5 20.26154 25.23846
-6   6 19.71591 15.73409
-7   7 20.23654 25.21346
-8   8 20.01591 16.03409
+  GENO       E1       E3       E6       E5       E4       E2
+1   G1 61.72721 71.16802 44.42211 48.53920 80.34845 72.79500
+2   G2 83.37081 87.12375 43.94619 41.42741 77.66057 63.47126
+3   G3 27.86593 31.61886 31.73238 27.00166 36.37539 36.40578
+4   G4 54.57213 49.79325 42.95491 48.33597 46.64994 40.36046
+5   G5 51.91992 46.50904 37.14276 36.51995 43.68173 52.55993
+6   G6 24.51717 27.95411 49.23917 46.08841 27.65474 30.21307
+7   G7 28.70889 39.72967 42.68712 39.22037 32.47845 32.50883
 
 
 GENOTYPE LSMEANS AND STANDARD ERRORS:
 
-  Gen LSMean StdErrMean
-1   1 22.800   2.263925
-2   2 17.750   2.263925
-3   3 21.225   2.263925
-4   4 18.300   2.263925
-5   5 22.750   2.263925
-6   6 17.725   2.263925
-7   7 22.725   2.263925
-8   8 18.025   2.263925
+  GENO   LSMean StdErrMean
+1   G1 63.16667   4.701152
+2   G2 66.16667   4.701152
+3   G3 31.83333   4.701152
+4   G4 47.11111   4.701152
+5   G5 44.72222   4.701152
+6   G6 34.27778   4.701152
+7   G7 35.88889   4.701152
 
 
 STANDARD ERROR OF THE DIFFERENCE (SED):
 
            Estimate
- Minimum   3.2016  
- Average   3.2016  
- Maximum   3.2016  
+ Minimum   6.6423  
+ Average   6.6423  
+ Maximum   6.6423  
 
 
 ==============================
@@ -196,182 +103,88 @@ GENOTYPE AS: Random
 ==============================
 
 ------------------------------
-RESPONSE VARIABLE: Y1
+RESPONSE VARIABLE: GRAINYLD
 ------------------------------
 
 DATA SUMMARY:
 
-Number of observations read:  64 
-Number of observations used:  60 
+Number of observations read:  126 
+Number of observations used:  126 
 
- Factors   Number of Levels   Levels       
- Site      2                  Env1  Env2   
- Gen       8                  1  2  3 ... 8
- Blk       4                  1  2  3  4   
+ Factors   Number of Levels   Levels           
+ ENV       6                  E1  E2  E3 ... E6
+ GENO      7                  G1  G2  G3 ... G7
+ REP       3                  1  2  3          
 
 
 DESCRIPTIVE STATISTICS:
 
   Variable N_NonMissObs     Mean   StdDev
-1       Y1           60 42.79667 6.277022
+1 GRAINYLD          126 46.16667 17.04476
 
 
 VARIANCE COMPONENTS TABLE:
 
-    Groups  Variance Std.Dev.
-1 Gen:Site  6.988987 2.643669
-2 Blk:Site  2.023765 1.422591
-3      Gen 20.274050 4.502671
-4     Site  0.000000 0.000000
-5 Residual 12.884638 3.589518
+    Groups    Variance  Std.Dev.
+1 GENO:ENV 125.4762563 11.201618
+2  REP:ENV   0.7297123  0.854232
+3     GENO 168.6732169 12.987425
+4      ENV   0.0000000  0.000000
+5 Residual  20.6564719  4.544939
 
 
 TESTING FOR THE SIGNIFICANCE OF GENOTYPIC EFFECT USING -2 LOGLIKELIHOOD RATIO TEST:
 
-Formula for Model1:  Y1 ~ 1 + (1|Gen) + (1|Site) + (1|Blk:Site) + (1|Gen:Site) 
-Formula for Model2:  Y1 ~ 1 + (1|Site) + (1|Blk:Site) + (1|Gen:Site) 
+Formula for Model1:  GRAINYLD ~ 1 + (1|GENO) + (1|ENV) + (1|REP:ENV) + (1|GENO:ENV) 
+Formula for Model2:  GRAINYLD ~ 1 + (1|ENV) + (1|REP:ENV) + (1|GENO:ENV) 
 
-            AIC      BIC    logLik  Chisq Chi Df Pr(>Chisq)
-Model2 368.2996 378.7713 -179.1498     NA     NA         NA
-Model1 366.2154 378.7814 -177.1077 4.0842      1 0.04328472
-
-
-TESTING FOR THE SIGNIFICANCE OF ENVIRONMENT EFFECT USING -2 LOGLIKELIHOOD RATIO TEST:
-
-Formula for Model1:  Y1 ~ 1 + (1|Gen) + (1|Site) + (1|Blk:Site) + (1|Gen:Site) 
-Formula for Model2:  Y1 ~ 1 + (1|Gen) + (1|Blk:Site) + (1|Gen:Site) 
-
-            AIC      BIC    logLik Chisq Chi Df Pr(>Chisq)
-Model2 364.2154 374.6871 -177.1077    NA     NA         NA
-Model1 366.2154 378.7814 -177.1077     0      1  0.9999997
-
-
-TESTING FOR THE SIGNIFICANCE OF GENOTYPE X ENVIRONMENT EFFECT USING -2 LOGLIKELIHOOD RATIO TEST:
-
-Formula for Model1:  Y1 ~ 1 + (1|Gen) + (1|Site) + (1|Blk:Site) + (1|Gen:Site) 
-Formula for Model2:  Y1 ~ 1 + (1|Gen) + (1|Site) + (1|Blk:Site) 
-
-            AIC      BIC    logLik  Chisq Chi Df Pr(>Chisq)
-Model2 369.1685 379.6402 -179.5842     NA     NA         NA
-Model1 366.2154 378.7814 -177.1077 4.9531      1 0.02604392
-
-
-GENOTYPE X ENVIRONMENT MEANS:
-
-  Gen     Env2     Env1
-1   1 46.47959       NA
-2   2 40.50128 43.24725
-3   3 41.70851 38.29386
-4   4 38.01945 40.76542
-5   5 37.21313 33.79847
-6   6 48.76624 51.51221
-7   7 47.88967 44.47502
-8   8 43.26407 46.01004
-
-
-PREDICTED GENOTYPE MEANS:
-
-  Gen     Mean
-1   1 45.57996
-2   2 42.03540
-3   3 40.43771
-4   4 39.91845
-5   5 36.60324
-6   6 49.08523
-7   7 45.71010
-8   8 44.39200
-
-
-HERITABILITY:
-   
-NA 
-
-
-------------------------------
-RESPONSE VARIABLE: Y3
-------------------------------
-
-DATA SUMMARY:
-
-Number of observations read:  64 
-Number of observations used:  64 
-
- Factors   Number of Levels   Levels       
- Site      2                  Env1  Env2   
- Gen       8                  1  2  3 ... 8
- Blk       4                  1  2  3  4   
-
-
-DESCRIPTIVE STATISTICS:
-
-  Variable N_NonMissObs    Mean   StdDev
-1       Y3           64 20.1625 3.252032
-
-
-VARIANCE COMPONENTS TABLE:
-
-    Groups     Variance   Std.Dev.
-1 Gen:Site 10.203319062 3.19426346
-2 Blk:Site  0.001586366 0.03982921
-3      Gen  0.752877318 0.86768503
-4     Site  0.000000000 0.00000000
-5 Residual  0.187994708 0.43358357
-
-
-TESTING FOR THE SIGNIFICANCE OF GENOTYPIC EFFECT USING -2 LOGLIKELIHOOD RATIO TEST:
-
-Formula for Model1:  Y3 ~ 1 + (1|Gen) + (1|Site) + (1|Blk:Site) + (1|Gen:Site) 
-Formula for Model2:  Y3 ~ 1 + (1|Site) + (1|Blk:Site) + (1|Gen:Site) 
-
-            AIC      BIC    logLik  Chisq Chi Df Pr(>Chisq)
-Model2 169.8116 180.6060 -79.90582     NA     NA         NA
-Model1 171.7765 184.7298 -79.88824 0.0351      1  0.8512899
+            AIC      BIC    logLik   Chisq Chi Df   Pr(>Chisq)
+Model2 902.7618 916.9432 -446.3809      NA     NA           NA
+Model1 886.9336 903.9513 -437.4668 17.8282      1 2.417722e-05
 
 
 TESTING FOR THE SIGNIFICANCE OF ENVIRONMENT EFFECT USING -2 LOGLIKELIHOOD RATIO TEST:
 
-Formula for Model1:  Y3 ~ 1 + (1|Gen) + (1|Site) + (1|Blk:Site) + (1|Gen:Site) 
-Formula for Model2:  Y3 ~ 1 + (1|Gen) + (1|Blk:Site) + (1|Gen:Site) 
+Formula for Model1:  GRAINYLD ~ 1 + (1|GENO) + (1|ENV) + (1|REP:ENV) + (1|GENO:ENV) 
+Formula for Model2:  GRAINYLD ~ 1 + (1|GENO) + (1|REP:ENV) + (1|GENO:ENV) 
 
             AIC      BIC    logLik Chisq Chi Df Pr(>Chisq)
-Model2 169.7765 180.5709 -79.88824    NA     NA         NA
-Model1 171.7765 184.7298 -79.88824     0      1  0.9999998
+Model2 884.9336 899.1150 -437.4668    NA     NA         NA
+Model1 886.9336 903.9513 -437.4668     0      1          1
 
 
 TESTING FOR THE SIGNIFICANCE OF GENOTYPE X ENVIRONMENT EFFECT USING -2 LOGLIKELIHOOD RATIO TEST:
 
-Formula for Model1:  Y3 ~ 1 + (1|Gen) + (1|Site) + (1|Blk:Site) + (1|Gen:Site) 
-Formula for Model2:  Y3 ~ 1 + (1|Gen) + (1|Site) + (1|Blk:Site) 
+Formula for Model1:  GRAINYLD ~ 1 + (1|GENO) + (1|ENV) + (1|REP:ENV) + (1|GENO:ENV) 
+Formula for Model2:  GRAINYLD ~ 1 + (1|GENO) + (1|ENV) + (1|REP:ENV) 
 
-            AIC      BIC     logLik    Chisq Chi Df   Pr(>Chisq)
-Model2 320.4214 331.2158 -155.21068       NA     NA           NA
-Model1 171.7765 184.7298  -79.88824 150.6449      1 1.253169e-34
+            AIC       BIC    logLik    Chisq Chi Df   Pr(>Chisq)
+Model2 995.2688 1009.4502 -492.6344       NA     NA           NA
+Model1 886.9336  903.9513 -437.4668 110.3352      1 8.274662e-26
 
 
 GENOTYPE X ENVIRONMENT MEANS:
 
-  Gen     Env1     Env2
-1   1 20.30100 25.27792
-2   2 19.75055 15.76874
-3   3 18.73229 23.70921
-4   4 20.29835 16.31654
-5   5 20.25120 25.22812
-6   6 19.72565 15.74384
-7   7 20.22630 25.20322
-8   8 20.02445 16.04264
+  GENO       E1       E3       E6       E5       E4       E2
+1   G1 61.62493 71.06574 44.31983 48.43692 80.24617 72.69272
+2   G2 83.25048 87.00341 43.82585 41.30708 77.54024 63.35093
+3   G3 27.95217 31.70510 31.81862 27.08790 36.46163 36.49201
+4   G4 54.56645 49.78757 42.94923 48.33029 46.64426 40.35478
+5   G5 51.92861 46.51774 37.15145 36.52864 43.69042 52.56862
+6   G6 24.58870 28.02564 49.31070 46.15994 27.72627 30.28460
+7   G7 28.77073 39.79151 42.74896 39.28221 32.54029 32.57067
 
 
 PREDICTED GENOTYPE MEANS:
 
-  Gen     Mean
-1   1 20.50032
-2   2 19.85350
-3   3 20.29859
-4   4 19.92395
-5   5 20.49392
-6   6 19.85030
-7   7 20.49071
-8   8 19.88872
+  GENO     Mean
+1   G1 61.20044
+2   G2 63.85346
+3   G3 33.49113
+4   G4 47.00188
+5   G5 44.88929
+6   G6 35.65285
+7   G7 37.07762
 
 
 HERITABILITY:

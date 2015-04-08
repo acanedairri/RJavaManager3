@@ -13,21 +13,40 @@ public class TestDesignAugmentedRCB {
 		
 		//supply path where the output will be saved
 		String path = DATA_PATH; 
-		//supply the fieldbook name specified by the user
-		String fieldBookName = "fieldbookAugRCB"; 
-		
+		// Case 1: 
+		String fieldBookName = "fieldbookAugRCB1"; 		//supply the fieldbook name specified by the user 
 		//specify parameters
-		Integer repTrmt = 5;
-		Integer unrepTrmt = 702;
-		Integer Blk = 6;
-		Integer fieldRow = 122;
-		Integer trial = 1;
+		Integer numCheck = 6;
+		Integer numNew = 60;
+		String trmtName = null;
+		Integer Blk = 4; 
+		Integer trial = 2;
+		Integer rowPerBlk = 7;
+		Integer numFieldRow = 14;
 		String fieldOrder = "Serpentine";
+		String trmtLabel = null;
+		String checkTrmt = null; 
+		String newTrmt = null;
+
+//		// Case 2: 
+//		String fieldBookName = "fieldbookAugRCB2"; 		//supply the fieldbook name specified by the user 
+//		//specify parameters
+//		Integer numCheck = 6;
+//		Integer numNew = 60;
+//		String trmtName = "EntryNum";
+//		Integer Blk = 4; 
+//		Integer trial = 2;
+//		Integer rowPerBlk = 7;
+//		Integer numFieldRow = 14;
+//		String fieldOrder = "Serpentine";
+//		String trmtLabel = null;
+//		String checkTrmt = null; 
+//		String newTrmt = null;
 		
 		RJavaManager rJavaManager= new RJavaManager();
 		rJavaManager.initStar();
-		rJavaManager.getSTARDesignManager().doDesignAugRCB(path, fieldBookName, repTrmt, unrepTrmt, Blk, fieldRow, 
-				trial, fieldOrder);
+		rJavaManager.getSTARDesignManager().doDesignAugRCB(path, fieldBookName, numCheck, numNew, trmtName, Blk, 
+				trial, rowPerBlk, numFieldRow, fieldOrder, trmtLabel, checkTrmt, newTrmt);
 		
 		StringBuilder s = rJavaManager.getSTARDesignManager().getRscriptCommand();
 		System.out.println("Script Command:\n" +s.toString());

@@ -634,8 +634,9 @@ public class STARDesignManager implements IRJavaSTARDesignManager {
 	}
 	
 	@Override
-	public void doDesignAugRCB(String path, String fieldBookName, Integer repTrmt, Integer unrepTrmt, Integer Blk, Integer fieldRow, 
-			Integer trial, String fieldOrder){
+	public void doDesignAugRCB(String path, String fieldBookName, Integer numCheck, Integer numNew, String trmtName, Integer Blk, 
+			Integer trial, Integer rowPerBlk, Integer numFieldRow, String fieldOrder, String trmtLabel, String checkTrmt, 
+			String newTrmt){
 
 		//defining the R statements for randomization for augmented design in Latin Square Design
 		rscriptCommand = new StringBuilder();
@@ -645,13 +646,34 @@ public class STARDesignManager implements IRJavaSTARDesignManager {
 		String sinkIn = "sink(\"" + TxtOuptut + "\")";
 		String pkgIntro = "cat(\"Statistical Tool for Agricultural Research (STAR)\\nResult of Randomization\\n\",date(),\"\\n\\n\\n\", sep = \"\")";
 		String funcRandomize = "result <- try(";
-		String command = "designAugmentedRCB(checkTrmt = "+ repTrmt +", newTrmt = "+ unrepTrmt + ", r = "+ Blk;
-		command = command + ", trial = "+ trial + ", numFieldRow = "+ fieldRow;
-		if (fieldOrder == "Plot Order") {
-			command = command + ", serpentine = FALSE, file = \""+ CSVOutput +"\")";
+		String command = "designAugmentedRCB(numCheck = "+ numCheck +", numNew = "+ numNew;
+		if (trmtName == null) {
+			command = command + ", trmtName = NULL"; 
 		} else {
-			command = command + ", serpentine = TRUE, file = \""+ CSVOutput +"\")";
+			command = command + ", trmtName = \""+ trmtName +"\"";
 		}
+		command = command + ", r = "+ Blk +", trial = "+ trial + ", rowPerBlk = "+ rowPerBlk +" , numFieldRow = "+ numFieldRow;
+		if (fieldOrder == "Plot Order") {
+			command = command + ", serpentine = FALSE";
+		} else {
+			command = command + ", serpentine = TRUE";
+		}
+		if (trmtLabel == null) {
+			command = command + ", trmtLabel = NULL";
+		} else {
+			command = command + ", trmtLabel = \""+ trmtLabel +"\"";
+		}
+		if (checkTrmt == null) {
+			command = command + ", checkTrmt = NULL";
+		} else {
+			command = command + ", checkTrmt = \""+ checkTrmt +"\"";
+		}
+		if (newTrmt == null) {
+			command = command + ", newTrmt = NULL";
+		} else {
+			command = command + ", newTrmt = \""+ newTrmt +"\"";
+		}
+		command = command + ", file = \""+ CSVOutput +"\")";
 		funcRandomize = funcRandomize + command + ", silent = TRUE)";
 		
 		System.out.println(sinkIn);
@@ -685,19 +707,19 @@ public class STARDesignManager implements IRJavaSTARDesignManager {
 			rEngine.eval(errorMsg3);
 			rEngine.eval(errorMsg4);
 		} 
-		else {
-			String checkOutput = "if (nrow(result$fieldbook) != 0) {\n";
-			checkOutput = checkOutput + "    cat(\"\\nLayout for Augmented Randomized Complete Block Design:\",\"\\n\\n\")\n";
-			checkOutput = checkOutput + "    for (i in (1:length(result$layout))) { \n";
-			checkOutput = checkOutput + "          printLayout(result$layout[[i]], result$plotNum[[i]], RowLabel = rownames(result$layout[[i]]), ColLabel = NULL, title = paste(\"Trial = \", i, sep = \"\"))\n";
-			checkOutput = checkOutput + "          cat(\"\\n\")\n";
-			checkOutput = checkOutput + "    }\n";
-			checkOutput = checkOutput + "    cat(\"\\n\",\"**Note: Cells contain plot numbers on top, treatments/entries below\")\n";
-			checkOutput = checkOutput + "}";
-			
-			System.out.println(checkOutput);
-			rEngine.eval(checkOutput);
-		}
+//		else {
+//			String checkOutput = "if (nrow(result$fieldbook) != 0) {\n";
+//			checkOutput = checkOutput + "    cat(\"\\nLayout for Augmented Randomized Complete Block Design:\",\"\\n\\n\")\n";
+//			checkOutput = checkOutput + "    for (i in (1:length(result$layout))) { \n";
+//			checkOutput = checkOutput + "          printLayout(result$layout[[i]], result$plotNum[[i]], RowLabel = rownames(result$layout[[i]]), ColLabel = NULL, title = paste(\"Trial = \", i, sep = \"\"))\n";
+//			checkOutput = checkOutput + "          cat(\"\\n\")\n";
+//			checkOutput = checkOutput + "    }\n";
+//			checkOutput = checkOutput + "    cat(\"\\n\",\"**Note: Cells contain plot numbers on top, treatments/entries below\")\n";
+//			checkOutput = checkOutput + "}";
+//			
+//			System.out.println(checkOutput);
+//			rEngine.eval(checkOutput);
+//		}
 
 		String sinkOut = "sink()";
 		System.out.println(sinkOut);
@@ -852,19 +874,19 @@ public class STARDesignManager implements IRJavaSTARDesignManager {
 			rEngine.eval(errorMsg3);
 			rEngine.eval(errorMsg4);
 		} 
-		else {
-			String checkOutput = "if (nrow(result$fieldbook) != 0) {\n";
-			checkOutput = checkOutput + "    cat(\"\\nLayout for Alpha Lattice Design:\",\"\\n\\n\")\n";
-			checkOutput = checkOutput + "    for (i in (1:length(result$layout))) { \n";
-			checkOutput = checkOutput + "          printLayout(result$layout[[i]], result$plotNum, RowLabel = rownames(result$layout[[i]]), ColLabel = colnames(result$layout[[i]]), title = paste(\"Trial = \", i, sep = \"\"))\n";
-			checkOutput = checkOutput + "          cat(\"\\n\")\n";
-			checkOutput = checkOutput + "    }\n";
-			checkOutput = checkOutput + "    cat(\"\\n\",\"**Note: Cells contain plot numbers on top, treatments/entries below\")\n";
-			checkOutput = checkOutput + "}";
-	
-			System.out.println(checkOutput);
-			rEngine.eval(checkOutput);
-		}
+//		else {
+//			String checkOutput = "if (nrow(result$fieldbook) != 0) {\n";
+//			checkOutput = checkOutput + "    cat(\"\\nLayout for Alpha Lattice Design:\",\"\\n\\n\")\n";
+//			checkOutput = checkOutput + "    for (i in (1:length(result$layout))) { \n";
+//			checkOutput = checkOutput + "          printLayout(result$layout[[i]], result$plotNum, RowLabel = rownames(result$layout[[i]]), ColLabel = colnames(result$layout[[i]]), title = paste(\"Trial = \", i, sep = \"\"))\n";
+//			checkOutput = checkOutput + "          cat(\"\\n\")\n";
+//			checkOutput = checkOutput + "    }\n";
+//			checkOutput = checkOutput + "    cat(\"\\n\",\"**Note: Cells contain plot numbers on top, treatments/entries below\")\n";
+//			checkOutput = checkOutput + "}";
+//	
+//			System.out.println(checkOutput);
+//			rEngine.eval(checkOutput);
+//		}
 
 		String sinkOut = "sink()";
 		System.out.println(sinkOut);
@@ -1097,6 +1119,92 @@ public class STARDesignManager implements IRJavaSTARDesignManager {
 	}
 
 	@Override
+	public void doDesignPRep(String path, String fieldBookName, String[] trmtGrpName, Integer[] numTrmtPerGrp, 
+			Integer[] trmtRepPerGrp, String trmtName, Integer blk, Integer trial, Integer rowPerBlk, Integer numFieldRow, 
+			String fieldOrder, String trmtLabel, String trmtListPerGrp){
+	
+		//defining the R statements for randomization for Alpha Lattice
+		rscriptCommand = new StringBuilder();
+		String CSVOutput = path + fieldBookName + ".csv";
+		String TxtOuptut = path + fieldBookName + ".txt";
+		
+		String sinkIn = "sink(\"" + TxtOuptut + "\")";
+		String pkgIntro = "cat(\"Statistical Tool for Agricultural Research (STAR)\\nResult of Randomization\\n\",date(),\"\\n\\n\\n\", sep = \"\")";
+		String funcRandomize = "result <- try(";
+		String command = "designPRep(trmtPerGrp = "+ inputTransform.createRList(trmtGrpName, numTrmtPerGrp);
+		command = command + ", trmtRepPerGrp = "+ inputTransform.createRNumVector(trmtRepPerGrp);
+		command = command + ", trmtName = \""+ trmtName  +"\", blk = "+ blk +", trial = "+ trial;
+		command = command + ", rowPerBlk = "+ rowPerBlk +", numFieldRow = "+ numFieldRow;
+		if (fieldOrder == "Plot Order") {
+			command = command + ", serpentine = FALSE";
+		} else {
+			command = command + ", serpentine = TRUE";
+		}
+		if (trmtLabel == null) {
+			command = command + ", trmtLabel = NULL";
+		} else {
+			command = command + ", trmtLabel = \""+ trmtLabel + "\"";
+		}
+		if (trmtListPerGrp == null) {
+			command = command + ", trmtListPerGrp = NULL";
+		} else {
+			command = command + ", trmtListPerGrp = \""+ trmtListPerGrp + "\"";
+		}
+		
+		command = command + ", file = \""+ CSVOutput +"\")";
+		funcRandomize = funcRandomize + command + ", silent = TRUE)";
+		
+		System.out.println(sinkIn);
+		System.out.println(pkgIntro);
+		System.out.println(funcRandomize);
+	
+	
+		//R statements passed on to the R engine
+		rEngine.eval(sinkIn);
+		rEngine.eval(pkgIntro);
+		rEngine.eval(funcRandomize);
+	
+		String runSuccessCommand = rEngine.eval("class(result)").asString();
+		if (runSuccessCommand.equals("try-error")) {
+			String errorMsg1 = "msg <- trimStrings(strsplit(result, \":\")[[1]])";
+			String errorMsg2 = "msg <- trimStrings(paste(strsplit(msg, \"\\n\")[[length(msg)]], collapse = \" \"))";
+			String errorMsg3 = "msg <- gsub(\"\\\"\", \"\", msg)";
+			String errorMsg4 = "cat(\"Error in designAlphaLattice:\\n\",msg, sep = \"\")";
+	
+			System.out.println(errorMsg1);
+			System.out.println(errorMsg2);
+			System.out.println(errorMsg3);
+			System.out.println(errorMsg4);
+			
+			rEngine.eval(errorMsg1);
+			rEngine.eval(errorMsg2);
+			rEngine.eval(errorMsg3);
+			rEngine.eval(errorMsg4);
+		} 
+//		else {
+//			String checkOutput = "if (nrow(result$fieldbook) != 0) {\n";
+//			checkOutput = checkOutput + "    cat(\"\\nLayout for Alpha Lattice Design:\",\"\\n\\n\")\n";
+//			checkOutput = checkOutput + "    for (i in (1:length(result$layout))) { \n";
+//			checkOutput = checkOutput + "          printLayout(result$layout[[i]], result$plotNum, RowLabel = rownames(result$layout[[i]]), ColLabel = colnames(result$layout[[i]]), title = paste(\"Trial = \", i, sep = \"\"))\n";
+//			checkOutput = checkOutput + "          cat(\"\\n\")\n";
+//			checkOutput = checkOutput + "    }\n";
+//			checkOutput = checkOutput + "    cat(\"\\n\",\"**Note: Cells contain plot numbers on top, treatments/entries below\")\n";
+//			checkOutput = checkOutput + "}";
+//	
+//			System.out.println(checkOutput);
+//			rEngine.eval(checkOutput);
+//		}
+	
+		String sinkOut = "sink()";
+		System.out.println(sinkOut);
+		rEngine.eval(sinkOut);
+			
+		rscriptCommand.append(command+"\n");
+		rEngineEnd();
+		//return msg;
+	}
+
+	@Override
 	public void doDesignAlpha(String path, String fieldBookName, Integer numTrmt, Integer blkSize, 
 			Integer rep, Integer trial, Integer rowPerBlk, Integer rowPerRep, Integer numFieldRow, String fieldOrder){
 	
@@ -1163,6 +1271,99 @@ public class STARDesignManager implements IRJavaSTARDesignManager {
 			System.out.println(checkOutput);
 			rEngine.eval(checkOutput);
 		}
+	
+		String sinkOut = "sink()";
+		System.out.println(sinkOut);
+		rEngine.eval(sinkOut);
+			
+		rscriptCommand.append(command+"\n");
+		rEngineEnd();
+		//return msg;
+	}
+
+	@Override
+	public void doDesignAugmentedRowColumn(String path, String fieldBookName, Integer numCheck, Integer numNew,
+			String trmtName, Integer rep, Integer trial, Integer rowblkPerRep, Integer rowPerRowblk, 
+			Integer numFieldRow, String fieldOrder, String trmtLabel, String checkTrmt, String newTrmt){
+	
+		//defining the R statements for randomization for Alpha Lattice
+		rscriptCommand = new StringBuilder();
+		String CSVOutput = path + fieldBookName + ".csv";
+		String TxtOuptut = path + fieldBookName + ".txt";
+		
+		String sinkIn = "sink(\"" + TxtOuptut + "\")";
+		String pkgIntro = "cat(\"Statistical Tool for Agricultural Research (STAR)\\nResult of Randomization\\n\",date(),\"\\n\\n\\n\", sep = \"\")";
+		String funcRandomize = "result <- try(";
+		String command = "designAugmentedRowColumn(numCheck = "+ numCheck +", numNew = "+ numNew;
+		if (trmtName == null) {
+			command = command + ", trmtName = NULL, r = "+ rep +", trial = "+ trial;
+		} else {
+			command = command + ", trmtName = \""+ trmtName +"\", r = "+ rep +", trial = "+ trial;	
+		}
+		command = command + ", rowblkPerRep = "+ rowblkPerRep +", rowPerRowblk = "+ rowPerRowblk +", numFieldRow = "+ numFieldRow;
+		if (fieldOrder == "Plot Order") {
+			command = command + ", serpentine = FALSE";
+		} else {
+			command = command + ", serpentine = TRUE";
+		}
+		if (trmtLabel == null) {
+			command = command + ", trmtLabel = NULL";
+		} else {
+			command = command + ", trmtLabel = \""+ trmtLabel +"\"";
+		}
+		if (checkTrmt == null) {
+			command = command + ", checkTrmt = NULL";
+		} else {
+			command = command + ", checkTrmt = \""+ checkTrmt +"\"";
+		}
+		if (newTrmt == null) {
+			command = command + ", newTrmt = NULL";
+		} else {
+			command = command + ", newTrmt = \""+ newTrmt +"\"";
+		}
+		command = command + ", file = \""+ CSVOutput +"\")";
+		funcRandomize = funcRandomize + command + ", silent = TRUE)";
+		
+		System.out.println(sinkIn);
+		System.out.println(pkgIntro);
+		System.out.println(funcRandomize);
+	
+	
+		//R statements passed on to the R engine
+		rEngine.eval(sinkIn);
+		rEngine.eval(pkgIntro);
+		rEngine.eval(funcRandomize);
+	
+		String runSuccessCommand = rEngine.eval("class(result)").asString();
+		if (runSuccessCommand.equals("try-error")) {
+			String errorMsg1 = "msg <- trimStrings(strsplit(result, \":\")[[1]])";
+			String errorMsg2 = "msg <- trimStrings(paste(strsplit(msg, \"\\n\")[[length(msg)]], collapse = \" \"))";
+			String errorMsg3 = "msg <- gsub(\"\\\"\", \"\", msg)";
+			String errorMsg4 = "cat(\"Error in designRowColumn:\\n\",msg, sep = \"\")";
+	
+			System.out.println(errorMsg1);
+			System.out.println(errorMsg2);
+			System.out.println(errorMsg3);
+			System.out.println(errorMsg4);
+			
+			rEngine.eval(errorMsg1);
+			rEngine.eval(errorMsg2);
+			rEngine.eval(errorMsg3);
+			rEngine.eval(errorMsg4);
+		} 
+//		else {
+//			String checkOutput = "if (nrow(result$fieldbook) != 0) {\n";
+//			checkOutput = checkOutput + "    cat(\"\\nLayout for Row-Column Design:\",\"\\n\\n\")\n";
+//			checkOutput = checkOutput + "    for (i in (1:length(result$layout))) { \n";
+//			checkOutput = checkOutput + "          printLayout(result$layout[[i]], result$plotNum, RowLabel = rownames(result$layout[[i]]), ColLabel = colnames(result$layout[[i]]), title = paste(\"Trial = \", i, sep = \"\"))\n";
+//			checkOutput = checkOutput + "          cat(\"\\n\")\n";
+//			checkOutput = checkOutput + "    }\n";
+//			checkOutput = checkOutput + "    cat(\"\\n\",\"**Note: Cells contain plot numbers on top, treatments/entries below\")\n";
+//			checkOutput = checkOutput + "}";
+//	
+//			System.out.println(checkOutput);
+//			rEngine.eval(checkOutput);
+//		}
 	
 		String sinkOut = "sink()";
 		System.out.println(sinkOut);

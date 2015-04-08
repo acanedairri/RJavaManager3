@@ -45,6 +45,21 @@ public class InputTransform {
 		return stringNumVectorR; 
 	}
 	
+	public String createRNumVector(Integer[] intArrayInput) {
+		String stringNumVectorR = "c(";
+		
+		for (int i = 0; i < intArrayInput.length; i++) {
+			if (i > 0)
+				stringNumVectorR = stringNumVectorR + ", " + intArrayInput[i];
+			else
+				stringNumVectorR = stringNumVectorR + intArrayInput[i];
+		}
+		
+		stringNumVectorR = stringNumVectorR + ")";
+		
+		return stringNumVectorR; 
+	}
+	
 	public String createRNumVector(double[] doubleArrayInput) {
 		String stringNumVectorR = "c(";
 		
@@ -83,6 +98,21 @@ public class InputTransform {
 				tempList = tempList + ", " + stringArrayInput[i] + " = " + integerLevelInput[i];
 			else
 				tempList = tempList + stringArrayInput[i] + " = " + integerLevelInput[i];
+		}
+		
+		tempList = tempList + ")";
+		
+		return tempList; 
+	}
+	
+	public String createRList(String[] stringArrayInput, Integer[] startVal, Integer[] integerLevelInput) {
+		String tempList = "list(";
+		
+		for (int i = 0; i < stringArrayInput.length; i++) {
+			if (i > 0)
+				tempList = tempList + ", " + stringArrayInput[i] + " = c(" + startVal[i] + ":" + integerLevelInput[i] +")";
+			else
+				tempList = tempList + stringArrayInput[i] + " = c(" + startVal[i] + ":" + integerLevelInput[i] + ")";
 		}
 		
 		tempList = tempList + ")";

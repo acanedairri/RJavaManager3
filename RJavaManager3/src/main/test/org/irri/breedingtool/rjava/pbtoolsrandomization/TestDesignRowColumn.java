@@ -14,7 +14,7 @@ public class TestDesignRowColumn {
 		//supply path where the output will be saved
 		String path = DATA_PATH; 
 		//supply the fieldbook name specified by the user
-		String fieldBookName = "fieldbookRowColumn"; 
+		String fieldBookName = "fieldbookPBToolsRowColumn1"; 
 		
 		//specify parameters
 		Integer numTrmt = 20;

@@ -21,6 +21,14 @@ public class TestOutlierDetection {
 		String trmt = "ENTRY.";
 		String rep = "REP.";
 		
+		
+		//supply path and name of active data
+//		String dataFileName = DATA_PATH + "BIOFORT-IRRIHQ-OYT-2014-DS-1_AYLD_CONT_31.csv"; 
+//		//specify parameters
+//		String respvar = "AYLD_CONT";
+//		String trmt = "Designation";
+//		String rep = "Blk";
+		
 		RJavaManager rJavaManager= new RJavaManager();
 		rJavaManager.initPBtool();
 		rJavaManager.getPbToolAnalysisManager().doOutlierDetection(dataFileName, outputPath, respvar, trmt, rep);

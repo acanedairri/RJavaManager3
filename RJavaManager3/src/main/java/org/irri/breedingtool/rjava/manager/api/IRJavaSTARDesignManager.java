@@ -129,23 +129,6 @@ public interface IRJavaSTARDesignManager {
 			Integer trial, String fieldOrder);
 
 	/**
-	 * calls the R statements for designAugmentedRCB
-	 * 
-	 * @param path - path where output will be save
-	 * @param fieldBookName - name of the field book entered by the user
-	 * @param repTrmt - an integer representing number of levels of the replicated treatment
-	 * @param unrepTrmt - an integer representing number of levels of the unreplicated treatment
-	 * @param Blk - an interger representing the number of replicates
-	 * @param fieldRow - an integer representing the number of rows in the field layout
-	 * @param trial - integer representing the number of trials
-	 * @param fieldOrder - a string indicating the field book order; possible values: "Plot Order" or "Serpentine"
-	 */
-	
-	public void doDesignAugRCB(String path, String fieldBookName, Integer repTrmt, Integer unrepTrmt, Integer Blk, Integer fieldRow, 
-			Integer trial, String fieldOrder);
-
-	
-	/**
 	 * calls the R statements for designLattice
 	 * 
 	 * @param path - path output will be save
@@ -232,5 +215,21 @@ public interface IRJavaSTARDesignManager {
 			Integer rep, Integer trial, Integer rowPerBlk, Integer rowPerRep,
 			Integer numFieldRow, String fieldOrder, String trmtLabel,
 			String checkTrmt, String newTrmt);
+
+	void doDesignPRep(String path, String fieldBookName, String[] trmtGrpName,
+			Integer[] numTrmtPerGrp, Integer[] trmtRepPerGrp, String trmtName,
+			Integer blk, Integer trial, Integer rowPerBlk, Integer numFieldRow,
+			String fieldOrder, String trmtLabel, String trmtListPerGrp);
+
+	void doDesignAugmentedRowColumn(String path, String fieldBookName,
+			Integer numCheck, Integer numNew, String trmtName, Integer rep,
+			Integer trial, Integer rowblkPerRep, Integer rowPerRowblk,
+			Integer numFieldRow, String fieldOrder, String trmtLabel,
+			String checkTrmt, String newTrmt);
+
+	void doDesignAugRCB(String path, String fieldBookName, Integer numCheck,
+			Integer numNew, String trmtName, Integer Blk, Integer trial,
+			Integer rowPerBlk, Integer numFieldRow, String fieldOrder,
+			String trmtLabel, String checkTrmt, String newTrmt);
 	
 }

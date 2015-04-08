@@ -13,13 +13,13 @@ public class TestDesignAlpha {
 		//supply path where the output will be saved
 		String path = DATA_PATH; 
 		//supply the fieldbook name specified by the user
-		String fieldBookName = "fieldbookAlphaLattice"; 
+		String fieldBookName = "fieldbookPBToolsAlphaLattice"; 
 				
 		//specify parameters
 		Integer numTrmt = 70;
 		Integer blkSize = 14;
 		Integer rep = 2;
-		Integer trial = 1;
+		Integer trial = 3;
 		Integer rowPerBlk = 14;
 		Integer rowPerRep = 14;
 		Integer numFieldRow = 28;
